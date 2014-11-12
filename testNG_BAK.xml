@@ -1,0 +1,14 @@
+	
+	<suite name="WebUISanity">  
+	<test name="Sanity Tests">
+	
+	<groups>
+		<run>
+			<include name="Sanity Native iOS"/>
+		</run>
+	</groups>
+	<classes>
+			<include name="sanityNativeIosAppium"/>		
+	</classes>	
+	</test>
+</suite>

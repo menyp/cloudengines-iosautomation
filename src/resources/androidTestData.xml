@@ -1,0 +1,95 @@
+<Data>
+	<WebElements>
+		<Buttons>
+			<BTNalreadyHaveAnAccount_id>com.pogoplug.android:id/intro_sign_in_btn</BTNalreadyHaveAnAccount_id>
+			<BTNlogin_id>com.pogoplug.android:id/loginBtn</BTNlogin_id>	
+			<BTNfinishTour_id>com.pogoplug.android:id/finish_tour_btn</BTNfinishTour_id>	
+			<BTNcontinue_id>com.pogoplug.android:id/finish_tour_btn</BTNcontinue_id>
+			
+			<BTNupload_name>Upload</BTNupload_name>
+			<BTNsearch_name>Search</BTNsearch_name>
+			<BTNrefresh_name>Refresh</BTNrefresh_name>	
+			<BTNnewFolder_name>New Folder</BTNnewFolder_name>		
+			<BTNsort_name>Sort</BTNsort_name>
+			<BTNdelete_name>Delete</BTNdelete_name>
+			<BTNdeleteConfirm_id>android:id/button1</BTNdeleteConfirm_id>	
+			<BTNcancelDelete_id>android:id/button2</BTNcancelDelete_id>
+			<BTNcapturePhoto_id>com.android.camera2:id/shutter_button</BTNcapturePhoto_id>
+			<BTNcaptureVideo_id></BTNcaptureVideo_id>
+			<BTNcaptureDone_id>com.android.camera2:id/done_button</BTNcaptureDone_id>
+			<BTNretakeCapture_id>com.android.camera2:id/retake_button</BTNretakeCapture_id>
+			<BTNcancelCapture_id>com.android.camera2:id/cancel_button</BTNcancelCapture_id>
+			<BTNdismissNewFolder_id>android:id/button2</BTNdismissNewFolder_id>
+			<BTNcreateNewFolder_id>android:id/button1</BTNcreateNewFolder_id>
+			<BTNopenLSM_xpth>//android.view.View[1]/android.view.View[1]/android.widget.LinearLayout[1]</BTNopenLSM_xpth>
+			
+	
+		</Buttons>
+		
+		<TextFields>
+			<TEXTFIELDemail_id>com.pogoplug.android:id/email</TEXTFIELDemail_id>
+			<TEXTFIELDpassword_id>com.pogoplug.android:id/password</TEXTFIELDpassword_id>
+
+
+		</TextFields>
+		
+		<CheckBox>
+		    
+		</CheckBox>
+		
+		<Options>
+			<OPTIONcaptureNewPhoto_name>Capture new photo</OPTIONcaptureNewPhoto_name>
+			<OPTIONcaptureNewVideo_name>Capture new video</OPTIONcaptureNewVideo_name>
+			<OPTIONlocalPhoto_name>Local photo</OPTIONlocalPhoto_name>
+			<OPTIONlocalVideo>Local video</OPTIONlocalVideo>
+			<OPTIONmusicPlayer_name>Music Player</OPTIONmusicPlayer_name>
+			<OPTIONanyFile_name>Any file</OPTIONanyFile_name>
+			
+			<OPTIONsortAZ_name>A...Z</OPTIONsortAZ_name>
+			<OPTIONsortZA_name>Z...A</OPTIONsortZA_name>
+			<OPTIONsortNewestFirst_name>Newest First</OPTIONsortNewestFirst_name>
+			<OPTIONsortOldestFirst_name>Oldest First</OPTIONsortOldestFirst_name>
+			<OPTIONsortSmallestFirst_name>Smallest First</OPTIONsortSmallestFirst_name>
+			<OPTIONsortBiggestFirst_name>Biggest First</OPTIONsortBiggestFirst_name>
+			
+		</Options>
+		
+		<List>
+		    <LIST1_xpth>//android.view.View[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]</LIST1_xpth>
+		    <LIST2_xpth>//android.view.View[1]/android.widget.ListView[1]/android.widget.LinearLayout[2]</LIST2_xpth>
+		    <LIST3_xpth>//android.view.View[1]/android.widget.ListView[1]/android.widget.LinearLayout[3]</LIST3_xpth>
+		    <LIST4_xpth>//android.view.View[1]/android.widget.ListView[1]/android.widget.LinearLayout[4]</LIST4_xpth>
+		    <LIST5_xpth>//android.view.View[1]/android.widget.ListView[1]/android.widget.LinearLayout[5]</LIST5_xpth>
+		    <LIST6_xpth>//android.view.View[1]/android.widget.ListView[1]/android.widget.LinearLayout[6]</LIST6_xpth>
+		    
+		</List>
+		                
+	</WebElements>
+	
+	<GeneralInfo>
+		<userName>meny@cloudengines.com</userName>
+		<password>1</password>
+		<newPassword>2</newPassword>
+		<badPassword>incorrectPassword</badPassword>
+		<emptyPassword></emptyPassword>
+		<emptyUserName></emptyUserName>
+
+		<screenShotPath>/Users/qa/cloudengines-automation/test-output/reports/screenshots/</screenShotPath>
+		
+	</GeneralInfo>
+	
+	
+	<GeneralStrings>
+		
+		
+	</GeneralStrings>
+
+	<errorText>
+		<changePasswordFailure>One of the required arguments was not entered.</changePasswordFailure>
+		
+	</errorText>
+	
+	
+	
+	
+</Data>

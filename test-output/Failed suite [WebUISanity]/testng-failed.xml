@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Failed suite [WebUISanity]]">
+  <parameter name="wrongcred" value="Password doesn&#039;t match account"/>
+  <parameter name="badPass" value="wrong"/>
+  <parameter name="defaultPass" value="1"/>
+  <parameter name="seleniumUrl" value="http://my.pogoplug.com/"/>
+  <parameter name="newPass" value="2"/>
+  <test name="Test Sign-in Successful(failed)(failed)">
+    <parameter name="wrongcred" value="Password doesn&#039;t match account"/>
+    <parameter name="badPass" value="wrong"/>
+    <parameter name="defaultPass" value="1"/>
+    <parameter name="seleniumUrl" value="http://my.pogoplug.com/"/>
+    <parameter name="newPass" value="2"/>
+    <groups>
+      <run>
+        <include name="Sanity"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="com.pp.webui.auto.SanityTests">
+        <methods>
+          <include name="sendMail"/>
+          <include name="setupBeforeSuite"/>
+          <include name="testChangePassword" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- com.pp.webui.auto.SanityTests -->
+    </classes>
+  </test> <!-- Test Sign-in Successful(failed)(failed) -->
+</suite> <!-- Failed suite [Failed suite [WebUISanity]] -->

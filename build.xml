@@ -1,0 +1,46 @@
+<project name="WebUISanity" default="compile" basedir=".">
+	<property name="projectName" value="WebUISanity"/>
+	<property environment="env"/>
+	<property name="src" location="src"/>
+	<property name="dist"  location="out"/>
+	<property name="lib"  location="lib"/>
+	<path id="project.classpath">
+		<pathelement location="${lib}" />
+		<fileset dir="${lib}">
+		      <include name="*.jar"/>
+		</fileset>
+	</path>
+
+	<target name="init" depends="clean">
+	    <!-- Create the time stamp -->
+		   <tstamp/>
+		<!-- Create the build directory structure used by compile -->
+			<mkdir dir="${dist}"/>		
+			<mkdir dir="${dist}/classes"/>
+			<mkdir dir="${dist}/lib"/>
+			<mkdir dir="${dist}/resources"/>
+	</target>
+
+	<target name="compile" depends="init"
+        description="compile the source " >
+	   <!-- Compile the java code from ${src} into ${build} -->
+		<javac srcdir="${src}" destdir="${dist}/classes" classpathref="project.classpath" />
+		<copy todir="${dist}/lib">
+		    <fileset dir="${lib}"/>
+		 </copy>
+		<copy todir="${dist}/resources">
+			<fileset dir="${src}/resources/"/>
+		</copy>
+	</target>
+
+	<target name="dist" depends="compile"
+		description="generate the distribution" >
+		<!-- Create the distribution directory -->
+		
+     </target>
+
+	<target name="clean" description="clean up" >
+	  <!-- Delete the ${build} and ${dist} directory trees -->
+	  <delete dir="${dist}"/>
+	</target>
+</project>

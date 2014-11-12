@@ -1,0 +1,187 @@
+<Data>
+	<WebElements>
+		<Button>
+			<BTNalreadyHaveAnAccount_name>Already have an account</BTNalreadyHaveAnAccount_name>
+			<BTNsignUp_Name>Sign up</BTNsignUp_Name>
+			<BTNsignin_Name>Sign in</BTNsignin_Name>
+			<BTNsignUpForFree_Name>Sign up for Free</BTNsignUpForFree_Name>
+			<BTNleft_Name>left</BTNleft_Name>
+			<BTNshareOn_Name>share on</BTNshareOn_Name>
+			<BTNcameraOn_Name>camera on</BTNcameraOn_Name>
+			<BTNcreateOn_Name>create on</BTNcreateOn_Name>
+			<BTNcancel_Name>Cancel</BTNcancel_Name>
+			<BTNcreate_Name>Create</BTNcreate_Name>
+			<BTNback_Name>Back</BTNback_Name>
+			<BTNdelete_Name>Delete</BTNdelete_Name>	
+			<BTNexistingPhotosorVideos_Name>Existing Photos or Videos</BTNexistingPhotosorVideos_Name>
+			<BTNuploadProgressHistory_Name>Upload Progress / History</BTNuploadProgressHistory_Name>
+			<BTNphotoCapture_Name>PhotoCapture</BTNphotoCapture_Name>
+			<BTNusePhoto_Name>Use Photo</BTNusePhoto_Name>
+			<BTNretake_Name>Retake</BTNretake_Name>
+			<BTNok_Name>OK</BTNok_Name>
+			<BTNedit_Name>Edit</BTNedit_Name>
+			<BTNdeleteOn_Name>delete on</BTNdeleteOn_Name>
+			<BTNdone_Name>Done</BTNdone_Name>
+			<BTNfileExplorer_Name>File Explorer</BTNfileExplorer_Name>
+			<BTNretake_Name>Retake</BTNretake_Name>
+			<BTNcontinue_Name>Continue</BTNcontinue_Name>
+			<BTNgoUnlimited_Name>Go Unlimited</BTNgoUnlimited_Name>
+			<BTNskip_Name>Skip</BTNskip_Name>
+			<BTNxInTour_Name>UIAccessoryButtonX</BTNxInTour_Name>
+			<BTNdismiss_Name>Dismiss</BTNdismiss_Name>
+			<BTNsubmit_Name>Submit</BTNsubmit_Name>
+			<BTNclearTextIcon_Name>Clear text</BTNclearTextIcon_Name>
+			<BTNpassCodeLock_Name>Passcode Lock</BTNpassCodeLock_Name>
+			<BTNoff_Name>Off</BTNoff_Name>
+			<BTNon_Name>On</BTNon_Name>
+			<BTNchangePasscode_Name>Change Passcode</BTNchangePasscode_Name>
+			<BTNbackupOn_Name>Backup, On</BTNbackupOn_Name>
+			<BTNbackupOff_Name>Backup, Off</BTNbackupOff_Name>
+			<BTNenable_Name>Enable</BTNenable_Name>
+			<BTNupgrade_Name>Upgrade</BTNupgrade_Name>
+			<BTNmusicPlayer_Name>Music Player</BTNmusicPlayer_Name>
+			<BTNphoneGallery_Name>Photo Gallery</BTNphoneGallery_Name>
+			<BTNvideos_Name>Videos</BTNvideos_Name>
+			<BTNalbums_Name>Albums</BTNalbums_Name>
+			<BTNtimeline_Name_name>Timeline</BTNtimeline_Name_name>
+			<BTNwifiAndCellular_Name>WiFi and Cellular</BTNwifiAndCellular_Name>
+			<BTNsignOut_Name>Sign Out</BTNsignOut_Name>
+			<BTNpinButton1_Id>PinButton1</BTNpinButton1_Id>
+			<BTNpinButton2_Id>PinButton2</BTNpinButton2_Id>
+			<BTNxButtonInTour_Name>UIAccessoryButtonX</BTNxButtonInTour_Name>
+			<BTNcameraRoll_Name>Camera Roll</BTNcameraRoll_Name>
+			<BTNnoSpaceOn_Name>no space on</BTNnoSpaceOn_Name>
+			<BTNresumeUpload_Name>Resume Upload</BTNresumeUpload_Name>
+			<BTNfavorites_Name>Favorites</BTNfavorites_Name>
+			<BTNremoveFavorites_Name>Remove Favorites</BTNremoveFavorites_Name>
+			<BTNaddUsers_Name>Add Users</BTNaddUsers_Name>
+			
+		</Button>
+		
+		<Toggle>
+		    <TOGGLEpasscodeLock_Xpth>//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIASwitch[1]</TOGGLEpasscodeLock_Xpth>
+		    <TOGGLErequireImmediately_Xpth>//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIASwitch[1]</TOGGLErequireImmediately_Xpth>
+		    <TOGGLEsaveLogin_Name>Save Login</TOGGLEsaveLogin_Name>
+		    <TOGGLEcameraRoll_Name>Camera Roll</TOGGLEcameraRoll_Name>
+		    
+		</Toggle>
+		
+		<TextField>
+			<TEXTFIELDemail_Id>Email</TEXTFIELDemail_Id>
+			<TEXTFIELDpass_Id>Password</TEXTFIELDpass_Id>
+			<TEXTFIELDcreateNewFolder_Xpth>//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIAScrollView[1]/UIATableView[1]/UIATableCell[1]/UIATextField[1]</TEXTFIELDcreateNewFolder_Xpth>
+			<TEXTFIELDsearch_Id>Search</TEXTFIELDsearch_Id>
+			<TEXTFIELDnameOptional_Id>Name (Optional)</TEXTFIELDnameOptional_Id>
+			
+		</TextField>
+		
+		<Link>
+		    <LinkForgotYourPassword_Name>Forgot your password?</LinkForgotYourPassword_Name>
+		    <LinkPrivacyPolicy_Name>Privacy Policy</LinkPrivacyPolicy_Name>
+		    <LinkTRUSTe_Name>TRUSTe</LinkTRUSTe_Name>
+		</Link>
+		
+		<Strings>
+		    <NeverLoseAPhoto_Name>Never Lose a Photo</NeverLoseAPhoto_Name>
+		    <NeverLoseaPhotoFullText_Name>Pogoplug backs up your photos and videos the second you take them, so you never lose a single one.</NeverLoseaPhotoFullText_Name>
+		    <TransferPhonesSimply_Name>Transfer Phones Simply</TransferPhonesSimply_Name>
+		    <TransferPhonesSimplyFullText_Name>Pogoplug makes it easy to take all your photos, videos and contacts with you when you upgrade phones or change carriers.</TransferPhonesSimplyFullText_Name>
+		    <Backup_Name>Backup</Backup_Name>
+		    <CATEGORIES_Name>CATEGORIES</CATEGORIES_Name>
+		    <PogoplugCloudUnlimited_Name>Pogoplug Cloud, Unlimited</PogoplugCloudUnlimited_Name>
+		    <DuplicateFolder_Name>There was an error creating the new folder. Please ensure that the specified name is valid, and that a folder by the same name does not already exist.</DuplicateFolder_Name>
+		    <AccessToPhotos>“Pogoplug” Would Like to Access Your Photos</AccessToPhotos>
+		    <Categories>CATEGORIES</Categories>
+		    <UnlimitedProtection_Name>Unlimited Protection</UnlimitedProtection_Name>
+		    <UpgradeTour_Name>Upgrade today to protect all your photos and videos forever. Just $4.99/month or $49.99/year. Save 15%!</UpgradeTour_Name>
+		    <BackupTourText_Name>Pogoplug needs access to your camera roll to automatically back up your photos and videos.</BackupTourText_Name>
+		    <UpgradeAccount_Name>Upgrade Account</UpgradeAccount_Name>
+		    <UpgardeAccountText_Name>Upgrading gives you unlimited protection for all your photos and videos. By upgrading your account, you agree to the Pogoplug Terms and Conditions.</UpgardeAccountText_Name>
+		    <Settings_Name>Settings</Settings_Name>
+		    <CreateAccountFailure_Name>Your email address and password could not be verified. Double check that you entered them correctly and try again.</CreateAccountFailure_Name>
+		    <PhotoAlbums_Name>Photo Albums</PhotoAlbums_Name>
+		    <CloudEmptyFilesScreen_Name>Anything that is backed up to your account will appear here.</CloudEmptyFilesScreen_Name>
+		    <BadCredentialsPopup>Your email address and password could not be verified. Double check that you entered them correctly and try again.</BadCredentialsPopup>
+		    <ForgotPasswordErrorPopup_Name>No account with that email address exists.</ForgotPasswordErrorPopup_Name>
+		    <ResetEmailPopup_Name>Reset Email Sent</ResetEmailPopup_Name>
+		    <NoFilesFound_Name>No Results</NoFilesFound_Name>
+		    <PasscodeLock_Name>Passcode Lock</PasscodeLock_Name>
+		    <EnterPasscode_Name>Enter Passcode</EnterPasscode_Name>
+		    <PinCodeNotMatch_Name>Pincode did not match.</PinCodeNotMatch_Name>
+		    <PinCodeReEnter_Name>Re-enter your new pincode</PinCodeReEnter_Name>
+		    <BackupDisabled_Name>Backup, Disabled</BackupDisabled_Name>
+		    <BackupCompleted_Name>Backup, Completed</BackupCompleted_Name>
+		   	<Completed_Name>Completed</Completed_Name>
+		    <TermsOfService_Name>Terms of Service</TermsOfService_Name>
+		    <NoResults_Name>No Results</NoResults_Name>
+		    <Disabled_Name>Disabled</Disabled_Name>
+		    <TrusteUrl_Name>privacy-policy.truste.com</TrusteUrl_Name>
+		    <EmptyFolder_Name>Empty Folder</EmptyFolder_Name>
+			<UploadError_Name>Upload Error</UploadError_Name>
+			<ImageNotAvailable_Name>Image not available</ImageNotAvailable_Name>
+			<EmptyFavorites_Name>Tap the star to add any file to your list of favorites</EmptyFavorites_Name>
+			<FavoritesTitle_Name>Favorites</FavoritesTitle_Name>	
+			<ProtectYourPhotos_Name>Protect Your Photos</ProtectYourPhotos_Name>
+			<AutomaticallyBackUpPhotosAndVideosToYourAccount_Name>Automatically back up photos and videos to your account.</AutomaticallyBackUpPhotosAndVideosToYourAccount_Name>
+			<FavoritesMp3_Name>Favorites.mp3</FavoritesMp3_Name>
+			<FavoritesPng_Name>Favorites.png</FavoritesPng_Name>	  
+			<FavoritesMov_Name>Favorites.MOV</FavoritesMov_Name>
+			<UploadExistingImage_Name>IMG_0004.JPG</UploadExistingImage_Name>
+			<UploadExistingVideo_Name>IMG_0188.MOV</UploadExistingVideo_Name>
+			<PrivacyPolicyUrl_Name>URL</PrivacyPolicyUrl_Name>
+		    <SearchFolderFromRoot_Name>search1-;().,?!'_Pogoplug_Cloud</SearchFolderFromRoot_Name>
+		    <SearchImageFromRoot_Name>IMG_0005_in_Pogoplug_Cloud.JPG</SearchImageFromRoot_Name>
+		    <SearchFolderFromFolder_Name>search1-;().,?!'_Current_Folder</SearchFolderFromFolder_Name>
+		   	<SearchImageFromFolder_Name>IMG_0005_in_Current_Folder.JPG</SearchImageFromFolder_Name>
+		   	<SearchMainFolder_Name>Search Main Folder</SearchMainFolder_Name>
+		   	<SearchSongInSong_Name>Morning light</SearchSongInSong_Name>
+		   	<SearchSongInArtists_Name>Unnamed</SearchSongInArtists_Name>
+		   	<SearchSongInAlbums_Name>Poo Pop</SearchSongInAlbums_Name>
+		   	<SearchSongInGenres_Name>Blues</SearchSongInGenres_Name>
+		   	
+		   	
+		</Strings>
+		
+		<Icons>
+		    <iconInProgress_Name>In progress</iconInProgress_Name>
+		    <iconBackLeftSideUpperMenu_Name>UINavigationBarBackIndicatorDefault.png</iconBackLeftSideUpperMenu_Name>
+		    <iconTermsAndCondition_Name>arrow circle</iconTermsAndCondition_Name>
+		    <iconSongs_Name>Songs</iconSongs_Name>
+		    <iconArtists_Name>Artists</iconArtists_Name>
+		    <iconAlbums_Name>Albums</iconAlbums_Name>
+		    <iconGenres_Name>Genres</iconGenres_Name>
+		    <iconPlayLists_Name>Playlists</iconPlayLists_Name>
+		    <iconClearText_Name>Clear text</iconClearText_Name>
+		    <iconAddToFavorites_Name>favorite off</iconAddToFavorites_Name>
+		    <iconRemoveFromFavorites_Name>favorite on</iconRemoveFromFavorites_Name>
+		    
+		</Icons>
+		
+		<Tabs>
+			<tabCurrentFolder_Name>Current Folder</tabCurrentFolder_Name>
+			<tabPogoplugCloud_Name>Pogoplug Cloud</tabPogoplugCloud_Name>
+
+		</Tabs>
+		                
+	</WebElements>
+	
+	<GeneralInfo>
+		<userUnlimited_name>automation1@test.com</userUnlimited_name>
+		<userLimited_name>Automation1@limited.com</userLimited_name>
+		<password>1</password>
+		<newPassword>2</newPassword>
+		<badPassword>incorrectPassword</badPassword>
+		<emptyPassword></emptyPassword>
+		<emptyUserName></emptyUserName>
+	</GeneralInfo>
+	
+
+	<errorText>
+		<changePasswordFailure>One of the required arguments was not entered.</changePasswordFailure>
+		
+	</errorText>
+	
+	
+	
+	
+</Data>

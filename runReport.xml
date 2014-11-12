@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite1" parallel="none">
+  <test name="Sanity Tests">
+      <groups>
+		<run>
+			<include name="runReportIOS"/>
+		</run>
+	</groups>
+    <classes>
+      <class name="com.pp.webui.auto.runReport"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
+
+	
