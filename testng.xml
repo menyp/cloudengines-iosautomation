@@ -8,7 +8,7 @@
 		</run>
 	</groups>
     <classes>
-      <class name="com.pp.webui.auto.sanityNativeIosAppium"/>
+      <class name="com.pp.ios.auto.sanityNativeIosAppium"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

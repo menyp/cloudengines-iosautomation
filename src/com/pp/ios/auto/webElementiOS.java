@@ -2,10 +2,6 @@ package com.pp.ios.auto;
 
 import java.io.IOException;
 
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.xml.sax.SAXException;
-
 public class webElementiOS {
 	
 // Buttons
@@ -139,6 +135,7 @@ public class webElementiOS {
 	String SearchSongInArtists_Name;
 	String SearchSongInAlbums_Name;
 	String SearchSongInGenres_Name;
+	String AccessContactsWarning_Name;
 	
 	
 //	general info	
@@ -171,7 +168,7 @@ public class webElementiOS {
 // Tabs
 	String tabCurrentFolder_Name;
 	String tabPogoplugCloud_Name;
-	
+		
 public webElementiOS (String langXml ) throws Exception, Throwable, IOException {
 	
 	this.BTNalreadyHaveAnAccount_name = xmlHandel.readIosXml("BTNalreadyHaveAnAccount_name" , langXml);
@@ -301,8 +298,7 @@ public webElementiOS (String langXml ) throws Exception, Throwable, IOException 
 	this.SearchSongInArtists_Name = xmlHandel.readIosXml("SearchSongInArtists_Name", langXml);	
 	this.SearchSongInAlbums_Name = xmlHandel.readIosXml("SearchSongInAlbums_Name", langXml);	
 	this.SearchSongInGenres_Name = xmlHandel.readIosXml("SearchSongInGenres_Name", langXml);	
-
-
+	this.AccessContactsWarning_Name = xmlHandel.readIosXml("AccessContactsWarning_Name", langXml);
 	this.TermsOfService_Name = xmlHandel.readIosXml("TermsOfService_Name", langXml);
 	this.NoResults_Name = xmlHandel.readIosXml("NoResults_Name", langXml);
 	this.Disabled_Name = xmlHandel.readIosXml("Disabled_Name", langXml);

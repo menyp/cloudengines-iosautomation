@@ -5,27 +5,15 @@ import org.testng.annotations.Test;
 import io.appium.java_client.AppiumDriver;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.IReporter;
-import org.testng.ISuite;
 import org.testng.ITestContext;
-import org.testng.ITestResult;
-import org.testng.Reporter;
-import org.testng.TestNG;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-import org.testng.xml.XmlSuite;
 import org.xml.sax.SAXException;
 
 public class sanityNativeIosAppium {
@@ -215,7 +203,7 @@ public class sanityNativeIosAppium {
 		genMeth.isElementVisibleNative(By.name(iosData.UploadExistingImage_Name), driver);
 		
 		//Take Screenshot verifying that the image UI is fine
-		genMeth.takeScreenShotNative(driver, "Positive_uploaded_IMG_0004");
+		genMeth.takeScreenShotNative(driver, "positive_uploaded_IMG_0004");
 		
 		genMeth.isElementInvisibleNative(By.name(iosData.UploadExistingImage_Name), driver);
 		genMeth.clickXpth(driver,"//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]");
@@ -224,7 +212,7 @@ public class sanityNativeIosAppium {
 		// Open the video & verify that the title displayed
 		genMeth.clickName(driver, iosData.UploadExistingVideo_Name);
 		genMeth.isElementVisibleNative(By.name(iosData.UploadExistingVideo_Name), driver);
-		genMeth.takeScreenShotNative(driver, "Positive_IMG_01188.MOV");
+		genMeth.takeScreenShotNative(driver, "positive_IMG_01188.MOV");
 		genMeth.clickXpth(driver, "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAImage[1]");
 		driver.findElementByName(iosData.BTNback_Name).click();
 		
@@ -277,7 +265,7 @@ public class sanityNativeIosAppium {
 		driver = genMeth.killAppIos(driver);
 		genMeth.clickName(driver, iosData.BTNalreadyHaveAnAccount_name);
 		genMeth.sendId(driver, iosData.TEXTFIELDemail_Id, iosData.userLimited_name);
-		genMeth.sendId(driver, iosData.password, iosData.password);
+		genMeth.sendId(driver, iosData.TEXTFIELDpass_Id, iosData.password);
 		genMeth.clickName(driver, iosData.BTNsignin_Name);
 		
 		// Make sure that the tour Never lose a photo display properly with full text
@@ -301,16 +289,9 @@ public class sanityNativeIosAppium {
 		genMeth.isElementVisibleNative (By.name(iosData.Backup_Name) , driver);
 		genMeth.isElementVisibleNative(By.name(iosData.BackupTourText_Name) , driver);
 		genMeth.clickName(driver, iosData.BTNcontinue_Name);
-
-		// check if the "“Pogoplug” Would Like to Access Your Photos" popup is displayed
-		By byXpathPhotosAccess = By.xpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIAScrollView[1]/UIAStaticText[1]");
-		boolean isPhotosAccessPopupDisplay = genMeth.checkIsTextPresentNative(driver, iosData.AccessToPhotos, byXpathPhotosAccess);
 		
-		if (isPhotosAccessPopupDisplay == true) {
-
-			genMeth.clickName(driver, iosData.BTNok_Name);
-		}
-
+		genMeth.handleAccessPhotosContacts(iosData);
+		
 		// verify that the home screen is open with the LSM (left side menu)
 		genMeth.isElementVisibleNative(By.name(iosData.Settings_Name), driver);
 		Thread.sleep(1000);
@@ -323,7 +304,7 @@ public class sanityNativeIosAppium {
 		// Login with an existing account & check the tour
 		genMeth.clickName(driver, iosData.BTNalreadyHaveAnAccount_name);
 		genMeth.sendId(driver, iosData.TEXTFIELDemail_Id, iosData.userLimited_name);
-		genMeth.sendId(driver, iosData.password, iosData.password);
+		genMeth.sendId(driver, iosData.TEXTFIELDpass_Id, iosData.password);
 		genMeth.clickName(driver, iosData.BTNsignin_Name);
 		
 
@@ -349,14 +330,8 @@ public class sanityNativeIosAppium {
 		genMeth.isElementVisibleNative( By.name(iosData.BackupTourText_Name),driver);
 		genMeth.clickName(driver, iosData.BTNcontinue_Name);
 
-		// check if the "“Pogoplug” Would Like to Access Your Photos" popup is displayed
-		isPhotosAccessPopupDisplay = genMeth.checkIsTextPresentNative(driver,iosData.AccessToPhotos, byXpathPhotosAccess);
+		genMeth.handleAccessPhotosContacts(iosData);
 		
-		if (isPhotosAccessPopupDisplay == true) {
-
-			genMeth.clickName(driver, iosData.BTNok_Name);
-		}
-
 		// verify that the home screen is open with the LSM (left side menu)
 		genMeth.isElementVisibleNative(By.name(iosData.Settings_Name), driver);
 		Thread.sleep(1000);
@@ -366,7 +341,7 @@ public class sanityNativeIosAppium {
 		driver = genMeth.killAppIos(driver);		
 		genMeth.clickName(driver, iosData.BTNalreadyHaveAnAccount_name);
 		genMeth.sendId(driver, iosData.TEXTFIELDemail_Id, iosData.userLimited_name);
-		genMeth.sendId(driver, iosData.password, iosData.password);
+		genMeth.sendId(driver, iosData.TEXTFIELDpass_Id, iosData.password);
 		genMeth.clickName(driver, iosData.BTNsignin_Name);
 		
 		// Make sure that the tour "Never lose a photo" display properly with full text
@@ -393,14 +368,8 @@ public class sanityNativeIosAppium {
 		genMeth.clickName(driver, iosData.BTNskip_Name);
 		genMeth.clickName(driver, iosData.BTNcontinue_Name);
 
-		// check if the "“Pogoplug” Would Like to Access Your Photos" popup is displayed
-		isPhotosAccessPopupDisplay = genMeth.checkIsTextPresentNative(driver,iosData.AccessToPhotos, byXpathPhotosAccess);
-
-		if (isPhotosAccessPopupDisplay == true) {
-
-			genMeth.clickName(driver, iosData.BTNok_Name);
-		}
-
+		genMeth.handleAccessPhotosContacts(iosData);
+		
 		// Open the Upgrade Account screen from LSM
 		genMeth.clickName(driver, iosData.BTNupgrade_Name);
 		genMeth.isElementVisibleNative(By.name(iosData.UpgradeAccount_Name),driver);
@@ -428,7 +397,7 @@ public class sanityNativeIosAppium {
 		driver = genMeth.killAppIos(driver);
 		genMeth.clickName(driver, iosData.BTNalreadyHaveAnAccount_name);
 		genMeth.sendId(driver, iosData.TEXTFIELDemail_Id, iosData.userUnlimited_name);
-		genMeth.sendId(driver, iosData.password, iosData.password);
+		genMeth.sendId(driver, iosData.TEXTFIELDpass_Id, iosData.password);
 		genMeth.clickName(driver, iosData.BTNsignin_Name);
 
 		// Make sure that the tour "Never lose a photo" display properly with full text
@@ -447,14 +416,8 @@ public class sanityNativeIosAppium {
 		genMeth.isElementVisibleNative(By.name(iosData.BackupTourText_Name),driver);
 		genMeth.clickName(driver, iosData.BTNcontinue_Name);
 
-		// check if the "“Pogoplug” Would Like to Access Your Photos" popup is displayed
-		isPhotosAccessPopupDisplay = genMeth.checkIsTextPresentNative(driver,iosData.AccessToPhotos, By.xpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIAScrollView[1]/UIAStaticText[1]"));
+		genMeth.handleAccessPhotosContacts(iosData);
 		
-		if (isPhotosAccessPopupDisplay == true) {
-
-			genMeth.clickName(driver, iosData.BTNok_Name);
-		}
-
 		// verify that the home screen is open with the LSM (left side menu)
 		genMeth.isElementVisibleNative(By.name(iosData.Settings_Name), driver);
 	}
@@ -471,7 +434,7 @@ public class sanityNativeIosAppium {
 		genMeth.clickName(driver, iosData.BTNsignUp_Name);
 		genMeth.sendId(driver, iosData.TEXTFIELDnameOptional_Id, "meny:" + currentDateFolder);
 		genMeth.sendId(driver, iosData.TEXTFIELDemail_Id, "meny@" + randomName + ".com");
-		genMeth.sendId(driver, iosData.password, iosData.password);
+		genMeth.sendId(driver, iosData.TEXTFIELDpass_Id, iosData.password);
 		genMeth.clickName(driver, iosData.BTNsignUpForFree_Name);
 		
 		By byNameNeverLosePhoto = By.name(iosData.NeverLoseAPhoto_Name);
@@ -489,15 +452,8 @@ public class sanityNativeIosAppium {
 		genMeth.isElementVisibleNative(By.name(iosData.Backup_Name),driver);
 		genMeth.clickName(driver, iosData.BTNcontinue_Name);
 
-		// check if the "“Pogoplug” Would Like to Access Your Photos" popup is displayed
-		By byXpathPhotosAccess = By.xpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIAScrollView[1]/UIAStaticText[1]");
-		boolean isPhotosAccessPopupDisplay = genMeth.checkIsTextPresentNative(driver, iosData.AccessToPhotos, byXpathPhotosAccess);
+		genMeth.handleAccessPhotosContacts(iosData);
 		
-		if (isPhotosAccessPopupDisplay == true) {
-
-			genMeth.clickName(driver, iosData.BTNok_Name);
-		}
-
 		// verify that the home screen is open with the LSM (left side menu)
 		genMeth.isElementVisibleNative(By.name(iosData.Settings_Name), driver);
 
@@ -514,8 +470,9 @@ public class sanityNativeIosAppium {
 		genMeth.clickName(driver, iosData.BTNsignUp_Name);
 		genMeth.sendId(driver, iosData.TEXTFIELDnameOptional_Id, "meny:" + currentDateFolder);
 		genMeth.sendId(driver, iosData.TEXTFIELDemail_Id, "meny");
-		genMeth.sendId(driver, iosData.password, iosData.password);
-		genMeth.clickName(driver, iosData.BTNsignUpForFree_Name);genMeth.takeScreenShotNative(driver, "positive_bad_email_format");
+		genMeth.sendId(driver, iosData.TEXTFIELDpass_Id, iosData.password);
+		genMeth.clickName(driver, iosData.BTNsignUpForFree_Name);
+		genMeth.takeScreenShotNative(driver, "positive_bad_email_format");
 
 		// privacy policy
 		genMeth.clickName(driver, iosData.LinkPrivacyPolicy_Name);
@@ -533,22 +490,26 @@ public class sanityNativeIosAppium {
 			groups = { "Sanity Native iOS" })
 	public void badCredentials() throws Exception, Throwable {
 
+		
+		String randomName = genMeth.randomString();
 		genMeth.signOutFromStartup(driver , iosData);
 
 		// Login with bad credentials
 		genMeth.clickName(driver, iosData.BTNalreadyHaveAnAccount_name);
 		genMeth.sendId(driver, iosData.TEXTFIELDemail_Id, iosData.userUnlimited_name);
-		genMeth.sendId(driver, iosData.password, iosData.badPassword);
+		genMeth.sendId(driver, iosData.TEXTFIELDpass_Id, iosData.badPassword);
 		genMeth.clickName(driver, iosData.BTNsignin_Name);
 		genMeth.isElementVisibleNative(By.name(iosData.BadCredentialsPopup),driver);
 		genMeth.clickName(driver, iosData.BTNok_Name);
 
 		// Forgot your password Negative (attempt to restore password with a non existing email)
 		genMeth.clickName(driver, iosData.LinkForgotYourPassword_Name);
+		genMeth.clickName(driver, iosData.iconClearText_Name);
+		genMeth.sendId(driver, iosData.TEXTFIELDemail_Id, randomName );
 		genMeth.clickName(driver, iosData.BTNsubmit_Name);
 		genMeth.isElementVisibleNative(By.name(iosData.ForgotPasswordErrorPopup_Name),driver);
 		genMeth.clickName(driver, iosData.BTNdismiss_Name);
-		genMeth.clickName(driver, iosData.TEXTFIELDemail_Id);
+		genMeth.clickId(driver, randomName);
 		genMeth.clickName(driver, iosData.BTNclearTextIcon_Name);
 		
 		// Forgot your password Positive (attempt to restore password with an existing email)
@@ -561,7 +522,7 @@ public class sanityNativeIosAppium {
 	}
 	
 	@Test(enabled = true, testName = "Sanity Tests", description = "Search functionality & filter",
-			groups = { "Sanity Native iOS now" })
+			groups = { "Sanity Native iOS" })
 	public void search() throws Exception, Throwable {
 		
 		String Random = genMeth.randomString();	
@@ -700,15 +661,10 @@ public class sanityNativeIosAppium {
 		genMeth.clickName(driver, iosData.BTNfileExplorer_Name);
 		genMeth.clickName(driver, iosData.BTNshareOn_Name);
 		genMeth.clickName(driver, iosData.BTNaddUsers_Name);
-		genMeth.isElementVisibleNative(By.name(iosData.BTNaddUsers_Name), driver);
 		
-		// check if the "“Pogoplug” Would Like to Access Your Photos" popup is displayed
-		boolean isPhotosAccessPopupDisplay = genMeth.checkIsTextPresentNative(driver,iosData.AccessToPhotos,By.xpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIAScrollView[1]/UIAStaticText[1]"));
-
-		if (isPhotosAccessPopupDisplay == true) {
-
-			genMeth.clickName(driver, iosData.BTNok_Name);
-		}
+		genMeth.handleAccessPhotosContacts(iosData);
+				
+		genMeth.isElementVisibleNative(By.name(iosData.BTNaddUsers_Name), driver);
 		
 		//search for a contact
 		genMeth.sendId(driver, iosData.TEXTFIELDsearch_Id, iosData.userUnlimited_name );
@@ -722,6 +678,7 @@ public class sanityNativeIosAppium {
 		
 		//Back to start up screen
 		genMeth.clickName(driver, iosData.BTNcancel_Name);
+		genMeth.clickName(driver, iosData.BTNdone_Name);
 		genMeth.clickName(driver, iosData.BTNleft_Name);
 	}
 	
@@ -862,11 +819,10 @@ public class sanityNativeIosAppium {
 	}
 	
 	@Test(enabled = true, testName = "Sanity Tests", description = "Settings: Backup Enable/disable *with upload in the background",
-			groups = { "Sanity Native iOS" })// , dependsOnMethods={"successTest"})
+			groups = { "Sanity Native iOS now" })// , dependsOnMethods={"successTest"})
 	public void settingsBackupEnableDisableDuringUpload() throws Exception,Throwable {
 
-		// login with new account & enable/disable the backup from
-		// Tour/Settings/LSM/Photo Gallery
+		// login with new account & enable/disable the backup from Tour/Settings/LSM/Photo Gallery
 		iosData = genMeth.iOSelementInit(langEng);
 		String randomName = genMeth.randomString();
 		String currentDateFolder = genMeth.currentTime();
@@ -881,7 +837,7 @@ public class sanityNativeIosAppium {
 		genMeth.clickName(driver, iosData.BTNsignUp_Name);
 		genMeth.sendId(driver, iosData.TEXTFIELDnameOptional_Id, "meny:" + currentDateFolder);
 		genMeth.sendId(driver, iosData.TEXTFIELDemail_Id, "meny@" + randomName + ".com");
-		genMeth.sendId(driver, iosData.password, iosData.password);
+		genMeth.sendId(driver, iosData.TEXTFIELDpass_Id, iosData.password);
 		genMeth.clickName(driver, iosData.BTNsignUpForFree_Name);
 		
 		genMeth.isElementVisibleNative(By.name(iosData.NeverLoseAPhoto_Name),driver);
@@ -898,33 +854,17 @@ public class sanityNativeIosAppium {
 		
 		//Disable the backup from TOUR
 		genMeth.clickName(driver, iosData.BTNcancel_Name);
-
-		// check if the "“Pogoplug” Would Like to Access Your Photos" popup is displayed
-		boolean isPhotosAccessPopupDisplay = genMeth.checkIsTextPresentNative(driver,iosData.AccessToPhotos,By.xpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIAScrollView[1]/UIAStaticText[1]"));
-
-		if (isPhotosAccessPopupDisplay == true) {
-
-			genMeth.clickName(driver, iosData.BTNok_Name);
-		}
-
+		
+		genMeth.handleAccessPhotosContacts(iosData);
+		
 		// verify that the backup is Disabled in LSM
 		genMeth.isElementVisibleNative(By.name(iosData.BTNenable_Name), driver);
 				
 		//Enable backup form LSM
 		genMeth.clickName(driver, iosData.BTNenable_Name);
 		genMeth.clickName(driver, iosData.BTNenable_Name);
-
-				
-		// check if the "“Pogoplug” Would Like to Access Your Photos" popup is displayed
-		isPhotosAccessPopupDisplay = genMeth
-				.checkIsTextPresentNative(driver,iosData.AccessToPhotos,
-						By.xpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIAScrollView[1]/UIAStaticText[1]"));
-
-		if (isPhotosAccessPopupDisplay == true) {
-
-			genMeth.clickName(driver, iosData.BTNok_Name);
-
-		}
+		
+		genMeth.handleAccessPhotosContacts(iosData);
 		
 		// verify that the backup is running
 		genMeth.isElementVisibleNative(By.name(iosData.iconInProgress_Name), driver);
@@ -945,6 +885,7 @@ public class sanityNativeIosAppium {
 		genMeth.isElementVisibleNative(By.name(iosData.BTNenable_Name), driver);
 		genMeth.isElementVisibleNative(By.name(iosData.Backup_Name), driver);
 		genMeth.isElementVisibleNative(By.name(iosData.Disabled_Name), driver);
+		genMeth.takeScreenShotNative(driver, "Positive_TimelineThumbnail_settingsBackupEnableDisableDuringUpload");
 		genMeth.clickName(driver, iosData.BTNenable_Name);
 		genMeth.isElementVisibleNative(By.name(iosData.BTNwifiAndCellular_Name), driver);
 		genMeth.clickName(driver, iosData.BTNenable_Name);
@@ -969,6 +910,7 @@ public class sanityNativeIosAppium {
 		genMeth.isElementVisibleNative(By.name(iosData.Backup_Name), driver);
 		genMeth.isElementVisibleNative(By.name(iosData.Disabled_Name), driver);
 		genMeth.isElementVisibleNative(By.name(iosData.BTNenable_Name), driver);
+		genMeth.takeScreenShotNative(driver, "Positive_VideoThumbnail_settingsBackupEnableDisableDuringUpload");
 		genMeth.clickName(driver, iosData.BTNenable_Name);
 		genMeth.isElementVisibleNative(By.name(iosData.BTNwifiAndCellular_Name), driver);
 		genMeth.clickName(driver, iosData.BTNenable_Name);
@@ -995,6 +937,7 @@ public class sanityNativeIosAppium {
 		genMeth.isElementVisibleNative(By.name(iosData.Backup_Name), driver);
 		genMeth.isElementVisibleNative(By.name(iosData.Disabled_Name), driver);
 		genMeth.isElementVisibleNative(By.name(iosData.BTNenable_Name), driver);
+		genMeth.takeScreenShotNative(driver, "Positive_AlbumsThumbnail_settingsBackupEnableDisableDuringUpload");
 		genMeth.clickName(driver, iosData.BTNenable_Name);
 		genMeth.isElementVisibleNative(By.name(iosData.BTNwifiAndCellular_Name), driver);
 		genMeth.clickName(driver, iosData.BTNenable_Name);
@@ -1022,18 +965,19 @@ public class sanityNativeIosAppium {
 		genMeth.isElementInvisibleNative(By.name(iosData.BTNenable_Name), driver);	
 		
 		genMeth.clickName(driver, iosData.BTNleft_Name);
-		genMeth.waitForElementToBeVisible(driver, By.name(iosData.Completed_Name), 5);
+		genMeth.waitForElementToBeVisible(driver, By.name(iosData.Completed_Name), 8);
 		
 		// verify that the images were uploaded to the cloud
 		genMeth.clickName(driver, iosData.BTNphoneGallery_Name);		
 		genMeth.clickXpth(driver, "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[2]");
+		
 		// i am using the swipe (position is relevant to iPhone5 only) since click with xpath is failing (seems like bug in the appium environment)
 		driver.swipe(150, 150, 150, 150, 500);
 		
 		// Make sure that the "Image not available" text doesn't displayed
 		genMeth.isElementInvisibleTextNative(By.name(iosData.ImageNotAvailable_Name),iosData.ImageNotAvailable_Name, driver);
 		Thread.sleep(2000);
-		genMeth.takeScreenShotNative(driver, "possitive_settingsBackupEnableDisableDuringUpload");
+		genMeth.takeScreenShotNative(driver, "Positive_ImagePreview_settingsBackupEnableDisableDuringUpload");
 		
 		
 	}
@@ -1051,7 +995,7 @@ public class sanityNativeIosAppium {
 		genMeth.clickName(driver, iosData.BTNsignUp_Name);
 		genMeth.sendId(driver, iosData.TEXTFIELDnameOptional_Id, "meny:" + currentDateFolder);
 		genMeth.sendId(driver, iosData.TEXTFIELDemail_Id, "meny@" + randomName + ".com");
-		genMeth.sendId(driver, iosData.password, iosData.password);
+		genMeth.sendId(driver, iosData.TEXTFIELDpass_Id, iosData.password);
 		genMeth.clickName(driver, iosData.BTNsignUpForFree_Name);
 		
 		genMeth.isElementVisibleNative(By.name(iosData.NeverLoseAPhoto_Name),driver);
@@ -1069,14 +1013,7 @@ public class sanityNativeIosAppium {
 		//Enable the backup from Tour
 		genMeth.clickName(driver, iosData.BTNcontinue_Name);
 
-		// check if the "“Pogoplug” Would Like to Access Your Photos" popup is displayed
-		boolean isPhotosAccessPopupDisplay = genMeth.checkIsTextPresentNative(driver,iosData.AccessToPhotos,
-						By.xpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIAScrollView[1]/UIAStaticText[1]"));
-		
-		if (isPhotosAccessPopupDisplay == true) {
-
-			genMeth.clickName(driver, iosData.BTNok_Name);
-		}
+		genMeth.handleAccessPhotosContacts(iosData);
 		
 		// verify that the backup is Enable & running
 		genMeth.clickName(driver,iosData.BTNleft_Name);
@@ -1087,7 +1024,7 @@ public class sanityNativeIosAppium {
 		driver.lockScreen(60);
 		
 		//Bring App back to foreground & make sure that backup has finished successfully
-		genMeth.waitForElementToBeInvisible(driver, By.name(iosData.iconInProgress_Name), 5);
+		genMeth.waitForElementToBeInvisible(driver, By.name(iosData.iconInProgress_Name), 8);
 		
 		//Verify that the backup is completed
 		genMeth.isElementVisibleNative(By.name(iosData.Completed_Name), driver);
@@ -1117,7 +1054,7 @@ public class sanityNativeIosAppium {
 		genMeth.isElementVisibleNative(By.name(iosData.Settings_Name), driver);
 
 	}
-		@Test(enabled = true , testName = "Sanity Tests" , description = " Add remove from favorites" ,
+		@Test(enabled = true , testName = "Sanity Tests" , description = " Add remove files from favorites" ,
 				groups = { "Sanity Native iOS"} )
 		public void Favorites() throws InterruptedException, IOException, ParserConfigurationException, SAXException{
 			// open favorites & make sure that it is empty
@@ -1221,25 +1158,12 @@ public class sanityNativeIosAppium {
 			
 		}
 	
-	//Favorites
-	
-	/*
-	 * Add to Favorites
-	 * 
-	 * remove from favorites
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 */
-	
 	
 	
 	//Empty screen validation (with screenshots?)
 	
 		/*
-		 * Favorites
+		 * Favorites (handled in favorites test)
 		 * Photo Gallery (timeline, Videos, Albums)
 		 * Music player
 		 * Default destination
@@ -1249,6 +1173,11 @@ public class sanityNativeIosAppium {
 		 * 
 		 */
 	
+		
+		//create restore snapshot
+		
+		
+		
 	@Test(enabled = false, testName = "Sanity Tests", description = "Adding & removing team folders", groups = { "Sanity Native iOS" })
 	public void addRemoveTeamFolders() throws Exception, Throwable {
 

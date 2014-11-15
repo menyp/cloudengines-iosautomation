@@ -8,14 +8,14 @@
       </run>
     </groups>
     <classes>
-      <class name="com.pp.webui.auto.sanityNativeIosAppium">
+      <class name="com.pp.ios.auto.sanityNativeIosAppium">
         <methods>
-          <include name="checkHomeScreen"/>
-          <include name="sendMail"/>
-          <include name="search"/>
           <include name="setupBeforeSuite"/>
+          <include name="sendMail"/>
+          <include name="settingsBackupEnableDisableDuringUpload"/>
+          <include name="checkHomeScreen"/>
         </methods>
-      </class> <!-- com.pp.webui.auto.sanityNativeIosAppium -->
+      </class> <!-- com.pp.ios.auto.sanityNativeIosAppium -->
     </classes>
   </test> <!-- Sanity Tests(failed) -->
 </suite> <!-- Failed suite [Suite] -->
