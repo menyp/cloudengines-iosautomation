@@ -819,7 +819,7 @@ public class sanityNativeIosAppium {
 	}
 	
 	@Test(enabled = true, testName = "Sanity Tests", description = "Settings: Backup Enable/disable *with upload in the background",
-			groups = { "Sanity Native iOS now" })// , dependsOnMethods={"successTest"})
+			groups = { "Sanity Native iOS" })// , dependsOnMethods={"successTest"})
 	public void settingsBackupEnableDisableDuringUpload() throws Exception,Throwable {
 
 		// login with new account & enable/disable the backup from Tour/Settings/LSM/Photo Gallery
