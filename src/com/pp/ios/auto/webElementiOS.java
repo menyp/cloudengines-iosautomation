@@ -36,11 +36,9 @@ public class webElementiOS {
 	String BTNsignUpForFree_Name;
 	String BTNsubmit_Name;
 	String BTNclearTextIcon_Name;
-	
 	String BTNpassCodeLock_Name;
 	String BTNoff_Name;
 	String BTNon_Name;
-	
 	String BTNchangePasscode_Name;
 	String BTNbackupOn_Name;
 	String BTNbackupOff_Name;
@@ -62,6 +60,9 @@ public class webElementiOS {
 	String BTNfavorites_Name;
 	String BTNremoveFavorites_Name;
 	String BTNaddUsers_Name;
+	String BTNteamFolders_Name;
+	String BTNremoveShare_Name;
+	String BTNremoveAllUsers_Name;
 	
 // Text Fields
 	String TEXTFIELDemail_xpth;
@@ -141,6 +142,7 @@ public class webElementiOS {
 //	general info	
 	String userUnlimited_name;
 	String userLimited_name;
+	String userAutomation2_Name;
 	String password;
 	String newPassword;
 	String badPassword;
@@ -224,7 +226,9 @@ public webElementiOS (String langXml ) throws Exception, Throwable, IOException 
 	this.BTNfavorites_Name = xmlHandel.readIosXml("BTNfavorites_Name", langXml);
 	this.BTNremoveFavorites_Name = xmlHandel.readIosXml("BTNremoveFavorites_Name", langXml);
 	this.BTNaddUsers_Name = xmlHandel.readIosXml("BTNaddUsers_Name", langXml);
-
+	this.BTNteamFolders_Name = xmlHandel.readIosXml("BTNteamFolders_Name", langXml);
+	this.BTNremoveShare_Name = xmlHandel.readIosXml("BTNremoveShare_Name", langXml);
+	this.BTNremoveAllUsers_Name = xmlHandel.readIosXml("BTNremoveAllUsers_Name", langXml);
 
 	this.TEXTFIELDemail_Id = xmlHandel.readIosXml("TEXTFIELDemail_Id", langXml);
 	this.TEXTFIELDpass_Id = xmlHandel.readIosXml("TEXTFIELDpass_Id", langXml);
@@ -245,6 +249,10 @@ public webElementiOS (String langXml ) throws Exception, Throwable, IOException 
 	this.DuplicateFolder_Name = xmlHandel.readIosXml("DuplicateFolder_Name", langXml);
 	this.userUnlimited_name = xmlHandel.readIosXml("userUnlimited_name", langXml);
 	this.userLimited_name = xmlHandel.readIosXml("userLimited_name", langXml);
+	this.userAutomation2_Name = xmlHandel.readIosXml("userAutomation2_Name", langXml);
+
+	
+	
 	
 	this.password = xmlHandel.readIosXml("password", langXml);
 	this.newPassword = xmlHandel.readIosXml("newPassword", langXml);
@@ -322,11 +330,6 @@ public webElementiOS (String langXml ) throws Exception, Throwable, IOException 
 	this.iconAddToFavorites_Name = xmlHandel.readIosXml("iconAddToFavorites_Name", langXml);
 	this.iconRemoveFromFavorites_Name = xmlHandel.readIosXml("iconRemoveFromFavorites_Name", langXml);
 
-	
-	
-
-	
-	
 	
 	this.tabCurrentFolder_Name = xmlHandel.readIosXml("tabCurrentFolder_Name", langXml);
 	this.tabPogoplugCloud_Name = xmlHandel.readIosXml("tabPogoplugCloud_Name", langXml);

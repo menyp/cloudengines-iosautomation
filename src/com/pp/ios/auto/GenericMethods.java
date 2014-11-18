@@ -100,7 +100,7 @@ public class GenericMethods {
 		return driver;
 	}
 
-	public void signOutFromStartup(AppiumDriver driver, webElementiOS iosData) throws InterruptedException, IOException {
+	public void signOutFromStartupIphone5(AppiumDriver driver, webElementiOS iosData) throws InterruptedException, IOException {
 		GenericMethods genMeth = new GenericMethods();
 		genMeth.clickName(driver, iosData.Settings_Name);
 		driver.swipe(170, 350, 170, 150, 500);
@@ -109,8 +109,65 @@ public class GenericMethods {
 		driver.swipe(170, 550, 170, 350, 500);
 		genMeth.clickName(driver, iosData.BTNsignOut_Name);
 	}
+	
+	public void loginIos(webElementiOS iosData, String user)throws InterruptedException, IOException,ParserConfigurationException, SAXException {
 
-	public AppiumDriver loginNativeIos(webElementiOS iosData) throws InterruptedException, IOException,ParserConfigurationException, SAXException {
+		GenericMethods genMeth = new GenericMethods();
+		genMeth.clickName(driver, iosData.BTNalreadyHaveAnAccount_name);
+		genMeth.sendId(driver, iosData.TEXTFIELDemail_Id, user);
+		genMeth.sendId(driver, iosData.TEXTFIELDpass_Id, iosData.password);
+		genMeth.clickName(driver, iosData.BTNsignin_Name);
+
+		// check if the tour display (will be display only if it is first login)
+		boolean isFirstLogin = genMeth.checkIsElementVisibleNative(driver,By.name(iosData.NeverLoseAPhoto_Name));
+		if (isFirstLogin == true) {
+			// Make sure that the tour Never lose a photo display properly with full text
+			genMeth.isElementVisibleNative(By.name(iosData.NeverLoseAPhoto_Name), driver);
+			genMeth.isElementVisibleNative(By.name(iosData.NeverLoseaPhotoFullText_Name), driver);
+
+			driver.swipe(270, 265, 55, 265, 1000);
+			// Make sure that the tour Transfer phone simply is displayed properly with full text
+			genMeth.isElementVisibleNative(By.name(iosData.TransferPhonesSimply_Name), driver);
+			genMeth.isElementVisibleNative(By.name(iosData.TransferPhonesSimplyFullText_Name), driver);
+			driver.swipe(270, 265, 55, 265, 1000);
+
+			// check if this is a Limited or Unlimited account
+			boolean isUnlimitedAccount = genMeth.checkIsElementVisibleNative(driver, By.name(iosData.UnlimitedProtection_Name));
+
+			if (isUnlimitedAccount == true) {
+				// Verify that the go unlimited tour text is displayed
+				genMeth.isElementVisibleNative(By.name(iosData.UnlimitedProtection_Name), driver);
+				genMeth.isElementVisibleNative(By.name(iosData.UpgradeTour_Name), driver);
+
+				// Skip- [Need to test 3 options (X button, Go Unlimited button & Skip button)]
+				genMeth.clickName(driver, iosData.BTNskip_Name);
+
+				// Verify that the backup tour text is displayed
+				genMeth.isElementVisibleNative(By.name(iosData.Backup_Name),driver);
+				genMeth.isElementVisibleNative(By.name(iosData.BackupTourText_Name), driver);
+				genMeth.clickName(driver, iosData.BTNcontinue_Name);
+
+				genMeth.handleAccessPhotosContacts(iosData);
+
+				// verify that the home screen is open with the LSM (left side menu)
+				genMeth.isElementVisibleNative(By.name(iosData.Settings_Name),driver);
+			}
+			
+			else {
+				genMeth.isElementVisibleNative(By.name(iosData.Backup_Name),driver);
+				genMeth.clickName(driver, iosData.BTNcontinue_Name);
+				genMeth.handleAccessPhotosContacts(iosData);
+			}
+
+			// verify that the home screen is open with the LSM (left side menu)
+			genMeth.isElementVisibleNative(By.name(iosData.Settings_Name),driver);
+
+		}
+
+	}
+
+
+	public AppiumDriver cleanLoginIos(webElementiOS iosData,String user) throws InterruptedException, IOException,ParserConfigurationException, SAXException {
 
 		GenericMethods genMeth = new GenericMethods();
 		DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -126,7 +183,7 @@ public class GenericMethods {
 
 		// Login with an existing account
 		genMeth.clickName(driver, iosData.BTNalreadyHaveAnAccount_name);
-		genMeth.sendId(driver, iosData.TEXTFIELDemail_Id,iosData.userUnlimited_name);
+		genMeth.sendId(driver, iosData.TEXTFIELDemail_Id, user);
 		genMeth.sendId(driver, iosData.TEXTFIELDpass_Id, iosData.password);
 		genMeth.clickName(driver, iosData.BTNsignin_Name);
 
@@ -135,22 +192,45 @@ public class GenericMethods {
 		driver.swipe(270, 265, 55, 265, 500);
 		genMeth.isElementVisibleNative(By.name(iosData.TransferPhonesSimply_Name), driver);
 		driver.swipe(270, 265, 55, 265, 500);
-		genMeth.isElementVisibleNative(By.name(iosData.Backup_Name), driver);
-		genMeth.clickName(driver, iosData.BTNcontinue_Name);
 
-		// check if the "“Pogoplug” Would Like to Access Your Photos" popup is displayed
-		boolean isPhotosAccessPopupDisplay = genMeth.checkIsTextPresentNative(driver, iosData.AccessToPhotos,By.name(iosData.AccessToPhotos));
-		if (isPhotosAccessPopupDisplay == true) {
+		// check if this is a Limited or Unlimited account
+		boolean isUnlimitedAccount = genMeth.checkIsElementVisibleNative(driver, By.name(iosData.UnlimitedProtection_Name));
+		if (isUnlimitedAccount == true) {
+			// Verify that the go unlimited tour text is displayed
+			genMeth.isElementVisibleNative(By.name(iosData.UnlimitedProtection_Name), driver);
+			genMeth.isElementVisibleNative(By.name(iosData.UpgradeTour_Name),driver);
 
-			genMeth.clickName(driver, iosData.BTNok_Name);
+			// Skip- [Need to test 3 options (X button, Go Unlimited button & Skip button)]
+			genMeth.clickName(driver, iosData.BTNskip_Name);
+
+			// Verify that the backup tour text is displayed
+			genMeth.isElementVisibleNative(By.name(iosData.Backup_Name), driver);
+			genMeth.isElementVisibleNative(By.name(iosData.BackupTourText_Name), driver);
+			genMeth.clickName(driver, iosData.BTNcontinue_Name);
+
+			genMeth.handleAccessPhotosContacts(iosData);
+
+			// verify that the home screen is open with the LSM (left side menu)
+			genMeth.isElementVisibleNative(By.name(iosData.Settings_Name),driver);
+		}
+
+		else {
+			genMeth.isElementVisibleNative(By.name(iosData.Backup_Name), driver);
+			genMeth.clickName(driver, iosData.BTNcontinue_Name);
+			genMeth.handleAccessPhotosContacts(iosData);
 		}
 
 		// verify that the home screen is open with the LSM (left side menu)
+		genMeth.handleAccessPhotosContacts(iosData);
 		genMeth.isElementVisibleNative(By.name(iosData.Settings_Name), driver);
-		return driver;
+		// verify that the home screen is open with the LSM (left side menu)
+		genMeth.isElementVisibleNative(By.name(iosData.Settings_Name), driver);
 
+		return driver;
+		
 	}
 
+	
 	/*
 	public String getValueFromPropFile(String key) {
 		Properties properties = new Properties();
@@ -1078,15 +1158,11 @@ public class GenericMethods {
 	// add a function that will check & click ok if access to contacts/photos
 	// popup is prompt
 	public void handleAccessPhotosContacts(webElementiOS iosData)
-			throws IOException, ParserConfigurationException, SAXException,
-			InterruptedException {
+			throws IOException, ParserConfigurationException, SAXException,InterruptedException {
+		
 		GenericMethods genMeth = new GenericMethods();
-
-		// check if the "“Pogoplug” Would Like to Access Your Contacts" popup is
-		// displayed
-		boolean isContactsAccessPopupDisplay = genMeth
-				.checkIsTextPresentNative(driver,
-						iosData.AccessContactsWarning_Name,
+		// check if the "“Pogoplug” Would Like to Access Your Contacts" popup is displayed
+		boolean isContactsAccessPopupDisplay = genMeth.checkIsTextPresentNative(driver,iosData.AccessContactsWarning_Name,
 						By.name(iosData.AccessContactsWarning_Name));
 
 		if (isContactsAccessPopupDisplay == true) {
@@ -1094,16 +1170,15 @@ public class GenericMethods {
 			genMeth.clickName(driver, iosData.BTNok_Name);
 		}
 
-		// check if the "“Pogoplug” Would Like to Access Your Photos" popup is
-		// displayed
-		boolean isPhotosAccessPopupDisplay = genMeth
-				.checkIsTextPresentNative(driver, iosData.AccessToPhotos,
-						By.name(iosData.AccessToPhotos));
+		// check if the "“Pogoplug” Would Like to Access Your Photos" popup is displayed
+		boolean isPhotosAccessPopupDisplay = genMeth.checkIsTextPresentNative(driver,iosData.AccessToPhotos,
+				By.name(iosData.AccessToPhotos));
 
 		if (isPhotosAccessPopupDisplay == true) {
 
 			genMeth.clickName(driver, iosData.BTNok_Name);
 		}
+
 	}
 }
 

@@ -29,7 +29,7 @@ public class sanityNativeIosAppium {
 	public void setupBeforeSuite(ITestContext context) throws Exception,Throwable {
 
 		iosData = genMeth.iOSelementInit(langEng);
-		driver = genMeth.loginNativeIos(iosData);
+		driver = genMeth.cleanLoginIos(iosData, iosData.userUnlimited_name);
 		Thread.sleep(1000);
 
 	}
@@ -40,7 +40,7 @@ public class sanityNativeIosAppium {
 		// Check if the client still logged in & in start testing screen (*StartUp screen) before each test
 		if (driver == null) {
 
-			driver = genMeth.loginNativeIos(iosData);
+			driver = genMeth.cleanLoginIos(iosData,iosData.userUnlimited_name );
 		}
 
 		else {
@@ -56,7 +56,7 @@ public class sanityNativeIosAppium {
 				catch(Exception e){
 					Thread.sleep(1000);
 				}
-				 driver = genMeth.loginNativeIos(iosData);
+				 driver = genMeth.cleanLoginIos(iosData, iosData.userUnlimited_name);
 				
 			}
 
@@ -392,8 +392,6 @@ public class sanityNativeIosAppium {
 	//     Tour for Unlimited Account
 	// =====================================================
 		 
-		
-		
 		driver = genMeth.killAppIos(driver);
 		genMeth.clickName(driver, iosData.BTNalreadyHaveAnAccount_name);
 		genMeth.sendId(driver, iosData.TEXTFIELDemail_Id, iosData.userUnlimited_name);
@@ -428,7 +426,7 @@ public class sanityNativeIosAppium {
 
 		String randomName = genMeth.randomString();
 		String currentDateFolder = genMeth.currentTime();
-		genMeth.signOutFromStartup( driver , iosData);
+		genMeth.signOutFromStartupIphone5( driver , iosData);
 
 		// Create a new user & Login
 		genMeth.clickName(driver, iosData.BTNsignUp_Name);
@@ -492,7 +490,7 @@ public class sanityNativeIosAppium {
 
 		
 		String randomName = genMeth.randomString();
-		genMeth.signOutFromStartup(driver , iosData);
+		genMeth.signOutFromStartupIphone5(driver , iosData);
 
 		// Login with bad credentials
 		genMeth.clickName(driver, iosData.BTNalreadyHaveAnAccount_name);
@@ -991,7 +989,7 @@ public class sanityNativeIosAppium {
 		String randomName = genMeth.randomString();
 		
 		//Login with new account (*backup will initiate)
-		genMeth.signOutFromStartup(driver , iosData);
+		genMeth.signOutFromStartupIphone5(driver , iosData);
 		genMeth.clickName(driver, iosData.BTNsignUp_Name);
 		genMeth.sendId(driver, iosData.TEXTFIELDnameOptional_Id, "meny:" + currentDateFolder);
 		genMeth.sendId(driver, iosData.TEXTFIELDemail_Id, "meny@" + randomName + ".com");
@@ -1178,21 +1176,100 @@ public class sanityNativeIosAppium {
 		
 		
 		
-	@Test(enabled = false, testName = "Sanity Tests", description = "Adding & removing team folders", groups = { "Sanity Native iOS" })
+	@Test(enabled = true, testName = "Sanity Tests", description = "Adding & removing team folders",
+			groups = { "Sanity Native iOS now" })
 	public void addRemoveTeamFolders() throws Exception, Throwable {
-
-		// ??????????????????
-		Thread.sleep(1000);
-		String currentDateFolder = genMeth.currentTime();
+		
 		webElementiOS iosData = genMeth.iOSelementInit(langEng);
+
+		//Share user with team folder 
+		genMeth.clickName(driver, iosData.BTNfileExplorer_Name);
+		genMeth.clickName(driver, iosData.BTNedit_Name);
+		genMeth.clickName(driver, iosData.FavoritesTitle_Name);
+		genMeth.clickName(driver, iosData.BTNshareOn_Name);
+		boolean isShared = genMeth.checkIsElementVisibleNative(driver, By.name(iosData.BTNremoveAllUsers_Name));
+		if (isShared == true) {
+
+			genMeth.clickName(driver, iosData.BTNremoveAllUsers_Name);
+			genMeth.clickName(driver, iosData.BTNshareOn_Name);
+		}
+		genMeth.clickName(driver, iosData.BTNaddUsers_Name);
+		genMeth.handleAccessPhotosContacts(iosData);
+		genMeth.isElementVisibleNative(By.name(iosData.BTNaddUsers_Name), driver);
 		
-		//add team folder for user (automation2@test.com)
+		genMeth.sendId(driver, iosData.TEXTFIELDsearch_Id, iosData.userAutomation2_Name );
+		genMeth.isElementVisibleNative(By.name(iosData.userAutomation2_Name), driver);
+		genMeth.clickName(driver, iosData.userAutomation2_Name);
+		genMeth.clickName(driver, iosData.BTNcancel_Name);
+		genMeth.clickName(driver, iosData.BTNdone_Name);
+		genMeth.isElementVisibleNative(By.id("1"), driver);
+		genMeth.takeScreenShotNative(driver, "positive_teamFolderSharedUsersNumber");
+		genMeth.clickName(driver, iosData.BTNdone_Name);
+		genMeth.clickName(driver, iosData.BTNleft_Name);
 		
-		// login with user (automation2@test.com) & make sure that the team folder was added & can be open
+		// login with the SHARED user & make sure that the team folder was added & can be open
+		genMeth.signOutFromStartupIphone5(driver, iosData);
+		genMeth.loginIos(iosData, iosData.userAutomation2_Name);
+		genMeth.clickName(driver, iosData.BTNfileExplorer_Name);
+		genMeth.clickName(driver, iosData.BTNteamFolders_Name);
+		genMeth.isElementVisibleNative(By.name(iosData.FavoritesTitle_Name), driver);
+		genMeth.isElementVisibleNative(By.name(iosData.BTNteamFolders_Name), driver);
 		
-		// login with master user & remove the team folder for user (automation2@test.com)
+		//Cancel remove share
+		genMeth.clickName(driver, iosData.BTNedit_Name);
+		genMeth.clickName(driver, iosData.FavoritesTitle_Name);
+		genMeth.clickName(driver, iosData.BTNremoveShare_Name);
+		genMeth.clickName(driver, iosData.BTNcancel_Name);
+		genMeth.isElementVisibleNative(By.name(iosData.FavoritesTitle_Name), driver);
 		
-		//login with (automation2@test.com) make sure that the team folder was removed
+		//Remove share folder from the SHARED user
+		genMeth.clickName(driver, iosData.BTNremoveShare_Name);
+		//genMeth.clickName(driver, iosData.BTNremoveShare_Name);
+		genMeth.clickXpth(driver, "//UIAApplication[1]/UIAWindow[4]/UIAActionSheet[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]");
+		
+		//Make sure that the shared folder was removed
+		genMeth.isElementInvisibleNative(By.name(iosData.FavoritesTitle_Name), driver);
+		genMeth.isElementVisibleNative(By.name(iosData.EmptyFolder_Name), driver);
+		genMeth.clickName(driver, iosData.BTNfileExplorer_Name);
+		genMeth.clickName(driver, iosData.BTNleft_Name);
+		genMeth.signOutFromStartupIphone5(driver, iosData);
+		
+		// login with the SHARING user & make sure that the folder isn't shared anymore
+		genMeth.loginIos(iosData, iosData.userUnlimited_name);
+		genMeth.clickName(driver, iosData.BTNleft_Name);
+		genMeth.clickName(driver, iosData.BTNfileExplorer_Name);
+		genMeth.isElementInvisibleNative(By.name(iosData.BTNteamFolders_Name), driver);
+				
+		//Remove shared folder from the SHARING user
+		genMeth.clickName(driver, iosData.BTNedit_Name);
+		genMeth.clickName(driver, iosData.FavoritesTitle_Name);
+		genMeth.clickName(driver, iosData.BTNshareOn_Name);
+		genMeth.clickName(driver, iosData.BTNaddUsers_Name);
+		genMeth.handleAccessPhotosContacts(iosData);
+		genMeth.isElementVisibleNative(By.name(iosData.BTNaddUsers_Name), driver);
+		
+		//Share user with team folder & then remove share
+		genMeth.sendId(driver, iosData.TEXTFIELDsearch_Id, iosData.userAutomation2_Name );
+		genMeth.isElementVisibleNative(By.name(iosData.userAutomation2_Name), driver);
+		genMeth.clickName(driver, iosData.userAutomation2_Name);
+		genMeth.clickName(driver, iosData.BTNcancel_Name);
+		genMeth.clickName(driver, iosData.BTNdone_Name);
+		genMeth.isElementVisibleNative(By.id("1"), driver);
+		genMeth.clickName(driver, iosData.BTNshareOn_Name);
+		genMeth.clickName(driver, iosData.BTNremoveAllUsers_Name);
+		genMeth.takeScreenShotNative(driver, "positive_teamFolderSharedUsersRemoveNumber");
+		genMeth.clickName(driver, iosData.BTNleft_Name);
+		genMeth.clickName(driver, iosData.Settings_Name);
+		genMeth.signOutFromStartupIphone5(driver, iosData);
+		
+		//Make sure that the folder isn't shared under the SHARED account
+		genMeth.loginIos(iosData, iosData.userAutomation2_Name);
+		genMeth.clickName(driver, iosData.BTNfileExplorer_Name);
+		genMeth.isElementInvisibleNative(By.name(iosData.BTNteamFolders_Name), driver);
+		genMeth.clickName(driver, iosData.BTNleft_Name);
+		genMeth.signOutFromStartupIphone5(driver, iosData);
+		genMeth.loginIos(iosData, iosData.userUnlimited_name);
+		genMeth.clickName(driver, iosData.BTNfileExplorer_Name);
 		
 	}
 	

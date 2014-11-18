@@ -55,6 +55,9 @@
 			<BTNfavorites_Name>Favorites</BTNfavorites_Name>
 			<BTNremoveFavorites_Name>Remove Favorites</BTNremoveFavorites_Name>
 			<BTNaddUsers_Name>Add Users</BTNaddUsers_Name>
+			<BTNteamFolders_Name>Team Folders</BTNteamFolders_Name>
+			<BTNremoveShare_Name>Remove Share</BTNremoveShare_Name>
+			<BTNremoveAllUsers_Name>Remove All Users</BTNremoveAllUsers_Name>
 			
 		</Button>
 		
@@ -169,6 +172,7 @@
 	<GeneralInfo>
 		<userUnlimited_name>automation1@test.com</userUnlimited_name>
 		<userLimited_name>Automation1@limited.com</userLimited_name>
+		<userAutomation2_Name>automation2@test.com</userAutomation2_Name>
 		<password>1</password>
 		<newPassword>2</newPassword>
 		<badPassword>incorrectPassword</badPassword>
