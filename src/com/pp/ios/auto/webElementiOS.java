@@ -137,6 +137,7 @@ public class webElementiOS {
 	String SearchSongInAlbums_Name;
 	String SearchSongInGenres_Name;
 	String AccessContactsWarning_Name;
+	String AccessLocationServicesWarning_Name;
 	
 	
 //	general info	
@@ -307,6 +308,7 @@ public webElementiOS (String langXml ) throws Exception, Throwable, IOException 
 	this.SearchSongInAlbums_Name = xmlHandel.readIosXml("SearchSongInAlbums_Name", langXml);	
 	this.SearchSongInGenres_Name = xmlHandel.readIosXml("SearchSongInGenres_Name", langXml);	
 	this.AccessContactsWarning_Name = xmlHandel.readIosXml("AccessContactsWarning_Name", langXml);
+	this.AccessLocationServicesWarning_Name = xmlHandel.readIosXml("AccessLocationServicesWarning_Name", langXml);
 	this.TermsOfService_Name = xmlHandel.readIosXml("TermsOfService_Name", langXml);
 	this.NoResults_Name = xmlHandel.readIosXml("NoResults_Name", langXml);
 	this.Disabled_Name = xmlHandel.readIosXml("Disabled_Name", langXml);

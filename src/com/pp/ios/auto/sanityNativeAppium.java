@@ -25,7 +25,7 @@ GenericMethods genMeth = new GenericMethods();
 @BeforeSuite(alwaysRun = true)
 public void setupBeforeSuite(ITestContext context) throws ParserConfigurationException, SAXException, IOException, InterruptedException {
 
-	driver = genMeth.loginNativeAndroid();
+	driver = genMeth.loginNativeAndroid(genMeth);
 	Thread.sleep(1000);
 }
 
@@ -37,7 +37,7 @@ public void checkHomeScreen() throws InterruptedException, IOException, ParserCo
 	String cat = "CATEGORIES";
 	boolean loggedin= genMeth.checkIsTextPresentNative(driver ,cat, byCat);
 	if (loggedin != true){
-		driver = genMeth.loginNativeAndroid();
+		driver = genMeth.loginNativeAndroid(genMeth);
 		
 	}
 }
@@ -47,13 +47,13 @@ public void testLogin() throws ParserConfigurationException, SAXException, IOExc
 	
 	androidElementData elData = genMeth.androidElementInit();
 //	  	genData strInf = genMeth.genericDataInit();
-	genMeth.clickId(driver, elData.BTNalreadyHaveAnAccount_id);
+	genMeth.clickId(driver, genMeth, elData.BTNalreadyHaveAnAccount_id);
 	//genMeth.findByIdAndSend(driver, "com.pogoplug.android:id/email", "meny@cloudengines.com");
-	genMeth.sendId(driver, elData.TEXTFIELDemail_id, "meny@cloudengines.com");
+	genMeth.sendId(driver, genMeth, elData.TEXTFIELDemail_id, "meny@cloudengines.com");
    // genMeth.findByIdAndSend(driver, "com.pogoplug.android:id/password", "1");
-	genMeth.sendId(driver, elData.TEXTFIELDpassword_id, "1");
+	genMeth.sendId(driver, genMeth, elData.TEXTFIELDpassword_id, "1");
     //genMeth.idAndClick(driver, "com.pogoplug.android:id/loginBtn");
-	genMeth.clickId(driver, elData.BTNlogin_id);
+	genMeth.clickId(driver, genMeth, elData.BTNlogin_id);
 
 
 //	genMeth.isTextPresent("Never Lose a Photo", By.xpath("//android.support.v4.view.ViewPager[1]/android.widget.TextView[1]"));
@@ -66,8 +66,8 @@ public void testLogin() throws ParserConfigurationException, SAXException, IOExc
 // Navigate through the intro
 	driver.swipe(1031, 1150, 53, 1150, 500);
 	//driver.executeScript("mobile: swipe", new HashMap<String, Double>() {{ put("touchCount", (double) 1); put("startX", (double) 1031); put("startY", (double) 1150); put("endX", (double) 53); put("endY", (double) 1159); put("duration", 0.5); }});
-	genMeth.clickId(driver, elData.BTNfinishTour_id);
-	genMeth.clickId(driver, elData.BTNcontinue_id);
+	genMeth.clickId(driver, genMeth, elData.BTNfinishTour_id);
+	genMeth.clickId(driver, genMeth, elData.BTNcontinue_id);
   
 // Make sure that the Login was successful By verifying that the "CATEGORIES" display in the *LSM (Left Side Menu)
     By by1 = By.xpath("//android.widget.ListView[1]/android.widget.TextView[1]");
@@ -75,7 +75,7 @@ public void testLogin() throws ParserConfigurationException, SAXException, IOExc
 	genMeth.isTextPresentNative(driver ,text1, by1);
 
 // Close the left side menu	
-	genMeth.clickName(driver, "Files, Navigate up");
+	genMeth.clickName(driver, genMeth, "Files, Navigate up");
 		
 }
 
@@ -89,55 +89,55 @@ public void testCreatefolder() throws ParserConfigurationException, SAXException
 	String currentDate = genMeth.currentTime();
 // open pogoplug cloud & press the PP cloud folder
 	//Thread.sleep(2000);
-	genMeth.clickXpth(driver, "");
-//	genMeth.clickXpth(driver, "//android.widget.ListView[1]/android.widget.LinearLayout[3]");
+	genMeth.clickXpth(driver, genMeth, "");
+//	genMeth.clickXpth(driver, genMeth, "//android.widget.ListView[1]/android.widget.LinearLayout[3]");
 
 	Thread.sleep(2000);
-	genMeth.clickXpth(driver, elData.LIST1_xpth);
+	genMeth.clickXpth(driver, genMeth, elData.LIST1_xpth);
 	By byNewFolder = By.xpath(elData.LIST5_xpth);
 	
 //	Create a new folder 
-	genMeth.clickName(driver, elData.BTNnewFolder_name);
+	genMeth.clickName(driver, genMeth, elData.BTNnewFolder_name);
 	
 // 	Dismiss the create folder window
-	genMeth.sendXpth(driver, "//android.widget.EditText[1]", currentDate);
-	genMeth.clickId(driver, elData.BTNdismissNewFolder_id);
+	genMeth.sendXpth(driver, genMeth, "//android.widget.EditText[1]", currentDate);
+	genMeth.clickId(driver, genMeth, elData.BTNdismissNewFolder_id);
 
 // 	make sure that the folder wasn't created
-	genMeth.isElementInvisibleNative(byNewFolder, driver);
+	genMeth.isElementInvisibleNative(driver, byNewFolder);
 	
 //	Now Press the create folder
-	genMeth.clickName(driver, elData.BTNnewFolder_name);
-	genMeth.sendXpth(driver, "//android.widget.EditText[1]", currentDate);
-	genMeth.clickId(driver, elData.BTNcreateNewFolder_id);
+	genMeth.clickName(driver, genMeth, elData.BTNnewFolder_name);
+	genMeth.sendXpth(driver, genMeth, "//android.widget.EditText[1]", currentDate);
+	genMeth.clickId(driver, genMeth, elData.BTNcreateNewFolder_id);
 	
 //	Check if the folder was created successfully 
-	genMeth.isElementVisibleNative(byNewFolder, driver);
+	genMeth.isElementVisibleNative(driver, byNewFolder);
 	Thread.sleep(2000);
 	
 // sort the list in order to place the image in the first position
-	genMeth.clickName(driver,elData.BTNsort_name);
-	genMeth.clickName(driver, elData.OPTIONsortOldestFirst_name);
+	genMeth.clickName(driver, genMeth,elData.BTNsort_name);
+	genMeth.clickName(driver, genMeth, elData.OPTIONsortOldestFirst_name);
 	Thread.sleep(2000);
 
 // long press the folder (choosing the folder for deletion by swipe long duration- need to figure out how to do it by proper long press code)
 	Thread.sleep(1000);
 	//add long press instead of the swip
 	driver.swipe(280, 900, 320, 900, 2000);
-	genMeth.clickName(driver, elData.BTNdelete_name);
+	genMeth.clickName(driver, genMeth, elData.BTNdelete_name);
 	
 // Cancel the delete & make sure that the folder wasn't deleted
-	genMeth.clickId(driver, elData.BTNcancelDelete_id);
-	genMeth.isElementVisibleNative(byNewFolder, driver);
+	genMeth.clickId(driver, genMeth, elData.BTNcancelDelete_id);
+	genMeth.isElementVisibleNative(driver, byNewFolder);
 	
 // now delete the folder & make sure it was deleted properly
 	driver.swipe(280, 900, 320, 900, 2000);
-	genMeth.clickName(driver, elData.BTNdelete_name);;
-	genMeth.clickId(driver, elData.BTNdeleteConfirm_id);
-	genMeth.isElementInvisibleNative(byNewFolder, driver);
+	genMeth.clickName(driver, genMeth, elData.BTNdelete_name);;
+	genMeth.clickId(driver, genMeth, elData.BTNdeleteConfirm_id);
+	genMeth.isElementInvisibleNative(driver, byNewFolder);
 	
 // go Start test start screen (LSM left side menu)
-	genMeth.clickXpth(driver, elData.BTNopenLSM_xpth);
+	genMeth.clickXpth(driver, genMeth, elData.BTNopenLSM_xpth);
 	
 	  }
 
@@ -146,28 +146,28 @@ public void testUploadImage() throws ParserConfigurationException, SAXException,
 	
 	androidElementData elData = genMeth.androidElementInit();
 // open pogoplug cloud & press
-	genMeth.clickXpth(driver, "//android.widget.ListView[1]/android.widget.LinearLayout[3]");
+	genMeth.clickXpth(driver, genMeth, "//android.widget.ListView[1]/android.widget.LinearLayout[3]");
 	Thread.sleep(1000);
-	genMeth.clickXpth(driver, elData.LIST1_xpth);
+	genMeth.clickXpth(driver, genMeth, elData.LIST1_xpth);
 	
 // Capture an image
-	genMeth.clickName(driver, elData.BTNupload_name);
-	genMeth.clickName(driver, elData.OPTIONcaptureNewPhoto_name);
+	genMeth.clickName(driver, genMeth, elData.BTNupload_name);
+	genMeth.clickName(driver, genMeth, elData.OPTIONcaptureNewPhoto_name);
 	Thread.sleep(2000);
-	genMeth.clickId(driver, elData.BTNcapturePhoto_id);
-	genMeth.clickId(driver, elData.BTNcaptureDone_id);
+	genMeth.clickId(driver, genMeth, elData.BTNcapturePhoto_id);
+	genMeth.clickId(driver, genMeth, elData.BTNcaptureDone_id);
 	Thread.sleep(1000);
-	genMeth.clickName(driver, elData.BTNrefresh_name);
+	genMeth.clickName(driver, genMeth, elData.BTNrefresh_name);
 	
 // sort the list in order to place the image in the first position
-	genMeth.clickName(driver,elData.BTNsort_name);
-	genMeth.clickName(driver, elData.OPTIONsortOldestFirst_name);
-	genMeth.clickName(driver, elData.BTNrefresh_name);
+	genMeth.clickName(driver, genMeth,elData.BTNsort_name);
+	genMeth.clickName(driver, genMeth, elData.OPTIONsortOldestFirst_name);
+	genMeth.clickName(driver, genMeth, elData.BTNrefresh_name);
 	
 // Check if the image display in the list
-	genMeth.isElementVisibleNative(By.xpath(elData.LIST5_xpth), driver);
+	genMeth.isElementVisibleNative(driver, By.xpath(elData.LIST5_xpth));
 	
-	WebElement uploadedImage = genMeth.returnXpth(driver, "//android.view.View[1]/android.widget.ListView[1]/android.widget.LinearLayout[5]/android.widget.TextView[2]");
+	WebElement uploadedImage = genMeth.returnXpth(driver, genMeth, "//android.view.View[1]/android.widget.ListView[1]/android.widget.LinearLayout[5]/android.widget.TextView[2]");
 	Thread.sleep(1000);
 	String lastUpload = uploadedImage.getText();
 	String currentUpload= "None";
@@ -175,32 +175,32 @@ public void testUploadImage() throws ParserConfigurationException, SAXException,
 	
 // Add an if that will verify that the Upload has finished (compare the KB - once not changing it probably has finished or stuck)	
 	if (lastUpload != currentUpload ){
-		genMeth.clickName(driver, elData.BTNrefresh_name);
+		genMeth.clickName(driver, genMeth, elData.BTNrefresh_name);
 		lastUpload = uploadedImage.getText();
 		Thread.sleep(5000);
-		genMeth.clickName(driver, elData.BTNrefresh_name);
+		genMeth.clickName(driver, genMeth, elData.BTNrefresh_name);
 	//	lastUpload = currentUpload;
 		currentUpload = uploadedImage.getText();
 		
 	}
 	
 // Open the image & make sure that it displays 
-	genMeth.clickXpth(driver, elData.LIST5_xpth);
+	genMeth.clickXpth(driver, genMeth, elData.LIST5_xpth);
 	
 // Make sure that the "Image not available" text doesn't displayed
 	String imageNotAvailable = "Image not available";
 	By by4 = By.id("com.pogoplug.android:id/thumbnail_not_found_text_view");
-	genMeth.isElementInvisibleTextNative(by4, imageNotAvailable, driver);
+	genMeth.isElementInvisibleTextNative(driver, by4, imageNotAvailable);
 	Thread.sleep(1000);	
-	genMeth.clickXpth(driver, "//android.view.View[1]");
+	genMeth.clickXpth(driver, genMeth, "//android.view.View[1]");
 // Delete the image
 	driver.swipe(300, 900, 300, 900, 2000);
 	Thread.sleep(5000);
-	genMeth.clickName(driver, elData.BTNdelete_name);
-	genMeth.clickId(driver, elData.BTNdeleteConfirm_id);
+	genMeth.clickName(driver, genMeth, elData.BTNdelete_name);
+	genMeth.clickId(driver, genMeth, elData.BTNdeleteConfirm_id);
 
 // Check that the image was deleted
-	genMeth.isElementInvisibleNative(By.xpath(elData.LIST5_xpth), driver);
+	genMeth.isElementInvisibleNative(driver, By.xpath(elData.LIST5_xpth));
 	
 	}
 

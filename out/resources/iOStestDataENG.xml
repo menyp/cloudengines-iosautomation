@@ -142,6 +142,7 @@
 		   	<SearchSongInAlbums_Name>Poo Pop</SearchSongInAlbums_Name>
 		   	<SearchSongInGenres_Name>Blues</SearchSongInGenres_Name>
 		   	<AccessContactsWarning_Name>“Pogoplug” Would Like to Access Your Contacts</AccessContactsWarning_Name>
+		   	<AccessLocationServicesWarning_Name>“Pogoplug” Would Like to Use Your Current Location</AccessLocationServicesWarning_Name>
 		   	
 		   	
 		</Strings>

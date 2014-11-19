@@ -42,9 +42,9 @@ public class GenericMethods {
 
 	// GenericMethods genMeth = new GenericMethods ();
 
-	public AppiumDriver loginNativeAndroid() throws ParserConfigurationException, SAXException, IOException,InterruptedException {
+	public AppiumDriver loginNativeAndroid(GenericMethods genMeth) throws ParserConfigurationException, SAXException, IOException,InterruptedException {
+		
 		androidElementData elData = new androidElementData();
-		GenericMethods genMeth = new GenericMethods();
 		// Login with an existing account
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability("appium-version", "1.2");
@@ -65,10 +65,10 @@ public class GenericMethods {
 			driver.quit();
 		}
 
-		genMeth.clickId(driver, elData.BTNalreadyHaveAnAccount_id);
-		genMeth.sendId(driver, elData.TEXTFIELDemail_id,"meny@cloudengines.com");
-		genMeth.sendId(driver, elData.TEXTFIELDpassword_id, "1");
-		genMeth.clickId(driver, elData.BTNlogin_id);
+		genMeth.clickId(driver,  genMeth, elData.BTNalreadyHaveAnAccount_id);
+		genMeth.sendId(driver, genMeth, elData.TEXTFIELDemail_id,"meny@cloudengines.com");
+		genMeth.sendId(driver, genMeth, elData.TEXTFIELDpassword_id, "1");
+		genMeth.clickId(driver, genMeth, elData.BTNlogin_id);
 
 		// Make sure that the intro display (that way the swipe will be done at the right time)
 		By by = By.id("com.pogoplug.android:id/protect_computer");
@@ -77,8 +77,8 @@ public class GenericMethods {
 
 		// Navigate through the intro
 		driver.swipe(1031, 1150, 53, 1150, 500);
-		genMeth.clickId(driver, elData.BTNfinishTour_id);
-		genMeth.clickId(driver, elData.BTNcontinue_id);
+		genMeth.clickId(driver, genMeth, elData.BTNfinishTour_id);
+		genMeth.clickId(driver, genMeth, elData.BTNcontinue_id);
 
 		// Make sure that the Login was successful By verifying that the "CATEGORIES" display in the *LSM (Left Side Menu)
 		By byCat = By.xpath("//android.widget.ListView[1]/android.widget.TextView[1]");
@@ -102,33 +102,32 @@ public class GenericMethods {
 
 	public void signOutFromStartupIphone5(AppiumDriver driver, webElementiOS iosData) throws InterruptedException, IOException {
 		GenericMethods genMeth = new GenericMethods();
-		genMeth.clickName(driver, iosData.Settings_Name);
+		genMeth.clickName(driver,genMeth, iosData.Settings_Name);
 		driver.swipe(170, 350, 170, 150, 500);
 		Thread.sleep(1000);
 		driver.swipe(170, 450, 170, 250, 500);
 		driver.swipe(170, 550, 170, 350, 500);
-		genMeth.clickName(driver, iosData.BTNsignOut_Name);
+		genMeth.clickName(driver,genMeth, iosData.BTNsignOut_Name);
 	}
 	
-	public void loginIos(webElementiOS iosData, String user)throws InterruptedException, IOException,ParserConfigurationException, SAXException {
+	public void loginIos(GenericMethods genMeth, webElementiOS iosData, String user)throws InterruptedException, IOException,ParserConfigurationException, SAXException {
 
-		GenericMethods genMeth = new GenericMethods();
-		genMeth.clickName(driver, iosData.BTNalreadyHaveAnAccount_name);
-		genMeth.sendId(driver, iosData.TEXTFIELDemail_Id, user);
-		genMeth.sendId(driver, iosData.TEXTFIELDpass_Id, iosData.password);
-		genMeth.clickName(driver, iosData.BTNsignin_Name);
+		genMeth.clickName(driver,genMeth, iosData.BTNalreadyHaveAnAccount_name);
+		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDemail_Id, user);
+		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDpass_Id, iosData.password);
+		genMeth.clickName(driver,genMeth, iosData.BTNsignin_Name);
 
 		// check if the tour display (will be display only if it is first login)
 		boolean isFirstLogin = genMeth.checkIsElementVisibleNative(driver,By.name(iosData.NeverLoseAPhoto_Name));
 		if (isFirstLogin == true) {
 			// Make sure that the tour Never lose a photo display properly with full text
-			genMeth.isElementVisibleNative(By.name(iosData.NeverLoseAPhoto_Name), driver);
-			genMeth.isElementVisibleNative(By.name(iosData.NeverLoseaPhotoFullText_Name), driver);
+			genMeth.isElementVisibleNative(driver,By.name(iosData.NeverLoseAPhoto_Name));
+			genMeth.isElementVisibleNative(driver,By.name(iosData.NeverLoseaPhotoFullText_Name));
 
 			driver.swipe(270, 265, 55, 265, 1000);
 			// Make sure that the tour Transfer phone simply is displayed properly with full text
-			genMeth.isElementVisibleNative(By.name(iosData.TransferPhonesSimply_Name), driver);
-			genMeth.isElementVisibleNative(By.name(iosData.TransferPhonesSimplyFullText_Name), driver);
+			genMeth.isElementVisibleNative(driver,By.name(iosData.TransferPhonesSimply_Name));
+			genMeth.isElementVisibleNative(driver,By.name(iosData.TransferPhonesSimplyFullText_Name));
 			driver.swipe(270, 265, 55, 265, 1000);
 
 			// check if this is a Limited or Unlimited account
@@ -136,40 +135,39 @@ public class GenericMethods {
 
 			if (isUnlimitedAccount == true) {
 				// Verify that the go unlimited tour text is displayed
-				genMeth.isElementVisibleNative(By.name(iosData.UnlimitedProtection_Name), driver);
-				genMeth.isElementVisibleNative(By.name(iosData.UpgradeTour_Name), driver);
+				genMeth.isElementVisibleNative(driver,By.name(iosData.UnlimitedProtection_Name));
+				genMeth.isElementVisibleNative(driver,By.name(iosData.UpgradeTour_Name));
 
 				// Skip- [Need to test 3 options (X button, Go Unlimited button & Skip button)]
-				genMeth.clickName(driver, iosData.BTNskip_Name);
+				genMeth.clickName(driver,genMeth, iosData.BTNskip_Name);
 
 				// Verify that the backup tour text is displayed
-				genMeth.isElementVisibleNative(By.name(iosData.Backup_Name),driver);
-				genMeth.isElementVisibleNative(By.name(iosData.BackupTourText_Name), driver);
-				genMeth.clickName(driver, iosData.BTNcontinue_Name);
+				genMeth.isElementVisibleNative(driver,By.name(iosData.Backup_Name));
+				genMeth.isElementVisibleNative(driver,By.name(iosData.BackupTourText_Name));
+				genMeth.clickName(driver,genMeth, iosData.BTNcontinue_Name);
 
-				genMeth.handleAccessPhotosContacts(iosData);
+				genMeth.handleAccessPhotosContactsLocation(genMeth, iosData);
 
 				// verify that the home screen is open with the LSM (left side menu)
-				genMeth.isElementVisibleNative(By.name(iosData.Settings_Name),driver);
+				genMeth.isElementVisibleNative(driver,By.name(iosData.Settings_Name));
 			}
 			
 			else {
-				genMeth.isElementVisibleNative(By.name(iosData.Backup_Name),driver);
-				genMeth.clickName(driver, iosData.BTNcontinue_Name);
-				genMeth.handleAccessPhotosContacts(iosData);
+				genMeth.isElementVisibleNative(driver,By.name(iosData.Backup_Name));
+				genMeth.clickName(driver,genMeth, iosData.BTNcontinue_Name);
+				genMeth.handleAccessPhotosContactsLocation(genMeth, iosData);
 			}
 
 			// verify that the home screen is open with the LSM (left side menu)
-			genMeth.isElementVisibleNative(By.name(iosData.Settings_Name),driver);
+			genMeth.isElementVisibleNative(driver,By.name(iosData.Settings_Name));
 
 		}
 
 	}
 
 
-	public AppiumDriver cleanLoginIos(webElementiOS iosData,String user) throws InterruptedException, IOException,ParserConfigurationException, SAXException {
+	public AppiumDriver cleanLoginIos(GenericMethods genMeth, webElementiOS iosData, String user) throws InterruptedException, IOException,ParserConfigurationException, SAXException {
 
-		GenericMethods genMeth = new GenericMethods();
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability("deviceName", "Automation test2");
 		// capabilities.setCapability("deviceName", "iPhone Simulator");
@@ -182,54 +180,83 @@ public class GenericMethods {
 		driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
 
 		// Login with an existing account
-		genMeth.clickName(driver, iosData.BTNalreadyHaveAnAccount_name);
-		genMeth.sendId(driver, iosData.TEXTFIELDemail_Id, user);
-		genMeth.sendId(driver, iosData.TEXTFIELDpass_Id, iosData.password);
-		genMeth.clickName(driver, iosData.BTNsignin_Name);
+		genMeth.clickName(driver,genMeth, iosData.BTNalreadyHaveAnAccount_name);
+		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDemail_Id, user);
+		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDpass_Id, iosData.password);
+		genMeth.clickName(driver,genMeth, iosData.BTNsignin_Name);
 
 		// Make sure that the intro display (that way the swipe will be done at the right time)
-		genMeth.isElementVisibleNative(By.name(iosData.NeverLoseAPhoto_Name),driver);
+		genMeth.isElementVisibleNative(driver,By.name(iosData.NeverLoseAPhoto_Name));
 		driver.swipe(270, 265, 55, 265, 500);
-		genMeth.isElementVisibleNative(By.name(iosData.TransferPhonesSimply_Name), driver);
+		genMeth.isElementVisibleNative(driver,By.name(iosData.TransferPhonesSimply_Name));
 		driver.swipe(270, 265, 55, 265, 500);
 
 		// check if this is a Limited or Unlimited account
 		boolean isUnlimitedAccount = genMeth.checkIsElementVisibleNative(driver, By.name(iosData.UnlimitedProtection_Name));
 		if (isUnlimitedAccount == true) {
 			// Verify that the go unlimited tour text is displayed
-			genMeth.isElementVisibleNative(By.name(iosData.UnlimitedProtection_Name), driver);
-			genMeth.isElementVisibleNative(By.name(iosData.UpgradeTour_Name),driver);
+			genMeth.isElementVisibleNative(driver,By.name(iosData.UnlimitedProtection_Name));
+			genMeth.isElementVisibleNative(driver,By.name(iosData.UpgradeTour_Name));
 
 			// Skip- [Need to test 3 options (X button, Go Unlimited button & Skip button)]
-			genMeth.clickName(driver, iosData.BTNskip_Name);
+			genMeth.clickName(driver,genMeth, iosData.BTNskip_Name);
 
 			// Verify that the backup tour text is displayed
-			genMeth.isElementVisibleNative(By.name(iosData.Backup_Name), driver);
-			genMeth.isElementVisibleNative(By.name(iosData.BackupTourText_Name), driver);
-			genMeth.clickName(driver, iosData.BTNcontinue_Name);
+			genMeth.isElementVisibleNative(driver,By.name(iosData.Backup_Name));
+			genMeth.isElementVisibleNative(driver,By.name(iosData.BackupTourText_Name));
+			genMeth.clickName(driver,genMeth, iosData.BTNcontinue_Name);
 
-			genMeth.handleAccessPhotosContacts(iosData);
+			genMeth.handleAccessPhotosContactsLocation(genMeth, iosData);
 
 			// verify that the home screen is open with the LSM (left side menu)
-			genMeth.isElementVisibleNative(By.name(iosData.Settings_Name),driver);
+			genMeth.isElementVisibleNative(driver,By.name(iosData.Settings_Name));
 		}
 
 		else {
-			genMeth.isElementVisibleNative(By.name(iosData.Backup_Name), driver);
-			genMeth.clickName(driver, iosData.BTNcontinue_Name);
-			genMeth.handleAccessPhotosContacts(iosData);
+			genMeth.isElementVisibleNative(driver,By.name(iosData.Backup_Name));
+			genMeth.clickName(driver,genMeth, iosData.BTNcontinue_Name);
+			genMeth.handleAccessPhotosContactsLocation(genMeth,  iosData);
 		}
 
 		// verify that the home screen is open with the LSM (left side menu)
-		genMeth.handleAccessPhotosContacts(iosData);
-		genMeth.isElementVisibleNative(By.name(iosData.Settings_Name), driver);
+		genMeth.handleAccessPhotosContactsLocation(genMeth,  iosData);
+		genMeth.isElementVisibleNative(driver,By.name(iosData.Settings_Name));
 		// verify that the home screen is open with the LSM (left side menu)
-		genMeth.isElementVisibleNative(By.name(iosData.Settings_Name), driver);
+		genMeth.isElementVisibleNative(driver,By.name(iosData.Settings_Name));
 
 		return driver;
 		
 	}
 
+	public void signUp(GenericMethods genMeth, webElementiOS iosData) throws InterruptedException, IOException, ParserConfigurationException, SAXException{
+		
+		String randomName =  genMeth.randomString();
+		String currentDateFolder = genMeth.currentTime();
+		
+		genMeth.clickName(driver,genMeth, iosData.BTNsignUp_Name);
+		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDnameOptional_Id, "meny:" + currentDateFolder);
+		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDemail_Id, "meny@" + randomName + ".com");
+		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDpass_Id, iosData.password);
+		genMeth.clickName(driver,genMeth, iosData.BTNsignUpForFree_Name);
+		
+		genMeth.isElementVisibleNative(driver,By.name(iosData.NeverLoseAPhoto_Name));
+		driver.swipe(270, 265, 55, 265, 1000);
+		genMeth.isElementVisibleNative(driver,By.name(iosData.TransferPhonesSimply_Name));
+		driver.swipe(270, 265, 55, 265, 1000);
+
+		// Verify that the go unlimited tour text is displayed
+		genMeth.isElementVisibleNative(driver,By.name(iosData.UnlimitedProtection_Name));
+		genMeth.isElementVisibleNative(driver,By.name(iosData.UpgradeTour_Name));
+		genMeth.clickName(driver,genMeth, "UIAccessoryButtonX");
+
+		genMeth.isElementVisibleNative(driver,By.name(iosData.Backup_Name));
+		
+		//Disable the backup from TOUR
+		genMeth.clickName(driver,genMeth, iosData.BTNcontinue_Name);
+		genMeth.handleAccessPhotosContactsLocation(genMeth,  iosData);
+		genMeth.isElementVisibleNative(driver,By.name(iosData.Settings_Name));
+
+	}
 	
 	/*
 	public String getValueFromPropFile(String key) {
@@ -248,8 +275,8 @@ public class GenericMethods {
 	}
 	*/
 
-	public void takeScreenShotNative(AppiumDriver driver, String imageName) throws IOException {
-		GenericMethods genMeth = new GenericMethods();
+	public void takeScreenShotNative(AppiumDriver driver, GenericMethods genMeth, String imageName) throws IOException {
+
 		File scrFile = (driver.getScreenshotAs(OutputType.FILE));
 		String currentTime = genMeth.currentTime();
 
@@ -258,23 +285,7 @@ public class GenericMethods {
 		FileUtils.copyFile(scrFile, new File(imagePath));
 
 	}
-/*
-	private String getFileName(String nameTest) throws IOException {
-		DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy_hh.mm.ss");
-		Date date = new Date();
-		return dateFormat.format(date) + "_" + nameTest + ".png";
-	}
 
-	private String getPath(String nameTest) throws IOException {
-		File directory = new File(".");
-		File dir = new File("/test-output/reports/screenshots/");
-		if (!dir.exists()) {
-			dir.mkdir();
-		}
-		String newFileNamePath = directory.getCanonicalPath() + "/test-output/reports/screenshots/" + getFileName(nameTest);
-		return newFileNamePath;
-	}
-	*/
 
 	public elementData elementInit() throws ParserConfigurationException,SAXException, IOException {
 		elementData element = new elementData();
@@ -330,10 +341,9 @@ public class GenericMethods {
 		return myElement;
 	}
 
-	public WebElement returnId(AppiumDriver driver, String id)
+	public WebElement returnId(AppiumDriver driver,GenericMethods genMeth, String id)
 			throws InterruptedException {
 
-		GenericMethods genMeth = new GenericMethods();
 
 		try {
 
@@ -352,10 +362,9 @@ public class GenericMethods {
 
 	}
 
-	public WebElement returnClassName(AppiumDriver driver, String className)
+	public WebElement returnClassName(AppiumDriver driver, GenericMethods genMeth,  String className)
 			throws InterruptedException {
 
-		GenericMethods genMeth = new GenericMethods();
 
 		try {
 
@@ -373,10 +382,8 @@ public class GenericMethods {
 		return myElement;
 	}
 
-	public WebElement returnXpth(AppiumDriver driver, String xpth)
+	public WebElement returnXpth(AppiumDriver driver, GenericMethods genMeth, String xpth)
 			throws InterruptedException {
-
-		GenericMethods genMeth = new GenericMethods();
 
 		try {
 
@@ -394,10 +401,9 @@ public class GenericMethods {
 
 	}
 
-	public WebElement returnName(AppiumDriver driver, String name)
+	public WebElement returnName(AppiumDriver driver, GenericMethods genMeth, String name)
 			throws InterruptedException {
 
-		GenericMethods genMeth = new GenericMethods();
 		try {
 
 			genMeth.fluentwait(driver, By.name(name));
@@ -418,9 +424,8 @@ public class GenericMethods {
 	// ========= CLICK an ELEMENT
 	// =========================================================================
 
-	public void clickBy(AppiumDriver driver, By by) throws InterruptedException {
+	public void clickBy(AppiumDriver driver, GenericMethods genMeth, By by) throws InterruptedException {
 
-		GenericMethods genMeth = new GenericMethods();
 
 		try {
 
@@ -436,10 +441,8 @@ public class GenericMethods {
 
 	}
 
-	public void clickCss(AppiumDriver driver, String cssSelector)
+	public void clickCss(AppiumDriver driver, GenericMethods genMeth, String cssSelector)
 			throws InterruptedException {
-
-		GenericMethods genMeth = new GenericMethods();
 
 		try {
 
@@ -457,10 +460,9 @@ public class GenericMethods {
 
 	}
 
-	public void clickId(AppiumDriver driver, String id)
+	public void clickId(AppiumDriver driver, GenericMethods genMeth, String id)
 			throws InterruptedException {
 
-		GenericMethods genMeth = new GenericMethods();
 		try {
 
 			WebElement myElement = genMeth.fluentwait(driver, By.id(id));
@@ -474,10 +476,8 @@ public class GenericMethods {
 		}
 	}
 
-	public void clickClassName(AppiumDriver driver, String className)
+	public void clickClassName(AppiumDriver driver, GenericMethods genMeth, String className)
 			throws InterruptedException {
-
-		GenericMethods genMeth = new GenericMethods();
 
 		try {
 
@@ -493,10 +493,8 @@ public class GenericMethods {
 
 	}
 
-	public void clickXpth(AppiumDriver driver, String xpth)
+	public void clickXpth(AppiumDriver driver, GenericMethods genMeth, String xpth)
 			throws InterruptedException, IOException {
-
-		GenericMethods genMeth = new GenericMethods();
 
 		By by = By.xpath(xpth);
 
@@ -513,17 +511,15 @@ public class GenericMethods {
 		}
 
 		catch (Exception e) {
-			genMeth.takeScreenShotNative(driver, xpth);
+			genMeth.takeScreenShotNative(driver, genMeth, xpth);
 			org.testng.Assert.fail(xpth + " didn't display");
 
 		}
 
 	}
 
-	public void clickName(AppiumDriver driver, String name)
+	public void clickName(AppiumDriver driver,GenericMethods genMeth, String name)
 			throws InterruptedException, IOException {
-
-		GenericMethods genMeth = new GenericMethods();
 
 		try {
 
@@ -535,7 +531,7 @@ public class GenericMethods {
 		catch (Exception e) {
 			// String testName = new
 			// Object(){}.getClass().getEnclosingMethod().getName();
-			genMeth.takeScreenShotNative(driver, name);
+			genMeth.takeScreenShotNative(driver, genMeth, name);
 			org.testng.Assert.fail(name + " didn't display");
 
 		}
@@ -545,10 +541,8 @@ public class GenericMethods {
 	// ======================== SEND ELEMENT
 	// =========================================================================
 
-	public void sendBy(AppiumDriver driver, By by, String send)
+	public void sendBy(AppiumDriver driver, GenericMethods genMeth, By by, String send)
 			throws InterruptedException, IOException {
-
-		GenericMethods genMeth = new GenericMethods();
 
 		try {
 
@@ -559,17 +553,15 @@ public class GenericMethods {
 
 		catch (Exception e) {
 
-			genMeth.takeScreenShotNative(driver, send);
+			genMeth.takeScreenShotNative(driver, genMeth, send);
 			org.testng.Assert.fail("WebElement'send by' can't be located");
 
 		}
 
 	}
 
-	public void sendCss(AppiumDriver driver, String cssSelector, String send)
+	public void sendCss(AppiumDriver driver, GenericMethods genMeth, String cssSelector, String send)
 			throws InterruptedException {
-
-		GenericMethods genMeth = new GenericMethods();
 
 		try {
 
@@ -587,10 +579,8 @@ public class GenericMethods {
 
 	}
 
-	public void sendId(AppiumDriver driver, String id, String send)
+	public void sendId(AppiumDriver driver, GenericMethods genMeth, String id, String send)
 			throws InterruptedException, IOException {
-
-		GenericMethods genMeth = new GenericMethods();
 
 		try {
 
@@ -601,17 +591,15 @@ public class GenericMethods {
 
 		catch (Exception e) {
 
-			genMeth.takeScreenShotNative(driver, send);
+			genMeth.takeScreenShotNative(driver, genMeth, send);
 			org.testng.Assert.fail(id + "didn't displayed");
 
 		}
 
 	}
 
-	public void sendClassName(AppiumDriver driver, String className, String send)
+	public void sendClassName(AppiumDriver driver, GenericMethods genMeth, String className, String send)
 			throws InterruptedException {
-
-		GenericMethods genMeth = new GenericMethods();
 
 		try {
 
@@ -627,10 +615,8 @@ public class GenericMethods {
 
 	}
 
-	public void sendXpth(AppiumDriver driver, String xpth, String send)
+	public void sendXpth(AppiumDriver driver, GenericMethods genMeth, String xpth, String send)
 			throws IOException {
-
-		GenericMethods genMeth = new GenericMethods();
 
 		try {
 
@@ -641,17 +627,16 @@ public class GenericMethods {
 
 		catch (Exception e) {
 
-			genMeth.takeScreenShotNative(driver, xpth);
+			genMeth.takeScreenShotNative(driver, genMeth, xpth);
 			org.testng.Assert.fail(xpth + "didn't displayed");
 
 		}
 
 	}
 
-	public void sendName(AppiumDriver driver, String name, String send)
+	public void sendName(AppiumDriver driver, GenericMethods genMeth, String name, String send)
 			throws IOException {
 
-		GenericMethods genMeth = new GenericMethods();
 
 		try {
 
@@ -661,7 +646,7 @@ public class GenericMethods {
 
 		catch (Exception e) {
 
-			genMeth.takeScreenShotNative(driver, name);
+			genMeth.takeScreenShotNative(driver, genMeth, name);
 			org.testng.Assert.fail(name + "didn't displayed");
 
 		}
@@ -671,10 +656,8 @@ public class GenericMethods {
 	// =========================Clear
 	// WebElements=====================================================================
 
-	public void clearXpth(AppiumDriver driver, String xpath)
+	public void clearXpth(AppiumDriver driver, GenericMethods genMeth, String xpath)
 			throws InterruptedException {
-
-		GenericMethods genMeth = new GenericMethods();
 
 		try {
 
@@ -691,10 +674,8 @@ public class GenericMethods {
 
 	}
 
-	public void clearClassName(AppiumDriver driver, String className)
+	public void clearClassName(AppiumDriver driver, GenericMethods genMeth, String className)
 			throws InterruptedException {
-
-		GenericMethods genMeth = new GenericMethods();
 
 		try {
 
@@ -712,10 +693,8 @@ public class GenericMethods {
 
 	}
 
-	public void clearId(AppiumDriver driver, String id)
+	public void clearId(AppiumDriver driver, GenericMethods genMeth, String id)
 			throws InterruptedException {
-
-		GenericMethods genMeth = new GenericMethods();
 
 		try {
 
@@ -732,10 +711,8 @@ public class GenericMethods {
 
 	}
 
-	public void clearCss(AppiumDriver driver, String cssSelector)
+	public void clearCss(AppiumDriver driver, GenericMethods genMeth, String cssSelector)
 			throws InterruptedException {
-
-		GenericMethods genMeth = new GenericMethods();
 
 		try {
 
@@ -761,8 +738,7 @@ public class GenericMethods {
 
 	// Look for an element in a few tries (with counter)
 	public void waitForElementToBeInvisible(AppiumDriver driver, By byType,
-			int numAttempts) throws IOException, ParserConfigurationException,
-			SAXException {
+			int numAttempts) throws IOException, ParserConfigurationException,SAXException {
 
 		int count = 0;
 		Boolean isInvisible = false;
@@ -795,7 +771,7 @@ public class GenericMethods {
 			GenericMethods genMeth = new GenericMethods();
 			// str = new genData();
 			String imageName = "Element isn't Invisible";
-			genMeth.takeScreenShotNative(driver, imageName);
+			genMeth.takeScreenShotNative(driver, genMeth, imageName);
 			org.testng.Assert.fail("WebElement" + " is not Invisible");
 		}
 
@@ -833,7 +809,7 @@ public class GenericMethods {
 		if (elementToBeVisible == null) {
 			GenericMethods genMeth = new GenericMethods();
 			String imageName = "Element isn't Visible";
-			genMeth.takeScreenShotNative(driver, imageName);
+			genMeth.takeScreenShotNative(driver, genMeth, imageName);
 			org.testng.Assert.fail("WebElement" + " is not Visible");
 		}
 
@@ -856,57 +832,6 @@ public class GenericMethods {
 		return foo;
 	}
 
-	// Checks if a given text is present on the page
-
-	/*
-	 * 
-	 * public boolean isTextPresentCheck ( AppiumDriver driver, String text, By
-	 * by ) throws IOException, ParserConfigurationException, SAXException,
-	 * InterruptedException{ boolean wait = false;
-	 * 
-	 * //boolean expectedTextAppeared = //(new WebDriverWait(driver,
-	 * 30)).until(ExpectedConditions.textToBePresentInElementLocated(by, text));
-	 * try{ wait = new FluentWait<AppiumDriver>(driver) .withTimeout(10,
-	 * TimeUnit.SECONDS) .pollingEvery(5, TimeUnit.SECONDS)
-	 * .ignoring(NoSuchElementException
-	 * .class).until(ExpectedConditions.textToBePresentInElementLocated(by,
-	 * text)); }
-	 * 
-	 * catch(Exception e){
-	 * 
-	 * 
-	 * }
-	 * 
-	 * return wait;
-	 * 
-	 * }
-	 */
-
-	/*
-	 * public boolean isTextPresentNative ( AppiumDriver driver, String text, By
-	 * by ) throws IOException, ParserConfigurationException, SAXException,
-	 * InterruptedException{ boolean wait = false; try{ //boolean
-	 * expectedTextAppeared = //(new WebDriverWait(driver,
-	 * 30)).until(ExpectedConditions.textToBePresentInElementLocated(by, text));
-	 * wait = new FluentWait<AppiumDriver>(driver) .withTimeout(10,
-	 * TimeUnit.SECONDS) .pollingEvery(5, TimeUnit.SECONDS)
-	 * .ignoring(NoSuchElementException
-	 * .class).until(ExpectedConditions.textToBePresentInElementLocated(by,
-	 * text)); }
-	 * 
-	 * catch(Exception x){ GenericMethods genMeth = new GenericMethods();
-	 * genData str = new genData(); String imageName = str.screenShotPath + text
-	 * + " didn't display " + genMeth.currentTime() + ".png";
-	 * genMeth.takeScreenShotNative(driver, imageName );
-	 * org.testng.Assert.fail(text + " didn't display");
-	 * 
-	 * }
-	 * 
-	 * return wait;
-	 * 
-	 * }
-	 */
-
 	public void isTextPresentNative(AppiumDriver driver, String text, By by)
 			throws IOException, ParserConfigurationException, SAXException,
 			InterruptedException {
@@ -927,7 +852,7 @@ public class GenericMethods {
 			GenericMethods genMeth = new GenericMethods();
 			// genData str = new genData();
 			String imageName = text + " is invisible";
-			genMeth.takeScreenShotNative(driver, imageName);
+			genMeth.takeScreenShotNative(driver, genMeth, imageName);
 			org.testng.Assert.fail(text + " isn't visible");
 		}
 
@@ -936,18 +861,16 @@ public class GenericMethods {
 	}
 
 	public boolean checkIsTextPresentNative(AppiumDriver driver, String text,
-			By by) throws IOException, ParserConfigurationException,
-			SAXException, InterruptedException {
+			By by) throws IOException, ParserConfigurationException,SAXException, InterruptedException {
 
-		boolean isStartUpPageOpenIOS = false;
+		boolean isTextPresent = false;
 
 		try {
-			isStartUpPageOpenIOS = new FluentWait<AppiumDriver>(driver)
+			isTextPresent = new FluentWait<AppiumDriver>(driver)
 					.withTimeout(10, TimeUnit.SECONDS)
 					.pollingEvery(5, TimeUnit.SECONDS)
 					.ignoring(NoSuchElementException.class)
-					.until(ExpectedConditions.textToBePresentInElementLocated(
-							by, text));
+					.until(ExpectedConditions.textToBePresentInElementLocated(by, text));
 		}
 
 		catch (Exception e) {
@@ -955,13 +878,13 @@ public class GenericMethods {
 			// nothing to do here
 		}
 
-		return isStartUpPageOpenIOS;
+		return isTextPresent;
 
 	}
 
 	// This method checks if a given element is invisible on the screen
 
-	public void isElementInvisibleNative(By by, AppiumDriver driver)
+	public void isElementInvisibleNative(AppiumDriver driver, By by)
 			throws ParserConfigurationException, SAXException, IOException {
 
 		try {
@@ -975,14 +898,14 @@ public class GenericMethods {
 
 			GenericMethods genMeth = new GenericMethods();
 			String imageName = " Element is visible";
-			genMeth.takeScreenShotNative(driver, imageName);
+			genMeth.takeScreenShotNative(driver, genMeth, imageName);
 			org.testng.Assert.fail("WebElement" + " still visible");
 
 		}
 
 	}
 
-	public void isElementVisibleNative(By by, AppiumDriver driver)
+	public void isElementVisibleNative(AppiumDriver driver, By by)
 			throws ParserConfigurationException, SAXException, IOException {
 
 		try {
@@ -1000,7 +923,7 @@ public class GenericMethods {
 		catch (Exception e) {
 			GenericMethods genMeth = new GenericMethods();
 			String imageName = "Element is invisible";
-			genMeth.takeScreenShotNative(driver, imageName);
+			genMeth.takeScreenShotNative(driver, genMeth, imageName);
 			org.testng.Assert.fail("WebElement" + " is not visible");
 
 		}
@@ -1045,8 +968,7 @@ public class GenericMethods {
 
 	}
 
-	public void isElementInvisibleTextNative(By by, String text,
-			AppiumDriver driver) throws ParserConfigurationException,
+	public void isElementInvisibleTextNative(AppiumDriver driver, By by, String text) throws ParserConfigurationException,
 			SAXException, IOException {
 
 		try {
@@ -1062,7 +984,7 @@ public class GenericMethods {
 			genData str = new genData();
 			String imageName = str.screenShotPath + text + " still visible "
 					+ genMeth.currentTime() + ".png";
-			genMeth.takeScreenShotNative(driver, imageName);
+			genMeth.takeScreenShotNative(driver, genMeth, imageName);
 			org.testng.Assert.fail(text + " still visible");
 
 		}
@@ -1100,8 +1022,7 @@ public class GenericMethods {
 
 		// String curDate = new
 		// SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
-		String curDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-				.format(new Date());
+		String curDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
 
 		return curDate;
 	}
@@ -1112,25 +1033,20 @@ public class GenericMethods {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability("deviceName", "Automation test2");
 		capabilities.setCapability("device", "iPhone 5");
-		capabilities.setCapability("udid",
-				"dc32ad3627707abcf57c9844d4ed95e4c212e5a9");
+		capabilities.setCapability("udid","dc32ad3627707abcf57c9844d4ed95e4c212e5a9");
 		capabilities.setCapability(CapabilityType.VERSION, "8.1");
 		capabilities.setCapability(CapabilityType.PLATFORM, "Mac");
 		capabilities.setCapability("platformName", "iOS");
-		capabilities.setCapability("app",
-				"/Users/qa/Desktop/Appium/Pogoplug.app");
+		capabilities.setCapability("app","/Users/qa/Desktop/Appium/Pogoplug.app");
 		try {
 
-			driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"),
-					capabilities);
+			driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
 		}
 
 		catch (MalformedURLException e) {
 
-			genMeth.takeScreenShotNative(driver,
-					"Faliled to open Appium driver");
-			org.testng.Assert.fail("WebElement"
-					+ " Faliled to open Appium driver");// Thread.sleep(1000);
+			genMeth.takeScreenShotNative(driver, genMeth, "Faliled to open Appium driver");
+			org.testng.Assert.fail("WebElement"+ " Faliled to open Appium driver");
 		}
 		return driver;
 	}
@@ -1155,19 +1071,16 @@ public class GenericMethods {
 
 	}
 
-	// add a function that will check & click ok if access to contacts/photos
-	// popup is prompt
-	public void handleAccessPhotosContacts(webElementiOS iosData)
+	public void handleAccessPhotosContactsLocation(GenericMethods genMeth, webElementiOS iosData)
 			throws IOException, ParserConfigurationException, SAXException,InterruptedException {
 		
-		GenericMethods genMeth = new GenericMethods();
 		// check if the "“Pogoplug” Would Like to Access Your Contacts" popup is displayed
 		boolean isContactsAccessPopupDisplay = genMeth.checkIsTextPresentNative(driver,iosData.AccessContactsWarning_Name,
 						By.name(iosData.AccessContactsWarning_Name));
 
 		if (isContactsAccessPopupDisplay == true) {
 
-			genMeth.clickName(driver, iosData.BTNok_Name);
+			genMeth.clickName(driver,genMeth, iosData.BTNok_Name);
 		}
 
 		// check if the "“Pogoplug” Would Like to Access Your Photos" popup is displayed
@@ -1176,7 +1089,18 @@ public class GenericMethods {
 
 		if (isPhotosAccessPopupDisplay == true) {
 
-			genMeth.clickName(driver, iosData.BTNok_Name);
+			genMeth.clickName(driver,genMeth, iosData.BTNok_Name);
+		}
+		
+		// check if the current location popup is displayed
+		boolean isLocationPopupDisplay = genMeth.checkIsTextPresentNative(
+				driver, iosData.AccessLocationServicesWarning_Name,
+				By.name(iosData.AccessLocationServicesWarning_Name));
+
+		if (isLocationPopupDisplay == true) {
+
+			genMeth.clickName(driver,genMeth, iosData.BTNok_Name);
+
 		}
 
 	}
@@ -1214,4 +1138,22 @@ public class GenericMethods {
  * Actions(driver); WebElement mainMenu = driver.findElement(by);
  * act.moveToElement(mainMenu).build().perform(); }
  */
+
+/*
+private String getFileName(String nameTest) throws IOException {
+	DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy_hh.mm.ss");
+	Date date = new Date();
+	return dateFormat.format(date) + "_" + nameTest + ".png";
+}
+
+private String getPath(String nameTest) throws IOException {
+	File directory = new File(".");
+	File dir = new File("/test-output/reports/screenshots/");
+	if (!dir.exists()) {
+		dir.mkdir();
+	}
+	String newFileNamePath = directory.getCanonicalPath() + "/test-output/reports/screenshots/" + getFileName(nameTest);
+	return newFileNamePath;
+}
+*/
 
