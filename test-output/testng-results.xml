@@ -1,39 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="1" passed="1">
+<testng-results skipped="1" failed="0" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="555496" started-at="2014-11-15T06:05:30Z" finished-at="2014-11-15T06:14:45Z">
+  <suite name="Command line suite" duration-ms="31" started-at="2014-11-21T21:06:44Z" finished-at="2014-11-21T21:06:44Z">
     <groups>
-      <group name="Sanity Native iOS now">
-        <method signature="sanityNativeIosAppium.settingsBackupEnableDisableDuringUpload()[pri:0, instance:com.pp.ios.auto.sanityNativeIosAppium@1a0dcaa]" name="settingsBackupEnableDisableDuringUpload" class="com.pp.ios.auto.sanityNativeIosAppium"/>
-      </group> <!-- Sanity Native iOS now -->
+      <group name="Sanity Native iOS simulator">
+        <method signature="sanityIos.badCredentials()[pri:0, instance:com.pp.ios.auto.sanityIos@25bbf683]" name="badCredentials" class="com.pp.ios.auto.sanityIos"/>
+      </group> <!-- Sanity Native iOS simulator -->
     </groups>
-    <test name="Sanity Tests" duration-ms="555496" started-at="2014-11-15T06:05:30Z" finished-at="2014-11-15T06:14:45Z">
-      <class name="com.pp.ios.auto.sanityNativeIosAppium">
-        <test-method status="PASS" signature="setupBeforeSuite(org.testng.ITestContext)[pri:0, instance:com.pp.ios.auto.sanityNativeIosAppium@1a0dcaa]" name="setupBeforeSuite" is-config="true" duration-ms="112776" started-at="2014-11-15T08:03:37Z" finished-at="2014-11-15T08:05:30Z">
+    <test name="Command line test" duration-ms="31" started-at="2014-11-21T21:06:44Z" finished-at="2014-11-21T21:06:44Z">
+      <class name="com.pp.ios.auto.sanityIos">
+        <test-method status="FAIL" signature="setupBeforeSuite(org.testng.ITestContext)[pri:0, instance:com.pp.ios.auto.sanityIos@25bbf683]" name="setupBeforeSuite" is-config="true" duration-ms="0" started-at="2014-11-21T23:06:41Z" finished-at="2014-11-21T23:06:41Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@72e34f77]]>
+                <![CDATA[org.testng.TestRunner@4ff4357f]]>
               </value>
             </param>
           </params>
+          <exception class="org.openqa.selenium.remote.UnreachableBrowserException">
+            <message>
+              <![CDATA[Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure.
+Build info: version: '2.42.2', revision: '6a6995d', time: '2014-06-03 17:42:30'
+System info: host: 'menyz.local', ip: '192.168.1.104', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.9.5', java.version: '1.8.0_11'
+Driver info: driver.version: AppiumDriver]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.remote.UnreachableBrowserException: Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure.
+Build info: version: '2.42.2', revision: '6a6995d', time: '2014-06-03 17:42:30'
+System info: host: 'menyz.local', ip: '192.168.1.104', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.9.5', java.version: '1.8.0_11'
+Driver info: driver.version: AppiumDriver
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:593)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:102)
+	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:240)
+	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:126)
+	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:153)
+	at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:53)
+	at com.pp.ios.auto.GenericMethods.cleanLoginIos(GenericMethods.java:178)
+	at com.pp.ios.auto.sanityIos.setupBeforeSuite(sanityIos.java:34)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:564)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:138)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:277)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at com.pp.ios.auto.runIos.main(runIos.java:28)
+Caused by: org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:4723 [/127.0.0.1] failed: Connection refused
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:138)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:314)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:357)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:218)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:194)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:85)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:72)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at org.openqa.selenium.remote.HttpCommandExecutor.fallBackExecute(HttpCommandExecutor.java:204)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:173)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:572)
+	... 23 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:345)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:72)
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:118)
+	... 35 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.remote.UnreachableBrowserException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupBeforeSuite -->
-        <test-method status="PASS" signature="checkHomeScreen()[pri:0, instance:com.pp.ios.auto.sanityNativeIosAppium@1a0dcaa]" name="checkHomeScreen" is-config="true" duration-ms="2409" started-at="2014-11-15T08:05:30Z" finished-at="2014-11-15T08:05:32Z">
+        <test-method status="SKIP" signature="checkHomeScreen()[pri:0, instance:com.pp.ios.auto.sanityIos@25bbf683]" name="checkHomeScreen" is-config="true" duration-ms="0" started-at="2014-11-21T23:06:44Z" finished-at="2014-11-21T23:06:44Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkHomeScreen -->
-        <test-method status="PASS" signature="settingsBackupEnableDisableDuringUpload()[pri:0, instance:com.pp.ios.auto.sanityNativeIosAppium@1a0dcaa]" name="settingsBackupEnableDisableDuringUpload" duration-ms="553072" started-at="2014-11-15T08:05:32Z" description="Settings: Backup Enable/disable *with upload in the background" finished-at="2014-11-15T08:14:45Z">
+        <test-method status="SKIP" signature="badCredentials()[pri:0, instance:com.pp.ios.auto.sanityIos@25bbf683]" name="badCredentials" duration-ms="0" started-at="2014-11-21T23:06:44Z" description="login with bad/missing credentials , forgot password (negative &amp; positive)" finished-at="2014-11-21T23:06:44Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- settingsBackupEnableDisableDuringUpload -->
-        <test-method status="PASS" signature="sendMail()[pri:0, instance:com.pp.ios.auto.sanityNativeIosAppium@1a0dcaa]" name="sendMail" is-config="true" duration-ms="1335" started-at="2014-11-15T08:14:46Z" finished-at="2014-11-15T08:14:47Z">
+        </test-method> <!-- badCredentials -->
+        <test-method status="FAIL" signature="sendMail()[pri:0, instance:com.pp.ios.auto.sanityIos@25bbf683]" name="sendMail" is-config="true" duration-ms="0" started-at="2014-11-21T23:06:45Z" finished-at="2014-11-21T23:06:45Z">
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+	at com.pp.ios.auto.sanityIos.sendMail(sanityIos.java:1252)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:564)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:138)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:308)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at com.pp.ios.auto.runIos.main(runIos.java:28)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- sendMail -->
-      </class> <!-- com.pp.ios.auto.sanityNativeIosAppium -->
-    </test> <!-- Sanity Tests -->
-  </suite> <!-- Suite -->
+      </class> <!-- com.pp.ios.auto.sanityIos -->
+    </test> <!-- Command line test -->
+  </suite> <!-- Command line suite -->
 </testng-results>

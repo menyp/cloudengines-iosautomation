@@ -6,12 +6,22 @@
       <class name="com.pp.ios.auto.sanityNativeIosAppium">
         <methods>
           <include name="setupBeforeSuite"/>
-          <include name="backupInBackground"/>
-          <include name="sendMail"/>
+          <include name="Favorites"/>
+          <include name="settingsPasscodeSanity"/>
+          <include name="foregroundBackgroundSwith"/>
           <include name="settingsBackupEnableDisableDuringUpload"/>
           <include name="settingsSaveLoginSanity"/>
+          <include name="search"/>
+          <include name="addRemoveTeamFolders"/>
+          <include name="Albums"/>
           <include name="testCreatefolder"/>
-          <include name="checkHomeScreen"/>
+          <include name="testTour"/>
+          <include name="createNewUser"/>
+          <include name="backupInBackground"/>
+          <include name="settingsBackupEnableDisable"/>
+          <include name="sendMail"/>
+          <include name="uploadExistingPotos"/>
+          <include name="badCredentials"/>
         </methods>
       </class> <!-- com.pp.ios.auto.sanityNativeIosAppium -->
     </classes>

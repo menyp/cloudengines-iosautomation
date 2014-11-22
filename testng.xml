@@ -4,11 +4,13 @@
   <test name="Sanity Tests">
       <groups>
 		<run>
-			<include name="Sanity Native iOS"/>
+		    <include name="a"/>        
 		</run>
 	</groups>
     <classes>
-      <class name="com.pp.ios.auto.sanityNativeIosAppium"/>
+        
+          <class name="com.pp.ios.auto.runIos"/>
+          
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

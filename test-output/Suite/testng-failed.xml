@@ -4,18 +4,15 @@
   <test name="Sanity Tests(failed)" parallel="none">
     <groups>
       <run>
-        <include name="Sanity Native iOS now"/>
+        <include name="a"/>
       </run>
     </groups>
     <classes>
-      <class name="com.pp.ios.auto.sanityNativeIosAppium">
+      <class name="com.pp.ios.auto.runIos">
         <methods>
-          <include name="setupBeforeSuite"/>
-          <include name="sendMail"/>
-          <include name="settingsBackupEnableDisableDuringUpload"/>
-          <include name="checkHomeScreen"/>
+          <include name="main"/>
         </methods>
-      </class> <!-- com.pp.ios.auto.sanityNativeIosAppium -->
+      </class> <!-- com.pp.ios.auto.runIos -->
     </classes>
   </test> <!-- Sanity Tests(failed) -->
 </suite> <!-- Failed suite [Suite] -->
