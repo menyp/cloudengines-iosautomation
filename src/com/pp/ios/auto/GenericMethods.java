@@ -40,8 +40,6 @@ public class GenericMethods {
 
 	AppiumDriver driver;
 
-	// GenericMethods genMeth = new GenericMethods ();
-
 	public AppiumDriver loginNativeAndroid(GenericMethods genMeth) throws ParserConfigurationException, SAXException, IOException,InterruptedException {
 		
 		androidElementData elData = new androidElementData();
@@ -100,7 +98,7 @@ public class GenericMethods {
 		return driver;
 	}
 
-	public void signOutFromStartupIphone5(AppiumDriver driver, webElementiOS iosData) throws InterruptedException, IOException {
+	public void signOutFromStartupIphone5(AppiumDriver driver, webElementsIos iosData) throws InterruptedException, IOException {
 		GenericMethods genMeth = new GenericMethods();
 		genMeth.clickName(driver,genMeth, iosData.Settings_Name);
 		driver.swipe(170, 350, 170, 150, 500);
@@ -110,7 +108,7 @@ public class GenericMethods {
 		genMeth.clickName(driver,genMeth, iosData.BTNsignOut_Name);
 	}
 	
-	public void loginIos(GenericMethods genMeth, webElementiOS iosData, String user)throws InterruptedException, IOException,ParserConfigurationException, SAXException {
+	public void loginIos(GenericMethods genMeth, webElementsIos iosData, String user)throws InterruptedException, IOException,ParserConfigurationException, SAXException {
 
 		genMeth.clickName(driver,genMeth, iosData.BTNalreadyHaveAnAccount_name);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDemail_Id, user);
@@ -166,7 +164,7 @@ public class GenericMethods {
 	}
 
 
-	public AppiumDriver cleanLoginIos(GenericMethods genMeth, webElementiOS iosData, String user) throws InterruptedException, IOException,ParserConfigurationException, SAXException {
+	public AppiumDriver cleanLoginIos(GenericMethods genMeth, webElementsIos iosData, String user) throws InterruptedException, IOException,ParserConfigurationException, SAXException {
 
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability("deviceName", "Automation test2");
@@ -228,7 +226,7 @@ public class GenericMethods {
 		
 	}
 
-	public void signUp(GenericMethods genMeth, webElementiOS iosData) throws InterruptedException, IOException, ParserConfigurationException, SAXException{
+	public void signUp(GenericMethods genMeth, webElementsIos iosData) throws InterruptedException, IOException, ParserConfigurationException, SAXException{
 		
 		String randomName =  genMeth.randomString();
 		String currentDateFolder = genMeth.currentTime();
@@ -292,12 +290,12 @@ public class GenericMethods {
 		return element;
 	}
 
-	public webElementiOS iOSelementInit(String lang) throws Exception,
+	public webElementsIos iOSelementInit(String lang) throws Exception,
 			Throwable {
 		// According "lang" will determine for which language it will be initialized
 
 		// if ()
-		webElementiOS element = new webElementiOS(lang);
+		webElementsIos element = new webElementsIos(lang);
 		return element;
 
 	}
@@ -940,8 +938,8 @@ public class GenericMethods {
 			// (new WebDriverWait(driver,
 			// 20)).until(ExpectedConditions.visibilityOfElementLocated(by));
 			element = new FluentWait<AppiumDriver>(driver)
-					.withTimeout(30, TimeUnit.SECONDS)
-					.pollingEvery(5, TimeUnit.SECONDS)
+					.withTimeout(5, TimeUnit.SECONDS)
+					.pollingEvery(1, TimeUnit.SECONDS)
 					.ignoring(NoSuchElementException.class)
 					.until(ExpectedConditions.visibilityOfElementLocated(by));
 
@@ -1071,7 +1069,7 @@ public class GenericMethods {
 
 	}
 
-	public void handleAccessPhotosContactsLocation(GenericMethods genMeth, webElementiOS iosData)
+	public void handleAccessPhotosContactsLocation(GenericMethods genMeth, webElementsIos iosData)
 			throws IOException, ParserConfigurationException, SAXException,InterruptedException {
 		
 		// check if the "“Pogoplug” Would Like to Access Your Contacts" popup is displayed
