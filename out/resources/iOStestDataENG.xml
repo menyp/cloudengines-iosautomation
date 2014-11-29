@@ -179,6 +179,10 @@
 		<badPassword>incorrectPassword</badPassword>
 		<emptyPassword></emptyPassword>
 		<emptyUserName></emptyUserName>
+		<platformIphone>iPhone</platformIphone>
+		<platformIpad>iPad</platformIpad>
+		<platforSimulatorIphone>Simulator iPhone</platforSimulatorIphone>
+		<platformSimulatorIpad>Simulator iPad</platformSimulatorIpad>
 	</GeneralInfo>
 	
 

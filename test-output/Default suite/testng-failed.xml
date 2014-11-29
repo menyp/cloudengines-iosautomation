@@ -3,27 +3,27 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.pp.ios.auto.sanityNativeIosAppium">
+      <class name="com.pp.ios.auto.sanityIos">
         <methods>
+          <include name="search"/>
           <include name="setupBeforeSuite"/>
+          <include name="addRemoveTeamFolders"/>
+          <include name="settingsBackupEnableDisableDuringUpload"/>
+          <include name="settingsSaveLoginSanity"/>
+          <include name="uploadExistingPotos"/>
           <include name="Favorites"/>
           <include name="settingsPasscodeSanity"/>
           <include name="foregroundBackgroundSwith"/>
-          <include name="settingsBackupEnableDisableDuringUpload"/>
-          <include name="settingsSaveLoginSanity"/>
-          <include name="search"/>
-          <include name="addRemoveTeamFolders"/>
-          <include name="Albums"/>
           <include name="testCreatefolder"/>
-          <include name="testTour"/>
-          <include name="createNewUser"/>
           <include name="backupInBackground"/>
-          <include name="settingsBackupEnableDisable"/>
-          <include name="sendMail"/>
-          <include name="uploadExistingPotos"/>
           <include name="badCredentials"/>
+          <include name="sendMail"/>
+          <include name="createNewUser"/>
+          <include name="Albums"/>
+          <include name="settingsBackupEnableDisable"/>
+          <include name="testTour"/>
         </methods>
-      </class> <!-- com.pp.ios.auto.sanityNativeIosAppium -->
+      </class> <!-- com.pp.ios.auto.sanityIos -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

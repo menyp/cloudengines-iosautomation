@@ -21,10 +21,12 @@ public class xmlHandel {
 	}
 	
 	
-	public static String readIosXml (String nodeName , String langXml) throws ParserConfigurationException, SAXException, IOException{
+	public static String readIosXml (String nodeName , String langXml, String xmlPath) throws ParserConfigurationException, SAXException, IOException{
 		//Declare file path
-		//File xmlFile = new File ("/Users/qa/cloudengines-automation/src/resources/"+langXml);
-		File xmlFile = new File ("/Users/qa/cloudengines-iosautomation/src/resources/"+langXml);
+		File xmlFile = new File (xmlPath + langXml);
+		//File xmlFile = new File ("/Users/qa/cloudengines-iosautomation/src/resources/"+langXml);
+		//File xmlFile = new File ("/Users/pogoplug/Appium/"+langXml);
+
 		//Create instance for document builder factory
 		DocumentBuilderFactory dbFactory  = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();

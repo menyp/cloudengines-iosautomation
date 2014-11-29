@@ -153,7 +153,10 @@ public class webElementsIos {
 	String Categories;
 	String BadCredentialsPopup;
 	String BackupCompleted_Name;
-
+	String platformIphone;
+	String platformIpad;
+	String platforSimulatorIphone;
+	String platformSimulatorIpad;
 	
 // Icons
 	String iconInProgress_Name;
@@ -171,173 +174,175 @@ public class webElementsIos {
 // Tabs
 	String tabCurrentFolder_Name;
 	String tabPogoplugCloud_Name;
+
 		
-public webElementsIos (String langXml ) throws Exception, Throwable, IOException {
+public webElementsIos (String langXml, String xmlPath ) throws Exception, Throwable, IOException {
 	
-	this.BTNalreadyHaveAnAccount_name = xmlHandel.readIosXml("BTNalreadyHaveAnAccount_name" , langXml);
-	this.BTNsignUp_Name = xmlHandel.readIosXml("BTNsignUp_Name" , langXml);
-	this.BTNsignin_Name = xmlHandel.readIosXml("BTNsignin_Name", langXml);
-	this.BTNleft_Name = xmlHandel.readIosXml("BTNleft_Name", langXml);
-	this.BTNshareOn_Name = xmlHandel.readIosXml("BTNshareOn_Name", langXml);
-	this.BTNcameraOn_Name = xmlHandel.readIosXml("BTNcameraOn_Name", langXml);
-	this.BTNcreateOn_Name = xmlHandel.readIosXml("BTNcreateOn_Name", langXml);
-	this.BTNcancel_Name = xmlHandel.readIosXml("BTNcancel_Name", langXml);
-	this.BTNcreate_Name = xmlHandel.readIosXml("BTNcreate_Name", langXml);
-	this.BTNback_Name = xmlHandel.readIosXml("BTNback_Name", langXml);
-	this.BTNdelete_Name = xmlHandel.readIosXml("BTNdelete_Name", langXml);
-	this.BTNexistingPhotosorVideos_Name = xmlHandel.readIosXml("BTNexistingPhotosorVideos_Name", langXml);
-	this.BTNuploadProgressHistory_Name = xmlHandel.readIosXml("BTNuploadProgressHistory_Name", langXml);
-	this.BTNphotoCapture_Name = xmlHandel.readIosXml("BTNphotoCapture_Name", langXml);
-	this.BTNusePhoto_Name = xmlHandel.readIosXml("BTNusePhoto_Name", langXml);
-	this.BTNretake_Name = xmlHandel.readIosXml("BTNretake_Name", langXml);
-	this.BTNok_Name = xmlHandel.readIosXml("BTNok_Name", langXml);
-	this.BTNedit_Name = xmlHandel.readIosXml("BTNedit_Name", langXml);
-	this.BTNdeleteOn_Name = xmlHandel.readIosXml("BTNdeleteOn_Name", langXml);
-	this.BTNdone_Name = xmlHandel.readIosXml("BTNdone_Name", langXml);
-	this.BTNfileExplorer_Name = xmlHandel.readIosXml("BTNfileExplorer_Name", langXml);
-	this.BTNcontinue_Name = xmlHandel.readIosXml("BTNcontinue_Name", langXml);
-	this.BTNgoUnlimited_Name = xmlHandel.readIosXml("BTNgoUnlimited_Name", langXml);
-	this.BTNskip_Name = xmlHandel.readIosXml("BTNskip_Name", langXml);
-	this.BTNxInTour_Name = xmlHandel.readIosXml("BTNxInTour_Name", langXml);
-	this.BTNdismiss_Name = xmlHandel.readIosXml("BTNdismiss_Name", langXml);
-	this.BTNsignUpForFree_Name = xmlHandel.readIosXml("BTNsignUpForFree_Name", langXml);
-	this.BTNsubmit_Name = xmlHandel.readIosXml("BTNsubmit_Name", langXml);
-	this.BTNclearTextIcon_Name = xmlHandel.readIosXml("BTNclearTextIcon_Name", langXml);
-	this.BTNpassCodeLock_Name = xmlHandel.readIosXml("BTNpassCodeLock_Name", langXml);
-	this.BTNoff_Name = xmlHandel.readIosXml("BTNoff_Name", langXml);
-	this.BTNon_Name = xmlHandel.readIosXml("BTNon_Name", langXml);
-	this.BTNchangePasscode_Name = xmlHandel.readIosXml("BTNchangePasscode_Name", langXml);
-	this.BTNbackupOn_Name = xmlHandel.readIosXml("BTNbackupOn_Name", langXml);
-	this.BTNbackupOff_Name = xmlHandel.readIosXml("BTNbackupOff_Name", langXml);
-	this.BTNenable_Name = xmlHandel.readIosXml("BTNenable_Name", langXml);
-	this.BTNupgrade_Name = xmlHandel.readIosXml("BTNupgrade_Name", langXml);
-	this.BTNmusicPlayer_Name = xmlHandel.readIosXml("BTNmusicPlayer_Name", langXml);
-	this.BTNphoneGallery_Name = xmlHandel.readIosXml("BTNphoneGallery_Name", langXml);
-	this.BTNwifiAndCellular_Name = xmlHandel.readIosXml("BTNwifiAndCellular_Name", langXml);
-	this.BTNvideos_Name = xmlHandel.readIosXml("BTNvideos_Name", langXml);
-	this.BTNalbums_Name = xmlHandel.readIosXml("BTNalbums_Name", langXml);
-	this.BTNtimeline_Name_name = xmlHandel.readIosXml("BTNtimeline_Name_name", langXml);
-	this.BTNsignOut_Name = xmlHandel.readIosXml("BTNsignOut_Name", langXml);
-	this.BTNpinButton1_Id = xmlHandel.readIosXml("BTNpinButton1_Id", langXml);
-	this.BTNpinButton2_Id = xmlHandel.readIosXml("BTNpinButton2_Id", langXml);
-	this.BTNxButtonInTour_Name = xmlHandel.readIosXml("BTNxButtonInTour_Name", langXml);
-	this.BTNcameraRoll_Name = xmlHandel.readIosXml("BTNcameraRoll_Name", langXml);
-	this.BTNnoSpaceOn_Name = xmlHandel.readIosXml("BTNnoSpaceOn_Name", langXml);
-	this.BTNresumeUpload_Name = xmlHandel.readIosXml("BTNresumeUpload_Name", langXml);
-	this.BTNfavorites_Name = xmlHandel.readIosXml("BTNfavorites_Name", langXml);
-	this.BTNremoveFavorites_Name = xmlHandel.readIosXml("BTNremoveFavorites_Name", langXml);
-	this.BTNaddUsers_Name = xmlHandel.readIosXml("BTNaddUsers_Name", langXml);
-	this.BTNteamFolders_Name = xmlHandel.readIosXml("BTNteamFolders_Name", langXml);
-	this.BTNremoveShare_Name = xmlHandel.readIosXml("BTNremoveShare_Name", langXml);
-	this.BTNremoveAllUsers_Name = xmlHandel.readIosXml("BTNremoveAllUsers_Name", langXml);
+	this.BTNalreadyHaveAnAccount_name = xmlHandel.readIosXml("BTNalreadyHaveAnAccount_name" , langXml, xmlPath);
+	this.BTNsignUp_Name = xmlHandel.readIosXml("BTNsignUp_Name" , langXml, xmlPath);
+	this.BTNsignin_Name = xmlHandel.readIosXml("BTNsignin_Name", langXml, xmlPath);
+	this.BTNleft_Name = xmlHandel.readIosXml("BTNleft_Name", langXml, xmlPath);
+	this.BTNshareOn_Name = xmlHandel.readIosXml("BTNshareOn_Name", langXml, xmlPath);
+	this.BTNcameraOn_Name = xmlHandel.readIosXml("BTNcameraOn_Name", langXml, xmlPath);
+	this.BTNcreateOn_Name = xmlHandel.readIosXml("BTNcreateOn_Name", langXml, xmlPath);
+	this.BTNcancel_Name = xmlHandel.readIosXml("BTNcancel_Name", langXml, xmlPath);
+	this.BTNcreate_Name = xmlHandel.readIosXml("BTNcreate_Name", langXml, xmlPath);
+	this.BTNback_Name = xmlHandel.readIosXml("BTNback_Name", langXml, xmlPath);
+	this.BTNdelete_Name = xmlHandel.readIosXml("BTNdelete_Name", langXml, xmlPath);
+	this.BTNexistingPhotosorVideos_Name = xmlHandel.readIosXml("BTNexistingPhotosorVideos_Name", langXml, xmlPath);
+	this.BTNuploadProgressHistory_Name = xmlHandel.readIosXml("BTNuploadProgressHistory_Name", langXml, xmlPath);
+	this.BTNphotoCapture_Name = xmlHandel.readIosXml("BTNphotoCapture_Name", langXml, xmlPath);
+	this.BTNusePhoto_Name = xmlHandel.readIosXml("BTNusePhoto_Name", langXml, xmlPath);
+	this.BTNretake_Name = xmlHandel.readIosXml("BTNretake_Name", langXml, xmlPath);
+	this.BTNok_Name = xmlHandel.readIosXml("BTNok_Name", langXml, xmlPath);
+	this.BTNedit_Name = xmlHandel.readIosXml("BTNedit_Name", langXml, xmlPath);
+	this.BTNdeleteOn_Name = xmlHandel.readIosXml("BTNdeleteOn_Name", langXml, xmlPath);
+	this.BTNdone_Name = xmlHandel.readIosXml("BTNdone_Name", langXml, xmlPath);
+	this.BTNfileExplorer_Name = xmlHandel.readIosXml("BTNfileExplorer_Name", langXml, xmlPath);
+	this.BTNcontinue_Name = xmlHandel.readIosXml("BTNcontinue_Name", langXml, xmlPath);
+	this.BTNgoUnlimited_Name = xmlHandel.readIosXml("BTNgoUnlimited_Name", langXml, xmlPath);
+	this.BTNskip_Name = xmlHandel.readIosXml("BTNskip_Name", langXml, xmlPath);
+	this.BTNxInTour_Name = xmlHandel.readIosXml("BTNxInTour_Name", langXml, xmlPath);
+	this.BTNdismiss_Name = xmlHandel.readIosXml("BTNdismiss_Name", langXml, xmlPath);
+	this.BTNsignUpForFree_Name = xmlHandel.readIosXml("BTNsignUpForFree_Name", langXml, xmlPath);
+	this.BTNsubmit_Name = xmlHandel.readIosXml("BTNsubmit_Name", langXml, xmlPath);
+	this.BTNclearTextIcon_Name = xmlHandel.readIosXml("BTNclearTextIcon_Name", langXml, xmlPath);
+	this.BTNpassCodeLock_Name = xmlHandel.readIosXml("BTNpassCodeLock_Name", langXml, xmlPath);
+	this.BTNoff_Name = xmlHandel.readIosXml("BTNoff_Name", langXml, xmlPath);
+	this.BTNon_Name = xmlHandel.readIosXml("BTNon_Name", langXml, xmlPath);
+	this.BTNchangePasscode_Name = xmlHandel.readIosXml("BTNchangePasscode_Name", langXml, xmlPath);
+	this.BTNbackupOn_Name = xmlHandel.readIosXml("BTNbackupOn_Name", langXml, xmlPath);
+	this.BTNbackupOff_Name = xmlHandel.readIosXml("BTNbackupOff_Name", langXml, xmlPath);
+	this.BTNenable_Name = xmlHandel.readIosXml("BTNenable_Name", langXml, xmlPath);
+	this.BTNupgrade_Name = xmlHandel.readIosXml("BTNupgrade_Name", langXml, xmlPath);
+	this.BTNmusicPlayer_Name = xmlHandel.readIosXml("BTNmusicPlayer_Name", langXml, xmlPath);
+	this.BTNphoneGallery_Name = xmlHandel.readIosXml("BTNphoneGallery_Name", langXml, xmlPath);
+	this.BTNwifiAndCellular_Name = xmlHandel.readIosXml("BTNwifiAndCellular_Name", langXml, xmlPath);
+	this.BTNvideos_Name = xmlHandel.readIosXml("BTNvideos_Name", langXml, xmlPath);
+	this.BTNalbums_Name = xmlHandel.readIosXml("BTNalbums_Name", langXml, xmlPath);
+	this.BTNtimeline_Name_name = xmlHandel.readIosXml("BTNtimeline_Name_name", langXml, xmlPath);
+	this.BTNsignOut_Name = xmlHandel.readIosXml("BTNsignOut_Name", langXml, xmlPath);
+	this.BTNpinButton1_Id = xmlHandel.readIosXml("BTNpinButton1_Id", langXml, xmlPath);
+	this.BTNpinButton2_Id = xmlHandel.readIosXml("BTNpinButton2_Id", langXml, xmlPath);
+	this.BTNxButtonInTour_Name = xmlHandel.readIosXml("BTNxButtonInTour_Name", langXml, xmlPath);
+	this.BTNcameraRoll_Name = xmlHandel.readIosXml("BTNcameraRoll_Name", langXml, xmlPath);
+	this.BTNnoSpaceOn_Name = xmlHandel.readIosXml("BTNnoSpaceOn_Name", langXml, xmlPath);
+	this.BTNresumeUpload_Name = xmlHandel.readIosXml("BTNresumeUpload_Name", langXml, xmlPath);
+	this.BTNfavorites_Name = xmlHandel.readIosXml("BTNfavorites_Name", langXml, xmlPath);
+	this.BTNremoveFavorites_Name = xmlHandel.readIosXml("BTNremoveFavorites_Name", langXml, xmlPath);
+	this.BTNaddUsers_Name = xmlHandel.readIosXml("BTNaddUsers_Name", langXml, xmlPath);
+	this.BTNteamFolders_Name = xmlHandel.readIosXml("BTNteamFolders_Name", langXml, xmlPath);
+	this.BTNremoveShare_Name = xmlHandel.readIosXml("BTNremoveShare_Name", langXml, xmlPath);
+	this.BTNremoveAllUsers_Name = xmlHandel.readIosXml("BTNremoveAllUsers_Name", langXml, xmlPath);
 
-	this.TEXTFIELDemail_Id = xmlHandel.readIosXml("TEXTFIELDemail_Id", langXml);
-	this.TEXTFIELDpass_Id = xmlHandel.readIosXml("TEXTFIELDpass_Id", langXml);
-	this.TEXTFIELDcreateNewFolder_Xpth = xmlHandel.readIosXml("TEXTFIELDcreateNewFolder_Xpth", langXml);
-	this.TEXTFIELDsearch_Id = xmlHandel.readIosXml("TEXTFIELDsearch_Id", langXml);
-	this.TEXTFIELDnameOptional_Id = xmlHandel.readIosXml("TEXTFIELDnameOptional_Id", langXml);
-
-	
-	
-
-	this.LinkForgotYourPassword_Name = xmlHandel.readIosXml("LinkForgotYourPassword_Name", langXml);
-	this.LinkPrivacyPolicy_Name = xmlHandel.readIosXml("LinkPrivacyPolicy_Name", langXml);
-	this.LinkTRUSTe_Name = xmlHandel.readIosXml("LinkTRUSTe_Name", langXml);
-	this.NeverLoseAPhoto_Name = xmlHandel.readIosXml("NeverLoseAPhoto_Name", langXml);
-	this.TransferPhonesSimply_Name = xmlHandel.readIosXml("TransferPhonesSimply_Name", langXml);
-	this.Backup_Name = xmlHandel.readIosXml("Backup_Name", langXml);
-	this.PogoplugCloudUnlimited_Name = xmlHandel.readIosXml("PogoplugCloudUnlimited_Name", langXml);
-	this.DuplicateFolder_Name = xmlHandel.readIosXml("DuplicateFolder_Name", langXml);
-	this.userUnlimited_name = xmlHandel.readIosXml("userUnlimited_name", langXml);
-	this.userLimited_name = xmlHandel.readIosXml("userLimited_name", langXml);
-	this.userAutomation2_Name = xmlHandel.readIosXml("userAutomation2_Name", langXml);
+	this.TEXTFIELDemail_Id = xmlHandel.readIosXml("TEXTFIELDemail_Id", langXml, xmlPath);
+	this.TEXTFIELDpass_Id = xmlHandel.readIosXml("TEXTFIELDpass_Id", langXml, xmlPath);
+	this.TEXTFIELDcreateNewFolder_Xpth = xmlHandel.readIosXml("TEXTFIELDcreateNewFolder_Xpth", langXml, xmlPath);
+	this.TEXTFIELDsearch_Id = xmlHandel.readIosXml("TEXTFIELDsearch_Id", langXml, xmlPath);
+	this.TEXTFIELDnameOptional_Id = xmlHandel.readIosXml("TEXTFIELDnameOptional_Id", langXml, xmlPath);
 
 	
 	
-	
-	this.password = xmlHandel.readIosXml("password", langXml);
-	this.newPassword = xmlHandel.readIosXml("newPassword", langXml);
-	this.badPassword = xmlHandel.readIosXml("badPassword", langXml);
-	this.emptyPassword = xmlHandel.readIosXml("emptyPassword", langXml);
-	this.emptyUserName = xmlHandel.readIosXml("emptyUserName", langXml);
-	this.AccessToPhotos = xmlHandel.readIosXml("AccessToPhotos", langXml);
-	this.Categories = xmlHandel.readIosXml("Categories", langXml);
-	this.UnlimitedProtection_Name = xmlHandel.readIosXml("UnlimitedProtection_Name", langXml);
-	this.UpgradeTour_Name = xmlHandel.readIosXml("UpgradeTour_Name", langXml);
-	this.BackupTourText_Name = xmlHandel.readIosXml("BackupTourText_Name", langXml);
-	this.NeverLoseaPhotoFullText_Name = xmlHandel.readIosXml("NeverLoseaPhotoFullText_Name", langXml);
-	this.TransferPhonesSimplyFullText_Name = xmlHandel.readIosXml("TransferPhonesSimplyFullText_Name", langXml);
-	this.UpgradeAccount_Name = xmlHandel.readIosXml("UpgradeAccount_Name", langXml);
-	this.UpgardeAccountText_Name = xmlHandel.readIosXml("UpgardeAccountText_Name", langXml);
-	this.Settings_Name = xmlHandel.readIosXml("Settings_Name", langXml);
-	this.CreateAccountFailure_Name = xmlHandel.readIosXml("CreateAccountFailure_Name", langXml);
-	this.PhotoAlbums_Name = xmlHandel.readIosXml("PhotoAlbums_Name", langXml);
-	this.CloudEmptyFilesScreen_Name = xmlHandel.readIosXml("CloudEmptyFilesScreen_Name", langXml);
-	this.BadCredentialsPopup = xmlHandel.readIosXml("BadCredentialsPopup", langXml);
-	this.ForgotPasswordErrorPopup_Name = xmlHandel.readIosXml("ForgotPasswordErrorPopup_Name", langXml);
-	this.ResetEmailPopup_Name = xmlHandel.readIosXml("ResetEmailPopup_Name", langXml);
-	this.NoFilesFound_Name = xmlHandel.readIosXml("NoFilesFound_Name", langXml);
-	this.PasscodeLock_Name = xmlHandel.readIosXml("PasscodeLock_Name", langXml);
-	this.EnterPasscode_Name = xmlHandel.readIosXml("EnterPasscode_Name", langXml);
-	this.PinCodeNotMatch_Name = xmlHandel.readIosXml("PinCodeNotMatch_Name", langXml);
-	this.PinCodeReEnter_Name = xmlHandel.readIosXml("PinCodeReEnter_Name", langXml);
-	this.BackupDisabled_Name = xmlHandel.readIosXml("BackupDisabled_Name", langXml);
-	this.BackupCompleted_Name = xmlHandel.readIosXml("BackupCompleted_Name", langXml);
-	this.Completed_Name = xmlHandel.readIosXml("Completed_Name", langXml);
-	this.TrusteUrl_Name = xmlHandel.readIosXml("TrusteUrl_Name", langXml);
-	this.EmptyFolder_Name = xmlHandel.readIosXml("EmptyFolder_Name", langXml);
-	this.UploadError_Name = xmlHandel.readIosXml("UploadError_Name", langXml);
-	this.ImageNotAvailable_Name = xmlHandel.readIosXml("ImageNotAvailable_Name", langXml);
-	this.EmptyFavorites_Name = xmlHandel.readIosXml("EmptyFavorites_Name", langXml);
-	this.FavoritesTitle_Name = xmlHandel.readIosXml("FavoritesTitle_Name", langXml);
-	this.ProtectYourPhotos_Name = xmlHandel.readIosXml("ProtectYourPhotos_Name", langXml);
-	this.AutomaticallyBackUpPhotosAndVideosToYourAccount_Name = xmlHandel.readIosXml("AutomaticallyBackUpPhotosAndVideosToYourAccount_Name", langXml);
-	this.FavoritesMp3_Name = xmlHandel.readIosXml("FavoritesMp3_Name", langXml);
-	this.FavoritesPng_Name = xmlHandel.readIosXml("FavoritesPng_Name", langXml);
-	this.FavoritesMov_Name = xmlHandel.readIosXml("FavoritesMov_Name", langXml);
-	this.UploadExistingImage_Name = xmlHandel.readIosXml("UploadExistingImage_Name", langXml);
-	this.UploadExistingVideo_Name = xmlHandel.readIosXml("UploadExistingVideo_Name", langXml);
-	this.PrivacyPolicyUrl_Name = xmlHandel.readIosXml("PrivacyPolicyUrl_Name", langXml);
-	this.SearchFolderFromRoot_Name = xmlHandel.readIosXml("SearchFolderFromRoot_Name", langXml);
-	this.SearchImageFromRoot_Name = xmlHandel.readIosXml("SearchImageFromRoot_Name", langXml);
-	this.SearchFolderFromFolder_Name = xmlHandel.readIosXml("SearchFolderFromFolder_Name", langXml);
-	this.SearchImageFromFolder_Name = xmlHandel.readIosXml("SearchImageFromFolder_Name", langXml);	
-	this.SearchMainFolder_Name = xmlHandel.readIosXml("SearchMainFolder_Name", langXml);
-	this.SearchSongInSong_Name = xmlHandel.readIosXml("SearchSongInSong_Name", langXml);	
-	this.SearchSongInArtists_Name = xmlHandel.readIosXml("SearchSongInArtists_Name", langXml);	
-	this.SearchSongInAlbums_Name = xmlHandel.readIosXml("SearchSongInAlbums_Name", langXml);	
-	this.SearchSongInGenres_Name = xmlHandel.readIosXml("SearchSongInGenres_Name", langXml);	
-	this.AccessContactsWarning_Name = xmlHandel.readIosXml("AccessContactsWarning_Name", langXml);
-	this.AccessLocationServicesWarning_Name = xmlHandel.readIosXml("AccessLocationServicesWarning_Name", langXml);
-	this.TermsOfService_Name = xmlHandel.readIosXml("TermsOfService_Name", langXml);
-	this.NoResults_Name = xmlHandel.readIosXml("NoResults_Name", langXml);
-	this.Disabled_Name = xmlHandel.readIosXml("Disabled_Name", langXml);
 
-
-
-	this.TOGGLEpasscodeLock_Xpth = xmlHandel.readIosXml("TOGGLEpasscodeLock_Xpth", langXml);
-	this.TOGGLErequireImmediately_Xpth = xmlHandel.readIosXml("TOGGLErequireImmediately_Xpth", langXml);
-	this.TOGGLEsaveLogin_Name = xmlHandel.readIosXml("TOGGLEsaveLogin_Name", langXml);
-	this.TOGGLEcameraRoll_Name = xmlHandel.readIosXml("TOGGLEcameraRoll_Name", langXml);
-	
-	this.iconInProgress_Name = xmlHandel.readIosXml("iconInProgress_Name", langXml);
-	this.iconBackLeftSideUpperMenu_Name = xmlHandel.readIosXml("iconBackLeftSideUpperMenu_Name", langXml);	
-	this.iconTermsAndCondition_Name = xmlHandel.readIosXml("iconTermsAndCondition_Name", langXml);	
-	this.iconSongs_Name = xmlHandel.readIosXml("iconSongs_Name", langXml);	
-	this.iconArtists_Name = xmlHandel.readIosXml("iconArtists_Name", langXml);	
-	this.iconAlbums_Name = xmlHandel.readIosXml("iconAlbums_Name", langXml);	
-	this.iconGenres_Name = xmlHandel.readIosXml("iconGenres_Name", langXml);	
-	this.iconPlayLists_Name = xmlHandel.readIosXml("iconPlayLists_Name", langXml);
-	this.iconClearText_Name = xmlHandel.readIosXml("iconClearText_Name", langXml);
-	this.iconAddToFavorites_Name = xmlHandel.readIosXml("iconAddToFavorites_Name", langXml);
-	this.iconRemoveFromFavorites_Name = xmlHandel.readIosXml("iconRemoveFromFavorites_Name", langXml);
+	this.LinkForgotYourPassword_Name = xmlHandel.readIosXml("LinkForgotYourPassword_Name", langXml, xmlPath);
+	this.LinkPrivacyPolicy_Name = xmlHandel.readIosXml("LinkPrivacyPolicy_Name", langXml, xmlPath);
+	this.LinkTRUSTe_Name = xmlHandel.readIosXml("LinkTRUSTe_Name", langXml, xmlPath);
+	this.NeverLoseAPhoto_Name = xmlHandel.readIosXml("NeverLoseAPhoto_Name", langXml, xmlPath);
+	this.TransferPhonesSimply_Name = xmlHandel.readIosXml("TransferPhonesSimply_Name", langXml, xmlPath);
+	this.Backup_Name = xmlHandel.readIosXml("Backup_Name", langXml, xmlPath);
+	this.PogoplugCloudUnlimited_Name = xmlHandel.readIosXml("PogoplugCloudUnlimited_Name", langXml, xmlPath);
+	this.DuplicateFolder_Name = xmlHandel.readIosXml("DuplicateFolder_Name", langXml, xmlPath);
+	this.userUnlimited_name = xmlHandel.readIosXml("userUnlimited_name", langXml, xmlPath);
+	this.userLimited_name = xmlHandel.readIosXml("userLimited_name", langXml, xmlPath);
+	this.userAutomation2_Name = xmlHandel.readIosXml("userAutomation2_Name", langXml, xmlPath);
 
 	
-	this.tabCurrentFolder_Name = xmlHandel.readIosXml("tabCurrentFolder_Name", langXml);
-	this.tabPogoplugCloud_Name = xmlHandel.readIosXml("tabPogoplugCloud_Name", langXml);
 	
+	
+	this.password = xmlHandel.readIosXml("password", langXml, xmlPath);
+	this.newPassword = xmlHandel.readIosXml("newPassword", langXml, xmlPath);
+	this.badPassword = xmlHandel.readIosXml("badPassword", langXml, xmlPath);
+	this.emptyPassword = xmlHandel.readIosXml("emptyPassword", langXml, xmlPath);
+	this.emptyUserName = xmlHandel.readIosXml("emptyUserName", langXml, xmlPath);
+	this.AccessToPhotos = xmlHandel.readIosXml("AccessToPhotos", langXml, xmlPath);
+	this.Categories = xmlHandel.readIosXml("Categories", langXml, xmlPath);
+	this.UnlimitedProtection_Name = xmlHandel.readIosXml("UnlimitedProtection_Name", langXml, xmlPath);
+	this.UpgradeTour_Name = xmlHandel.readIosXml("UpgradeTour_Name", langXml, xmlPath);
+	this.BackupTourText_Name = xmlHandel.readIosXml("BackupTourText_Name", langXml, xmlPath);
+	this.NeverLoseaPhotoFullText_Name = xmlHandel.readIosXml("NeverLoseaPhotoFullText_Name", langXml, xmlPath);
+	this.TransferPhonesSimplyFullText_Name = xmlHandel.readIosXml("TransferPhonesSimplyFullText_Name", langXml, xmlPath);
+	this.UpgradeAccount_Name = xmlHandel.readIosXml("UpgradeAccount_Name", langXml, xmlPath);
+	this.UpgardeAccountText_Name = xmlHandel.readIosXml("UpgardeAccountText_Name", langXml, xmlPath);
+	this.Settings_Name = xmlHandel.readIosXml("Settings_Name", langXml, xmlPath);
+	this.CreateAccountFailure_Name = xmlHandel.readIosXml("CreateAccountFailure_Name", langXml, xmlPath);
+	this.PhotoAlbums_Name = xmlHandel.readIosXml("PhotoAlbums_Name", langXml, xmlPath);
+	this.CloudEmptyFilesScreen_Name = xmlHandel.readIosXml("CloudEmptyFilesScreen_Name", langXml, xmlPath);
+	this.BadCredentialsPopup = xmlHandel.readIosXml("BadCredentialsPopup", langXml, xmlPath);
+	this.ForgotPasswordErrorPopup_Name = xmlHandel.readIosXml("ForgotPasswordErrorPopup_Name", langXml, xmlPath);
+	this.ResetEmailPopup_Name = xmlHandel.readIosXml("ResetEmailPopup_Name", langXml, xmlPath);
+	this.NoFilesFound_Name = xmlHandel.readIosXml("NoFilesFound_Name", langXml, xmlPath);
+	this.PasscodeLock_Name = xmlHandel.readIosXml("PasscodeLock_Name", langXml, xmlPath);
+	this.EnterPasscode_Name = xmlHandel.readIosXml("EnterPasscode_Name", langXml, xmlPath);
+	this.PinCodeNotMatch_Name = xmlHandel.readIosXml("PinCodeNotMatch_Name", langXml, xmlPath);
+	this.PinCodeReEnter_Name = xmlHandel.readIosXml("PinCodeReEnter_Name", langXml, xmlPath);
+	this.BackupDisabled_Name = xmlHandel.readIosXml("BackupDisabled_Name", langXml, xmlPath);
+	this.BackupCompleted_Name = xmlHandel.readIosXml("BackupCompleted_Name", langXml, xmlPath);
+	this.Completed_Name = xmlHandel.readIosXml("Completed_Name", langXml, xmlPath);
+	this.TrusteUrl_Name = xmlHandel.readIosXml("TrusteUrl_Name", langXml, xmlPath);
+	this.EmptyFolder_Name = xmlHandel.readIosXml("EmptyFolder_Name", langXml, xmlPath);
+	this.UploadError_Name = xmlHandel.readIosXml("UploadError_Name", langXml, xmlPath);
+	this.ImageNotAvailable_Name = xmlHandel.readIosXml("ImageNotAvailable_Name", langXml, xmlPath);
+	this.EmptyFavorites_Name = xmlHandel.readIosXml("EmptyFavorites_Name", langXml, xmlPath);
+	this.FavoritesTitle_Name = xmlHandel.readIosXml("FavoritesTitle_Name", langXml, xmlPath);
+	this.ProtectYourPhotos_Name = xmlHandel.readIosXml("ProtectYourPhotos_Name", langXml, xmlPath);
+	this.AutomaticallyBackUpPhotosAndVideosToYourAccount_Name = xmlHandel.readIosXml("AutomaticallyBackUpPhotosAndVideosToYourAccount_Name", langXml, xmlPath);
+	this.FavoritesMp3_Name = xmlHandel.readIosXml("FavoritesMp3_Name", langXml, xmlPath);
+	this.FavoritesPng_Name = xmlHandel.readIosXml("FavoritesPng_Name", langXml, xmlPath);
+	this.FavoritesMov_Name = xmlHandel.readIosXml("FavoritesMov_Name", langXml, xmlPath);
+	this.UploadExistingImage_Name = xmlHandel.readIosXml("UploadExistingImage_Name", langXml, xmlPath);
+	this.UploadExistingVideo_Name = xmlHandel.readIosXml("UploadExistingVideo_Name", langXml, xmlPath);
+	this.PrivacyPolicyUrl_Name = xmlHandel.readIosXml("PrivacyPolicyUrl_Name", langXml, xmlPath);
+	this.SearchFolderFromRoot_Name = xmlHandel.readIosXml("SearchFolderFromRoot_Name", langXml, xmlPath);
+	this.SearchImageFromRoot_Name = xmlHandel.readIosXml("SearchImageFromRoot_Name", langXml, xmlPath);
+	this.SearchFolderFromFolder_Name = xmlHandel.readIosXml("SearchFolderFromFolder_Name", langXml, xmlPath);
+	this.SearchImageFromFolder_Name = xmlHandel.readIosXml("SearchImageFromFolder_Name", langXml, xmlPath);	
+	this.SearchMainFolder_Name = xmlHandel.readIosXml("SearchMainFolder_Name", langXml, xmlPath);
+	this.SearchSongInSong_Name = xmlHandel.readIosXml("SearchSongInSong_Name", langXml, xmlPath);	
+	this.SearchSongInArtists_Name = xmlHandel.readIosXml("SearchSongInArtists_Name", langXml, xmlPath);	
+	this.SearchSongInAlbums_Name = xmlHandel.readIosXml("SearchSongInAlbums_Name", langXml, xmlPath);	
+	this.SearchSongInGenres_Name = xmlHandel.readIosXml("SearchSongInGenres_Name", langXml, xmlPath);	
+	this.AccessContactsWarning_Name = xmlHandel.readIosXml("AccessContactsWarning_Name", langXml, xmlPath);
+	this.AccessLocationServicesWarning_Name = xmlHandel.readIosXml("AccessLocationServicesWarning_Name", langXml, xmlPath);
+	this.TermsOfService_Name = xmlHandel.readIosXml("TermsOfService_Name", langXml, xmlPath);
+	this.NoResults_Name = xmlHandel.readIosXml("NoResults_Name", langXml, xmlPath);
+	this.Disabled_Name = xmlHandel.readIosXml("Disabled_Name", langXml, xmlPath);
+	this.Disabled_Name = xmlHandel.readIosXml("platformIphone", langXml, xmlPath);
+	this.Disabled_Name = xmlHandel.readIosXml("platformIpad", langXml, xmlPath);
+	this.Disabled_Name = xmlHandel.readIosXml("platforSimulatorIphone", langXml, xmlPath);
+	this.Disabled_Name = xmlHandel.readIosXml("platformSimulatorIpad", langXml, xmlPath);
+
+	this.TOGGLEpasscodeLock_Xpth = xmlHandel.readIosXml("TOGGLEpasscodeLock_Xpth", langXml, xmlPath);
+	this.TOGGLErequireImmediately_Xpth = xmlHandel.readIosXml("TOGGLErequireImmediately_Xpth", langXml, xmlPath);
+	this.TOGGLEsaveLogin_Name = xmlHandel.readIosXml("TOGGLEsaveLogin_Name", langXml, xmlPath);
+	this.TOGGLEcameraRoll_Name = xmlHandel.readIosXml("TOGGLEcameraRoll_Name", langXml, xmlPath);
+	
+	this.iconInProgress_Name = xmlHandel.readIosXml("iconInProgress_Name", langXml, xmlPath);
+	this.iconBackLeftSideUpperMenu_Name = xmlHandel.readIosXml("iconBackLeftSideUpperMenu_Name", langXml, xmlPath);	
+	this.iconTermsAndCondition_Name = xmlHandel.readIosXml("iconTermsAndCondition_Name", langXml, xmlPath);	
+	this.iconSongs_Name = xmlHandel.readIosXml("iconSongs_Name", langXml, xmlPath);	
+	this.iconArtists_Name = xmlHandel.readIosXml("iconArtists_Name", langXml, xmlPath);	
+	this.iconAlbums_Name = xmlHandel.readIosXml("iconAlbums_Name", langXml, xmlPath);	
+	this.iconGenres_Name = xmlHandel.readIosXml("iconGenres_Name", langXml, xmlPath);	
+	this.iconPlayLists_Name = xmlHandel.readIosXml("iconPlayLists_Name", langXml, xmlPath);
+	this.iconClearText_Name = xmlHandel.readIosXml("iconClearText_Name", langXml, xmlPath);
+	this.iconAddToFavorites_Name = xmlHandel.readIosXml("iconAddToFavorites_Name", langXml, xmlPath);
+	this.iconRemoveFromFavorites_Name = xmlHandel.readIosXml("iconRemoveFromFavorites_Name", langXml, xmlPath);
+
+	
+	this.tabCurrentFolder_Name = xmlHandel.readIosXml("tabCurrentFolder_Name", langXml, xmlPath);
+	this.tabPogoplugCloud_Name = xmlHandel.readIosXml("tabPogoplugCloud_Name", langXml, xmlPath);
+	
+}
 }
 
 
-
-}

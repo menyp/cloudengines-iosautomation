@@ -10,7 +10,6 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
@@ -21,17 +20,22 @@ public class sanityIos {
 
 	public AppiumDriver driver;
 	GenericMethods genMeth = new GenericMethods();
-	String langEng = "iOStestDataENG.xml";
+	String webElementXmlLang = "iOStestDataENG.xml";
 	String currentDateFolder;
-	 webElementsIos iosData;
+	webElementsIos iosData;
+	String platform;
+	String	webElementXmlPath = "/Users/qa/cloudengines-iosautomation/src/resources/";
 
-	//DesiredCapabilities capabilities = new DesiredCapabilities();
-
+	
 	@BeforeSuite(alwaysRun = true)
 	public void setupBeforeSuite(ITestContext context) throws Exception,Throwable {
-
-		iosData = genMeth.iOSelementInit(langEng);
-		driver = genMeth.cleanLoginIos(genMeth, iosData, iosData.userUnlimited_name);
+		
+		
+		//Will determine the Platform  & Location (Local or build machine) 
+		iosData = genMeth.iOSelementInit(webElementXmlLang, webElementXmlPath );
+		platform = iosData.platformIphone;
+		driver = genMeth.setCapabilitiesIos(genMeth, iosData, platform);
+		genMeth.cleanLoginIos(driver, genMeth, iosData, iosData.userUnlimited_name);
 		Thread.sleep(1000);
 
 	}
@@ -41,8 +45,9 @@ public class sanityIos {
 
 		// Check if the client still logged in & in start testing screen (*StartUp screen) before each test
 		if (driver == null) {
-
-			driver = genMeth.cleanLoginIos(genMeth, iosData,iosData.userUnlimited_name );
+			
+			driver = genMeth.setCapabilitiesIos(genMeth, iosData, platform);
+			genMeth.cleanLoginIos(driver, genMeth, iosData, platform );
 		}
 
 		else {
@@ -57,7 +62,9 @@ public class sanityIos {
 				catch(Exception e){
 					Thread.sleep(1000);
 				}
-				 driver = genMeth.cleanLoginIos(genMeth, iosData, iosData.userUnlimited_name);
+				
+				driver = genMeth.setCapabilitiesIos(genMeth, iosData, platform);
+				genMeth.cleanLoginIos(driver, genMeth, iosData, iosData.userUnlimited_name);
 				
 			}
 
@@ -66,7 +73,7 @@ public class sanityIos {
 	}
 
 	@Test(enabled = true, description = "Test the Create folders",
-			groups = { "Sanity Native iOS" }) //dependsOnMethods={"testLogin"})
+			groups = { "Sanity iOS now1" }) //dependsOnMethods={"testLogin"})
 																																																
 	public void testCreatefolder() throws Exception, Throwable {
 
@@ -120,7 +127,7 @@ public class sanityIos {
 	}
 
 	@Test(enabled = true, testName = "Sanity Tests", description = "Test the upload Existing photos or videos, delete the image",
-			groups = { "Sanity Native iOS" })
+			groups = { "Regression iOS" })
 	public void uploadExistingPotos() throws Exception, Throwable {
 
 		// create a folder for the images
@@ -245,7 +252,7 @@ public class sanityIos {
 	}
 	
 	@Test(enabled = true, testName = "Sanity Tests", description = "Test TOUR for New accounts and for upgrade accounts",
-			groups = { "Sanity Native iOS" })
+			groups = { "Sanity iOS" })
 	public void testTour() throws Exception, Throwable {
 
 		
@@ -256,7 +263,8 @@ public class sanityIos {
 		// ====== SKIP for Go Unlimited screen ===== - Login with Free/Limited account & check the tour display & text
 		
 		
-		driver = genMeth.killAppIos(driver);
+		genMeth.killAppIos(driver);
+		driver = genMeth.setCapabilitiesIos(genMeth, iosData, platform);
 		genMeth.clickName(driver, genMeth, iosData.BTNalreadyHaveAnAccount_name);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDemail_Id, iosData.userLimited_name);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDpass_Id, iosData.password);
@@ -415,7 +423,7 @@ public class sanityIos {
 	}
 	
 	@Test(enabled = true, testName = "Sanity Tests", description = "Sign up- Create new user (Negetive positive test), Privacy Policy, TRUSTe",
-			groups = { "Sanity Native iOS" })
+			groups = { "Sanity iOS" })
 	public void createNewUser() throws Exception, Throwable {
 
 		String currentDateFolder = genMeth.currentTime();
@@ -454,7 +462,7 @@ public class sanityIos {
 	}
 	
 	@Test(enabled = true, testName = "Sanity Tests", description = "login with bad/missing credentials , forgot password (negative & positive)",
-			groups = { "Sanity Native iOS simulator" })
+			groups = { "Sanity iOS" })
 	public void badCredentials() throws Exception, Throwable {
 
 		
@@ -489,7 +497,7 @@ public class sanityIos {
 	}
 	
 	@Test(enabled = true, testName = "Sanity Tests", description = "Search functionality & filter",
-			groups = { "Sanity Native iOS" })
+			groups = { "Sanity iOS" })
 	public void search() throws Exception, Throwable {
 		
 		String Random = genMeth.randomString();	
@@ -650,7 +658,7 @@ public class sanityIos {
 	}
 	
 	@Test(enabled = true, testName = "Sanity Tests", description = "Settings: Passcode",
-			groups = { "Sanity Native iOS" })
+			groups = { "Sanity iOS" })
 	public void settingsPasscodeSanity() throws Exception, Throwable {
 
 		// Cancel the Passcode screen
@@ -723,7 +731,7 @@ public class sanityIos {
 	}
 	
 	@Test(enabled = true, testName = "Sanity Tests", description = "Settings: Save Login",
-			groups = { "Sanity Native iOS" })
+			groups = { "Sanity iOS" })
 	public void settingsSaveLoginSanity() throws Exception, Throwable {
 
 		// Save Login = true
@@ -741,7 +749,7 @@ public class sanityIos {
 	}
 
 	@Test(enabled = true, testName = "Sanity Tests", description = "Settings: Backup Enable/disable without upload in the background",
-			groups = { "Sanity Native iOS" })
+			groups = { "Regression iOS" })
 	public void settingsBackupEnableDisable() throws Exception, Throwable {
 
 		// Disable the Backup
@@ -786,7 +794,7 @@ public class sanityIos {
 	}
 	
 	@Test(enabled = true, testName = "Sanity Tests", description = "Settings: Backup Enable/disable *with upload in the background",
-			groups = { "Sanity Native iOS" })// , dependsOnMethods={"successTest"})
+			groups = { "Regression iOS" })// , dependsOnMethods={"successTest"})
 	public void settingsBackupEnableDisableDuringUpload() throws Exception,Throwable {
 
 		// login with new account & enable/disable the backup from Tour/Settings/LSM/Photo Gallery
@@ -937,10 +945,10 @@ public class sanityIos {
 	}
 
 	@Test(enabled = true, testName = "Sanity Tests", description = " Backup running in background -> make sure process keeps alive and completes its queue even in background AND if taking new shots they are automatically backed up",
-			groups = { "Sanity Native iOS" })
+			groups = { "Sanity iOS" })
 	public void backupInBackground() throws Exception, Throwable {
 
-		webElementsIos iosData = genMeth.iOSelementInit(langEng);
+		//webElementsIos iosData = genMeth.iOSelementInit(langEng);
 		
 		//Login with new account (*backup will initiate)
 		genMeth.signOutFromStartupIphone5(driver , iosData);
@@ -974,7 +982,7 @@ public class sanityIos {
 	}
 
 	@Test(enabled = true, testName = "Sanity Tests", description = "Switching from Foreground to Background and vice versa use cases",
-			groups = { "Sanity Native iOS" })
+			groups = { "Sanity iOS" })
 	public void foregroundBackgroundSwith() throws Exception, Throwable {
 
 		//Take the app to background & foreground x times
@@ -988,7 +996,7 @@ public class sanityIos {
 	}
 	
 		@Test(enabled = true , testName = "Sanity Tests" , description = " Add remove files from favorites" ,
-				groups = { "Sanity Native iOS"} )
+				groups = { "Sanity iOS"} )
 	public void Favorites() throws InterruptedException, IOException, ParserConfigurationException, SAXException{
 			// open favorites & make sure that it is empty
 			genMeth.clickName(driver, genMeth, iosData.BTNfavorites_Name);
@@ -1092,10 +1100,10 @@ public class sanityIos {
 		}
 		
 	@Test(enabled = true, testName = "Sanity Tests", description = "Adding & removing team folders",
-			groups = { "Sanity Native iOS" })
+			groups = { "Sanity iOS" })
 	public void addRemoveTeamFolders() throws Exception, Throwable {
 		
-		webElementsIos iosData = genMeth.iOSelementInit(langEng);
+		//webElementsIos iosData = genMeth.iOSelementInit(langEng);
 
 		//Share user with team folder 
 		genMeth.clickName(driver, genMeth, iosData.BTNfileExplorer_Name);
@@ -1199,8 +1207,8 @@ public class sanityIos {
 		
 	}
 	
-	@Test(enabled = true, testName = "Sanity Tests", description = "Create/Delete Albums",
-			groups={"Sanity Native iOS now"})
+	@Test(enabled = false, testName = "Sanity Tests", description = "Create/Delete Albums",
+			groups={"Sanity iOS"})
 	public void Albums() throws InterruptedException, IOException, ParserConfigurationException, SAXException{
 		String album = genMeth.currentDate();
 		//Make sure that there are no albums

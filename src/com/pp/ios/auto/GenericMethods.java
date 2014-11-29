@@ -86,17 +86,19 @@ public class GenericMethods {
 
 	}
 
+	
 	public AppiumDriver killAppIos(AppiumDriver driver)throws InterruptedException, IOException {
-		GenericMethods genMeth = new GenericMethods();
+		//GenericMethods genMeth = new GenericMethods();
 		driver.removeApp("com.cloudengines.pogoplug");
 		try {
 			driver.quit();
 		} catch (Exception x) {
 			// swallow exception
 		}
-		driver = genMeth.setCapabilitiesIos();
+		//driver = genMeth.setCapabilitiesIos();
 		return driver;
 	}
+	
 
 	public void signOutFromStartupIphone5(AppiumDriver driver, webElementsIos iosData) throws InterruptedException, IOException {
 		GenericMethods genMeth = new GenericMethods();
@@ -163,19 +165,64 @@ public class GenericMethods {
 
 	}
 
-
-	public AppiumDriver cleanLoginIos(GenericMethods genMeth, webElementsIos iosData, String user) throws InterruptedException, IOException,ParserConfigurationException, SAXException {
+	public AppiumDriver setCapabilitiesIos(GenericMethods genMeth, webElementsIos iosData, String platform) throws IOException {
 
 		DesiredCapabilities capabilities = new DesiredCapabilities();
+
+		if (platform == iosData.platformIphone) {
+			capabilities.setCapability("deviceName", "Automation test2");
+			capabilities.setCapability("device", "iPhone 5");
+			// capabilities.setCapability("deviceName", "iPhone Simulator");
+			capabilities.setCapability("udid","dc32ad3627707abcf57c9844d4ed95e4c212e5a9");
+			capabilities.setCapability(CapabilityType.VERSION, "8.1");
+			capabilities.setCapability(CapabilityType.PLATFORM, "Mac");
+			capabilities.setCapability("platformName", "iOS");
+			capabilities.setCapability("app","/Users/qa/Desktop/Appium/Pogoplug.app");
+		}
+		else if (platform == iosData.platforSimulatorIphone) {
+			capabilities.setCapability("deviceName", "Automation test2");
+			capabilities.setCapability("device", "iPhone 5");
+			capabilities.setCapability("deviceName", "iPhone Simulator");
+			//capabilities.setCapability("udid","dc32ad3627707abcf57c9844d4ed95e4c212e5a9");
+			capabilities.setCapability(CapabilityType.VERSION, "8.1");
+			capabilities.setCapability(CapabilityType.PLATFORM, "Mac");
+			capabilities.setCapability("platformName", "iOS");
+			// capabilities.setCapability("app","/Users/qa/Desktop/Appium/Pogoplug.app");
+			capabilities.setCapability("app","/Users/pogoplug/Appium/Pogoplug.app");
+
+		}
+		
+		try {
+
+			driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"),
+					capabilities);
+		}
+
+		catch (MalformedURLException e) {
+
+			genMeth.takeScreenShotNative(driver, genMeth,"Faliled to open Appium driver");
+			org.testng.Assert.fail("WebElement" + " Faliled to open Appium driver");
+		}
+		return driver;
+	}
+
+
+	public AppiumDriver cleanLoginIos(AppiumDriver driver, GenericMethods genMeth, webElementsIos iosData, String user) throws InterruptedException, IOException,ParserConfigurationException, SAXException {
+
+		/*
+		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability("deviceName", "Automation test2");
-		// capabilities.setCapability("deviceName", "iPhone Simulator");
 		capabilities.setCapability("device", "iPhone 5");
 		capabilities.setCapability("udid","dc32ad3627707abcf57c9844d4ed95e4c212e5a9");
+
 		capabilities.setCapability(CapabilityType.VERSION, "8.1");
 		capabilities.setCapability(CapabilityType.PLATFORM, "Mac");
 		capabilities.setCapability("platformName", "iOS");
 		capabilities.setCapability("app","/Users/qa/Desktop/Appium/Pogoplug.app");
 		driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
+		*/
+		
+		//driver = genMeth.setCapabilitiesIos();
 
 		// Login with an existing account
 		genMeth.clickName(driver,genMeth, iosData.BTNalreadyHaveAnAccount_name);
@@ -290,12 +337,12 @@ public class GenericMethods {
 		return element;
 	}
 
-	public webElementsIos iOSelementInit(String lang) throws Exception,
+	public webElementsIos iOSelementInit(String lang, String xmlPath) throws Exception,
 			Throwable {
 		// According "lang" will determine for which language it will be initialized
 
 		// if ()
-		webElementsIos element = new webElementsIos(lang);
+		webElementsIos element = new webElementsIos(lang, xmlPath);
 		return element;
 
 	}
@@ -865,8 +912,8 @@ public class GenericMethods {
 
 		try {
 			isTextPresent = new FluentWait<AppiumDriver>(driver)
-					.withTimeout(10, TimeUnit.SECONDS)
-					.pollingEvery(5, TimeUnit.SECONDS)
+					.withTimeout(5, TimeUnit.SECONDS)
+					.pollingEvery(1, TimeUnit.SECONDS)
 					.ignoring(NoSuchElementException.class)
 					.until(ExpectedConditions.textToBePresentInElementLocated(by, text));
 		}
@@ -1025,29 +1072,6 @@ public class GenericMethods {
 		return curDate;
 	}
 
-	public AppiumDriver setCapabilitiesIos() throws IOException {
-
-		GenericMethods genMeth = new GenericMethods();
-		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability("deviceName", "Automation test2");
-		capabilities.setCapability("device", "iPhone 5");
-		capabilities.setCapability("udid","dc32ad3627707abcf57c9844d4ed95e4c212e5a9");
-		capabilities.setCapability(CapabilityType.VERSION, "8.1");
-		capabilities.setCapability(CapabilityType.PLATFORM, "Mac");
-		capabilities.setCapability("platformName", "iOS");
-		capabilities.setCapability("app","/Users/qa/Desktop/Appium/Pogoplug.app");
-		try {
-
-			driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
-		}
-
-		catch (MalformedURLException e) {
-
-			genMeth.takeScreenShotNative(driver, genMeth, "Faliled to open Appium driver");
-			org.testng.Assert.fail("WebElement"+ " Faliled to open Appium driver");
-		}
-		return driver;
-	}
 
 	public void backgroundToForeground(AppiumDriver driver, int numOfTimes) {
 
