@@ -24,6 +24,7 @@ public class xmlHandel {
 	public static String readIosXml (String nodeName , String langXml, String xmlPath) throws ParserConfigurationException, SAXException, IOException{
 		//Declare file path
 		File xmlFile = new File (xmlPath + langXml);
+		//File xmlFile = new File ("/resources/iOStestDataENG.xml");
 		//File xmlFile = new File ("/Users/qa/cloudengines-iosautomation/src/resources/"+langXml);
 		//File xmlFile = new File ("/Users/pogoplug/Appium/"+langXml);
 

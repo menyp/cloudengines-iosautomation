@@ -316,10 +316,10 @@ public webElementsIos (String langXml, String xmlPath ) throws Exception, Throwa
 	this.TermsOfService_Name = xmlHandel.readIosXml("TermsOfService_Name", langXml, xmlPath);
 	this.NoResults_Name = xmlHandel.readIosXml("NoResults_Name", langXml, xmlPath);
 	this.Disabled_Name = xmlHandel.readIosXml("Disabled_Name", langXml, xmlPath);
-	this.Disabled_Name = xmlHandel.readIosXml("platformIphone", langXml, xmlPath);
-	this.Disabled_Name = xmlHandel.readIosXml("platformIpad", langXml, xmlPath);
+	this.platformIphone = xmlHandel.readIosXml("platformIphone", langXml, xmlPath);
+	this.platformIpad = xmlHandel.readIosXml("platformIpad", langXml, xmlPath);
 	this.Disabled_Name = xmlHandel.readIosXml("platforSimulatorIphone", langXml, xmlPath);
-	this.Disabled_Name = xmlHandel.readIosXml("platformSimulatorIpad", langXml, xmlPath);
+	this.platforSimulatorIphone = xmlHandel.readIosXml("platformSimulatorIpad", langXml, xmlPath);
 
 	this.TOGGLEpasscodeLock_Xpth = xmlHandel.readIosXml("TOGGLEpasscodeLock_Xpth", langXml, xmlPath);
 	this.TOGGLErequireImmediately_Xpth = xmlHandel.readIosXml("TOGGLErequireImmediately_Xpth", langXml, xmlPath);

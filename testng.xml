@@ -4,7 +4,7 @@
   <test name="Sanity Tests">
       <groups>
 		<run>
-		    <include name="Sanity iOS now"/>     
+		    <include name="Sanity iOS now1"/>     
 		   	<include name="Regression iOS now111"/>        
 		    
 		</run>

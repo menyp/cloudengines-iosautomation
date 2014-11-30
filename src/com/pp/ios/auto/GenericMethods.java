@@ -1,7 +1,6 @@
 package com.pp.ios.auto;
 
 import io.appium.java_client.AppiumDriver;
-
 import java.io.File;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -10,10 +9,9 @@ import java.net.URL;
 import java.security.SecureRandom;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-
 import javax.xml.parsers.ParserConfigurationException;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -165,37 +163,21 @@ public class GenericMethods {
 
 	}
 
-	public AppiumDriver setCapabilitiesIos(GenericMethods genMeth, webElementsIos iosData, String platform) throws IOException {
+	public AppiumDriver setCapabilitiesIos(GenericMethods genMeth) throws IOException {
 
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 
-		if (platform == iosData.platformIphone) {
-			capabilities.setCapability("deviceName", "Automation test2");
-			capabilities.setCapability("device", "iPhone 5");
-			// capabilities.setCapability("deviceName", "iPhone Simulator");
-			capabilities.setCapability("udid","dc32ad3627707abcf57c9844d4ed95e4c212e5a9");
-			capabilities.setCapability(CapabilityType.VERSION, "8.1");
-			capabilities.setCapability(CapabilityType.PLATFORM, "Mac");
-			capabilities.setCapability("platformName", "iOS");
-			capabilities.setCapability("app","/Users/qa/Desktop/Appium/Pogoplug.app");
-		}
-		else if (platform == iosData.platforSimulatorIphone) {
-			capabilities.setCapability("deviceName", "Automation test2");
-			capabilities.setCapability("device", "iPhone 5");
-			capabilities.setCapability("deviceName", "iPhone Simulator");
-			//capabilities.setCapability("udid","dc32ad3627707abcf57c9844d4ed95e4c212e5a9");
-			capabilities.setCapability(CapabilityType.VERSION, "8.1");
-			capabilities.setCapability(CapabilityType.PLATFORM, "Mac");
-			capabilities.setCapability("platformName", "iOS");
-			// capabilities.setCapability("app","/Users/qa/Desktop/Appium/Pogoplug.app");
-			capabilities.setCapability("app","/Users/pogoplug/Appium/Pogoplug.app");
-
-		}
+			capabilities.setCapability("deviceName", genMeth.getValueFromPropFile("deviceName"));
+			capabilities.setCapability("device", genMeth.getValueFromPropFile("device"));
+			capabilities.setCapability("udid",genMeth.getValueFromPropFile("udid"));
+			capabilities.setCapability(CapabilityType.VERSION, genMeth.getValueFromPropFile("CapabilityType.VERSION"));
+			capabilities.setCapability(CapabilityType.PLATFORM, genMeth.getValueFromPropFile("CapabilityType.PLATFORM"));
+			capabilities.setCapability("platformName", genMeth.getValueFromPropFile("platformName"));
+			capabilities.setCapability("app", genMeth.getValueFromPropFile("pogoplugPath"));
 		
 		try {
 
-			driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"),
-					capabilities);
+			driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 		}
 
 		catch (MalformedURLException e) {
@@ -303,12 +285,14 @@ public class GenericMethods {
 
 	}
 	
-	/*
+	
 	public String getValueFromPropFile(String key) {
 		Properties properties = new Properties();
 		String value = "";
 		try {
-			properties.load(getClass().getResourceAsStream("/resources/webui.properties"));
+			
+			properties.load(getClass().getResourceAsStream("/resources/config.properties"));
+			//properties.load(getClass().getResourceAsStream("/resources/webui.properties"));
 			{
 				value = properties.getProperty(key);
 			}
@@ -318,6 +302,18 @@ public class GenericMethods {
 
 		return value;
 	}
+	
+	/*
+	Properties prop = new Properties();
+		String propFileName = "config.properties";
+ 
+		InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
+ 
+		if (inputStream != null) {
+			prop.load(inputStream);
+		} else {
+			throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
+		}
 	*/
 
 	public void takeScreenShotNative(AppiumDriver driver, GenericMethods genMeth, String imageName) throws IOException {

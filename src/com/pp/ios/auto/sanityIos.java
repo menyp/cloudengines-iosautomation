@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import io.appium.java_client.AppiumDriver;
 
 import java.io.IOException;
-
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.openqa.selenium.By;
@@ -20,21 +19,29 @@ public class sanityIos {
 
 	public AppiumDriver driver;
 	GenericMethods genMeth = new GenericMethods();
-	String webElementXmlLang = "iOStestDataENG.xml";
 	String currentDateFolder;
 	webElementsIos iosData;
+	String webElementXmlLang;
+	String	webElementXmlPath;
 	String platform;
-	String	webElementXmlPath = "/Users/qa/cloudengines-iosautomation/src/resources/";
+	String StartServerPath;
+	String StopServerPath;
 
 	
 	@BeforeSuite(alwaysRun = true)
-	public void setupBeforeSuite(ITestContext context) throws Exception,Throwable {
+	public void setupBeforeSuite(ITestContext context) throws Exception,Throwable {		
+		
+		//Set the tests configuration
+		StartServerPath = genMeth.getValueFromPropFile("StartServerPath");
+		StopServerPath = genMeth.getValueFromPropFile("StopServerPath");
+		webElementXmlPath = genMeth.getValueFromPropFile("webElementXmlPath");
+		webElementXmlLang = genMeth.getValueFromPropFile("webElementXmlLang");
+		//platform = genMeth.getValueFromPropFile("platform");
 		
 		
-		//Will determine the Platform  & Location (Local or build machine) 
 		iosData = genMeth.iOSelementInit(webElementXmlLang, webElementXmlPath );
-		platform = iosData.platformIphone;
-		driver = genMeth.setCapabilitiesIos(genMeth, iosData, platform);
+		driver = genMeth.setCapabilitiesIos(genMeth);
+		//driver = genMeth.setCapabilitiesIos(genMeth, iosData, platform);
 		genMeth.cleanLoginIos(driver, genMeth, iosData, iosData.userUnlimited_name);
 		Thread.sleep(1000);
 
@@ -46,7 +53,7 @@ public class sanityIos {
 		// Check if the client still logged in & in start testing screen (*StartUp screen) before each test
 		if (driver == null) {
 			
-			driver = genMeth.setCapabilitiesIos(genMeth, iosData, platform);
+			driver = genMeth.setCapabilitiesIos(genMeth);
 			genMeth.cleanLoginIos(driver, genMeth, iosData, platform );
 		}
 
@@ -63,7 +70,7 @@ public class sanityIos {
 					Thread.sleep(1000);
 				}
 				
-				driver = genMeth.setCapabilitiesIos(genMeth, iosData, platform);
+				driver = genMeth.setCapabilitiesIos(genMeth);
 				genMeth.cleanLoginIos(driver, genMeth, iosData, iosData.userUnlimited_name);
 				
 			}
@@ -264,7 +271,7 @@ public class sanityIos {
 		
 		
 		genMeth.killAppIos(driver);
-		driver = genMeth.setCapabilitiesIos(genMeth, iosData, platform);
+		driver = genMeth.setCapabilitiesIos(genMeth);
 		genMeth.clickName(driver, genMeth, iosData.BTNalreadyHaveAnAccount_name);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDemail_Id, iosData.userLimited_name);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDpass_Id, iosData.password);
