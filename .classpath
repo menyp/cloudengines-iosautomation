@@ -22,7 +22,6 @@
 	<classpathentry kind="lib" path="lib/httpcore-4.3.jar"/>
 	<classpathentry kind="lib" path="lib/httpmime-4.3.1.jar"/>
 	<classpathentry kind="lib" path="lib/ini4j-0.5.2.jar"/>
-	<classpathentry kind="lib" path="lib/java-client-1.7.0.jar"/>
 	<classpathentry kind="lib" path="lib/jcommander-1.29.jar"/>
 	<classpathentry kind="lib" path="lib/jetty-websocket-8.1.8.jar"/>
 	<classpathentry kind="lib" path="lib/jna-3.4.0.jar"/>
@@ -43,5 +42,6 @@
 	<classpathentry kind="lib" path="lib/xercesImpl-2.10.0.jar"/>
 	<classpathentry kind="lib" path="lib/xml-apis-1.4.01.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/java-client-2.1.0.jar"/>
 	<classpathentry kind="output" path="out"/>
 </classpath>

@@ -2,11 +2,13 @@ package com.pp.ios.auto;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.apache.commons.io.IOUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -21,10 +23,13 @@ public class xmlHandel {
 	}
 	
 	
+
+	
+	
 	public static String readIosXml (String nodeName , String langXml, String xmlPath) throws ParserConfigurationException, SAXException, IOException{
 		//Declare file path
 		File xmlFile = new File (xmlPath + langXml);
-		//File xmlFile = new File ("/resources/iOStestDataENG.xml");
+//		File xmlFile = new File ("/resources/iOStestDataENG.xml");
 		//File xmlFile = new File ("/Users/qa/cloudengines-iosautomation/src/resources/"+langXml);
 		//File xmlFile = new File ("/Users/pogoplug/Appium/"+langXml);
 
@@ -46,6 +51,7 @@ public class xmlHandel {
 	public static String readXml (String nodeName ) throws ParserConfigurationException, SAXException, IOException{
 		//Declare file path
 		File xmlFile = new File ("/Users/qa/cloudengines-automation/src/resources/testData.xml");
+
 		//Create instance for document builder factory
 		DocumentBuilderFactory dbFactory  = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();

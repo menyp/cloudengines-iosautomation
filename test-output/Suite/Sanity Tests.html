@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/0/1</td>
 </tr><tr>
-<td>Started on:</td><td>Sun Nov 30 23:13:59 IST 2014</td>
+<td>Started on:</td><td>Tue Dec 02 21:57:05 IST 2014</td>
 </tr>
-<tr><td>Total time:</td><td>0 seconds (44 ms)</td>
+<tr><td>Total time:</td><td>0 seconds (25 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td>Regression iOS now111 Sanity iOS now1 </td>
 </tr><tr>
@@ -75,42 +75,59 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.pp.ios.auto.sanityIos.setupBeforeSuite()'><b>setupBeforeSuite</b><br>Test class: com.pp.ios.auto.sanityIos<br>Parameters: org.testng.TestRunner@7ce97ee5</td>
-<td><div><pre>org.openqa.selenium.SessionNotCreatedException: A new session could not be created. (Original error: Log capture did not start in a reasonable amount of time) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 12.36 seconds
+<td title='com.pp.ios.auto.sanityIos.setupBeforeSuite()'><b>setupBeforeSuite</b><br>Test class: com.pp.ios.auto.sanityIos<br>Parameters: org.testng.TestRunner@aafcffa</td>
+<td><div><pre>org.openqa.selenium.remote.UnreachableBrowserException: Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure.
 Build info: version: &apos;2.42.2&apos;, revision: &apos;6a6995d&apos;, time: &apos;2014-06-03 17:42:30&apos;
 System info: host: &apos;menyz.local&apos;, ip: &apos;192.168.1.104&apos;, os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.9.5&apos;, java.version: &apos;1.8.0_11&apos;
-Driver info: io.appium.java_client.AppiumDriver
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
-	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:102)
+Driver info: driver.version: IOSDriver
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:593)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:180)
 	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:240)
 	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:126)
 	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:153)
-	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:53)
-	at com.pp.ios.auto.GenericMethods.setCapabilitiesIos(GenericMethods.java:180)
-	at com.pp.ios.auto.sanityIos.setupBeforeSuite(sanityIos.java:43)
-... Removed 22 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1888924788", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1888924788'><pre>org.openqa.selenium.SessionNotCreatedException: A new session could not be created. (Original error: Log capture did not start in a reasonable amount of time) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 12.36 seconds
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:109)
+	at io.appium.java_client.ios.IOSDriver.&lt;init&gt;(IOSDriver.java:23)
+	at com.pp.ios.auto.GenericMethods.setCapabilitiesIos(GenericMethods.java:199)
+	at com.pp.ios.auto.sanityIos.setupBeforeSuite(sanityIos.java:44)
+Caused by: org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:4723 [/127.0.0.1] failed: Connection refused
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:138)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:314)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:357)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:218)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:194)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:85)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:72)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at org.openqa.selenium.remote.HttpCommandExecutor.fallBackExecute(HttpCommandExecutor.java:204)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:173)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:572)
+	... 26 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:345)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:72)
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:118)
+	... 38 more
+... Removed 18 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1577167234", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1577167234'><pre>org.openqa.selenium.remote.UnreachableBrowserException: Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure.
 Build info: version: &apos;2.42.2&apos;, revision: &apos;6a6995d&apos;, time: &apos;2014-06-03 17:42:30&apos;
 System info: host: &apos;menyz.local&apos;, ip: &apos;192.168.1.104&apos;, os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.9.5&apos;, java.version: &apos;1.8.0_11&apos;
-Driver info: io.appium.java_client.AppiumDriver
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:408)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
-	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:102)
+Driver info: driver.version: IOSDriver
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:593)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:180)
 	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:240)
 	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:126)
 	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:153)
-	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:53)
-	at com.pp.ios.auto.GenericMethods.setCapabilitiesIos(GenericMethods.java:180)
-	at com.pp.ios.auto.sanityIos.setupBeforeSuite(sanityIos.java:43)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:109)
+	at io.appium.java_client.ios.IOSDriver.&lt;init&gt;(IOSDriver.java:23)
+	at com.pp.ios.auto.GenericMethods.setCapabilitiesIos(GenericMethods.java:199)
+	at com.pp.ios.auto.sanityIos.setupBeforeSuite(sanityIos.java:44)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -129,6 +146,31 @@ Driver info: io.appium.java_client.AppiumDriver
 	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+Caused by: org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:4723 [/127.0.0.1] failed: Connection refused
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:138)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:314)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:357)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:218)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:194)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:85)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:72)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at org.openqa.selenium.remote.HttpCommandExecutor.fallBackExecute(HttpCommandExecutor.java:204)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:173)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:572)
+	... 26 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:345)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:72)
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:118)
+	... 38 more
 </pre></div></td>
 <td>0</td>
 <td>null</td></tr>
@@ -144,7 +186,7 @@ Driver info: io.appium.java_client.AppiumDriver
 <td title='com.pp.ios.auto.sanityIos.checkHomeScreen()'><b>checkHomeScreen</b><br>Test class: com.pp.ios.auto.sanityIos</td>
 <td></td>
 <td>0</td>
-<td>com.pp.ios.auto.sanityIos@3745e5c6</td></tr>
+<td>com.pp.ios.auto.sanityIos@71c8becc</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-skipped'>
 <tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
@@ -157,7 +199,7 @@ Driver info: io.appium.java_client.AppiumDriver
 <td title='com.pp.ios.auto.sanityIos.testCreatefolder()'><b>testCreatefolder</b><br>Test class: com.pp.ios.auto.sanityIos<br>Test method: Test the Create folders</td>
 <td></td>
 <td>0</td>
-<td>com.pp.ios.auto.sanityIos@3745e5c6</td></tr>
+<td>com.pp.ios.auto.sanityIos@71c8becc</td></tr>
 </table><p>
 </body>
 </html>

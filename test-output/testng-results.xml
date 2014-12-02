@@ -2,50 +2,43 @@
 <testng-results skipped="1" failed="0" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="44" started-at="2014-11-30T21:13:59Z" finished-at="2014-11-30T21:13:59Z">
+  <suite name="Suite" duration-ms="25" started-at="2014-12-02T19:57:05Z" finished-at="2014-12-02T19:57:05Z">
     <groups>
       <group name="Sanity iOS now1">
-        <method signature="sanityIos.testCreatefolder()[pri:0, instance:com.pp.ios.auto.sanityIos@3745e5c6]" name="testCreatefolder" class="com.pp.ios.auto.sanityIos"/>
+        <method signature="sanityIos.testCreatefolder()[pri:0, instance:com.pp.ios.auto.sanityIos@71c8becc]" name="testCreatefolder" class="com.pp.ios.auto.sanityIos"/>
       </group> <!-- Sanity iOS now1 -->
     </groups>
-    <test name="Sanity Tests" duration-ms="44" started-at="2014-11-30T21:13:59Z" finished-at="2014-11-30T21:13:59Z">
+    <test name="Sanity Tests" duration-ms="25" started-at="2014-12-02T19:57:05Z" finished-at="2014-12-02T19:57:05Z">
       <class name="com.pp.ios.auto.sanityIos">
-        <test-method status="FAIL" signature="setupBeforeSuite(org.testng.ITestContext)[pri:0, instance:com.pp.ios.auto.sanityIos@3745e5c6]" name="setupBeforeSuite" is-config="true" duration-ms="0" started-at="2014-11-30T23:13:45Z" finished-at="2014-11-30T23:13:45Z">
+        <test-method status="FAIL" signature="setupBeforeSuite(org.testng.ITestContext)[pri:0, instance:com.pp.ios.auto.sanityIos@71c8becc]" name="setupBeforeSuite" is-config="true" duration-ms="0" started-at="2014-12-02T21:57:03Z" finished-at="2014-12-02T21:57:03Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@7ce97ee5]]>
+                <![CDATA[org.testng.TestRunner@aafcffa]]>
               </value>
             </param>
           </params>
-          <exception class="org.openqa.selenium.SessionNotCreatedException">
+          <exception class="org.openqa.selenium.remote.UnreachableBrowserException">
             <message>
-              <![CDATA[A new session could not be created. (Original error: Log capture did not start in a reasonable amount of time) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 12.36 seconds
+              <![CDATA[Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure.
 Build info: version: '2.42.2', revision: '6a6995d', time: '2014-06-03 17:42:30'
 System info: host: 'menyz.local', ip: '192.168.1.104', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.9.5', java.version: '1.8.0_11'
-Driver info: io.appium.java_client.AppiumDriver]]>
+Driver info: driver.version: IOSDriver]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.SessionNotCreatedException: A new session could not be created. (Original error: Log capture did not start in a reasonable amount of time) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 12.36 seconds
+              <![CDATA[org.openqa.selenium.remote.UnreachableBrowserException: Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure.
 Build info: version: '2.42.2', revision: '6a6995d', time: '2014-06-03 17:42:30'
 System info: host: 'menyz.local', ip: '192.168.1.104', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.9.5', java.version: '1.8.0_11'
-Driver info: io.appium.java_client.AppiumDriver
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:408)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
-	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:102)
+Driver info: driver.version: IOSDriver
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:593)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:180)
 	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:240)
 	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:126)
 	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:153)
-	at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:53)
-	at com.pp.ios.auto.GenericMethods.setCapabilitiesIos(GenericMethods.java:180)
-	at com.pp.ios.auto.sanityIos.setupBeforeSuite(sanityIos.java:43)
+	at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:109)
+	at io.appium.java_client.ios.IOSDriver.<init>(IOSDriver.java:23)
+	at com.pp.ios.auto.GenericMethods.setCapabilitiesIos(GenericMethods.java:199)
+	at com.pp.ios.auto.sanityIos.setupBeforeSuite(sanityIos.java:44)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -64,25 +57,50 @@ Driver info: io.appium.java_client.AppiumDriver
 	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+Caused by: org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:4723 [/127.0.0.1] failed: Connection refused
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:138)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:314)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:357)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:218)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:194)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:85)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:72)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at org.openqa.selenium.remote.HttpCommandExecutor.fallBackExecute(HttpCommandExecutor.java:204)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:173)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:572)
+	... 26 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:345)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:72)
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:118)
+	... 38 more
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.SessionNotCreatedException -->
+          </exception> <!-- org.openqa.selenium.remote.UnreachableBrowserException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupBeforeSuite -->
-        <test-method status="SKIP" signature="checkHomeScreen()[pri:0, instance:com.pp.ios.auto.sanityIos@3745e5c6]" name="checkHomeScreen" is-config="true" duration-ms="0" started-at="2014-11-30T23:13:59Z" finished-at="2014-11-30T23:13:59Z">
+        <test-method status="SKIP" signature="checkHomeScreen()[pri:0, instance:com.pp.ios.auto.sanityIos@71c8becc]" name="checkHomeScreen" is-config="true" duration-ms="0" started-at="2014-12-02T21:57:05Z" finished-at="2014-12-02T21:57:05Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkHomeScreen -->
-        <test-method status="SKIP" signature="testCreatefolder()[pri:0, instance:com.pp.ios.auto.sanityIos@3745e5c6]" name="testCreatefolder" duration-ms="1" started-at="2014-11-30T23:13:59Z" description="Test the Create folders" finished-at="2014-11-30T23:13:59Z">
+        <test-method status="SKIP" signature="testCreatefolder()[pri:0, instance:com.pp.ios.auto.sanityIos@71c8becc]" name="testCreatefolder" duration-ms="1" started-at="2014-12-02T21:57:05Z" description="Test the Create folders" finished-at="2014-12-02T21:57:05Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCreatefolder -->
-        <test-method status="FAIL" signature="sendMail()[pri:0, instance:com.pp.ios.auto.sanityIos@3745e5c6]" name="sendMail" is-config="true" duration-ms="0" started-at="2014-11-30T23:13:59Z" finished-at="2014-11-30T23:13:59Z">
+        <test-method status="FAIL" signature="sendMail()[pri:0, instance:com.pp.ios.auto.sanityIos@71c8becc]" name="sendMail" is-config="true" duration-ms="0" started-at="2014-12-02T21:57:05Z" finished-at="2014-12-02T21:57:05Z">
           <exception class="java.lang.NullPointerException">
             <full-stacktrace>
               <![CDATA[java.lang.NullPointerException
-	at com.pp.ios.auto.sanityIos.sendMail(sanityIos.java:1267)
+	at com.pp.ios.auto.sanityIos.sendMail(sanityIos.java:1270)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

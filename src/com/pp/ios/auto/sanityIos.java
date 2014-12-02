@@ -2,9 +2,10 @@ package com.pp.ios.auto;
 
 import org.testng.annotations.Test;
 
-import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.ios.IOSDriver;
 
 import java.io.IOException;
+
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.openqa.selenium.By;
@@ -17,7 +18,7 @@ import org.xml.sax.SAXException;
 
 public class sanityIos {
 
-	public AppiumDriver driver;
+	public IOSDriver driver;
 	GenericMethods genMeth = new GenericMethods();
 	String currentDateFolder;
 	webElementsIos iosData;
@@ -44,7 +45,9 @@ public class sanityIos {
 		//driver = genMeth.setCapabilitiesIos(genMeth, iosData, platform);
 		genMeth.cleanLoginIos(driver, genMeth, iosData, iosData.userUnlimited_name);
 		Thread.sleep(1000);
-
+//		TouchAction touchAction;
+//		touchAction.
+//		driver.performTouchAction(touchAction)
 	}
 
 	@BeforeMethod(alwaysRun = true)

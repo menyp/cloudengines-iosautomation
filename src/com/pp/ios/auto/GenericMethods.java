@@ -1,6 +1,7 @@
 package com.pp.ios.auto;
 
-import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.ios.IOSDriver;
+
 import java.io.File;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -9,14 +10,20 @@ import java.net.URL;
 import java.security.SecureRandom;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+
 import javax.xml.parsers.ParserConfigurationException;
+
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -36,9 +43,9 @@ import com.google.common.base.Function;
 
 public class GenericMethods {
 
-	AppiumDriver driver;
+	IOSDriver driver;
 
-	public AppiumDriver loginNativeAndroid(GenericMethods genMeth) throws ParserConfigurationException, SAXException, IOException,InterruptedException {
+	public IOSDriver loginNativeAndroid(GenericMethods genMeth) throws ParserConfigurationException, SAXException, IOException,InterruptedException {
 		
 		androidElementData elData = new androidElementData();
 		// Login with an existing account
@@ -54,7 +61,9 @@ public class GenericMethods {
 
 		try {
 
-			driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
+//			driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
+			driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
+			
 		}
 
 		catch (Exception e) {
@@ -85,9 +94,10 @@ public class GenericMethods {
 	}
 
 	
-	public AppiumDriver killAppIos(AppiumDriver driver)throws InterruptedException, IOException {
+	public IOSDriver killAppIos(IOSDriver driver)throws InterruptedException, IOException {
 		//GenericMethods genMeth = new GenericMethods();
 		driver.removeApp("com.cloudengines.pogoplug");
+		
 		try {
 			driver.quit();
 		} catch (Exception x) {
@@ -98,7 +108,7 @@ public class GenericMethods {
 	}
 	
 
-	public void signOutFromStartupIphone5(AppiumDriver driver, webElementsIos iosData) throws InterruptedException, IOException {
+	public void signOutFromStartupIphone5(IOSDriver driver, webElementsIos iosData) throws InterruptedException, IOException {
 		GenericMethods genMeth = new GenericMethods();
 		genMeth.clickName(driver,genMeth, iosData.Settings_Name);
 		driver.swipe(170, 350, 170, 150, 500);
@@ -127,6 +137,7 @@ public class GenericMethods {
 			genMeth.isElementVisibleNative(driver,By.name(iosData.TransferPhonesSimply_Name));
 			genMeth.isElementVisibleNative(driver,By.name(iosData.TransferPhonesSimplyFullText_Name));
 			driver.swipe(270, 265, 55, 265, 1000);
+			
 
 			// check if this is a Limited or Unlimited account
 			boolean isUnlimitedAccount = genMeth.checkIsElementVisibleNative(driver, By.name(iosData.UnlimitedProtection_Name));
@@ -162,8 +173,16 @@ public class GenericMethods {
 		}
 
 	}
-
-	public AppiumDriver setCapabilitiesIos(GenericMethods genMeth) throws IOException {
+	
+    public void scroll(IOSDriver driver , String direction){       
+        JavascriptExecutor js= (JavascriptExecutor) driver;
+        Map<String, String>scrollMap =new HashMap<String, String>();
+        scrollMap.put("direction", direction);  
+        js.executeScript("mobile: scroll", scrollMap);  
+}
+    
+    
+	public IOSDriver setCapabilitiesIos(GenericMethods genMeth) throws IOException {
 
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 
@@ -177,7 +196,7 @@ public class GenericMethods {
 		
 		try {
 
-			driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+			driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 		}
 
 		catch (MalformedURLException e) {
@@ -189,31 +208,26 @@ public class GenericMethods {
 	}
 
 
-	public AppiumDriver cleanLoginIos(AppiumDriver driver, GenericMethods genMeth, webElementsIos iosData, String user) throws InterruptedException, IOException,ParserConfigurationException, SAXException {
-
-		/*
-		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability("deviceName", "Automation test2");
-		capabilities.setCapability("device", "iPhone 5");
-		capabilities.setCapability("udid","dc32ad3627707abcf57c9844d4ed95e4c212e5a9");
-
-		capabilities.setCapability(CapabilityType.VERSION, "8.1");
-		capabilities.setCapability(CapabilityType.PLATFORM, "Mac");
-		capabilities.setCapability("platformName", "iOS");
-		capabilities.setCapability("app","/Users/qa/Desktop/Appium/Pogoplug.app");
-		driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
-		*/
-		
-		//driver = genMeth.setCapabilitiesIos();
+	public IOSDriver cleanLoginIos(IOSDriver driver, GenericMethods genMeth, webElementsIos iosData, String user) throws InterruptedException, IOException,ParserConfigurationException, SAXException {
 
 		// Login with an existing account
 		genMeth.clickName(driver,genMeth, iosData.BTNalreadyHaveAnAccount_name);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDemail_Id, user);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDpass_Id, iosData.password);
 		genMeth.clickName(driver,genMeth, iosData.BTNsignin_Name);
+		
+//		TouchActions touchActions;
 
+		
 		// Make sure that the intro display (that way the swipe will be done at the right time)
+//		genMeth.scroll(driver, "left");
+//		genMeth.scroll(driver, "right");
+//		genMeth.scroll(driver, "up");
+//		genMeth.scroll(driver, "down");
+//		genMeth.scroll(driver, "up");
+
 		genMeth.isElementVisibleNative(driver,By.name(iosData.NeverLoseAPhoto_Name));
+
 		driver.swipe(270, 265, 55, 265, 500);
 		genMeth.isElementVisibleNative(driver,By.name(iosData.TransferPhonesSimply_Name));
 		driver.swipe(270, 265, 55, 265, 500);
@@ -316,7 +330,7 @@ public class GenericMethods {
 		}
 	*/
 
-	public void takeScreenShotNative(AppiumDriver driver, GenericMethods genMeth, String imageName) throws IOException {
+	public void takeScreenShotNative(IOSDriver driver, GenericMethods genMeth, String imageName) throws IOException {
 
 		File scrFile = (driver.getScreenshotAs(OutputType.FILE));
 		String currentTime = genMeth.currentTime();
@@ -361,7 +375,7 @@ public class GenericMethods {
 
 	// ==================== RETURN ELEMENT
 
-		public WebElement returnCss(AppiumDriver driver, String cssSelector)
+		public WebElement returnCss(IOSDriver driver, String cssSelector)
 			throws InterruptedException {
 
 		GenericMethods genMeth = new GenericMethods();
@@ -382,7 +396,7 @@ public class GenericMethods {
 		return myElement;
 	}
 
-	public WebElement returnId(AppiumDriver driver,GenericMethods genMeth, String id)
+	public WebElement returnId(IOSDriver driver,GenericMethods genMeth, String id)
 			throws InterruptedException {
 
 
@@ -403,7 +417,7 @@ public class GenericMethods {
 
 	}
 
-	public WebElement returnClassName(AppiumDriver driver, GenericMethods genMeth,  String className)
+	public WebElement returnClassName(IOSDriver driver, GenericMethods genMeth,  String className)
 			throws InterruptedException {
 
 
@@ -423,7 +437,7 @@ public class GenericMethods {
 		return myElement;
 	}
 
-	public WebElement returnXpth(AppiumDriver driver, GenericMethods genMeth, String xpth)
+	public WebElement returnXpth(IOSDriver driver, GenericMethods genMeth, String xpth)
 			throws InterruptedException {
 
 		try {
@@ -442,7 +456,7 @@ public class GenericMethods {
 
 	}
 
-	public WebElement returnName(AppiumDriver driver, GenericMethods genMeth, String name)
+	public WebElement returnName(IOSDriver driver, GenericMethods genMeth, String name)
 			throws InterruptedException {
 
 		try {
@@ -465,7 +479,7 @@ public class GenericMethods {
 	// ========= CLICK an ELEMENT
 	// =========================================================================
 
-	public void clickBy(AppiumDriver driver, GenericMethods genMeth, By by) throws InterruptedException {
+	public void clickBy(IOSDriver driver, GenericMethods genMeth, By by) throws InterruptedException {
 
 
 		try {
@@ -482,7 +496,7 @@ public class GenericMethods {
 
 	}
 
-	public void clickCss(AppiumDriver driver, GenericMethods genMeth, String cssSelector)
+	public void clickCss(IOSDriver driver, GenericMethods genMeth, String cssSelector)
 			throws InterruptedException {
 
 		try {
@@ -501,7 +515,7 @@ public class GenericMethods {
 
 	}
 
-	public void clickId(AppiumDriver driver, GenericMethods genMeth, String id)
+	public void clickId(IOSDriver driver, GenericMethods genMeth, String id)
 			throws InterruptedException {
 
 		try {
@@ -517,7 +531,7 @@ public class GenericMethods {
 		}
 	}
 
-	public void clickClassName(AppiumDriver driver, GenericMethods genMeth, String className)
+	public void clickClassName(IOSDriver driver, GenericMethods genMeth, String className)
 			throws InterruptedException {
 
 		try {
@@ -534,7 +548,7 @@ public class GenericMethods {
 
 	}
 
-	public void clickXpth(AppiumDriver driver, GenericMethods genMeth, String xpth)
+	public void clickXpth(IOSDriver driver, GenericMethods genMeth, String xpth)
 			throws InterruptedException, IOException {
 
 		By by = By.xpath(xpth);
@@ -559,7 +573,7 @@ public class GenericMethods {
 
 	}
 
-	public void clickName(AppiumDriver driver,GenericMethods genMeth, String name)
+	public void clickName(IOSDriver driver,GenericMethods genMeth, String name)
 			throws InterruptedException, IOException {
 
 		try {
@@ -582,7 +596,7 @@ public class GenericMethods {
 	// ======================== SEND ELEMENT
 	// =========================================================================
 
-	public void sendBy(AppiumDriver driver, GenericMethods genMeth, By by, String send)
+	public void sendBy(IOSDriver driver, GenericMethods genMeth, By by, String send)
 			throws InterruptedException, IOException {
 
 		try {
@@ -601,7 +615,7 @@ public class GenericMethods {
 
 	}
 
-	public void sendCss(AppiumDriver driver, GenericMethods genMeth, String cssSelector, String send)
+	public void sendCss(IOSDriver driver, GenericMethods genMeth, String cssSelector, String send)
 			throws InterruptedException {
 
 		try {
@@ -620,7 +634,7 @@ public class GenericMethods {
 
 	}
 
-	public void sendId(AppiumDriver driver, GenericMethods genMeth, String id, String send)
+	public void sendId(IOSDriver driver, GenericMethods genMeth, String id, String send)
 			throws InterruptedException, IOException {
 
 		try {
@@ -639,7 +653,7 @@ public class GenericMethods {
 
 	}
 
-	public void sendClassName(AppiumDriver driver, GenericMethods genMeth, String className, String send)
+	public void sendClassName(IOSDriver driver, GenericMethods genMeth, String className, String send)
 			throws InterruptedException {
 
 		try {
@@ -656,7 +670,7 @@ public class GenericMethods {
 
 	}
 
-	public void sendXpth(AppiumDriver driver, GenericMethods genMeth, String xpth, String send)
+	public void sendXpth(IOSDriver driver, GenericMethods genMeth, String xpth, String send)
 			throws IOException {
 
 		try {
@@ -675,7 +689,7 @@ public class GenericMethods {
 
 	}
 
-	public void sendName(AppiumDriver driver, GenericMethods genMeth, String name, String send)
+	public void sendName(IOSDriver driver, GenericMethods genMeth, String name, String send)
 			throws IOException {
 
 
@@ -697,7 +711,7 @@ public class GenericMethods {
 	// =========================Clear
 	// WebElements=====================================================================
 
-	public void clearXpth(AppiumDriver driver, GenericMethods genMeth, String xpath)
+	public void clearXpth(IOSDriver driver, GenericMethods genMeth, String xpath)
 			throws InterruptedException {
 
 		try {
@@ -715,7 +729,7 @@ public class GenericMethods {
 
 	}
 
-	public void clearClassName(AppiumDriver driver, GenericMethods genMeth, String className)
+	public void clearClassName(IOSDriver driver, GenericMethods genMeth, String className)
 			throws InterruptedException {
 
 		try {
@@ -734,7 +748,7 @@ public class GenericMethods {
 
 	}
 
-	public void clearId(AppiumDriver driver, GenericMethods genMeth, String id)
+	public void clearId(IOSDriver driver, GenericMethods genMeth, String id)
 			throws InterruptedException {
 
 		try {
@@ -752,7 +766,7 @@ public class GenericMethods {
 
 	}
 
-	public void clearCss(AppiumDriver driver, GenericMethods genMeth, String cssSelector)
+	public void clearCss(IOSDriver driver, GenericMethods genMeth, String cssSelector)
 			throws InterruptedException {
 
 		try {
@@ -778,7 +792,7 @@ public class GenericMethods {
 	 */
 
 	// Look for an element in a few tries (with counter)
-	public void waitForElementToBeInvisible(AppiumDriver driver, By byType,
+	public void waitForElementToBeInvisible(IOSDriver driver, By byType,
 			int numAttempts) throws IOException, ParserConfigurationException,SAXException {
 
 		int count = 0;
@@ -786,7 +800,7 @@ public class GenericMethods {
 		while (count < numAttempts) {
 
 			try {
-				isInvisible = new FluentWait<AppiumDriver>(driver)
+				isInvisible = new FluentWait<IOSDriver>(driver)
 						.withTimeout(60, TimeUnit.SECONDS)
 						.pollingEvery(5, TimeUnit.SECONDS)
 						.ignoring(NoSuchElementException.class)
@@ -818,7 +832,7 @@ public class GenericMethods {
 
 	}
 
-	public void waitForElementToBeVisible(AppiumDriver driver, By byType,
+	public void waitForElementToBeVisible(IOSDriver driver, By byType,
 			int numAttempts) throws IOException, ParserConfigurationException,
 			SAXException {
 
@@ -826,7 +840,7 @@ public class GenericMethods {
 		WebElement elementToBeVisible = null;
 		while (count < numAttempts) {
 			try {
-				elementToBeVisible = new FluentWait<AppiumDriver>(driver)
+				elementToBeVisible = new FluentWait<IOSDriver>(driver)
 						.withTimeout(60, TimeUnit.SECONDS)
 						.pollingEvery(5, TimeUnit.SECONDS)
 						.ignoring(NoSuchElementException.class)
@@ -856,14 +870,14 @@ public class GenericMethods {
 
 	}
 
-	public WebElement fluentwait(AppiumDriver driver, final By byType) {
-		Wait<AppiumDriver> wait = new FluentWait<AppiumDriver>(driver)
+	public WebElement fluentwait(IOSDriver driver, final By byType) {
+		Wait<IOSDriver> wait = new FluentWait<IOSDriver>(driver)
 				.withTimeout(45, TimeUnit.SECONDS)
 				.pollingEvery(5, TimeUnit.SECONDS)
 				.ignoring(NoSuchElementException.class);
 
-		WebElement foo = wait.until(new Function<AppiumDriver, WebElement>() {
-			public WebElement apply(AppiumDriver driver) {
+		WebElement foo = wait.until(new Function<IOSDriver, WebElement>() {
+			public WebElement apply(IOSDriver driver) {
 				return driver.findElement(byType);
 			}
 		});
@@ -873,14 +887,14 @@ public class GenericMethods {
 		return foo;
 	}
 
-	public void isTextPresentNative(AppiumDriver driver, String text, By by)
+	public void isTextPresentNative(IOSDriver driver, String text, By by)
 			throws IOException, ParserConfigurationException, SAXException,
 			InterruptedException {
 
 		// boolean isStartUpPageOpenIOS = false;
 
 		try {
-			new FluentWait<AppiumDriver>(driver)
+			new FluentWait<IOSDriver>(driver)
 					.withTimeout(10, TimeUnit.SECONDS)
 					.pollingEvery(5, TimeUnit.SECONDS)
 					.ignoring(NoSuchElementException.class)
@@ -901,13 +915,13 @@ public class GenericMethods {
 
 	}
 
-	public boolean checkIsTextPresentNative(AppiumDriver driver, String text,
+	public boolean checkIsTextPresentNative(IOSDriver driver, String text,
 			By by) throws IOException, ParserConfigurationException,SAXException, InterruptedException {
 
 		boolean isTextPresent = false;
 
 		try {
-			isTextPresent = new FluentWait<AppiumDriver>(driver)
+			isTextPresent = new FluentWait<IOSDriver>(driver)
 					.withTimeout(5, TimeUnit.SECONDS)
 					.pollingEvery(1, TimeUnit.SECONDS)
 					.ignoring(NoSuchElementException.class)
@@ -925,7 +939,7 @@ public class GenericMethods {
 
 	// This method checks if a given element is invisible on the screen
 
-	public void isElementInvisibleNative(AppiumDriver driver, By by)
+	public void isElementInvisibleNative(IOSDriver driver, By by)
 			throws ParserConfigurationException, SAXException, IOException {
 
 		try {
@@ -946,14 +960,14 @@ public class GenericMethods {
 
 	}
 
-	public void isElementVisibleNative(AppiumDriver driver, By by)
+	public void isElementVisibleNative(IOSDriver driver, By by)
 			throws ParserConfigurationException, SAXException, IOException {
 
 		try {
 
 			// (new WebDriverWait(driver,
 			// 20)).until(ExpectedConditions.visibilityOfElementLocated(by));
-			new FluentWait<AppiumDriver>(driver)
+			new FluentWait<IOSDriver>(driver)
 					.withTimeout(30, TimeUnit.SECONDS)
 					.pollingEvery(5, TimeUnit.SECONDS)
 					.ignoring(NoSuchElementException.class)
@@ -971,7 +985,7 @@ public class GenericMethods {
 
 	}
 
-	public boolean checkIsElementVisibleNative(AppiumDriver driver, By by)
+	public boolean checkIsElementVisibleNative(IOSDriver driver, By by)
 			throws ParserConfigurationException, SAXException, IOException {
 
 		boolean isWebElementVisible = false;
@@ -980,7 +994,7 @@ public class GenericMethods {
 
 			// (new WebDriverWait(driver,
 			// 20)).until(ExpectedConditions.visibilityOfElementLocated(by));
-			element = new FluentWait<AppiumDriver>(driver)
+			element = new FluentWait<IOSDriver>(driver)
 					.withTimeout(5, TimeUnit.SECONDS)
 					.pollingEvery(1, TimeUnit.SECONDS)
 					.ignoring(NoSuchElementException.class)
@@ -1009,7 +1023,7 @@ public class GenericMethods {
 
 	}
 
-	public void isElementInvisibleTextNative(AppiumDriver driver, By by, String text) throws ParserConfigurationException,
+	public void isElementInvisibleTextNative(IOSDriver driver, By by, String text) throws ParserConfigurationException,
 			SAXException, IOException {
 
 		try {
@@ -1069,7 +1083,7 @@ public class GenericMethods {
 	}
 
 
-	public void backgroundToForeground(AppiumDriver driver, int numOfTimes) {
+	public void backgroundToForeground(IOSDriver driver, int numOfTimes) {
 
 		for (int count = 0; count < numOfTimes; count++) {
 
@@ -1079,7 +1093,7 @@ public class GenericMethods {
 
 	}
 
-	public void lockUnlock(AppiumDriver driver, int numOfTimes) {
+	public void lockUnlock(IOSDriver driver, int numOfTimes) {
 
 		for (int count = 0; count < numOfTimes; count++) {
 
