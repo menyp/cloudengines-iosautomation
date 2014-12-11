@@ -4,16 +4,18 @@
   <test name="Sanity Tests(failed)" parallel="none">
     <groups>
       <run>
-        <include name="Sanity iOS now1"/>
-        <include name="Regression iOS now111"/>
+        <include name="Sanity iOS"/>
+        <include name="Regression iOS"/>
       </run>
     </groups>
     <classes>
       <class name="com.pp.ios.auto.sanityIos">
         <methods>
+          <include name="checkHomeScreen"/>
           <include name="setupBeforeSuite"/>
+          <include name="uploadExistingPotos"/>
           <include name="sendMail"/>
-          <include name="testCreatefolder"/>
+          <include name="Favorites"/>
         </methods>
       </class> <!-- com.pp.ios.auto.sanityIos -->
     </classes>

@@ -1,3 +1,6 @@
+
+
+/*
 package com.pp.ios.auto;
 
 import io.appium.java_client.AppiumDriver;
@@ -78,8 +81,10 @@ public void testLogin() throws ParserConfigurationException, SAXException, IOExc
 	genMeth.clickName(driver, genMeth, "Files, Navigate up");
 		
 }
+*/
 
-@Test (enabled = true , description = "Test the Create folder with Android" , groups= {"Sanity Native Android"}  /*dependsOnMethods={"testLogin"}*/)	
+//@Test (enabled = true , description = "Test the Create folder with Android" , groups= {"Sanity Native Android"}  /*dependsOnMethods={"testLogin"}*/)	
+/*
 public void testCreatefolder() throws ParserConfigurationException, SAXException, IOException, InterruptedException{
 	
 	Thread.sleep(2000);
@@ -222,3 +227,4 @@ public void tearDown() {
 }
 
 }
+*/

@@ -4,15 +4,17 @@
   <test name="Command line test(failed)">
     <groups>
       <run>
-        <include name="Sanity Native iOS simulator"/>
+        <include name="Sanity iOS1111"/>
+        <include name="Regression iOS now"/>
       </run>
     </groups>
     <classes>
       <class name="com.pp.ios.auto.sanityIos">
         <methods>
-          <include name="badCredentials"/>
+          <include name="checkHomeScreen"/>
           <include name="setupBeforeSuite"/>
-          <include name="sendMail"/>
+          <include name="uploadExistingPotos"/>
+          <include name="tearDown"/>
         </methods>
       </class> <!-- com.pp.ios.auto.sanityIos -->
     </classes>

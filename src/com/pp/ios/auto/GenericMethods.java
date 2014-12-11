@@ -23,7 +23,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -44,57 +43,57 @@ import com.google.common.base.Function;
 public class GenericMethods {
 
 	IOSDriver driver;
-
-	public IOSDriver loginNativeAndroid(GenericMethods genMeth) throws ParserConfigurationException, SAXException, IOException,InterruptedException {
-		
-		androidElementData elData = new androidElementData();
-		// Login with an existing account
-		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability("appium-version", "1.2");
-		capabilities.setCapability("platformName", "Android");
-		capabilities.setCapability("platformVersion", "4.4");
-		capabilities.setCapability("deviceName", "Nexus 5");
-		capabilities.setCapability("app","/Users/qa/Desktop/Pogoplug-5.9.0.9-20140722_093521.apk");
-		capabilities.setCapability("appPackage", "com.pogoplug.android");
-		capabilities.setCapability("appWaitActivity","com.pogoplug.android.login.ui.IntroPage");
-		capabilities.setCapability("appActivity","com.pogoplug.android.login.Splash");
-
-		try {
-
-//			driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
-			driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
-			
-		}
-
-		catch (Exception e) {
-			driver.quit();
-		}
-
-		genMeth.clickId(driver,  genMeth, elData.BTNalreadyHaveAnAccount_id);
-		genMeth.sendId(driver, genMeth, elData.TEXTFIELDemail_id,"meny@cloudengines.com");
-		genMeth.sendId(driver, genMeth, elData.TEXTFIELDpassword_id, "1");
-		genMeth.clickId(driver, genMeth, elData.BTNlogin_id);
-
-		// Make sure that the intro display (that way the swipe will be done at the right time)
-		By by = By.id("com.pogoplug.android:id/protect_computer");
-		String text = "Never Lose a Photo";
-		genMeth.isTextPresentNative(driver, text, by);
-
-		// Navigate through the intro
-		driver.swipe(1031, 1150, 53, 1150, 500);
-		genMeth.clickId(driver, genMeth, elData.BTNfinishTour_id);
-		genMeth.clickId(driver, genMeth, elData.BTNcontinue_id);
-
-		// Make sure that the Login was successful By verifying that the "CATEGORIES" display in the *LSM (Left Side Menu)
-		By byCat = By.xpath("//android.widget.ListView[1]/android.widget.TextView[1]");
-		String cat = "CATEGORIES";
-		genMeth.isTextPresentNative(driver, cat, byCat);
-		return driver;
-
-	}
-
+//
+//	public IOSDriver loginNativeAndroid(GenericMethods genMeth) throws ParserConfigurationException, SAXException, IOException,InterruptedException {
+//		
+//		androidElementData elData = new androidElementData();
+//		// Login with an existing account
+//		DesiredCapabilities capabilities = new DesiredCapabilities();
+//		capabilities.setCapability("appium-version", "1.2");
+//		capabilities.setCapability("platformName", "Android");
+//		capabilities.setCapability("platformVersion", "4.4");
+//		capabilities.setCapability("deviceName", "Nexus 5");
+//		capabilities.setCapability("app","/Users/qa/Desktop/Pogoplug-5.9.0.9-20140722_093521.apk");
+//		capabilities.setCapability("appPackage", "com.pogoplug.android");
+//		capabilities.setCapability("appWaitActivity","com.pogoplug.android.login.ui.IntroPage");
+//		capabilities.setCapability("appActivity","com.pogoplug.android.login.Splash");
+//
+//		try {
+//
+////			driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
+//			driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
+//			
+//		}
+//
+//		catch (Exception e) {
+//			driver.quit();
+//		}
+//
+//		genMeth.clickId(driver,  genMeth, elData.BTNalreadyHaveAnAccount_id);
+//		genMeth.sendId(driver, genMeth, elData.TEXTFIELDemail_id,"meny@cloudengines.com");
+//		genMeth.sendId(driver, genMeth, elData.TEXTFIELDpassword_id, "1");
+//		genMeth.clickId(driver, genMeth, elData.BTNlogin_id);
+//
+//		// Make sure that the intro display (that way the swipe will be done at the right time)
+//		By by = By.id("com.pogoplug.android:id/protect_computer");
+//		String text = "Never Lose a Photo";
+//		genMeth.isTextPresentNative(driver, text, by);
+//
+//		// Navigate through the intro
+//		driver.swipe(1031, 1150, 53, 1150, 500);
+//		genMeth.clickId(driver, genMeth, elData.BTNfinishTour_id);
+//		genMeth.clickId(driver, genMeth, elData.BTNcontinue_id);
+//
+//		// Make sure that the Login was successful By verifying that the "CATEGORIES" display in the *LSM (Left Side Menu)
+//		By byCat = By.xpath("//android.widget.ListView[1]/android.widget.TextView[1]");
+//		String cat = "CATEGORIES";
+//		genMeth.isTextPresentNative(driver, cat, byCat);
+//		return driver;
+//
+//	}
+//
 	
-	public IOSDriver killAppIos(IOSDriver driver)throws InterruptedException, IOException {
+	public void killAppIos(IOSDriver driver)throws InterruptedException, IOException {
 		//GenericMethods genMeth = new GenericMethods();
 		driver.removeApp("com.cloudengines.pogoplug");
 		
@@ -104,17 +103,15 @@ public class GenericMethods {
 			// swallow exception
 		}
 		//driver = genMeth.setCapabilitiesIos();
-		return driver;
+	
 	}
 	
 
 	public void signOutFromStartupIphone5(IOSDriver driver, webElementsIos iosData) throws InterruptedException, IOException {
 		GenericMethods genMeth = new GenericMethods();
 		genMeth.clickName(driver,genMeth, iosData.Settings_Name);
-		driver.swipe(170, 350, 170, 150, 500);
-		Thread.sleep(1000);
-		driver.swipe(170, 450, 170, 250, 500);
-		driver.swipe(170, 550, 170, 350, 500);
+		genMeth.scroll(driver, iosData.scrollDown);
+		genMeth.scroll(driver, iosData.scrollDown);
 		genMeth.clickName(driver,genMeth, iosData.BTNsignOut_Name);
 	}
 	
@@ -155,7 +152,7 @@ public class GenericMethods {
 				genMeth.isElementVisibleNative(driver,By.name(iosData.BackupTourText_Name));
 				genMeth.clickName(driver,genMeth, iosData.BTNcontinue_Name);
 
-				genMeth.handleAccessPhotosContactsLocation(genMeth, iosData);
+				genMeth.handleAccessPhotosContactsLocationNotifications(genMeth, iosData);
 
 				// verify that the home screen is open with the LSM (left side menu)
 				genMeth.isElementVisibleNative(driver,By.name(iosData.Settings_Name));
@@ -164,7 +161,7 @@ public class GenericMethods {
 			else {
 				genMeth.isElementVisibleNative(driver,By.name(iosData.Backup_Name));
 				genMeth.clickName(driver,genMeth, iosData.BTNcontinue_Name);
-				genMeth.handleAccessPhotosContactsLocation(genMeth, iosData);
+				genMeth.handleAccessPhotosContactsLocationNotifications(genMeth, iosData);
 			}
 
 			// verify that the home screen is open with the LSM (left side menu)
@@ -181,44 +178,53 @@ public class GenericMethods {
         js.executeScript("mobile: scroll", scrollMap);  
 }
     
-    
-	public IOSDriver setCapabilitiesIos(GenericMethods genMeth) throws IOException {
+ 
+	public IOSDriver setCapabilitiesIos(GenericMethods genMeth)
+			throws IOException {
 
 		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability("deviceName",genMeth.getValueFromPropFile("deviceName"));
+		capabilities.setCapability("device",genMeth.getValueFromPropFile("device"));
+		capabilities.setCapability("udid", genMeth.getValueFromPropFile("udid"));
+		capabilities.setCapability(CapabilityType.VERSION,genMeth.getValueFromPropFile("CapabilityType.VERSION"));
+		//capabilities.setCapability(CapabilityType.PLATFORM,genMeth.getValueFromPropFile("CapabilityType.PLATFORM"));
+		capabilities.setCapability("platformName",genMeth.getValueFromPropFile("platformName"));
+		capabilities.setCapability("app",genMeth.getValueFromPropFile("pogoplugPath"));
 
-			capabilities.setCapability("deviceName", genMeth.getValueFromPropFile("deviceName"));
-			capabilities.setCapability("device", genMeth.getValueFromPropFile("device"));
-			capabilities.setCapability("udid",genMeth.getValueFromPropFile("udid"));
-			capabilities.setCapability(CapabilityType.VERSION, genMeth.getValueFromPropFile("CapabilityType.VERSION"));
-			capabilities.setCapability(CapabilityType.PLATFORM, genMeth.getValueFromPropFile("CapabilityType.PLATFORM"));
-			capabilities.setCapability("platformName", genMeth.getValueFromPropFile("platformName"));
-			capabilities.setCapability("app", genMeth.getValueFromPropFile("pogoplugPath"));
-		
 		try {
 
-			driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+			driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
 		}
 
 		catch (MalformedURLException e) {
 
 			genMeth.takeScreenShotNative(driver, genMeth,"Faliled to open Appium driver");
-			org.testng.Assert.fail("WebElement" + " Faliled to open Appium driver");
+			org.testng.Assert.fail("WebElement"+ " Faliled to open Appium driver");
 		}
 		return driver;
 	}
-
+	
 
 	public IOSDriver cleanLoginIos(IOSDriver driver, GenericMethods genMeth, webElementsIos iosData, String user) throws InterruptedException, IOException,ParserConfigurationException, SAXException {
 
 		// Login with an existing account
+	//	genMeth.handleAccessPhotosContactsLocationNotifications(genMeth, iosData);
 		genMeth.clickName(driver,genMeth, iosData.BTNalreadyHaveAnAccount_name);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDemail_Id, user);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDpass_Id, iosData.password);
 		genMeth.clickName(driver,genMeth, iosData.BTNsignin_Name);
 		
-//		TouchActions touchActions;
+//		TouchAction action = new TouchAction(driver);
+//		action.press(270, 265).waitAction(500).moveTo(130, 265).release().perform();
+//		action.press(290, 265).waitAction(500).moveTo(150, 265).release().perform();
+//		action.press(280, 265).waitAction(500).moveTo(100, 265).release().perform();
+//		action.press(300, 265).waitAction(500).moveTo(140, 265).release().perform();
+//		driver.swipe(320, 265, 190, 265, 500);
+//		driver.swipe(200, 265, 100, 265, 500);
+//		driver.swipe(250, 265, 150, 265, 500);
+//		
 
-		
+
 		// Make sure that the intro display (that way the swipe will be done at the right time)
 //		genMeth.scroll(driver, "left");
 //		genMeth.scroll(driver, "right");
@@ -247,7 +253,7 @@ public class GenericMethods {
 			genMeth.isElementVisibleNative(driver,By.name(iosData.BackupTourText_Name));
 			genMeth.clickName(driver,genMeth, iosData.BTNcontinue_Name);
 
-			genMeth.handleAccessPhotosContactsLocation(genMeth, iosData);
+			genMeth.handleAccessPhotosContactsLocationNotifications(genMeth, iosData);
 
 			// verify that the home screen is open with the LSM (left side menu)
 			genMeth.isElementVisibleNative(driver,By.name(iosData.Settings_Name));
@@ -256,11 +262,11 @@ public class GenericMethods {
 		else {
 			genMeth.isElementVisibleNative(driver,By.name(iosData.Backup_Name));
 			genMeth.clickName(driver,genMeth, iosData.BTNcontinue_Name);
-			genMeth.handleAccessPhotosContactsLocation(genMeth,  iosData);
+			genMeth.handleAccessPhotosContactsLocationNotifications(genMeth,  iosData);
 		}
 
 		// verify that the home screen is open with the LSM (left side menu)
-		genMeth.handleAccessPhotosContactsLocation(genMeth,  iosData);
+		genMeth.handleAccessPhotosContactsLocationNotifications(genMeth,  iosData);
 		genMeth.isElementVisibleNative(driver,By.name(iosData.Settings_Name));
 		// verify that the home screen is open with the LSM (left side menu)
 		genMeth.isElementVisibleNative(driver,By.name(iosData.Settings_Name));
@@ -294,7 +300,7 @@ public class GenericMethods {
 		
 		//Disable the backup from TOUR
 		genMeth.clickName(driver,genMeth, iosData.BTNcontinue_Name);
-		genMeth.handleAccessPhotosContactsLocation(genMeth,  iosData);
+		genMeth.handleAccessPhotosContactsLocationNotifications(genMeth,  iosData);
 		genMeth.isElementVisibleNative(driver,By.name(iosData.Settings_Name));
 
 	}
@@ -334,38 +340,13 @@ public class GenericMethods {
 
 		File scrFile = (driver.getScreenshotAs(OutputType.FILE));
 		String currentTime = genMeth.currentTime();
-
+		String screenshotPath = genMeth.getValueFromPropFile("screenshotPath");
 		// Now you can do whatever you need to do with it, for example copy somewhere
-		String imagePath = "/Users/qa/cloudengines-iosautomation/test-output/screenshots/" + currentTime + "_" + imageName + ".JPG";
+		String imagePath = screenshotPath  + currentTime + "_" + imageName + ".JPG";
 		FileUtils.copyFile(scrFile, new File(imagePath));
 
 	}
 
-
-	public elementData elementInit() throws ParserConfigurationException,SAXException, IOException {
-		elementData element = new elementData();
-		return element;
-	}
-
-	public webElementsIos iOSelementInit(String lang, String xmlPath) throws Exception,
-			Throwable {
-		// According "lang" will determine for which language it will be initialized
-
-		// if ()
-		webElementsIos element = new webElementsIos(lang, xmlPath);
-		return element;
-
-	}
-
-	public androidElementData androidElementInit() throws ParserConfigurationException, SAXException, IOException {
-		androidElementData element = new androidElementData();
-		return element;
-	}
-
-	public genData genericDataInit() throws ParserConfigurationException,SAXException, IOException {
-		genData genD = new genData();
-		return genD;
-	}
 
 	/*
 	 * ***************************************************
@@ -959,6 +940,28 @@ public class GenericMethods {
 		}
 
 	}
+	
+	public void isElementInvisibleTextNative(IOSDriver driver, By by, String text) throws ParserConfigurationException,
+	SAXException, IOException {
+
+try {
+
+	(new WebDriverWait(driver, 45)).until(ExpectedConditions
+			.invisibilityOfElementWithText(by, text));
+
+}
+
+catch (Exception e) {
+
+	GenericMethods genMeth = new GenericMethods();
+	String imageName =  text + " still visible ";
+	genMeth.takeScreenShotNative(driver, genMeth, imageName);
+	org.testng.Assert.fail(text + " still visible");
+
+}
+
+}
+
 
 	public void isElementVisibleNative(IOSDriver driver, By by)
 			throws ParserConfigurationException, SAXException, IOException {
@@ -995,7 +998,7 @@ public class GenericMethods {
 			// (new WebDriverWait(driver,
 			// 20)).until(ExpectedConditions.visibilityOfElementLocated(by));
 			element = new FluentWait<IOSDriver>(driver)
-					.withTimeout(5, TimeUnit.SECONDS)
+					.withTimeout(30, TimeUnit.SECONDS)
 					.pollingEvery(1, TimeUnit.SECONDS)
 					.ignoring(NoSuchElementException.class)
 					.until(ExpectedConditions.visibilityOfElementLocated(by));
@@ -1023,29 +1026,7 @@ public class GenericMethods {
 
 	}
 
-	public void isElementInvisibleTextNative(IOSDriver driver, By by, String text) throws ParserConfigurationException,
-			SAXException, IOException {
-
-		try {
-
-			(new WebDriverWait(driver, 45)).until(ExpectedConditions
-					.invisibilityOfElementWithText(by, text));
-
-		}
-
-		catch (Exception e) {
-
-			GenericMethods genMeth = new GenericMethods();
-			genData str = new genData();
-			String imageName = str.screenShotPath + text + " still visible "
-					+ genMeth.currentTime() + ".png";
-			genMeth.takeScreenShotNative(driver, genMeth, imageName);
-			org.testng.Assert.fail(text + " still visible");
-
-		}
-
-	}
-
+	
 	public final class SessionIdentifierGenerator {
 		private SecureRandom random = new SecureRandom();
 
@@ -1103,7 +1084,7 @@ public class GenericMethods {
 
 	}
 
-	public void handleAccessPhotosContactsLocation(GenericMethods genMeth, webElementsIos iosData)
+	public void handleAccessPhotosContactsLocationNotifications(GenericMethods genMeth, webElementsIos iosData)
 			throws IOException, ParserConfigurationException, SAXException,InterruptedException {
 		
 		// check if the "“Pogoplug” Would Like to Access Your Contacts" popup is displayed
@@ -1134,9 +1115,50 @@ public class GenericMethods {
 			genMeth.clickName(driver,genMeth, iosData.BTNok_Name);
 
 		}
+		
+		// check if the current Notification popup is displayed
+				boolean isNotificationPopupDisplay = genMeth.checkIsTextPresentNative(
+						driver, "“Pogoplug” Would Like to Send You Notifications",
+						By.name("“Pogoplug” Would Like to Send You Notifications"));
+
+				if (isNotificationPopupDisplay == true) {
+
+					genMeth.clickName(driver,genMeth, iosData.BTNok_Name);
+
+				}
+		
+		
+		
+
 
 	}
+	
+	public void deletList(GenericMethods genMeth, webElementsIos iosData) 
+			throws ParserConfigurationException, SAXException, IOException,
+			InterruptedException {
+		boolean isListEmpty = genMeth.checkIsElementVisibleNative(driver, By.name(iosData.EmptyFolder_Name));
+		while (isListEmpty == false) {
+
+			// delete the first row
+			genMeth.clickName(driver, genMeth, iosData.BTNedit_Name);
+			genMeth.clickXpth(driver, genMeth,
+					"//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]");
+			genMeth.clickName(driver, genMeth, iosData.BTNdeleteOn_Name);
+			genMeth.clickName(driver, genMeth, iosData.BTNdelete_Name);
+			isListEmpty = genMeth.checkIsElementVisibleNative(driver,
+					By.name(iosData.EmptyFolder_Name));
+			if (isListEmpty == false) {
+
+				genMeth.clickName(driver, genMeth, iosData.BTNdone_Name);
+
+			}
+
+		}
+	}
+	
+	
 }
+
 
 /*
  * 

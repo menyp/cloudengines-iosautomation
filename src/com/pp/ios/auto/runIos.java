@@ -5,37 +5,39 @@ import org.testng.TestNG;
 
 
 
-
 public class runIos {
 	
 	public static void main(String[] args) throws Exception, Throwable {
 		// TODO Auto-generated method stub
 		TestListenerAdapter tla = new TestListenerAdapter();
-	
-	    @SuppressWarnings("unused")
+		
+		//GenericMethods genMeth = new GenericMethods();
 		//Process proc = Runtime.getRuntime().exec("/Applications/Appium.app/Contents/MacOS/Appium");
 	    
 		//Start Appium server
-		Process proc = Runtime.getRuntime().exec("/Users/qa/startAppium");	
-		//Process proc = Runtime.getRuntime().exec("/Users/pogoplug/startAppium");	    
-	    Thread.sleep(4000);
+		//String startServer = genMeth.getValueFromPropFile("StartServerPath");
+	//	String stopServer = genMeth.getValueFromPropFile("StopServerPath");
+
+	//	Process proc =  Runtime.getRuntime().exec(startServer);	
+	  //  Thread.sleep(4000);
 		
-	    //run the sanity testing 
+		//Run the first suite
+		
 		TestNG testng1 = new TestNG();
 		testng1.setTestClasses(new Class[] { sanityIos.class });
-		testng1.setGroups("Sanity Native iOS simulator");
+		testng1.setGroups("Sanity iOS1111, Regression iOS now");
 		testng1.addListener(tla);
 		testng1.run();
 		
-		//Send report by mail post sanity testing
+		//Second suite- send report by mail
 		TestNG testng2 = new TestNG();
 		testng2.setTestClasses(new Class[] { sendReport.class });
-		testng2.setGroups("temp1");
+		testng2.setGroups("send mail");
 		testng2.addListener(tla);
 		testng2.run();
 		
 		//Stop Appium server
-		Runtime.getRuntime().exec("/Users/qa/stopAppium");
+		//Runtime.getRuntime().exec(stopServer);
 		//Runtime.getRuntime().exec("/Users/pogoplug/stopAppium");
 
 

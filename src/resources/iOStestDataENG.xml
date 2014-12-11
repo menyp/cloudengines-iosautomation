@@ -129,8 +129,8 @@
 			<FavoritesMp3_Name>Favorites.mp3</FavoritesMp3_Name>
 			<FavoritesPng_Name>Favorites.png</FavoritesPng_Name>	  
 			<FavoritesMov_Name>Favorites.MOV</FavoritesMov_Name>
-			<UploadExistingImage_Name>IMG_0004.JPG</UploadExistingImage_Name>
-			<UploadExistingVideo_Name>IMG_0188.MOV</UploadExistingVideo_Name>
+			<UploadExistingImage_Name>IMG_0212.JPG</UploadExistingImage_Name>
+			<UploadExistingVideo_Name>IMG_0215.MOV</UploadExistingVideo_Name>
 			<PrivacyPolicyUrl_Name>URL</PrivacyPolicyUrl_Name>
 		    <SearchFolderFromRoot_Name>search1-;().,?!'_Pogoplug_Cloud</SearchFolderFromRoot_Name>
 		    <SearchImageFromRoot_Name>IMG_0005_in_Pogoplug_Cloud.JPG</SearchImageFromRoot_Name>
@@ -171,6 +171,8 @@
 	</WebElements>
 	
 	<GeneralInfo>
+	    <scrollDown>down</scrollDown>
+	   	<scrollUp>up</scrollUp>
 		<userUnlimited_name>automation1@test.com</userUnlimited_name>
 		<userLimited_name>Automation1@limited.com</userLimited_name>
 		<userAutomation2_Name>automation2@test.com</userAutomation2_Name>
@@ -179,10 +181,7 @@
 		<badPassword>incorrectPassword</badPassword>
 		<emptyPassword></emptyPassword>
 		<emptyUserName></emptyUserName>
-		<platformIphone>iPhone</platformIphone>
-		<platformIpad>iPad</platformIpad>
-		<platforSimulatorIphone>Simulator iPhone</platforSimulatorIphone>
-		<platformSimulatorIpad>Simulator iPad</platformSimulatorIpad>
+		
 	</GeneralInfo>
 	
 

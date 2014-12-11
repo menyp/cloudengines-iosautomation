@@ -90,7 +90,8 @@ public final class TLSGMailer {
 			messageTLS.setRecipients( Message.RecipientType.TO, InternetAddress.parse( mTo ) );
 			MimeBodyPart tmpBp1 = new MimeBodyPart();
 			messageTLS.setSubject( mTitle); 
-			tmpBp1.setContent( mText, "text/plain");
+			//tmpBp1.setContent( mText, "text/plain");
+			tmpBp1.setContent( mText, "text/html");
 			multipart.addBodyPart(tmpBp1);
 			messageTLS.setContent(multipart);			
 		} catch (MessagingException e) {

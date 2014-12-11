@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Suite]" parallel="none">
-  <test name="Sanity Tests(failed)" parallel="none">
+<suite name="Failed suite [Command line suite]">
+  <test name="Command line test(failed)">
     <groups>
       <run>
-        <include name="Sanity iOS now1"/>
-        <include name="Regression iOS now111"/>
+        <include name="Sanity iOS1111"/>
+        <include name="Regression iOS now"/>
       </run>
     </groups>
     <classes>
       <class name="com.pp.ios.auto.sanityIos">
         <methods>
+          <include name="checkHomeScreen"/>
           <include name="setupBeforeSuite"/>
-          <include name="sendMail"/>
-          <include name="testCreatefolder"/>
+          <include name="uploadExistingPotos"/>
+          <include name="tearDown"/>
         </methods>
       </class> <!-- com.pp.ios.auto.sanityIos -->
     </classes>
-  </test> <!-- Sanity Tests(failed) -->
-</suite> <!-- Failed suite [Suite] -->
+  </test> <!-- Command line test(failed) -->
+</suite> <!-- Failed suite [Command line suite] -->

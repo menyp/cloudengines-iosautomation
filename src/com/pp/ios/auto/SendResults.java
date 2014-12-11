@@ -45,6 +45,7 @@ public class SendResults {
 	}
 	
 	public void sendRegularEmail() throws IOException {
+		getTestNGResult();
 		TLSGMailer gmailer = new TLSGMailer();
 		gmailer.sendRegularEmail(mailFrom, mailTo, mailTitle, htmlPayLoad );
 	}

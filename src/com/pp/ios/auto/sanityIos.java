@@ -21,12 +21,13 @@ public class sanityIos {
 	public IOSDriver driver;
 	GenericMethods genMeth = new GenericMethods();
 	String currentDateFolder;
-	webElementsIos iosData;
+	
 	String webElementXmlLang;
 	String	webElementXmlPath;
 	String platform;
 	String StartServerPath;
 	String StopServerPath;
+	webElementsIos iosData;
 
 	
 	@BeforeSuite(alwaysRun = true)
@@ -39,15 +40,12 @@ public class sanityIos {
 		webElementXmlLang = genMeth.getValueFromPropFile("webElementXmlLang");
 		//platform = genMeth.getValueFromPropFile("platform");
 		
-		
-		iosData = genMeth.iOSelementInit(webElementXmlLang, webElementXmlPath );
+		iosData= new webElementsIos(webElementXmlLang, webElementXmlPath);
 		driver = genMeth.setCapabilitiesIos(genMeth);
-		//driver = genMeth.setCapabilitiesIos(genMeth, iosData, platform);
+
 		genMeth.cleanLoginIos(driver, genMeth, iosData, iosData.userUnlimited_name);
 		Thread.sleep(1000);
-//		TouchAction touchAction;
-//		touchAction.
-//		driver.performTouchAction(touchAction)
+
 	}
 
 	@BeforeMethod(alwaysRun = true)
@@ -65,12 +63,11 @@ public class sanityIos {
 
 			if (StartUpScreenDisplay != true) {
 
-				driver.removeApp("com.cloudengines.pogoplug");
-				try{
+				try {
+					driver.removeApp("com.cloudengines.pogoplug");
 					driver.quit();
-				}
-				catch(Exception e){
-					Thread.sleep(1000);
+				} catch (Exception e) {
+					// swallow if fails
 				}
 				
 				driver = genMeth.setCapabilitiesIos(genMeth);
@@ -83,7 +80,7 @@ public class sanityIos {
 	}
 
 	@Test(enabled = true, description = "Test the Create folders",
-			groups = { "Sanity iOS now1" }) //dependsOnMethods={"testLogin"})
+			groups = { "Sanity iOS" }) //dependsOnMethods={"testLogin"})
 																																																
 	public void testCreatefolder() throws Exception, Throwable {
 
@@ -108,6 +105,7 @@ public class sanityIos {
 
 		// Create a duplicate folder
 		genMeth.clickName(driver,genMeth, iosData.BTNback_Name);
+		genMeth.scroll(driver, iosData.scrollDown);
 		genMeth.clickName(driver,genMeth, iosData.BTNcreateOn_Name);
 		genMeth.sendXpth(driver, genMeth, iosData.TEXTFIELDcreateNewFolder_Xpth,currentDateFolder);
 		genMeth.clickName(driver,genMeth, iosData.BTNcreate_Name);
@@ -137,12 +135,18 @@ public class sanityIos {
 	}
 
 	@Test(enabled = true, testName = "Sanity Tests", description = "Test the upload Existing photos or videos, delete the image",
-			groups = { "Regression iOS" })
+			groups = { "Regression iOS now" })
 	public void uploadExistingPotos() throws Exception, Throwable {
 
 		// create a folder for the images
 		String currentDateFolder = genMeth.currentTime();
 		genMeth.clickName(driver, genMeth, iosData.BTNfileExplorer_Name);
+		genMeth.clickName(driver, genMeth, "upload from existing test");
+		
+		//Method that will clean all files in a list
+		genMeth.deletList(genMeth, iosData);
+		
+		
 		genMeth.clickName(driver, genMeth, iosData.BTNcreateOn_Name);
 		genMeth.sendXpth(driver, genMeth,"//UIAApplication[1]/UIAWindow[3]/UIAAlert[1]/UIAScrollView[1]/UIATableView[1]/UIATableCell[1]/UIATextField[1]",currentDateFolder);
 		genMeth.clickName(driver, genMeth, iosData.BTNcreate_Name);
@@ -155,13 +159,13 @@ public class sanityIos {
 		genMeth.isElementVisibleNative(driver, By.name(iosData.PhotoAlbums_Name));
 
 		genMeth.clickName(driver, genMeth, iosData.BTNcameraRoll_Name);
-		genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[2]");
 		genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[4]");
+		genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[5]");
 		
 		genMeth.clickName(driver, genMeth, iosData.BTNdone_Name);
 
 		// check if the current location popup is displayed
-		genMeth.handleAccessPhotosContactsLocation(genMeth, iosData);
+		genMeth.handleAccessPhotosContactsLocationNotifications(genMeth, iosData);
 
 		// wait for the upload to finish (wait until the "camera on" will display)
 		int count = 0;
@@ -175,8 +179,8 @@ public class sanityIos {
 						driver, By.name(iosData.UploadError_Name));
 				if (uploadFails == true) {
 					genMeth.clickName(driver, genMeth, iosData.BTNdismiss_Name);
-					genMeth.clickName(driver, genMeth, iosData.BTNnoSpaceOn_Name);
-					genMeth.clickName(driver, genMeth, iosData.BTNresumeUpload_Name);
+					genMeth.clickName(driver, genMeth,iosData.BTNnoSpaceOn_Name);
+					genMeth.clickName(driver, genMeth,iosData.BTNresumeUpload_Name);
 					count++;
 
 				}
@@ -193,8 +197,9 @@ public class sanityIos {
 			}
 
 		}
-		// swipe down for refresh
-		driver.swipe(168, 122, 168, 380, 500);
+		
+		// Scroll down for refresh
+		genMeth.scroll(driver, iosData.scrollUp);
 
 		// check if the image has created in the list
 		Thread.sleep(1000);
@@ -244,8 +249,8 @@ public class sanityIos {
 		Thread.sleep(1000);
 
 		// Make sure that the image was deleted
-		genMeth.isElementInvisibleNative(driver, By.name(iosData.UploadExistingImage_Name));
-		genMeth.isElementInvisibleNative(driver, By.name(iosData.UploadExistingVideo_Name));
+//		genMeth.isElementInvisibleNative(driver, By.name(iosData.UploadExistingImage_Name));
+//		genMeth.isElementInvisibleNative(driver, By.name(iosData.UploadExistingVideo_Name));
 		
 		genMeth.clickName(driver, genMeth, iosData.BTNback_Name);
 		// delete the folder
@@ -260,6 +265,8 @@ public class sanityIos {
 		genMeth.clickName(driver, genMeth, iosData.BTNleft_Name);
 
 	}
+
+
 	
 	@Test(enabled = true, testName = "Sanity Tests", description = "Test TOUR for New accounts and for upgrade accounts",
 			groups = { "Sanity iOS" })
@@ -302,7 +309,7 @@ public class sanityIos {
 		genMeth.isElementVisibleNative(driver, By.name(iosData.BackupTourText_Name));
 		genMeth.clickName(driver, genMeth, iosData.BTNcontinue_Name);
 		
-		genMeth.handleAccessPhotosContactsLocation(genMeth, iosData);
+		genMeth.handleAccessPhotosContactsLocationNotifications(genMeth, iosData);
 		
 		// verify that the home screen is open with the LSM (left side menu)
 		genMeth.isElementVisibleNative(driver, By.name(iosData.Settings_Name));
@@ -311,9 +318,10 @@ public class sanityIos {
 		// ===== X BUTTON for Go Unlimited screen ====== - Login with Free/Limited account & check the tour display & text
 		
 		
-		driver = genMeth.killAppIos(driver);
-
+		genMeth.killAppIos(driver);
+		
 		// Login with an existing account & check the tour
+		driver = genMeth.setCapabilitiesIos(genMeth);
 		genMeth.clickName(driver, genMeth, iosData.BTNalreadyHaveAnAccount_name);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDemail_Id, iosData.userLimited_name);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDpass_Id, iosData.password);
@@ -342,7 +350,7 @@ public class sanityIos {
 		genMeth.isElementVisibleNative(driver, By.name(iosData.BackupTourText_Name));
 		genMeth.clickName(driver, genMeth, iosData.BTNcontinue_Name);
 
-		genMeth.handleAccessPhotosContactsLocation(genMeth, iosData);
+		genMeth.handleAccessPhotosContactsLocationNotifications(genMeth, iosData);
 		
 		// verify that the home screen is open with the LSM (left side menu)
 		genMeth.isElementVisibleNative(driver, By.name(iosData.Settings_Name));
@@ -350,7 +358,8 @@ public class sanityIos {
 
 		// ====== GO UNLIMITED BUTTON ====- Login with Free/Limited account & check the tour display & text
 		
-		driver = genMeth.killAppIos(driver);		
+		genMeth.killAppIos(driver);	
+		driver = genMeth.setCapabilitiesIos(genMeth);
 		genMeth.clickName(driver, genMeth, iosData.BTNalreadyHaveAnAccount_name);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDemail_Id, iosData.userLimited_name);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDpass_Id, iosData.password);
@@ -380,7 +389,7 @@ public class sanityIos {
 		genMeth.clickName(driver, genMeth, iosData.BTNskip_Name);
 		genMeth.clickName(driver, genMeth, iosData.BTNcontinue_Name);
 
-		genMeth.handleAccessPhotosContactsLocation(genMeth, iosData);
+		genMeth.handleAccessPhotosContactsLocationNotifications(genMeth, iosData);
 		
 		// Open the Upgrade Account screen from LSM
 		genMeth.clickName(driver, genMeth, iosData.BTNupgrade_Name);
@@ -404,7 +413,8 @@ public class sanityIos {
 	//     Tour for Unlimited Account
 	// =====================================================
 		 
-		driver = genMeth.killAppIos(driver);
+		genMeth.killAppIos(driver);
+		driver = genMeth.setCapabilitiesIos(genMeth);
 		genMeth.clickName(driver, genMeth, iosData.BTNalreadyHaveAnAccount_name);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDemail_Id, iosData.userUnlimited_name);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDpass_Id, iosData.password);
@@ -426,7 +436,7 @@ public class sanityIos {
 		genMeth.isElementVisibleNative(driver, By.name(iosData.BackupTourText_Name));
 		genMeth.clickName(driver, genMeth, iosData.BTNcontinue_Name);
 
-		genMeth.handleAccessPhotosContactsLocation(genMeth, iosData);
+		genMeth.handleAccessPhotosContactsLocationNotifications(genMeth, iosData);
 		
 		// verify that the home screen is open with the LSM (left side menu)
 		genMeth.isElementVisibleNative(driver, By.name(iosData.Settings_Name));
@@ -447,8 +457,8 @@ public class sanityIos {
 		genMeth.isElementVisibleNative(driver, By.name(iosData.CloudEmptyFilesScreen_Name));
 
 		// Attempt to Create new user with *bad format (* incorrect email format)
-		driver = genMeth.killAppIos(driver);
-		
+		genMeth.killAppIos(driver);
+		driver = genMeth.setCapabilitiesIos(genMeth);
 		genMeth.clickName(driver, genMeth, iosData.BTNsignUp_Name);
 		// check that the Back button works properly
 		genMeth.clickName(driver, genMeth, iosData.BTNback_Name);
@@ -463,9 +473,10 @@ public class sanityIos {
 		genMeth.clickName(driver, genMeth, iosData.LinkPrivacyPolicy_Name);
 		genMeth.isElementVisibleNative(driver, By.name(iosData.PrivacyPolicyUrl_Name));
 		
-		driver = genMeth.killAppIos(driver);
+		genMeth.killAppIos(driver);
 		
 		// TRUSe link
+		driver = genMeth.setCapabilitiesIos(genMeth);
 		genMeth.clickName(driver, genMeth, iosData.BTNsignUp_Name);
 		genMeth.clickName(driver, genMeth, iosData.LinkTRUSTe_Name);
 		genMeth.isElementVisibleNative(driver, By.id(iosData.TrusteUrl_Name));
@@ -490,11 +501,11 @@ public class sanityIos {
 		// Forgot your password Negative (attempt to restore password with a non existing email)
 		genMeth.clickName(driver, genMeth, iosData.LinkForgotYourPassword_Name);
 		genMeth.clickName(driver, genMeth, iosData.iconClearText_Name);
-		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDemail_Id, randomName );
+		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDemail_Id, randomName + "@a.com" );
 		genMeth.clickName(driver, genMeth, iosData.BTNsubmit_Name);
 		genMeth.isElementVisibleNative(driver, By.name(iosData.ForgotPasswordErrorPopup_Name));
 		genMeth.clickName(driver, genMeth, iosData.BTNdismiss_Name);
-		genMeth.clickId(driver, genMeth, randomName);
+		genMeth.clickId(driver, genMeth, randomName + "@a.com");
 		genMeth.clickName(driver, genMeth, iosData.BTNclearTextIcon_Name);
 		
 		// Forgot your password Positive (attempt to restore password with an existing email)
@@ -647,7 +658,7 @@ public class sanityIos {
 		genMeth.clickName(driver, genMeth, iosData.BTNshareOn_Name);
 		genMeth.clickName(driver, genMeth, iosData.BTNaddUsers_Name);
 		
-		genMeth.handleAccessPhotosContactsLocation(genMeth, iosData);
+		genMeth.handleAccessPhotosContactsLocationNotifications(genMeth, iosData);
 				
 		genMeth.isElementVisibleNative(driver, By.name(iosData.BTNaddUsers_Name));
 		
@@ -835,7 +846,7 @@ public class sanityIos {
 		//Disable the backup from TOUR
 		genMeth.clickName(driver, genMeth, iosData.BTNcancel_Name);
 		
-		genMeth.handleAccessPhotosContactsLocation(genMeth, iosData);
+		genMeth.handleAccessPhotosContactsLocationNotifications(genMeth, iosData);
 		
 		// verify that the backup is Disabled in LSM
 		genMeth.isElementVisibleNative(driver, By.name(iosData.BTNenable_Name));
@@ -844,7 +855,7 @@ public class sanityIos {
 		genMeth.clickName(driver, genMeth, iosData.BTNenable_Name);
 		genMeth.clickName(driver, genMeth, iosData.BTNenable_Name);
 		
-		genMeth.handleAccessPhotosContactsLocation(genMeth, iosData);
+		genMeth.handleAccessPhotosContactsLocationNotifications(genMeth, iosData);
 		
 		// verify that the backup is running
 		genMeth.isElementVisibleNative(driver, By.name(iosData.iconInProgress_Name));
@@ -1127,7 +1138,7 @@ public class sanityIos {
 			genMeth.clickName(driver, genMeth, iosData.BTNshareOn_Name);
 		}
 		genMeth.clickName(driver, genMeth, iosData.BTNaddUsers_Name);
-		genMeth.handleAccessPhotosContactsLocation(genMeth, iosData);
+		genMeth.handleAccessPhotosContactsLocationNotifications(genMeth, iosData);
 		genMeth.isElementVisibleNative(driver, By.name(iosData.BTNaddUsers_Name));
 		
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDsearch_Id, iosData.userAutomation2_Name );
@@ -1178,7 +1189,7 @@ public class sanityIos {
 		genMeth.clickName(driver, genMeth, iosData.FavoritesTitle_Name);
 		genMeth.clickName(driver, genMeth, iosData.BTNshareOn_Name);
 		genMeth.clickName(driver, genMeth, iosData.BTNaddUsers_Name);
-		genMeth.handleAccessPhotosContactsLocation(genMeth, iosData);
+		genMeth.handleAccessPhotosContactsLocationNotifications(genMeth, iosData);
 		genMeth.isElementVisibleNative(driver, By.name(iosData.BTNaddUsers_Name));
 		
 		//Share user with team folder & then remove share
@@ -1248,6 +1259,29 @@ public class sanityIos {
 		
 	}
 	
+	@Test(enabled = false,  testName = "Sanity Tests", description = "flatview testing",
+			groups = {"Sanity iOS"})
+	public void FlatView (){
+		
+		
+		
+	}
+	
+	@Test(enabled = false, testName = "Sanity Tests", description = "like in Facebook",
+			groups={"Regression iOS"})
+	public void likeOnFacebook (){
+		
+		
+	}
+	
+	@Test(enabled = false, testName = "Sanity Tests", description = "like in Facebook",
+			groups={"Regression iOS"})
+	public void settingsMore (){
+		
+		
+		
+	}
+	
 	//Empty screen validation (with screenshots?)
 	
 			/*
@@ -1257,6 +1291,7 @@ public class sanityIos {
 			 * Default destination
 			 * 
 			 * 
+			 *
 			 * 
 			 * 
 			 */
@@ -1266,16 +1301,20 @@ public class sanityIos {
 	
 
 	@AfterSuite(alwaysRun = true)
-	public void sendMail() throws Exception {
-		driver.removeApp("com.cloudengines.pogoplug");
+	public void tearDown() throws Exception {
+		
 		try {
+		driver.removeApp("com.cloudengines.pogoplug");
 			driver.quit();
 		} catch (Exception x) {
 			// For iPhone4
 		}
 
+		/*
 		SendResults sr = new SendResults("elicherni444@gmail.com","meny@cloudengines.com", "TestNG results", "Test Results");
 		sr.sendTestNGResult();
+		sr.sendRegularEmail();
+		*/
 	}
 
 }

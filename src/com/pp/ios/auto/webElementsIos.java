@@ -153,10 +153,8 @@ public class webElementsIos {
 	String Categories;
 	String BadCredentialsPopup;
 	String BackupCompleted_Name;
-	String platformIphone;
-	String platformIpad;
-	String platforSimulatorIphone;
-	String platformSimulatorIpad;
+	String scrollDown;
+	String scrollUp;
 	
 // Icons
 	String iconInProgress_Name;
@@ -316,10 +314,6 @@ public webElementsIos (String langXml, String xmlPath ) throws Exception, Throwa
 	this.TermsOfService_Name = xmlHandel.readIosXml("TermsOfService_Name", langXml, xmlPath);
 	this.NoResults_Name = xmlHandel.readIosXml("NoResults_Name", langXml, xmlPath);
 	this.Disabled_Name = xmlHandel.readIosXml("Disabled_Name", langXml, xmlPath);
-	this.platformIphone = xmlHandel.readIosXml("platformIphone", langXml, xmlPath);
-	this.platformIpad = xmlHandel.readIosXml("platformIpad", langXml, xmlPath);
-	this.Disabled_Name = xmlHandel.readIosXml("platforSimulatorIphone", langXml, xmlPath);
-	this.platforSimulatorIphone = xmlHandel.readIosXml("platformSimulatorIpad", langXml, xmlPath);
 
 	this.TOGGLEpasscodeLock_Xpth = xmlHandel.readIosXml("TOGGLEpasscodeLock_Xpth", langXml, xmlPath);
 	this.TOGGLErequireImmediately_Xpth = xmlHandel.readIosXml("TOGGLErequireImmediately_Xpth", langXml, xmlPath);
@@ -337,8 +331,10 @@ public webElementsIos (String langXml, String xmlPath ) throws Exception, Throwa
 	this.iconClearText_Name = xmlHandel.readIosXml("iconClearText_Name", langXml, xmlPath);
 	this.iconAddToFavorites_Name = xmlHandel.readIosXml("iconAddToFavorites_Name", langXml, xmlPath);
 	this.iconRemoveFromFavorites_Name = xmlHandel.readIosXml("iconRemoveFromFavorites_Name", langXml, xmlPath);
-
 	
+	this.scrollDown = xmlHandel.readIosXml("scrollDown", langXml, xmlPath);
+	this.scrollUp = xmlHandel.readIosXml("scrollUp", langXml, xmlPath);
+
 	this.tabCurrentFolder_Name = xmlHandel.readIosXml("tabCurrentFolder_Name", langXml, xmlPath);
 	this.tabPogoplugCloud_Name = xmlHandel.readIosXml("tabPogoplugCloud_Name", langXml, xmlPath);
 	
