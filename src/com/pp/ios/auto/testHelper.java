@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-public class testHelper {
+public class TestHelper {
 	
 	    
 	    public WebDriver driver;
@@ -29,7 +29,7 @@ public class testHelper {
 	     *            - WebDriver
 	     * 
 	     */
-	    public testHelper(WebDriver driver) {
+	    public TestHelper(WebDriver driver) {
 	        this.driver = driver;
 	        this.driver.manage().window().maximize();
 	    }

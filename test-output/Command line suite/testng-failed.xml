@@ -4,19 +4,30 @@
   <test name="Command line test(failed)">
     <groups>
       <run>
-        <include name="Sanity iOS1111"/>
-        <include name="Regression iOS now"/>
+        <include name="Sanity iOS"/>
+        <include name="Regression iOS"/>
       </run>
     </groups>
     <classes>
-      <class name="com.pp.ios.auto.sanityIos">
+      <class name="com.pp.ios.auto.SanityIos">
         <methods>
-          <include name="checkHomeScreen"/>
-          <include name="setupBeforeSuite"/>
-          <include name="uploadExistingPotos"/>
+          <include name="backupInBackground"/>
+          <include name="badCredentials"/>
+          <include name="createNewUser"/>
           <include name="tearDown"/>
+          <include name="settingsBackupEnableDisable"/>
+          <include name="testTour"/>
+          <include name="settingsBackupEnableDisableDuringUpload"/>
+          <include name="settingsSaveLoginSanity"/>
+          <include name="addRemoveTeamFolders"/>
+          <include name="search"/>
+          <include name="setupBeforeSuite"/>
+          <include name="testCreatefolder"/>
+          <include name="Favorites"/>
+          <include name="settingsPasscodeSanity"/>
+          <include name="foregroundBackgroundSwith"/>
         </methods>
-      </class> <!-- com.pp.ios.auto.sanityIos -->
+      </class> <!-- com.pp.ios.auto.SanityIos -->
     </classes>
   </test> <!-- Command line test(failed) -->
 </suite> <!-- Failed suite [Command line suite] -->

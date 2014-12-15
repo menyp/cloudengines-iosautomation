@@ -5,7 +5,7 @@ import org.testng.TestNG;
 
 
 
-public class runIos {
+public class RunIos {
 	
 	public static void main(String[] args) throws Exception, Throwable {
 		// TODO Auto-generated method stub
@@ -16,22 +16,22 @@ public class runIos {
 	    
 		//Start Appium server
 		//String startServer = genMeth.getValueFromPropFile("StartServerPath");
-	//	String stopServer = genMeth.getValueFromPropFile("StopServerPath");
+		//String stopServer = genMeth.getValueFromPropFile("StopServerPath");
 
-	//	Process proc =  Runtime.getRuntime().exec(startServer);	
-	  //  Thread.sleep(4000);
+		//Process proc =  Runtime.getRuntime().exec(startServer);	
+	    //Thread.sleep(4000);
 		
 		//Run the first suite
 		
 		TestNG testng1 = new TestNG();
-		testng1.setTestClasses(new Class[] { sanityIos.class });
-		testng1.setGroups("Sanity iOS1111, Regression iOS now");
+		testng1.setTestClasses(new Class[] { SanityIos.class });
+		testng1.setGroups("Sanity iOS, Regression iOS");
 		testng1.addListener(tla);
 		testng1.run();
 		
 		//Second suite- send report by mail
 		TestNG testng2 = new TestNG();
-		testng2.setTestClasses(new Class[] { sendReport.class });
+		testng2.setTestClasses(new Class[] { SendReport.class });
 		testng2.setGroups("send mail");
 		testng2.addListener(tla);
 		testng2.run();

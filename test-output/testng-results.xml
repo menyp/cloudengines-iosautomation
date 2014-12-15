@@ -2,19 +2,19 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Command line suite" duration-ms="4863" started-at="2014-12-11T14:35:51Z" finished-at="2014-12-11T14:35:56Z">
+  <suite name="Command line suite" duration-ms="4674" started-at="2014-12-15T07:56:33Z" finished-at="2014-12-15T07:56:37Z">
     <groups>
       <group name="send mail">
-        <method signature="sendReport.sendMail()[pri:0, instance:com.pp.ios.auto.sendReport@162be91c]" name="sendMail" class="com.pp.ios.auto.sendReport"/>
+        <method signature="SendReport.sendMail()[pri:0, instance:com.pp.ios.auto.SendReport@57eda880]" name="sendMail" class="com.pp.ios.auto.SendReport"/>
       </group> <!-- send mail -->
     </groups>
-    <test name="Command line test" duration-ms="4863" started-at="2014-12-11T14:35:51Z" finished-at="2014-12-11T14:35:56Z">
-      <class name="com.pp.ios.auto.sendReport">
-        <test-method status="PASS" signature="sendMail()[pri:0, instance:com.pp.ios.auto.sendReport@162be91c]" name="sendMail" duration-ms="4862" started-at="2014-12-11T16:35:51Z" finished-at="2014-12-11T16:35:56Z">
+    <test name="Command line test" duration-ms="4674" started-at="2014-12-15T07:56:33Z" finished-at="2014-12-15T07:56:37Z">
+      <class name="com.pp.ios.auto.SendReport">
+        <test-method status="PASS" signature="sendMail()[pri:0, instance:com.pp.ios.auto.SendReport@57eda880]" name="sendMail" duration-ms="4673" started-at="2014-12-15T09:56:33Z" finished-at="2014-12-15T09:56:37Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- sendMail -->
-      </class> <!-- com.pp.ios.auto.sendReport -->
+      </class> <!-- com.pp.ios.auto.SendReport -->
     </test> <!-- Command line test -->
   </suite> <!-- Command line suite -->
 </testng-results>

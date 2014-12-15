@@ -107,7 +107,7 @@ public class GenericMethods {
 	}
 	
 
-	public void signOutFromStartupIphone5(IOSDriver driver, webElementsIos iosData) throws InterruptedException, IOException {
+	public void signOutFromStartupIphone5(IOSDriver driver, WebElementsIos iosData) throws InterruptedException, IOException {
 		GenericMethods genMeth = new GenericMethods();
 		genMeth.clickName(driver,genMeth, iosData.Settings_Name);
 		genMeth.scroll(driver, iosData.scrollDown);
@@ -115,7 +115,7 @@ public class GenericMethods {
 		genMeth.clickName(driver,genMeth, iosData.BTNsignOut_Name);
 	}
 	
-	public void loginIos(GenericMethods genMeth, webElementsIos iosData, String user)throws InterruptedException, IOException,ParserConfigurationException, SAXException {
+	public void loginIos(GenericMethods genMeth, WebElementsIos iosData, String user)throws InterruptedException, IOException,ParserConfigurationException, SAXException {
 
 		genMeth.clickName(driver,genMeth, iosData.BTNalreadyHaveAnAccount_name);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDemail_Id, user);
@@ -170,14 +170,7 @@ public class GenericMethods {
 		}
 
 	}
-	
-    public void scroll(IOSDriver driver , String direction){       
-        JavascriptExecutor js= (JavascriptExecutor) driver;
-        Map<String, String>scrollMap =new HashMap<String, String>();
-        scrollMap.put("direction", direction);  
-        js.executeScript("mobile: scroll", scrollMap);  
-}
-    
+  
  
 	public IOSDriver setCapabilitiesIos(GenericMethods genMeth)
 			throws IOException {
@@ -194,6 +187,7 @@ public class GenericMethods {
 		try {
 
 			driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
+
 		}
 
 		catch (MalformedURLException e) {
@@ -205,7 +199,7 @@ public class GenericMethods {
 	}
 	
 
-	public IOSDriver cleanLoginIos(IOSDriver driver, GenericMethods genMeth, webElementsIos iosData, String user) throws InterruptedException, IOException,ParserConfigurationException, SAXException {
+	public IOSDriver cleanLoginIos(IOSDriver driver, GenericMethods genMeth, WebElementsIos iosData, String user) throws InterruptedException, IOException,ParserConfigurationException, SAXException {
 
 		// Login with an existing account
 	//	genMeth.handleAccessPhotosContactsLocationNotifications(genMeth, iosData);
@@ -274,8 +268,15 @@ public class GenericMethods {
 		return driver;
 		
 	}
+	
+    public void scroll(IOSDriver driver , String direction){       
+        JavascriptExecutor js= (JavascriptExecutor) driver;
+        Map<String, String>scrollMap =new HashMap<String, String>();
+        scrollMap.put("direction", direction);  
+        js.executeScript("mobile: scroll", scrollMap);  
+}
 
-	public void signUp(GenericMethods genMeth, webElementsIos iosData) throws InterruptedException, IOException, ParserConfigurationException, SAXException{
+	public void signUp(GenericMethods genMeth, WebElementsIos iosData) throws InterruptedException, IOException, ParserConfigurationException, SAXException{
 		
 		String randomName =  genMeth.randomString();
 		String currentDateFolder = genMeth.currentTime();
@@ -1084,7 +1085,7 @@ catch (Exception e) {
 
 	}
 
-	public void handleAccessPhotosContactsLocationNotifications(GenericMethods genMeth, webElementsIos iosData)
+	public void handleAccessPhotosContactsLocationNotifications(GenericMethods genMeth, WebElementsIos iosData)
 			throws IOException, ParserConfigurationException, SAXException,InterruptedException {
 		
 		// check if the "“Pogoplug” Would Like to Access Your Contacts" popup is displayed
@@ -1133,7 +1134,7 @@ catch (Exception e) {
 
 	}
 	
-	public void deletList(GenericMethods genMeth, webElementsIos iosData) 
+	public void deletList(GenericMethods genMeth, WebElementsIos iosData) 
 			throws ParserConfigurationException, SAXException, IOException,
 			InterruptedException {
 		boolean isListEmpty = genMeth.checkIsElementVisibleNative(driver, By.name(iosData.EmptyFolder_Name));

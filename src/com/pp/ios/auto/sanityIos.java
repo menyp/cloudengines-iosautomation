@@ -16,18 +16,17 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.xml.sax.SAXException;
 
-public class sanityIos {
+public class SanityIos {
 
 	public IOSDriver driver;
 	GenericMethods genMeth = new GenericMethods();
-	String currentDateFolder;
 	
-	String webElementXmlLang;
+	String	currentDateFolder;
+	String	webElementXmlLang;
 	String	webElementXmlPath;
-	String platform;
-	String StartServerPath;
-	String StopServerPath;
-	webElementsIos iosData;
+	String	StartServerPath;
+	String 	StopServerPath;
+	WebElementsIos iosData;
 
 	
 	@BeforeSuite(alwaysRun = true)
@@ -40,7 +39,7 @@ public class sanityIos {
 		webElementXmlLang = genMeth.getValueFromPropFile("webElementXmlLang");
 		//platform = genMeth.getValueFromPropFile("platform");
 		
-		iosData= new webElementsIos(webElementXmlLang, webElementXmlPath);
+		iosData= new WebElementsIos(webElementXmlLang, webElementXmlPath);
 		driver = genMeth.setCapabilitiesIos(genMeth);
 
 		genMeth.cleanLoginIos(driver, genMeth, iosData, iosData.userUnlimited_name);
@@ -55,7 +54,7 @@ public class sanityIos {
 		if (driver == null) {
 			
 			driver = genMeth.setCapabilitiesIos(genMeth);
-			genMeth.cleanLoginIos(driver, genMeth, iosData, platform );
+			genMeth.cleanLoginIos(driver, genMeth, iosData, iosData.userUnlimited_name );
 		}
 
 		else {
@@ -135,7 +134,7 @@ public class sanityIos {
 	}
 
 	@Test(enabled = true, testName = "Sanity Tests", description = "Test the upload Existing photos or videos, delete the image",
-			groups = { "Regression iOS now" })
+			groups = { "Regression iOS " })
 	public void uploadExistingPotos() throws Exception, Throwable {
 
 		// create a folder for the images
