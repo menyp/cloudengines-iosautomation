@@ -1,5 +1,6 @@
 package com.pp.ios.auto;
 
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.ios.IOSDriver;
 
 import java.io.File;
@@ -126,13 +127,13 @@ public class GenericMethods {
 		boolean isFirstLogin = genMeth.checkIsElementVisibleNative(driver,By.name(iosData.NeverLoseAPhoto_Name));
 		if (isFirstLogin == true) {
 			// Make sure that the tour Never lose a photo display properly with full text
-			genMeth.isElementVisibleNative(driver,By.name(iosData.NeverLoseAPhoto_Name));
-			genMeth.isElementVisibleNative(driver,By.name(iosData.NeverLoseaPhotoFullText_Name));
+			genMeth.isElementVisible(driver,By.name(iosData.NeverLoseAPhoto_Name));
+			genMeth.isElementVisible(driver,By.name(iosData.NeverLoseaPhotoFullText_Name));
 
 			driver.swipe(270, 265, 55, 265, 1000);
 			// Make sure that the tour Transfer phone simply is displayed properly with full text
-			genMeth.isElementVisibleNative(driver,By.name(iosData.TransferPhonesSimply_Name));
-			genMeth.isElementVisibleNative(driver,By.name(iosData.TransferPhonesSimplyFullText_Name));
+			genMeth.isElementVisible(driver,By.name(iosData.TransferPhonesSimply_Name));
+			genMeth.isElementVisible(driver,By.name(iosData.TransferPhonesSimplyFullText_Name));
 			driver.swipe(270, 265, 55, 265, 1000);
 			
 
@@ -141,31 +142,31 @@ public class GenericMethods {
 
 			if (isUnlimitedAccount == true) {
 				// Verify that the go unlimited tour text is displayed
-				genMeth.isElementVisibleNative(driver,By.name(iosData.UnlimitedProtection_Name));
-				genMeth.isElementVisibleNative(driver,By.name(iosData.UpgradeTour_Name));
+				genMeth.isElementVisible(driver,By.name(iosData.UnlimitedProtection_Name));
+				genMeth.isElementVisible(driver,By.name(iosData.UpgradeTour_Name));
 
 				// Skip- [Need to test 3 options (X button, Go Unlimited button & Skip button)]
 				genMeth.clickName(driver,genMeth, iosData.BTNskip_Name);
 
 				// Verify that the backup tour text is displayed
-				genMeth.isElementVisibleNative(driver,By.name(iosData.Backup_Name));
-				genMeth.isElementVisibleNative(driver,By.name(iosData.BackupTourText_Name));
+				genMeth.isElementVisible(driver,By.name(iosData.Backup_Name));
+				genMeth.isElementVisible(driver,By.name(iosData.BackupTourText_Name));
 				genMeth.clickName(driver,genMeth, iosData.BTNcontinue_Name);
 
 				genMeth.handleAccessPhotosContactsLocationNotifications(genMeth, iosData);
 
 				// verify that the home screen is open with the LSM (left side menu)
-				genMeth.isElementVisibleNative(driver,By.name(iosData.Settings_Name));
+				genMeth.isElementVisible(driver,By.name(iosData.Settings_Name));
 			}
 			
 			else {
-				genMeth.isElementVisibleNative(driver,By.name(iosData.Backup_Name));
+				genMeth.isElementVisible(driver,By.name(iosData.Backup_Name));
 				genMeth.clickName(driver,genMeth, iosData.BTNcontinue_Name);
 				genMeth.handleAccessPhotosContactsLocationNotifications(genMeth, iosData);
 			}
 
 			// verify that the home screen is open with the LSM (left side menu)
-			genMeth.isElementVisibleNative(driver,By.name(iosData.Settings_Name));
+			genMeth.isElementVisible(driver,By.name(iosData.Settings_Name));
 
 		}
 
@@ -203,67 +204,50 @@ public class GenericMethods {
 
 		// Login with an existing account
 	//	genMeth.handleAccessPhotosContactsLocationNotifications(genMeth, iosData);
+		
 		genMeth.clickName(driver,genMeth, iosData.BTNalreadyHaveAnAccount_name);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDemail_Id, user);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDpass_Id, iosData.password);
 		genMeth.clickName(driver,genMeth, iosData.BTNsignin_Name);
 		
-//		TouchAction action = new TouchAction(driver);
-//		action.press(270, 265).waitAction(500).moveTo(130, 265).release().perform();
-//		action.press(290, 265).waitAction(500).moveTo(150, 265).release().perform();
-//		action.press(280, 265).waitAction(500).moveTo(100, 265).release().perform();
-//		action.press(300, 265).waitAction(500).moveTo(140, 265).release().perform();
-//		driver.swipe(320, 265, 190, 265, 500);
-//		driver.swipe(200, 265, 100, 265, 500);
-//		driver.swipe(250, 265, 150, 265, 500);
-//		
-
-
-		// Make sure that the intro display (that way the swipe will be done at the right time)
-//		genMeth.scroll(driver, "left");
-//		genMeth.scroll(driver, "right");
-//		genMeth.scroll(driver, "up");
-//		genMeth.scroll(driver, "down");
-//		genMeth.scroll(driver, "up");
-
-		genMeth.isElementVisibleNative(driver,By.name(iosData.NeverLoseAPhoto_Name));
+		genMeth.isElementVisible(driver,By.name(iosData.NeverLoseAPhoto_Name));
 
 		driver.swipe(270, 265, 55, 265, 500);
-		genMeth.isElementVisibleNative(driver,By.name(iosData.TransferPhonesSimply_Name));
+		genMeth.isElementVisible(driver,By.name(iosData.TransferPhonesSimply_Name));
 		driver.swipe(270, 265, 55, 265, 500);
 
 		// check if this is a Limited or Unlimited account
 		boolean isUnlimitedAccount = genMeth.checkIsElementVisibleNative(driver, By.name(iosData.UnlimitedProtection_Name));
 		if (isUnlimitedAccount == true) {
 			// Verify that the go unlimited tour text is displayed
-			genMeth.isElementVisibleNative(driver,By.name(iosData.UnlimitedProtection_Name));
-			genMeth.isElementVisibleNative(driver,By.name(iosData.UpgradeTour_Name));
+			genMeth.isElementVisible(driver,By.name(iosData.UnlimitedProtection_Name));
+			genMeth.isElementVisible(driver,By.name(iosData.UpgradeTour_Name));
 
 			// Skip- [Need to test 3 options (X button, Go Unlimited button & Skip button)]
 			genMeth.clickName(driver,genMeth, iosData.BTNskip_Name);
 
 			// Verify that the backup tour text is displayed
-			genMeth.isElementVisibleNative(driver,By.name(iosData.Backup_Name));
-			genMeth.isElementVisibleNative(driver,By.name(iosData.BackupTourText_Name));
+			genMeth.isElementVisible(driver,By.name(iosData.Backup_Name));
+			genMeth.isElementVisible(driver,By.name(iosData.BackupTourText_Name));
 			genMeth.clickName(driver,genMeth, iosData.BTNcontinue_Name);
 
 			genMeth.handleAccessPhotosContactsLocationNotifications(genMeth, iosData);
 
 			// verify that the home screen is open with the LSM (left side menu)
-			genMeth.isElementVisibleNative(driver,By.name(iosData.Settings_Name));
+			genMeth.isElementVisible(driver,By.name(iosData.Settings_Name));
 		}
 
 		else {
-			genMeth.isElementVisibleNative(driver,By.name(iosData.Backup_Name));
+			genMeth.isElementVisible(driver,By.name(iosData.Backup_Name));
 			genMeth.clickName(driver,genMeth, iosData.BTNcontinue_Name);
 			genMeth.handleAccessPhotosContactsLocationNotifications(genMeth,  iosData);
 		}
 
 		// verify that the home screen is open with the LSM (left side menu)
 		genMeth.handleAccessPhotosContactsLocationNotifications(genMeth,  iosData);
-		genMeth.isElementVisibleNative(driver,By.name(iosData.Settings_Name));
+		genMeth.isElementVisible(driver,By.name(iosData.Settings_Name));
 		// verify that the home screen is open with the LSM (left side menu)
-		genMeth.isElementVisibleNative(driver,By.name(iosData.Settings_Name));
+		genMeth.isElementVisible(driver,By.name(iosData.Settings_Name));
 
 		return driver;
 		
@@ -287,22 +271,22 @@ public class GenericMethods {
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDpass_Id, iosData.password);
 		genMeth.clickName(driver,genMeth, iosData.BTNsignUpForFree_Name);
 		
-		genMeth.isElementVisibleNative(driver,By.name(iosData.NeverLoseAPhoto_Name));
+		genMeth.isElementVisible(driver,By.name(iosData.NeverLoseAPhoto_Name));
 		driver.swipe(270, 265, 55, 265, 1000);
-		genMeth.isElementVisibleNative(driver,By.name(iosData.TransferPhonesSimply_Name));
+		genMeth.isElementVisible(driver,By.name(iosData.TransferPhonesSimply_Name));
 		driver.swipe(270, 265, 55, 265, 1000);
 
 		// Verify that the go unlimited tour text is displayed
-		genMeth.isElementVisibleNative(driver,By.name(iosData.UnlimitedProtection_Name));
-		genMeth.isElementVisibleNative(driver,By.name(iosData.UpgradeTour_Name));
+		genMeth.isElementVisible(driver,By.name(iosData.UnlimitedProtection_Name));
+		genMeth.isElementVisible(driver,By.name(iosData.UpgradeTour_Name));
 		genMeth.clickName(driver,genMeth, "UIAccessoryButtonX");
 
-		genMeth.isElementVisibleNative(driver,By.name(iosData.Backup_Name));
+		genMeth.isElementVisible(driver,By.name(iosData.Backup_Name));
 		
 		//Disable the backup from TOUR
 		genMeth.clickName(driver,genMeth, iosData.BTNcontinue_Name);
 		genMeth.handleAccessPhotosContactsLocationNotifications(genMeth,  iosData);
-		genMeth.isElementVisibleNative(driver,By.name(iosData.Settings_Name));
+		genMeth.isElementVisible(driver,By.name(iosData.Settings_Name));
 
 	}
 	
@@ -324,18 +308,6 @@ public class GenericMethods {
 		return value;
 	}
 	
-	/*
-	Properties prop = new Properties();
-		String propFileName = "config.properties";
- 
-		InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
- 
-		if (inputStream != null) {
-			prop.load(inputStream);
-		} else {
-			throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
-		}
-	*/
 
 	public void takeScreenShotNative(IOSDriver driver, GenericMethods genMeth, String imageName) throws IOException {
 
@@ -854,8 +826,8 @@ public class GenericMethods {
 
 	public WebElement fluentwait(IOSDriver driver, final By byType) {
 		Wait<IOSDriver> wait = new FluentWait<IOSDriver>(driver)
-				.withTimeout(45, TimeUnit.SECONDS)
-				.pollingEvery(5, TimeUnit.SECONDS)
+				.withTimeout(30, TimeUnit.SECONDS)
+				.pollingEvery(1, TimeUnit.SECONDS)
 				.ignoring(NoSuchElementException.class);
 
 		WebElement foo = wait.until(new Function<IOSDriver, WebElement>() {
@@ -921,13 +893,12 @@ public class GenericMethods {
 
 	// This method checks if a given element is invisible on the screen
 
-	public void isElementInvisibleNative(IOSDriver driver, By by)
+	public void isElementInvisible(IOSDriver driver, By By)
 			throws ParserConfigurationException, SAXException, IOException {
 
 		try {
 
-			(new WebDriverWait(driver, 45)).until(ExpectedConditions
-					.invisibilityOfElementLocated(by));
+			(new WebDriverWait(driver, 45)).until(ExpectedConditions.invisibilityOfElementLocated(By));
 
 		}
 
@@ -942,29 +913,28 @@ public class GenericMethods {
 
 	}
 	
-	public void isElementInvisibleTextNative(IOSDriver driver, By by, String text) throws ParserConfigurationException,
-	SAXException, IOException {
+	public void isElementInvisibleTextNative(IOSDriver driver, By by,
+			String text) throws ParserConfigurationException, SAXException,
+			IOException {
 
-try {
+		try {
 
-	(new WebDriverWait(driver, 45)).until(ExpectedConditions
-			.invisibilityOfElementWithText(by, text));
+			(new WebDriverWait(driver, 45)).until(ExpectedConditions.invisibilityOfElementWithText(by, text));
 
-}
+		}
 
-catch (Exception e) {
+		catch (Exception e) {
 
-	GenericMethods genMeth = new GenericMethods();
-	String imageName =  text + " still visible ";
-	genMeth.takeScreenShotNative(driver, genMeth, imageName);
-	org.testng.Assert.fail(text + " still visible");
+			GenericMethods genMeth = new GenericMethods();
+			String imageName = text + " still visible ";
+			genMeth.takeScreenShotNative(driver, genMeth, imageName);
+			org.testng.Assert.fail(text + " still visible");
 
-}
+		}
 
-}
+	}
 
-
-	public void isElementVisibleNative(IOSDriver driver, By by)
+	public void isElementVisible(IOSDriver driver, By By)
 			throws ParserConfigurationException, SAXException, IOException {
 
 		try {
@@ -975,7 +945,7 @@ catch (Exception e) {
 					.withTimeout(30, TimeUnit.SECONDS)
 					.pollingEvery(5, TimeUnit.SECONDS)
 					.ignoring(NoSuchElementException.class)
-					.until(ExpectedConditions.visibilityOfElementLocated(by));
+					.until(ExpectedConditions.visibilityOfElementLocated(By));
 
 		}
 

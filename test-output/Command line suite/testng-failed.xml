@@ -17,7 +17,6 @@
           <include name="tearDown"/>
           <include name="settingsBackupEnableDisable"/>
           <include name="testTour"/>
-          <include name="settingsBackupEnableDisableDuringUpload"/>
           <include name="settingsSaveLoginSanity"/>
           <include name="addRemoveTeamFolders"/>
           <include name="search"/>

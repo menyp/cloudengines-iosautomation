@@ -2,19 +2,38 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Command line suite" duration-ms="4674" started-at="2014-12-15T07:56:33Z" finished-at="2014-12-15T07:56:37Z">
+  <suite name="Suite" duration-ms="321859" started-at="2015-01-02T16:36:58Z" finished-at="2015-01-02T16:42:19Z">
     <groups>
-      <group name="send mail">
-        <method signature="SendReport.sendMail()[pri:0, instance:com.pp.ios.auto.SendReport@57eda880]" name="sendMail" class="com.pp.ios.auto.SendReport"/>
-      </group> <!-- send mail -->
+      <group name="Sanity iOSnow">
+        <method signature="SanityIos.Favorites()[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="Favorites" class="com.pp.ios.auto.SanityIos"/>
+      </group> <!-- Sanity iOSnow -->
     </groups>
-    <test name="Command line test" duration-ms="4674" started-at="2014-12-15T07:56:33Z" finished-at="2014-12-15T07:56:37Z">
-      <class name="com.pp.ios.auto.SendReport">
-        <test-method status="PASS" signature="sendMail()[pri:0, instance:com.pp.ios.auto.SendReport@57eda880]" name="sendMail" duration-ms="4673" started-at="2014-12-15T09:56:33Z" finished-at="2014-12-15T09:56:37Z">
+    <test name="Sanity Tests" duration-ms="321859" started-at="2015-01-02T16:36:58Z" finished-at="2015-01-02T16:42:19Z">
+      <class name="com.pp.ios.auto.SanityIos">
+        <test-method status="PASS" signature="setupBeforeSuite(org.testng.ITestContext)[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="setupBeforeSuite" is-config="true" duration-ms="168988" started-at="2015-01-02T18:34:09Z" finished-at="2015-01-02T18:36:58Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@759fad4]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- sendMail -->
-      </class> <!-- com.pp.ios.auto.SendReport -->
-    </test> <!-- Command line test -->
-  </suite> <!-- Command line suite -->
+        </test-method> <!-- setupBeforeSuite -->
+        <test-method status="PASS" signature="checkHomeScreen()[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="checkHomeScreen" is-config="true" duration-ms="2394" started-at="2015-01-02T18:36:58Z" finished-at="2015-01-02T18:37:00Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkHomeScreen -->
+        <test-method status="PASS" signature="Favorites()[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="Favorites" duration-ms="319440" started-at="2015-01-02T18:37:00Z" description=" Add remove files from favorites" finished-at="2015-01-02T18:42:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Favorites -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="tearDown" is-config="true" duration-ms="4284" started-at="2015-01-02T18:42:19Z" finished-at="2015-01-02T18:42:24Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.pp.ios.auto.SanityIos -->
+    </test> <!-- Sanity Tests -->
+  </suite> <!-- Suite -->
 </testng-results>
