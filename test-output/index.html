@@ -90,7 +90,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">3 methods,   3 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -101,7 +101,17 @@
                     <div class="method-list-content passed suite-Suite">
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="com.pp.ios.auto.SanityIos" hash-for-method="Favorites">Favorites</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="com.pp.ios.auto.SanityIos" hash-for-method="settingsMore">settingsMore</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="com.pp.ios.auto.SanityIos" hash-for-method="settingsRateUs">settingsRateUs</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="com.pp.ios.auto.SanityIos" hash-for-method="settingsShare">settingsShare</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Suite -->
@@ -124,11 +134,29 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="Favorites">
-                  </a> <!-- Favorites -->
-                  <span class="method-name">Favorites</span>
+                  <a name="settingsMore">
+                  </a> <!-- settingsMore -->
+                  <span class="method-name">settingsMore</span>
                   <em>
-( Add remove files from favorites)                  </em>
+(More)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="settingsRateUs">
+                  </a> <!-- settingsRateUs -->
+                  <span class="method-name">settingsRateUs</span>
+                  <em>
+(Rate app)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="settingsShare">
+                  </a> <!-- settingsShare -->
+                  <span class="method-name">settingsShare</span>
+                  <em>
+(Share app)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -147,7 +175,7 @@
     &lt;groups&gt;
       &lt;run&gt;
         &lt;include name=&quot;Sanity iOS1&quot;/&gt;
-        &lt;include name=&quot;Regression iOS11&quot;/&gt;
+        &lt;include name=&quot;Regression iOS1&quot;/&gt;
       &lt;/run&gt;
     &lt;/groups&gt;
     &lt;classes&gt;
@@ -176,10 +204,18 @@
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="test-group">
-              <span class="test-group-name">Sanity iOS1</span>
+              <span class="test-group-name">Regression iOS1</span>
               <br/>
               <div class="method-in-group">
-                <span class="method-in-group-name">Favorites</span>
+                <span class="method-in-group-name">settingsMore</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">settingsRateUs</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">settingsShare</span>
                 <br/>
               </div> <!-- method-in-group -->
             </div> <!-- test-group -->
@@ -199,16 +235,24 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(3);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'Favorites')
+data.setCell(0, 1, 'settingsShare')
 data.setCell(0, 2, 'com.pp.ios.auto.SanityIos')
-data.setCell(0, 3, 299063);
+data.setCell(0, 3, 40718);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'settingsMore')
+data.setCell(1, 2, 'com.pp.ios.auto.SanityIos')
+data.setCell(1, 3, 37483);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'settingsRateUs')
+data.setCell(2, 2, 'com.pp.ios.auto.SanityIos')
+data.setCell(2, 3, 17361);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 4 minutes</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -235,13 +279,11 @@ return data;
                 <br/>
                 <span class="ignored-method-name">createNewUser</span>
                 <br/>
-                <span class="ignored-method-name">settingsMore</span>
-                <br/>
-                <span class="ignored-method-name">Albums</span>
-                <br/>
                 <span class="ignored-method-name">testTour</span>
                 <br/>
                 <span class="ignored-method-name">settingsBackupEnableDisable</span>
+                <br/>
+                <span class="ignored-method-name">Albums</span>
                 <br/>
                 <span class="ignored-method-name">likeOnFacebook</span>
                 <br/>
@@ -258,6 +300,8 @@ return data;
                 <span class="ignored-method-name">deleteFrom</span>
                 <br/>
                 <span class="ignored-method-name">settingsPasscodeSanity</span>
+                <br/>
+                <span class="ignored-method-name">Favorites</span>
                 <br/>
                 <span class="ignored-method-name">foregroundBackgroundSwith</span>
                 <br/>
@@ -277,20 +321,36 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">com.pp.ios.auto.SanityIos</div> <!-- chronological-class-name -->
               <div class="configuration-suite before">
-                <span class="method-name">setupBeforeSuite(org.testng.TestRunner@32057e6)</span>
+                <span class="method-name">setupBeforeSuite(org.testng.TestRunner@44a2b17b)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
               <div class="configuration-method before">
                 <span class="method-name">checkHomeScreen</span>
-                <span class="method-start">176259 ms</span>
+                <span class="method-start">178872 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">Favorites</span>
-                <span class="method-start">178680 ms</span>
+                <span class="method-name">settingsMore</span>
+                <span class="method-start">181245 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">checkHomeScreen</span>
+                <span class="method-start">218731 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">settingsRateUs</span>
+                <span class="method-start">220943 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">checkHomeScreen</span>
+                <span class="method-start">238306 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">settingsShare</span>
+                <span class="method-start">444790 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-suite after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">477782 ms</span>
+                <span class="method-start">485645 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

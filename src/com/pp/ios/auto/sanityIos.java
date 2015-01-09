@@ -1292,13 +1292,53 @@ public class SanityIos {
 		
 	}
 	
-	@Test(enabled = false, testName = "Sanity Tests", description = "like in Facebook",
-			groups={"Regression iOS"})
-	public void settingsMore (){
-		
-		
-		
+	@Test(enabled = true, testName = "Sanity Tests", description = "Share app",
+			groups={"Regression iOS1"})
+	public void settingsShare () throws InterruptedException, IOException, ParserConfigurationException, SAXException{
+		String currentTime = genMeth.currentTime();
+		genMeth.clickName(driver, genMeth, iosData.Settings_Name);
+		genMeth.scrollDown(driver);
+		genMeth.clickName(driver, genMeth, iosData.SharePogoplug_Name);
+		genMeth.clickName(driver, genMeth, "Mail");
+		genMeth.isElementVisible(driver, By.name(iosData.ShareMailText_Name));
+		genMeth.takeScreenShotPositive(driver, genMeth, "Share" + currentTime);
+		genMeth.clickName(driver, genMeth, iosData.BTNcancel_Name);
+		genMeth.clickName(driver, genMeth, iosData.BTNdeleteDraft_Name);
+		genMeth.scrollUp(driver);
 	}
+
+	@Test(enabled = true, testName = "Sanity Tests", description = "Rate app",
+			groups={"Regression iOS1"})
+	public void settingsRateUs () throws InterruptedException, IOException, ParserConfigurationException, SAXException{
+		String currentTime = genMeth.currentTime();
+		genMeth.clickName(driver, genMeth, iosData.Settings_Name);
+		genMeth.scrollDown(driver);
+		genMeth.clickName(driver, genMeth, iosData.BTNratePogoplug_Name);
+		genMeth.isElementVisible(driver, By.name(iosData.iconFeatured_Name));
+		genMeth.takeScreenShotPositive(driver, genMeth, "RateUs" + currentTime);		
+	}
+	
+	@Test(enabled = true, testName = "Sanity Tests", description = "More",
+			groups={"Regression iOS1"})
+	public void settingsMore () throws InterruptedException, IOException, ParserConfigurationException, SAXException{
+		String currentTime = genMeth.currentTime();
+		//Help
+		genMeth.clickName(driver, genMeth, iosData.Settings_Name);
+		genMeth.scroll(driver, iosData.scrollDown);
+		genMeth.clickName(driver, genMeth, iosData.BTNmore_Name);
+		genMeth.clickName(driver,genMeth, iosData.BTNhelp_Name);
+		Thread.sleep(1000);
+		genMeth.takeScreenShotPositive(driver, genMeth, "Pogoplug_Help_Center" + currentTime);
+		genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[1]");
+		genMeth.isElementVisible(driver, By.name(iosData.BTNsignOut_Name));
+		genMeth.scrollUp(driver);
+		
+		//Terms Of Service
+		
+		
+		//Privacy Policy
+	}
+	
 	
 	//Empty screen validation (with screenshots?)
 	

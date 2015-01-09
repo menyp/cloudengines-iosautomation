@@ -58,6 +58,10 @@
 			<BTNteamFolders_Name>Team Folders</BTNteamFolders_Name>
 			<BTNremoveShare_Name>Remove Share</BTNremoveShare_Name>
 			<BTNremoveAllUsers_Name>Remove All Users</BTNremoveAllUsers_Name>
+			<BTNdeleteDraft_Name>Delete Draft</BTNdeleteDraft_Name>
+			<BTNratePogoplug_Name>Rate Pogoplug</BTNratePogoplug_Name>
+			<BTNmore_Name>More...</BTNmore_Name>
+			<BTNhelp_Name>Help</BTNhelp_Name>
 			
 		</Button>
 		
@@ -143,6 +147,9 @@
 		   	<SearchSongInGenres_Name>Blues</SearchSongInGenres_Name>
 		   	<AccessContactsWarning_Name>“Pogoplug” Would Like to Access Your Contacts</AccessContactsWarning_Name>
 		   	<AccessLocationServicesWarning_Name>“Pogoplug” Would Like to Use Your Current Location</AccessLocationServicesWarning_Name>
+		   	<SharePogoplug_Name>Share Pogoplug</SharePogoplug_Name>
+		   	<ShareMailText_Name>Get your own unlimited storage</ShareMailText_Name>
+		   	<PogoplugHelpCenter_Name>Pogoplug Help Center</PogoplugHelpCenter_Name>
 		   	
 		   	
 		</Strings>
@@ -159,6 +166,7 @@
 		    <iconClearText_Name>Clear text</iconClearText_Name>
 		    <iconAddToFavorites_Name>favorite off</iconAddToFavorites_Name>
 		    <iconRemoveFromFavorites_Name>favorite on</iconRemoveFromFavorites_Name>
+		    <iconFeatured_Name>Featured</iconFeatured_Name>
 		    
 		</Icons>
 		

@@ -63,6 +63,11 @@ public class WebElementsIos {
 	String BTNteamFolders_Name;
 	String BTNremoveShare_Name;
 	String BTNremoveAllUsers_Name;
+	String BTNdeleteDraft_Name;
+	String BTNratePogoplug_Name;
+	String BTNmore_Name;
+	String BTNhelp_Name;
+	
 	
 // Text Fields
 	String TEXTFIELDemail_xpth;
@@ -138,6 +143,9 @@ public class WebElementsIos {
 	String SearchSongInGenres_Name;
 	String AccessContactsWarning_Name;
 	String AccessLocationServicesWarning_Name;
+	String SharePogoplug_Name;
+	String ShareMailText_Name;
+	String PogoplugHelpCenter_Name;
 	
 	
 //	general info	
@@ -168,6 +176,7 @@ public class WebElementsIos {
 	String iconClearText_Name;
 	String iconAddToFavorites_Name;
 	String iconRemoveFromFavorites_Name;
+	String iconFeatured_Name;
 	
 // Tabs
 	String tabCurrentFolder_Name;
@@ -232,7 +241,14 @@ public WebElementsIos (String langXml, String xmlPath ) throws Exception, Throwa
 	this.BTNteamFolders_Name = XmlHandel.readIosXml("BTNteamFolders_Name", langXml, xmlPath);
 	this.BTNremoveShare_Name = XmlHandel.readIosXml("BTNremoveShare_Name", langXml, xmlPath);
 	this.BTNremoveAllUsers_Name = XmlHandel.readIosXml("BTNremoveAllUsers_Name", langXml, xmlPath);
+	this.BTNdeleteDraft_Name = XmlHandel.readIosXml("BTNdeleteDraft_Name", langXml, xmlPath);
+	this.BTNratePogoplug_Name = XmlHandel.readIosXml("BTNratePogoplug_Name", langXml, xmlPath);
+	this.BTNmore_Name = XmlHandel.readIosXml("BTNmore_Name", langXml, xmlPath);
+	this.BTNhelp_Name = XmlHandel.readIosXml("BTNhelp_Name", langXml, xmlPath);
 
+
+	
+	
 	this.TEXTFIELDemail_Id = XmlHandel.readIosXml("TEXTFIELDemail_Id", langXml, xmlPath);
 	this.TEXTFIELDpass_Id = XmlHandel.readIosXml("TEXTFIELDpass_Id", langXml, xmlPath);
 	this.TEXTFIELDcreateNewFolder_Xpth = XmlHandel.readIosXml("TEXTFIELDcreateNewFolder_Xpth", langXml, xmlPath);
@@ -314,6 +330,10 @@ public WebElementsIos (String langXml, String xmlPath ) throws Exception, Throwa
 	this.TermsOfService_Name = XmlHandel.readIosXml("TermsOfService_Name", langXml, xmlPath);
 	this.NoResults_Name = XmlHandel.readIosXml("NoResults_Name", langXml, xmlPath);
 	this.Disabled_Name = XmlHandel.readIosXml("Disabled_Name", langXml, xmlPath);
+	this.SharePogoplug_Name = XmlHandel.readIosXml("SharePogoplug_Name", langXml, xmlPath);
+	this.ShareMailText_Name = XmlHandel.readIosXml("ShareMailText_Name", langXml, xmlPath);
+	this.PogoplugHelpCenter_Name = XmlHandel.readIosXml("PogoplugHelpCenter_Name", langXml, xmlPath);
+
 
 	this.TOGGLEpasscodeLock_Xpth = XmlHandel.readIosXml("TOGGLEpasscodeLock_Xpth", langXml, xmlPath);
 	this.TOGGLErequireImmediately_Xpth = XmlHandel.readIosXml("TOGGLErequireImmediately_Xpth", langXml, xmlPath);
@@ -331,6 +351,10 @@ public WebElementsIos (String langXml, String xmlPath ) throws Exception, Throwa
 	this.iconClearText_Name = XmlHandel.readIosXml("iconClearText_Name", langXml, xmlPath);
 	this.iconAddToFavorites_Name = XmlHandel.readIosXml("iconAddToFavorites_Name", langXml, xmlPath);
 	this.iconRemoveFromFavorites_Name = XmlHandel.readIosXml("iconRemoveFromFavorites_Name", langXml, xmlPath);
+	this.iconFeatured_Name = XmlHandel.readIosXml("iconFeatured_Name", langXml, xmlPath);
+
+	
+	
 	
 	this.scrollDown = XmlHandel.readIosXml("scrollDown", langXml, xmlPath);
 	this.scrollUp = XmlHandel.readIosXml("scrollUp", langXml, xmlPath);

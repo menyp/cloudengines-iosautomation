@@ -259,6 +259,20 @@ public class GenericMethods {
         scrollMap.put("direction", direction);  
         js.executeScript("mobile: scroll", scrollMap);  
 }
+    
+    public void scrollUp(IOSDriver driver){       
+        JavascriptExecutor js= (JavascriptExecutor) driver;
+        Map<String, String>scrollMap =new HashMap<String, String>();
+        scrollMap.put("direction", "up");  
+        js.executeScript("mobile: scroll", scrollMap);  
+}
+    
+    public void scrollDown(IOSDriver driver){       
+        JavascriptExecutor js= (JavascriptExecutor) driver;
+        Map<String, String>scrollMap =new HashMap<String, String>();
+        scrollMap.put("direction", "down");  
+        js.executeScript("mobile: scroll", scrollMap);  
+}
 
 	public void signUp(GenericMethods genMeth, WebElementsIos iosData) throws InterruptedException, IOException, ParserConfigurationException, SAXException{
 		
