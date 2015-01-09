@@ -2,34 +2,34 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="321859" started-at="2015-01-02T16:36:58Z" finished-at="2015-01-02T16:42:19Z">
+  <suite name="Suite" duration-ms="301510" started-at="2015-01-09T15:58:04Z" finished-at="2015-01-09T16:03:05Z">
     <groups>
-      <group name="Sanity iOSnow">
+      <group name="Sanity iOS1">
         <method signature="SanityIos.Favorites()[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="Favorites" class="com.pp.ios.auto.SanityIos"/>
-      </group> <!-- Sanity iOSnow -->
+      </group> <!-- Sanity iOS1 -->
     </groups>
-    <test name="Sanity Tests" duration-ms="321859" started-at="2015-01-02T16:36:58Z" finished-at="2015-01-02T16:42:19Z">
+    <test name="Sanity Tests" duration-ms="301510" started-at="2015-01-09T15:58:04Z" finished-at="2015-01-09T16:03:05Z">
       <class name="com.pp.ios.auto.SanityIos">
-        <test-method status="PASS" signature="setupBeforeSuite(org.testng.ITestContext)[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="setupBeforeSuite" is-config="true" duration-ms="168988" started-at="2015-01-02T18:34:09Z" finished-at="2015-01-02T18:36:58Z">
+        <test-method status="PASS" signature="setupBeforeSuite(org.testng.ITestContext)[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="setupBeforeSuite" is-config="true" duration-ms="176238" started-at="2015-01-09T17:55:07Z" finished-at="2015-01-09T17:58:04Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@759fad4]]>
+                <![CDATA[org.testng.TestRunner@32057e6]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupBeforeSuite -->
-        <test-method status="PASS" signature="checkHomeScreen()[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="checkHomeScreen" is-config="true" duration-ms="2394" started-at="2015-01-02T18:36:58Z" finished-at="2015-01-02T18:37:00Z">
+        <test-method status="PASS" signature="checkHomeScreen()[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="checkHomeScreen" is-config="true" duration-ms="2421" started-at="2015-01-09T17:58:04Z" finished-at="2015-01-09T17:58:06Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkHomeScreen -->
-        <test-method status="PASS" signature="Favorites()[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="Favorites" duration-ms="319440" started-at="2015-01-02T18:37:00Z" description=" Add remove files from favorites" finished-at="2015-01-02T18:42:19Z">
+        <test-method status="PASS" signature="Favorites()[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="Favorites" duration-ms="299063" started-at="2015-01-09T17:58:06Z" description=" Add remove files from favorites" finished-at="2015-01-09T18:03:05Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Favorites -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="tearDown" is-config="true" duration-ms="4284" started-at="2015-01-02T18:42:19Z" finished-at="2015-01-02T18:42:24Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="tearDown" is-config="true" duration-ms="1479" started-at="2015-01-09T18:03:05Z" finished-at="2015-01-09T18:03:07Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

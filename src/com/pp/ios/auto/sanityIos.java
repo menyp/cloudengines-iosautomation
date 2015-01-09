@@ -97,6 +97,9 @@ public class SanityIos {
 		
 		// Dismiss the create folder window
 		genMeth.clickName(driver,genMeth, iosData.BTNcancel_Name);
+		
+		
+		
 
 		// make sure that the folder wasn't created
 
@@ -212,7 +215,7 @@ public class SanityIos {
 		// Make sure that both video & image were uploaded to the list with the correct size
 		genMeth.isElementVisible(driver, By.name(iosData.UploadExistingImage_Name));
 		genMeth.isElementVisible(driver, By.name(iosData.UploadExistingVideo_Name));
-		genMeth.takeScreenShotNative(driver, genMeth, "positive_uploadExistingPotos_ListThumbnail");
+		genMeth.takeScreenShotPositive(driver, genMeth, "positive_uploadExistingPotos_ListThumbnail");
 		
 		// Open the Image & verify it displays
 		genMeth.clickName(driver, genMeth, iosData.UploadExistingImage_Name);
@@ -224,7 +227,7 @@ public class SanityIos {
 		genMeth.isElementVisible(driver, By.name(iosData.UploadExistingImage_Name));
 		
 		//Take Screenshot verifying that the image UI is fine
-		genMeth.takeScreenShotNative(driver, genMeth, "positive_uploadExistingPotos_uploaded_IMG_0004");
+		genMeth.takeScreenShotPositive(driver, genMeth, "positive_uploadExistingPotos_uploaded_IMG_0004");
 		
 		genMeth.isElementInvisible(driver, By.name(iosData.UploadExistingImage_Name));
 		genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]");
@@ -233,7 +236,7 @@ public class SanityIos {
 		// Open the video & verify that the title displayed
 		genMeth.clickName(driver, genMeth, iosData.UploadExistingVideo_Name);
 		genMeth.isElementVisible(driver, By.name(iosData.UploadExistingVideo_Name));
-		genMeth.takeScreenShotNative(driver, genMeth, "positive_uploadExistingPotos_IMG_01188.MOV");
+		genMeth.takeScreenShotPositive(driver, genMeth, "positive_uploadExistingPotos_IMG_01188.MOV");
 		genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAImage[1]");
 		driver.findElementByName(iosData.BTNback_Name).click();
 		
@@ -270,7 +273,6 @@ public class SanityIos {
 		genMeth.clickName(driver, genMeth, iosData.BTNleft_Name);
 
 	}
-
 
 	
 	@Test(enabled = true, testName = "Sanity Tests", description = "Test TOUR for New accounts and for upgrade accounts",
@@ -472,7 +474,7 @@ public class SanityIos {
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDemail_Id, "meny");
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDpass_Id, iosData.password);
 		genMeth.clickName(driver, genMeth, iosData.BTNsignUpForFree_Name);
-		genMeth.takeScreenShotNative(driver, genMeth, "positive_createNewUser_badEmailFormat");
+		genMeth.takeScreenShotPositive(driver, genMeth, "positive_createNewUser_badEmailFormat");
 
 		// privacy policy
 		genMeth.clickName(driver, genMeth, iosData.LinkPrivacyPolicy_Name);
@@ -820,7 +822,7 @@ public class SanityIos {
 	}
 	
 	@Test(enabled = true, testName = "Sanity Tests", description = "Settings: Backup Enable/disable *with upload in the background",
-			groups = { "Sanity iOSnow" })// , dependsOnMethods={"successTest"})
+			groups = { "Sanity iOS" })// , dependsOnMethods={"successTest"})
 	public void settingsBackupEnableDisableDuringUpload() throws Exception,Throwable {
 
 		// login with new account & enable/disable the backup from Tour/Settings/LSM/Photo Gallery
@@ -868,7 +870,8 @@ public class SanityIos {
 		//Disable the backup from SETTINGS
 		genMeth.clickName(driver, genMeth, iosData.Settings_Name);
 		genMeth.clickName(driver, genMeth, iosData.BTNon_Name);
-		genMeth.clickName(driver, genMeth, iosData.TOGGLEcameraRoll_Name);
+		driver.findElementByName(iosData.TOGGLEcameraRoll_Name).click();
+//		genMeth.clickName(driver, genMeth, iosData.TOGGLEcameraRoll_Name);
 		genMeth.clickName(driver, genMeth, iosData.BTNback_Name);
 		genMeth.clickName(driver, genMeth, iosData.BTNdone_Name);
 		
@@ -877,13 +880,13 @@ public class SanityIos {
 		genMeth.isElementVisible(driver, By.name(iosData.Disabled_Name));
 		
 		//Enable backup from TIMELINE 
-		genMeth.clickName(driver, genMeth, iosData.BTNphoneGallery_Name);
+		genMeth.clickName(driver, genMeth, iosData.BTNphotoGallery_Name);
 		genMeth.isElementVisible(driver, By.name(iosData.BTNenable_Name));
 		genMeth.isElementVisible(driver, By.name(iosData.Backup_Name));
 		genMeth.isElementVisible(driver, By.name(iosData.Disabled_Name));
-		genMeth.takeScreenShotNative(driver, genMeth, "Positive_settingsBackupEnableDisableDuringUpload_TimelineBackupDisable");
-		genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIAButton[1]");
-		//genMeth.clickName(driver, genMeth, iosData.BTNenable_Name);
+		genMeth.takeScreenShotPositive(driver, genMeth, "Positive_settingsBackupEnableDisableDuringUpload_TimelineBackupDisable");
+//		genMeth.clickName(driver, genMeth, iosData.BTNenable_Name);
+		genMeth.tapName(driver, genMeth, iosData.BTNenable_Name);
 		genMeth.isElementVisible(driver, By.name(iosData.BTNwifiAndCellular_Name));
 		genMeth.clickName(driver, genMeth, iosData.BTNenable_Name);
 		
@@ -896,19 +899,21 @@ public class SanityIos {
 		genMeth.clickName(driver, genMeth, iosData.BTNleft_Name);
 		genMeth.clickName(driver, genMeth, iosData.Settings_Name);
 		genMeth.clickName(driver, genMeth, iosData.BTNon_Name);
-		genMeth.clickName(driver, genMeth, iosData.TOGGLEcameraRoll_Name);
+//		genMeth.clickName(driver, genMeth, iosData.TOGGLEcameraRoll_Name);
+		driver.findElementByName(iosData.TOGGLEcameraRoll_Name).click();
 		genMeth.clickName(driver, genMeth, iosData.BTNback_Name);
 		genMeth.clickName(driver, genMeth, iosData.BTNdone_Name);
 		
 		//Enable backup from VIDEOS 
-		genMeth.clickName(driver, genMeth, iosData.BTNphoneGallery_Name);
+//		genMeth.clickName(driver, genMeth, iosData.BTNphotoGallery_Name);
+		driver.findElementByName(iosData.BTNphotoGallery_Name).click();
 		genMeth.clickName(driver, genMeth, iosData.BTNvideos_Name);
 		genMeth.isElementVisible(driver, By.name(iosData.Backup_Name));
 		genMeth.isElementVisible(driver, By.name(iosData.Disabled_Name));
 		genMeth.isElementVisible(driver, By.name(iosData.BTNenable_Name));
-		genMeth.takeScreenShotNative(driver, genMeth, "Positive_settingsBackupEnableDisableDuringUpload_VideoBackupDisable");
-		genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIAButton[1]");
+		genMeth.takeScreenShotPositive(driver, genMeth, "Positive_settingsBackupEnableDisableDuringUpload_VideoBackupDisable");
 //		genMeth.clickName(driver, genMeth, iosData.BTNenable_Name);
+		genMeth.tapName(driver, genMeth, iosData.BTNenable_Name);
 		genMeth.isElementVisible(driver, By.name(iosData.BTNwifiAndCellular_Name));
 		genMeth.clickName(driver, genMeth, iosData.BTNenable_Name);
 
@@ -921,19 +926,21 @@ public class SanityIos {
 		genMeth.clickName(driver, genMeth, iosData.BTNleft_Name);
 		genMeth.clickName(driver, genMeth, iosData.Settings_Name);
 		genMeth.clickName(driver, genMeth, iosData.BTNon_Name);
-		genMeth.clickName(driver, genMeth, iosData.TOGGLEcameraRoll_Name);
+//		genMeth.clickName(driver, genMeth, iosData.TOGGLEcameraRoll_Name);
+		driver.findElementByName(iosData.TOGGLEcameraRoll_Name).click();
 		genMeth.clickName(driver, genMeth, iosData.BTNback_Name);
 		genMeth.clickName(driver, genMeth, iosData.BTNdone_Name);
 		
 		// Enable backup from ALBUMS
-		genMeth.clickName(driver, genMeth, iosData.BTNphoneGallery_Name);
+//		genMeth.clickName(driver, genMeth, iosData.BTNphotoGallery_Name);
+		driver.findElementByName(iosData.BTNphotoGallery_Name).click();
 		genMeth.clickName(driver, genMeth, iosData.BTNalbums_Name);
 		genMeth.isElementVisible(driver, By.name(iosData.Backup_Name));
 		genMeth.isElementVisible(driver, By.name(iosData.Disabled_Name));
 		genMeth.isElementVisible(driver, By.name(iosData.BTNenable_Name));
-		genMeth.takeScreenShotNative(driver, genMeth, "Positive_settingsBackupEnableDisableDuringUpload_AlbumsBackupDisable");
-		genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIAButton[1]");
 //		genMeth.clickName(driver, genMeth, iosData.BTNenable_Name);
+		genMeth.tapName(driver, genMeth, iosData.BTNenable_Name);
+		genMeth.takeScreenShotPositive(driver, genMeth, "Positive_settingsBackupEnableDisableDuringUpload_AlbumsBackupDisable");
 		genMeth.isElementVisible(driver, By.name(iosData.BTNwifiAndCellular_Name));
 		genMeth.clickName(driver, genMeth, iosData.BTNenable_Name);
 
@@ -946,205 +953,190 @@ public class SanityIos {
 		genMeth.waitForElementToBeInvisible(driver, By.name(iosData.iconInProgress_Name), 5);
 		genMeth.isElementInvisible(driver, By.name(iosData.BTNenable_Name));
 		genMeth.isElementInvisible(driver, By.name(iosData.Disabled_Name));
-		genMeth.takeScreenShotNative(driver, genMeth, "Positive_settingsBackupEnableDisableDuringUpload_AlbumsThumbnailsDisplay");
+		genMeth.takeScreenShotPositive(driver, genMeth, "Positive_settingsBackupEnableDisableDuringUpload_AlbumsThumbnailsDisplay");
 		
 		genMeth.clickName(driver, genMeth, iosData.BTNvideos_Name);
 		genMeth.isElementInvisible(driver, By.name(iosData.BTNenable_Name));
 		genMeth.isElementInvisible(driver, By.name(iosData.Disabled_Name));
-		genMeth.takeScreenShotNative(driver, genMeth, "Positive_settingsBackupEnableDisableDuringUpload_VideosThumbnailsDisplay");
+		genMeth.takeScreenShotPositive(driver, genMeth, "Positive_settingsBackupEnableDisableDuringUpload_VideosThumbnailsDisplay");
 
 		genMeth.clickName(driver, genMeth, iosData.BTNtimeline_Name_name);
 		genMeth.isElementInvisible(driver, By.name(iosData.BTNenable_Name));
 		genMeth.isElementInvisible(driver, By.name(iosData.Disabled_Name));
-		genMeth.takeScreenShotNative(driver, genMeth, "Positive_settingsBackupEnableDisableDuringUpload_TimelineThumbnailsDisplay");
+		genMeth.takeScreenShotPositive(driver, genMeth, "Positive_settingsBackupEnableDisableDuringUpload_TimelineThumbnailsDisplay");
 
 		genMeth.clickName(driver, genMeth, iosData.BTNleft_Name);
 		genMeth.isElementVisible(driver, By.name(iosData.Completed_Name));
 		
 		// verify that the images were uploaded to the cloud
-		genMeth.clickName(driver, genMeth, iosData.BTNphoneGallery_Name);		
+//		genMeth.clickName(driver, genMeth, iosData.BTNphotoGallery_Name);	
+		driver.findElementByName(iosData.BTNphotoGallery_Name).click();
 		genMeth.clickXpth(driver,genMeth, "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[2]");
-		genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAImage[1]");
+//		genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAImage[1]");
 		
 		// Make sure that the "Image not available" text doesn't displayed
 		genMeth.isElementInvisibleTextNative(driver, By.name(iosData.ImageNotAvailable_Name),iosData.ImageNotAvailable_Name);
 		Thread.sleep(2000);
-		genMeth.takeScreenShotNative(driver, genMeth, "Positive_settingsBackupEnableDisableDuringUploadImagePreview");
+		genMeth.takeScreenShotPositive(driver, genMeth, "Positive_settingsBackupEnableDisableDuringUploadImagePreview");
 		
 	}
 
-	@Test(enabled = true, testName = "Sanity Tests", description = " Backup running in background -> make sure process keeps alive and completes its queue even in background AND if taking new shots they are automatically backed up",
-			groups = { "Sanity iOS" })
+	@Test(enabled = true, testName = "Sanity Tests", description = " Backup running in background -> make sure process keeps alive and completes its queue even in background AND if taking new shots they are automatically backed up", groups = { "Sanity iOS" })
 	public void backupInBackground() throws Exception, Throwable {
 
-		//webElementsIos iosData = genMeth.iOSelementInit(langEng);
-		
-		//Login with new account (*backup will initiate)
-		genMeth.signOutFromStartupIphone5(driver , iosData);
-		
+		// webElementsIos iosData = genMeth.iOSelementInit(langEng);
+
+		// Login with new account (*backup will initiate)
+		genMeth.signOutFromStartupIphone5(driver, iosData);
+
 		genMeth.signUp(genMeth, iosData);
-		
+
 		// verify that the backup is Enable & running
-		genMeth.clickName(driver, genMeth,iosData.BTNleft_Name);
-		genMeth.clickName(driver, genMeth,iosData.BTNleft_Name);
+		genMeth.clickName(driver, genMeth, iosData.BTNleft_Name);
+		genMeth.clickName(driver, genMeth, iosData.BTNleft_Name);
 		genMeth.isElementVisible(driver, By.name(iosData.iconInProgress_Name));
 
-		//Go to background/Sleep & wait 60 seconds
+		// Go to background/Sleep & wait 60 seconds
 		driver.lockScreen(60);
-		
-		//Bring App back to foreground & make sure that backup has finished successfully
-		genMeth.waitForElementToBeInvisible(driver, By.name(iosData.iconInProgress_Name), 8);
-		
-		//Verify that the backup is completed
+
+		// Bring App back to foreground & make sure that backup has finished
+		// successfully
+		genMeth.waitForElementToBeInvisible(driver,By.name(iosData.iconInProgress_Name), 8);
+
+		// Verify that the backup is completed
 		genMeth.isElementVisible(driver, By.name(iosData.Completed_Name));
-		
+
 		// Make sure that a random image is open successfully
-		genMeth.clickName(driver, genMeth, iosData.BTNphoneGallery_Name);
-		genMeth.clickXpth(driver,genMeth,"//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[1]");
+		genMeth.clickName(driver, genMeth, iosData.BTNphotoGallery_Name);
+		genMeth.clickXpth(driver, genMeth,"//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[1]");
 		driver.tap(1, 60, 120, 1);
 
 		// Make sure that the "Image not available" text doesn't displayed
 		Thread.sleep(2000);
-		genMeth.isElementInvisibleTextNative(driver, By.name(iosData.ImageNotAvailable_Name),iosData.ImageNotAvailable_Name);
-		genMeth.takeScreenShotNative(driver, genMeth, "positive_backupInBackground_imagePreview");
+		genMeth.isElementInvisibleTextNative(driver,By.name(iosData.ImageNotAvailable_Name),iosData.ImageNotAvailable_Name);
+		genMeth.takeScreenShotPositive(driver, genMeth,"positive_backupInBackground_imagePreview");
 
 	}
 
-	@Test(enabled = true, testName = "Sanity Tests", description = "Switching from Foreground to Background and vice versa use cases",
-			groups = { "Sanity iOS" })
+	@Test(enabled = true, testName = "Sanity Tests", description = "Switching from Foreground to Background and vice versa use cases", groups = { "Sanity iOS" })
 	public void foregroundBackgroundSwith() throws Exception, Throwable {
 
-		//Take the app to background & foreground x times
+		// Take the app to background & foreground x times
 		genMeth.backgroundToForeground(driver, 10);
 		genMeth.isElementVisible(driver, By.name(iosData.Settings_Name));
-		
-		//Take the app to sleep/lock  x times
-		genMeth.lockUnlock(driver,10);
+
+		// Take the app to sleep/lock x times
+		genMeth.lockUnlock(driver, 10);
 		genMeth.isElementVisible(driver, By.name(iosData.Settings_Name));
 
 	}
-	
-		@Test(enabled = true , testName = "Sanity Tests" , description = " Add remove files from favorites" ,
-				groups = { "Sanity iOSnow"} )
-	public void Favorites() throws InterruptedException, IOException, ParserConfigurationException, SAXException{
-			// open favorites & make sure that it is empty
-			genMeth.clickName(driver, genMeth, iosData.BTNfavorites_Name);
-			genMeth.isElementVisible(driver, By.name(iosData.EmptyFavorites_Name));
-			
-			//positive empty favorites screenshot
-			genMeth.takeScreenShotNative(driver, genMeth, "Positive_Favorites_FavoritesEmptyScreen" );
-			genMeth.clickName(driver, genMeth, iosData.BTNleft_Name);
-			genMeth.clickName(driver, genMeth, iosData.BTNfileExplorer_Name);
-			genMeth.clickName(driver, genMeth, iosData.FavoritesTitle_Name);
-			Thread.sleep(1000);
-			
-			//Add image/video/song to favorites
-			genMeth.clickName(driver, genMeth, iosData.FavoritesMp3_Name);
-			genMeth.clickName(driver, genMeth, iosData.iconAddToFavorites_Name);
-			genMeth.isElementVisible(driver, By.name(iosData.iconRemoveFromFavorites_Name));
-			genMeth.clickName(driver, genMeth, iosData.BTNback_Name);
-			
-			genMeth.clickName(driver, genMeth, iosData.FavoritesMov_Name);
-			genMeth.clickName(driver, genMeth, iosData.iconAddToFavorites_Name);
-			genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAScrollView[1]/UIAImage[1]");
-			genMeth.isElementVisible(driver, By.name(iosData.iconRemoveFromFavorites_Name));
-			driver.findElementByName(iosData.BTNdone_Name).click();
-			//genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAScrollView[1]/UIAImage[1]");
-			//genMeth.clickName(driver, genMeth, iosData.BTNdone_Name);
-			//driver.findElementByName(iosData.BTNback_Name).click();
-			
-			genMeth.clickName(driver, genMeth, iosData.FavoritesPng_Name);
-			driver.findElementByName(iosData.iconAddToFavorites_Name).click();
-			genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAScrollView[1]/UIAImage[1]");
-			genMeth.isElementVisible(driver, By.name(iosData.iconRemoveFromFavorites_Name));
-			driver.findElementByName(iosData.BTNdone_Name).click();	
-			
-			//Make sure that it is displayed in favorites
-			genMeth.clickName(driver, genMeth, iosData.BTNback_Name);
-			genMeth.clickName(driver, genMeth, iosData.BTNleft_Name);
-			genMeth.clickName(driver, genMeth, iosData.BTNfavorites_Name);
-			genMeth.isElementVisible(driver, By.name(iosData.FavoritesMov_Name));
-			genMeth.isElementVisible(driver, By.name(iosData.FavoritesMp3_Name));
-			genMeth.isElementVisible(driver, By.name(iosData.FavoritesPng_Name));
-				
-			// remove the files from favorites & make sure that the empty screen display
-			genMeth.clickName(driver, genMeth, iosData.BTNedit_Name);
-			genMeth.clickName(driver, genMeth, iosData.FavoritesMp3_Name);
-			genMeth.clickName(driver, genMeth, iosData.FavoritesMov_Name);
-			genMeth.clickName(driver, genMeth, iosData.FavoritesPng_Name);
-			
-			genMeth.clickName(driver, genMeth, iosData.BTNremoveFavorites_Name);
-			genMeth.isElementInvisible(driver, By.name(iosData.FavoritesMov_Name));
-			genMeth.isElementInvisible(driver, By.name(iosData.FavoritesMp3_Name));
-			genMeth.isElementInvisible(driver, By.name(iosData.FavoritesPng_Name));
-			genMeth.isElementVisible(driver, By.name(iosData.EmptyFavorites_Name));
-			
-			//Now remove from favorites from preview Toolbar 
-			
-			genMeth.clickName(driver, genMeth, iosData.BTNleft_Name);
-			genMeth.clickName(driver, genMeth, iosData.BTNfileExplorer_Name);
-			genMeth.clickName(driver, genMeth, iosData.FavoritesTitle_Name);
-			Thread.sleep(1000);
-			
-			//Add image/video/song to favorites
-			genMeth.clickName(driver, genMeth, iosData.FavoritesMp3_Name);
-			genMeth.clickName(driver, genMeth, iosData.iconAddToFavorites_Name);
-			genMeth.isElementVisible(driver, By.name(iosData.iconRemoveFromFavorites_Name));
-			genMeth.clickName(driver, genMeth, iosData.BTNback_Name);
-			
-			genMeth.clickName(driver, genMeth, iosData.FavoritesMov_Name);
-		//	genMeth.clickName(driver, genMeth, iosData.iconAddToFavorites_Name);
-			driver.findElementByName(iosData.iconAddToFavorites_Name).click();
-			genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAScrollView[1]/UIAImage[1]");
-			genMeth.isElementVisible(driver, By.name(iosData.iconRemoveFromFavorites_Name));
-//			genMeth.clickName(driver, genMeth, iosData.BTNdone_Name);
-			driver.findElementByName(iosData.BTNdone_Name).click();
-			
-			genMeth.clickName(driver, genMeth, iosData.FavoritesPng_Name);
-//			genMeth.clickName(driver, genMeth, iosData.iconAddToFavorites_Name);
-			driver.findElementByName(iosData.iconAddToFavorites_Name).click();
-			genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAScrollView[1]/UIAImage[1]");
-//			genMeth.clickName(driver, genMeth, iosData.BTNdone_Name);
-			driver.findElementByName(iosData.BTNdone_Name).click();	
-			
-			//Make sure that it is displayed in favorites
-			genMeth.clickName(driver, genMeth, iosData.BTNback_Name);
-			genMeth.clickName(driver, genMeth, iosData.BTNleft_Name);
-			genMeth.clickName(driver, genMeth, iosData.BTNfavorites_Name);
-			genMeth.isElementVisible(driver, By.name(iosData.FavoritesMov_Name));
-			genMeth.isElementVisible(driver, By.name(iosData.FavoritesMp3_Name));
-			genMeth.isElementVisible(driver, By.name(iosData.FavoritesPng_Name));
-			
-			//Now remove favorites from preview Toolbar
-			genMeth.clickName(driver, genMeth, iosData.FavoritesMp3_Name);
-			genMeth.clickName(driver, genMeth, iosData.iconRemoveFromFavorites_Name);
-			genMeth.isElementVisible(driver, By.name(iosData.iconAddToFavorites_Name));
-			genMeth.clickName(driver, genMeth, iosData.BTNback_Name);
-			genMeth.isElementInvisible(driver, By.name(iosData.FavoritesMp3_Name));
-			
-			genMeth.clickName(driver, genMeth, iosData.FavoritesMov_Name);
-//			genMeth.clickName(driver, genMeth, iosData.iconRemoveFromFavorites_Name);
-			driver.findElementByName(iosData.iconRemoveFromFavorites_Name).click();
-			genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAScrollView[1]/UIAImage[1]");
-			genMeth.isElementVisible(driver, By.name(iosData.iconAddToFavorites_Name));
-//			genMeth.clickName(driver, genMeth, iosData.BTNdone_Name);
-			driver.findElementByName(iosData.BTNdone_Name).click();
-			genMeth.isElementInvisible(driver, By.name(iosData.FavoritesMov_Name));
-			
-			genMeth.clickName(driver, genMeth, iosData.FavoritesPng_Name);
-//			genMeth.clickName(driver, genMeth, iosData.iconRemoveFromFavorites_Name);
-			driver.findElementByName(iosData.iconRemoveFromFavorites_Name).click();
-			genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAScrollView[1]/UIAImage[1]");
-			genMeth.isElementVisible(driver, By.name(iosData.iconAddToFavorites_Name));
-//			genMeth.clickName(driver, genMeth, iosData.BTNdone_Name);
-			driver.findElementByName(iosData.BTNdone_Name).click();
-			genMeth.isElementInvisible(driver, By.name(iosData.FavoritesPng_Name));
-			
-			// go back to startup page
-			genMeth.clickName(driver, genMeth, iosData.BTNleft_Name);			
-			
-		}
-		
+
+	@Test(enabled = true, testName = "Sanity Tests", description = " Add remove files from favorites", groups = { "Sanity iOS" })
+	public void Favorites() throws InterruptedException, IOException,
+			ParserConfigurationException, SAXException {
+		// open favorites & make sure that it is empty
+		genMeth.clickName(driver, genMeth, iosData.BTNfavorites_Name);
+		genMeth.isElementVisible(driver, By.name(iosData.EmptyFavorites_Name));
+
+		// positive empty favorites screenshot
+		genMeth.takeScreenShotPositive(driver, genMeth,
+				"Positive_Favorites_FavoritesEmptyScreen");
+		genMeth.clickName(driver, genMeth, iosData.BTNleft_Name);
+		genMeth.clickName(driver, genMeth, iosData.BTNfileExplorer_Name);
+		genMeth.clickName(driver, genMeth, iosData.FavoritesTitle_Name);
+		Thread.sleep(1000);
+
+		// Add image/video/song to favorites
+		genMeth.clickName(driver, genMeth, iosData.FavoritesMp3_Name);
+		genMeth.clickName(driver, genMeth, iosData.iconAddToFavorites_Name);
+		genMeth.isElementVisible(driver,
+				By.name(iosData.iconRemoveFromFavorites_Name));
+		genMeth.clickName(driver, genMeth, iosData.BTNback_Name);
+
+		genMeth.clickName(driver, genMeth, iosData.FavoritesMov_Name);
+		genMeth.clickName(driver, genMeth, iosData.iconAddToFavorites_Name);
+		genMeth.isElementVisible(driver,By.name(iosData.iconRemoveFromFavorites_Name));
+		genMeth.clickName(driver, genMeth, iosData.BTNdone_Name);		
+
+		genMeth.clickName(driver, genMeth, iosData.FavoritesPng_Name);
+		driver.findElementByName(iosData.iconAddToFavorites_Name).click();
+		genMeth.isElementVisible(driver,By.name(iosData.iconRemoveFromFavorites_Name));
+		genMeth.clickName(driver, genMeth, iosData.BTNdone_Name);		
+
+		// Make sure that it is displayed in favorites
+		genMeth.clickName(driver, genMeth, iosData.BTNback_Name);
+		genMeth.clickName(driver, genMeth, iosData.BTNleft_Name);
+		genMeth.clickName(driver, genMeth, iosData.BTNfavorites_Name);
+		genMeth.isElementVisible(driver, By.name(iosData.FavoritesMov_Name));
+		genMeth.isElementVisible(driver, By.name(iosData.FavoritesMp3_Name));
+		genMeth.isElementVisible(driver, By.name(iosData.FavoritesPng_Name));
+
+		// remove the files from favorites & make sure that the empty screen
+		// display
+		genMeth.clickName(driver, genMeth, iosData.BTNedit_Name);
+		genMeth.clickName(driver, genMeth, iosData.FavoritesMp3_Name);
+		genMeth.clickName(driver, genMeth, iosData.FavoritesMov_Name);
+		genMeth.clickName(driver, genMeth, iosData.FavoritesPng_Name);
+
+		genMeth.clickName(driver, genMeth, iosData.BTNremoveFavorites_Name);
+		genMeth.isElementInvisible(driver, By.name(iosData.FavoritesMov_Name));
+		genMeth.isElementInvisible(driver, By.name(iosData.FavoritesMp3_Name));
+		genMeth.isElementInvisible(driver, By.name(iosData.FavoritesPng_Name));
+		genMeth.isElementVisible(driver, By.name(iosData.EmptyFavorites_Name));
+
+		// Now remove from favorites from preview Toolbar
+
+		genMeth.clickName(driver, genMeth, iosData.BTNleft_Name);
+		genMeth.clickName(driver, genMeth, iosData.BTNfileExplorer_Name);
+		genMeth.clickName(driver, genMeth, iosData.FavoritesTitle_Name);
+		Thread.sleep(1000);
+
+		// Add image/video/song to favorites
+		genMeth.clickName(driver, genMeth, iosData.FavoritesMp3_Name);
+		genMeth.clickName(driver, genMeth, iosData.iconAddToFavorites_Name);
+		genMeth.isElementVisible(driver,By.name(iosData.iconRemoveFromFavorites_Name));
+		genMeth.clickName(driver, genMeth, iosData.BTNback_Name);
+
+		genMeth.clickName(driver, genMeth, iosData.FavoritesMov_Name);
+		genMeth.clickName(driver, genMeth, iosData.iconAddToFavorites_Name);
+		genMeth.isElementVisible(driver,By.name(iosData.iconRemoveFromFavorites_Name));
+		genMeth.clickName(driver, genMeth, iosData.BTNdone_Name);
+		genMeth.clickName(driver, genMeth, iosData.FavoritesPng_Name);
+		driver.findElementByName(iosData.iconAddToFavorites_Name).click();
+		genMeth.clickName(driver, genMeth, iosData.BTNdone_Name);
+
+		// Make sure that it is displayed in favorites
+		genMeth.clickName(driver, genMeth, iosData.BTNback_Name);
+		genMeth.clickName(driver, genMeth, iosData.BTNleft_Name);
+		genMeth.clickName(driver, genMeth, iosData.BTNfavorites_Name);
+		genMeth.isElementVisible(driver, By.name(iosData.FavoritesMov_Name));
+		genMeth.isElementVisible(driver, By.name(iosData.FavoritesMp3_Name));
+		genMeth.isElementVisible(driver, By.name(iosData.FavoritesPng_Name));
+
+		// Now remove favorites from preview Toolbar
+		genMeth.clickName(driver, genMeth, iosData.FavoritesMp3_Name);
+		genMeth.clickName(driver, genMeth, iosData.iconRemoveFromFavorites_Name);
+		genMeth.isElementVisible(driver,By.name(iosData.iconAddToFavorites_Name));
+		genMeth.clickName(driver, genMeth, iosData.BTNback_Name);
+		genMeth.isElementInvisible(driver, By.name(iosData.FavoritesMp3_Name));
+
+		genMeth.clickName(driver, genMeth, iosData.FavoritesMov_Name);
+		genMeth.clickName(driver, genMeth,iosData.iconRemoveFromFavorites_Name);
+		genMeth.isElementVisible(driver,By.name(iosData.iconAddToFavorites_Name));
+		genMeth.clickName(driver, genMeth, iosData.BTNdone_Name);
+		genMeth.isElementInvisible(driver, By.name(iosData.FavoritesMov_Name));
+
+		genMeth.clickName(driver, genMeth, iosData.FavoritesPng_Name);
+		genMeth.clickName(driver, genMeth,iosData.iconRemoveFromFavorites_Name);
+		genMeth.isElementVisible(driver,By.name(iosData.iconAddToFavorites_Name));
+		genMeth.clickName(driver, genMeth, iosData.BTNdone_Name);
+		genMeth.isElementInvisible(driver, By.name(iosData.FavoritesPng_Name));
+
+		// go back to startup page
+		genMeth.clickName(driver, genMeth, iosData.BTNleft_Name);
+
+	}
+
 	@Test(enabled = true, testName = "Sanity Tests", description = "Adding & removing team folders",
 			groups = { "Sanity iOS" })
 	public void addRemoveTeamFolders() throws Exception, Throwable {
@@ -1172,7 +1164,7 @@ public class SanityIos {
 		genMeth.clickName(driver, genMeth, iosData.BTNcancel_Name);
 		genMeth.clickName(driver, genMeth, iosData.BTNdone_Name);
 		genMeth.isElementVisible(driver, By.id("1"));
-		genMeth.takeScreenShotNative(driver, genMeth, "positive_addRemoveTeamFolders_teamFolderSharedUsersNumber");
+		genMeth.takeScreenShotPositive(driver, genMeth, "positive_addRemoveTeamFolders_teamFolderSharedUsersNumber");
 		genMeth.clickName(driver, genMeth, iosData.BTNdone_Name);
 		genMeth.clickName(driver, genMeth, iosData.BTNleft_Name);
 		
@@ -1227,7 +1219,7 @@ public class SanityIos {
 		genMeth.clickName(driver, genMeth, iosData.BTNshareOn_Name);
 		genMeth.clickName(driver, genMeth, iosData.BTNremoveAllUsers_Name);
 		Thread.sleep(2000);
-		genMeth.takeScreenShotNative(driver, genMeth, "positive_addRemoveTeamFolders_teamFolderSharedUsersRemoveNumber");
+		genMeth.takeScreenShotPositive(driver, genMeth, "positive_addRemoveTeamFolders_teamFolderSharedUsersRemoveNumber");
 		genMeth.clickName(driver, genMeth, iosData.BTNleft_Name);
 		genMeth.clickName(driver, genMeth, iosData.Settings_Name);
 		genMeth.signOutFromStartupIphone5(driver, iosData);
@@ -1260,7 +1252,7 @@ public class SanityIos {
 		//Make sure that there are no albums
 		
 		//Create album & add image/video to that album (empty screen verification)
-		genMeth.clickName(driver, genMeth, iosData.BTNphoneGallery_Name);
+		genMeth.clickName(driver, genMeth, iosData.BTNphotoGallery_Name);
 		genMeth.clickName(driver, genMeth, iosData.BTNalbums_Name);
 		genMeth.clickName(driver, genMeth, iosData.BTNcreateOn_Name);
 		genMeth.isElementVisible(driver, By.name("Create New Album"));

@@ -4,8 +4,8 @@
   <test name="Sanity Tests(failed)" parallel="none">
     <groups>
       <run>
-        <include name="Sanity iOSnow"/>
-        <include name="Regression iOS11111"/>
+        <include name="Sanity iOS1"/>
+        <include name="Regression iOS"/>
       </run>
     </groups>
     <classes>

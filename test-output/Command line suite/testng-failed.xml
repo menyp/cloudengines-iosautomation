@@ -11,20 +11,10 @@
     <classes>
       <class name="com.pp.ios.auto.SanityIos">
         <methods>
-          <include name="backupInBackground"/>
-          <include name="badCredentials"/>
-          <include name="createNewUser"/>
-          <include name="tearDown"/>
-          <include name="settingsBackupEnableDisable"/>
-          <include name="testTour"/>
-          <include name="settingsSaveLoginSanity"/>
-          <include name="addRemoveTeamFolders"/>
-          <include name="search"/>
+          <include name="checkHomeScreen"/>
           <include name="setupBeforeSuite"/>
-          <include name="testCreatefolder"/>
+          <include name="tearDown"/>
           <include name="Favorites"/>
-          <include name="settingsPasscodeSanity"/>
-          <include name="foregroundBackgroundSwith"/>
         </methods>
       </class> <!-- com.pp.ios.auto.SanityIos -->
     </classes>

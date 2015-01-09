@@ -45,7 +45,7 @@ public class WebElementsIos {
 	String BTNenable_Name;
 	String BTNupgrade_Name;
 	String BTNmusicPlayer_Name;
-	String BTNphoneGallery_Name;
+	String BTNphotoGallery_Name;
 	String BTNwifiAndCellular_Name;
 	String BTNvideos_Name;
 	String BTNalbums_Name;
@@ -214,7 +214,7 @@ public WebElementsIos (String langXml, String xmlPath ) throws Exception, Throwa
 	this.BTNenable_Name = XmlHandel.readIosXml("BTNenable_Name", langXml, xmlPath);
 	this.BTNupgrade_Name = XmlHandel.readIosXml("BTNupgrade_Name", langXml, xmlPath);
 	this.BTNmusicPlayer_Name = XmlHandel.readIosXml("BTNmusicPlayer_Name", langXml, xmlPath);
-	this.BTNphoneGallery_Name = XmlHandel.readIosXml("BTNphoneGallery_Name", langXml, xmlPath);
+	this.BTNphotoGallery_Name = XmlHandel.readIosXml("BTNphotoGallery_Name", langXml, xmlPath);
 	this.BTNwifiAndCellular_Name = XmlHandel.readIosXml("BTNwifiAndCellular_Name", langXml, xmlPath);
 	this.BTNvideos_Name = XmlHandel.readIosXml("BTNvideos_Name", langXml, xmlPath);
 	this.BTNalbums_Name = XmlHandel.readIosXml("BTNalbums_Name", langXml, xmlPath);

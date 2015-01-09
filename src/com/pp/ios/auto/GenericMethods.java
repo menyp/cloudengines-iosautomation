@@ -193,7 +193,7 @@ public class GenericMethods {
 
 		catch (MalformedURLException e) {
 
-			genMeth.takeScreenShotNative(driver, genMeth,"Faliled to open Appium driver");
+			genMeth.takeScreenShot(driver, genMeth,"Faliled to open Appium driver");
 			org.testng.Assert.fail("WebElement"+ " Faliled to open Appium driver");
 		}
 		return driver;
@@ -309,7 +309,18 @@ public class GenericMethods {
 	}
 	
 
-	public void takeScreenShotNative(IOSDriver driver, GenericMethods genMeth, String imageName) throws IOException {
+	public void takeScreenShotPositive(IOSDriver driver, GenericMethods genMeth, String imageName) throws IOException {
+
+		File scrFile = (driver.getScreenshotAs(OutputType.FILE));
+		String currentTime = genMeth.currentTime();
+		String screenshotPath = genMeth.getValueFromPropFile("screenshotPathPositive");
+		// Now you can do whatever you need to do with it, for example copy somewhere
+		String imagePath = screenshotPath  + currentTime + "_" + imageName + ".JPG";
+		FileUtils.copyFile(scrFile, new File(imagePath));
+
+	}
+	
+	public void takeScreenShot(IOSDriver driver, GenericMethods genMeth, String imageName) throws IOException {
 
 		File scrFile = (driver.getScreenshotAs(OutputType.FILE));
 		String currentTime = genMeth.currentTime();
@@ -439,7 +450,25 @@ public class GenericMethods {
 		try {
 
 			WebElement myElement = genMeth.fluentwait(driver, by);
+			//driver.tap(1, myElement,1000);
 			myElement.click();
+		}
+
+		catch (Exception e) {
+
+			org.testng.Assert.fail("WebElement can't be located");
+
+		}
+
+	}
+	
+	public void tapBy(IOSDriver driver, GenericMethods genMeth, By by) throws InterruptedException {
+
+
+		try {
+
+			WebElement myElement = genMeth.fluentwait(driver, by);
+			driver.tap(1, myElement,1000);
 		}
 
 		catch (Exception e) {
@@ -455,9 +484,9 @@ public class GenericMethods {
 
 		try {
 
-			WebElement myElement = genMeth.fluentwait(driver,
-					By.cssSelector(cssSelector));
-			myElement.click();
+			WebElement myElement = genMeth.fluentwait(driver,By.cssSelector(cssSelector));
+			driver.tap(1, myElement, 1000);
+			//myElement.click();
 
 		}
 
@@ -475,6 +504,7 @@ public class GenericMethods {
 		try {
 
 			WebElement myElement = genMeth.fluentwait(driver, By.id(id));
+//			driver.tap(1, myElement, 1000);
 			myElement.click();
 		}
 
@@ -485,12 +515,29 @@ public class GenericMethods {
 		}
 	}
 
+	public void tapId(IOSDriver driver, GenericMethods genMeth, String id)
+			throws InterruptedException {
+
+		try {
+
+			WebElement myElement = genMeth.fluentwait(driver, By.id(id));
+			driver.tap(1, myElement, 1000);
+		}
+
+		catch (Exception e) {
+
+			org.testng.Assert.fail(id + " didn't display");
+
+		}
+	}
 	public void clickClassName(IOSDriver driver, GenericMethods genMeth, String className)
 			throws InterruptedException {
 
 		try {
 
-			genMeth.fluentwait(driver, By.className(className)).click();
+			WebElement myElement = genMeth.fluentwait(driver, By.className(className));
+			driver.tap(1, myElement, 1000);
+
 
 		}
 
@@ -506,26 +553,45 @@ public class GenericMethods {
 			throws InterruptedException, IOException {
 
 		By by = By.xpath(xpth);
-
-		// (new WebDriverWait(driver,
-		// 50000)).until(ExpectedConditions.visibilityOfElementLocated(by));
-
-		// WebElement my1Element = genMeth.fluentwait(driver, By.xpath(xpth));
+		
 
 		try {
 
 			WebElement myElement = genMeth.fluentwait(driver, by);
+//			driver.tap(1, myElement, 1000);
 			myElement.click();
 
 		}
 
 		catch (Exception e) {
-			genMeth.takeScreenShotNative(driver, genMeth, xpth);
+			genMeth.takeScreenShot(driver, genMeth, xpth);
 			org.testng.Assert.fail(xpth + " didn't display");
 
 		}
 
 	}
+	
+	public void tapXpth(IOSDriver driver, GenericMethods genMeth, String xpth)
+			throws InterruptedException, IOException {
+
+		By by = By.xpath(xpth);
+		
+
+		try {
+
+			WebElement myElement = genMeth.fluentwait(driver, by);
+			driver.tap(1, myElement, 1000);
+
+		}
+
+		catch (Exception e) {
+			genMeth.takeScreenShot(driver, genMeth, xpth);
+			org.testng.Assert.fail(xpth + " didn't display");
+
+		}
+
+	}
+
 
 	public void clickName(IOSDriver driver,GenericMethods genMeth, String name)
 			throws InterruptedException, IOException {
@@ -533,19 +599,39 @@ public class GenericMethods {
 		try {
 
 			WebElement myElement = genMeth.fluentwait(driver, By.name(name));
+//			driver.tap(1, myElement, 1000);
 			myElement.click();
 
 		}
 
 		catch (Exception e) {
-			// String testName = new
-			// Object(){}.getClass().getEnclosingMethod().getName();
-			genMeth.takeScreenShotNative(driver, genMeth, name);
+			
+			genMeth.takeScreenShot(driver, genMeth, name);
 			org.testng.Assert.fail(name + " didn't display");
 
 		}
 
 	}
+	
+	public void tapName(IOSDriver driver,GenericMethods genMeth, String name)
+			throws InterruptedException, IOException {
+
+		try {
+
+			WebElement myElement = genMeth.fluentwait(driver, By.name(name));
+			driver.tap(1, myElement, 1000);
+
+		}
+
+		catch (Exception e) {
+			
+			genMeth.takeScreenShot(driver, genMeth, name);
+			org.testng.Assert.fail(name + " didn't display");
+
+		}
+
+	}
+
 
 	// ======================== SEND ELEMENT
 	// =========================================================================
@@ -562,7 +648,7 @@ public class GenericMethods {
 
 		catch (Exception e) {
 
-			genMeth.takeScreenShotNative(driver, genMeth, send);
+			genMeth.takeScreenShot(driver, genMeth, send);
 			org.testng.Assert.fail("WebElement'send by' can't be located");
 
 		}
@@ -600,7 +686,7 @@ public class GenericMethods {
 
 		catch (Exception e) {
 
-			genMeth.takeScreenShotNative(driver, genMeth, send);
+			genMeth.takeScreenShot(driver, genMeth, send);
 			org.testng.Assert.fail(id + "didn't displayed");
 
 		}
@@ -636,7 +722,7 @@ public class GenericMethods {
 
 		catch (Exception e) {
 
-			genMeth.takeScreenShotNative(driver, genMeth, xpth);
+			genMeth.takeScreenShot(driver, genMeth, xpth);
 			org.testng.Assert.fail(xpth + "didn't displayed");
 
 		}
@@ -655,15 +741,14 @@ public class GenericMethods {
 
 		catch (Exception e) {
 
-			genMeth.takeScreenShotNative(driver, genMeth, name);
+			genMeth.takeScreenShot(driver, genMeth, name);
 			org.testng.Assert.fail(name + "didn't displayed");
 
 		}
 
 	}
 
-	// =========================Clear
-	// WebElements=====================================================================
+	// =========================Clear WebElements========================================
 
 	public void clearXpth(IOSDriver driver, GenericMethods genMeth, String xpath)
 			throws InterruptedException {
@@ -780,7 +865,7 @@ public class GenericMethods {
 			GenericMethods genMeth = new GenericMethods();
 			// str = new genData();
 			String imageName = "Element isn't Invisible";
-			genMeth.takeScreenShotNative(driver, genMeth, imageName);
+			genMeth.takeScreenShot(driver, genMeth, imageName);
 			org.testng.Assert.fail("WebElement" + " is not Invisible");
 		}
 
@@ -818,7 +903,7 @@ public class GenericMethods {
 		if (elementToBeVisible == null) {
 			GenericMethods genMeth = new GenericMethods();
 			String imageName = "Element isn't Visible";
-			genMeth.takeScreenShotNative(driver, genMeth, imageName);
+			genMeth.takeScreenShot(driver, genMeth, imageName);
 			org.testng.Assert.fail("WebElement" + " is not Visible");
 		}
 
@@ -861,7 +946,7 @@ public class GenericMethods {
 			GenericMethods genMeth = new GenericMethods();
 			// genData str = new genData();
 			String imageName = text + " is invisible";
-			genMeth.takeScreenShotNative(driver, genMeth, imageName);
+			genMeth.takeScreenShot(driver, genMeth, imageName);
 			org.testng.Assert.fail(text + " isn't visible");
 		}
 
@@ -906,7 +991,7 @@ public class GenericMethods {
 
 			GenericMethods genMeth = new GenericMethods();
 			String imageName = " Element is visible";
-			genMeth.takeScreenShotNative(driver, genMeth, imageName);
+			genMeth.takeScreenShot(driver, genMeth, imageName);
 			org.testng.Assert.fail("WebElement" + " still visible");
 
 		}
@@ -927,7 +1012,7 @@ public class GenericMethods {
 
 			GenericMethods genMeth = new GenericMethods();
 			String imageName = text + " still visible ";
-			genMeth.takeScreenShotNative(driver, genMeth, imageName);
+			genMeth.takeScreenShot(driver, genMeth, imageName);
 			org.testng.Assert.fail(text + " still visible");
 
 		}
@@ -952,7 +1037,7 @@ public class GenericMethods {
 		catch (Exception e) {
 			GenericMethods genMeth = new GenericMethods();
 			String imageName = "Element is invisible";
-			genMeth.takeScreenShotNative(driver, genMeth, imageName);
+			genMeth.takeScreenShot(driver, genMeth, imageName);
 			org.testng.Assert.fail("WebElement" + " is not visible");
 
 		}
