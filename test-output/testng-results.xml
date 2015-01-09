@@ -1,53 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="3" passed="3">
+<testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="306681" started-at="2015-01-09T20:10:12Z" finished-at="2015-01-09T20:15:19Z">
+  <suite name="Suite" duration-ms="38149" started-at="2015-01-09T21:14:50Z" finished-at="2015-01-09T21:15:28Z">
     <groups>
       <group name="Regression iOS1">
-        <method signature="SanityIos.settingsMore()[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="settingsMore" class="com.pp.ios.auto.SanityIos"/>
-        <method signature="SanityIos.settingsRateUs()[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="settingsRateUs" class="com.pp.ios.auto.SanityIos"/>
-        <method signature="SanityIos.settingsShare()[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="settingsShare" class="com.pp.ios.auto.SanityIos"/>
+        <method signature="SanityIos.settingsContactSupport()[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="settingsContactSupport" class="com.pp.ios.auto.SanityIos"/>
       </group> <!-- Regression iOS1 -->
     </groups>
-    <test name="Sanity Tests" duration-ms="306681" started-at="2015-01-09T20:10:12Z" finished-at="2015-01-09T20:15:19Z">
+    <test name="Sanity Tests" duration-ms="38149" started-at="2015-01-09T21:14:50Z" finished-at="2015-01-09T21:15:28Z">
       <class name="com.pp.ios.auto.SanityIos">
-        <test-method status="PASS" signature="setupBeforeSuite(org.testng.ITestContext)[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="setupBeforeSuite" is-config="true" duration-ms="178837" started-at="2015-01-09T22:07:13Z" finished-at="2015-01-09T22:10:12Z">
+        <test-method status="PASS" signature="setupBeforeSuite(org.testng.ITestContext)[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="setupBeforeSuite" is-config="true" duration-ms="174231" started-at="2015-01-09T23:11:56Z" finished-at="2015-01-09T23:14:50Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@44a2b17b]]>
+                <![CDATA[org.testng.TestRunner@7de0c6ae]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupBeforeSuite -->
-        <test-method status="PASS" signature="checkHomeScreen()[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="checkHomeScreen" is-config="true" duration-ms="2373" started-at="2015-01-09T22:10:12Z" finished-at="2015-01-09T22:10:15Z">
+        <test-method status="PASS" signature="checkHomeScreen()[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="checkHomeScreen" is-config="true" duration-ms="2284" started-at="2015-01-09T23:14:50Z" finished-at="2015-01-09T23:14:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkHomeScreen -->
-        <test-method status="PASS" signature="settingsMore()[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="settingsMore" duration-ms="37483" started-at="2015-01-09T22:10:15Z" description="More" finished-at="2015-01-09T22:10:52Z">
+        <test-method status="PASS" signature="settingsContactSupport()[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="settingsContactSupport" duration-ms="35837" started-at="2015-01-09T23:14:52Z" description="More" finished-at="2015-01-09T23:15:28Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- settingsMore -->
-        <test-method status="PASS" signature="checkHomeScreen()[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="checkHomeScreen" is-config="true" duration-ms="2212" started-at="2015-01-09T22:10:52Z" finished-at="2015-01-09T22:10:54Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- checkHomeScreen -->
-        <test-method status="PASS" signature="settingsRateUs()[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="settingsRateUs" duration-ms="17361" started-at="2015-01-09T22:10:54Z" description="Rate app" finished-at="2015-01-09T22:11:12Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- settingsRateUs -->
-        <test-method status="PASS" signature="checkHomeScreen()[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="checkHomeScreen" is-config="true" duration-ms="206483" started-at="2015-01-09T22:11:12Z" finished-at="2015-01-09T22:14:38Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- checkHomeScreen -->
-        <test-method status="PASS" signature="settingsShare()[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="settingsShare" duration-ms="40718" started-at="2015-01-09T22:14:38Z" description="Share app" finished-at="2015-01-09T22:15:19Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- settingsShare -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="tearDown" is-config="true" duration-ms="1624" started-at="2015-01-09T22:15:19Z" finished-at="2015-01-09T22:15:21Z">
+        </test-method> <!-- settingsContactSupport -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.pp.ios.auto.SanityIos@a4102b8]" name="tearDown" is-config="true" duration-ms="1417" started-at="2015-01-09T23:15:28Z" finished-at="2015-01-09T23:15:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

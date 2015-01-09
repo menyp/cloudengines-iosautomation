@@ -67,6 +67,7 @@ public class WebElementsIos {
 	String BTNratePogoplug_Name;
 	String BTNmore_Name;
 	String BTNhelp_Name;
+	String BTNcontactSupport_Name;
 	
 	
 // Text Fields
@@ -245,8 +246,9 @@ public WebElementsIos (String langXml, String xmlPath ) throws Exception, Throwa
 	this.BTNratePogoplug_Name = XmlHandel.readIosXml("BTNratePogoplug_Name", langXml, xmlPath);
 	this.BTNmore_Name = XmlHandel.readIosXml("BTNmore_Name", langXml, xmlPath);
 	this.BTNhelp_Name = XmlHandel.readIosXml("BTNhelp_Name", langXml, xmlPath);
+	this.BTNcontactSupport_Name = XmlHandel.readIosXml("BTNcontactSupport_Name", langXml, xmlPath);
 
-
+	
 	
 	
 	this.TEXTFIELDemail_Id = XmlHandel.readIosXml("TEXTFIELDemail_Id", langXml, xmlPath);

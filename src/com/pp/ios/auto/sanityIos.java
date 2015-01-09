@@ -1293,7 +1293,7 @@ public class SanityIos {
 	}
 	
 	@Test(enabled = true, testName = "Sanity Tests", description = "Share app",
-			groups={"Regression iOS1"})
+			groups={"Regression iOS"})
 	public void settingsShare () throws InterruptedException, IOException, ParserConfigurationException, SAXException{
 		String currentTime = genMeth.currentTime();
 		genMeth.clickName(driver, genMeth, iosData.Settings_Name);
@@ -1308,7 +1308,7 @@ public class SanityIos {
 	}
 
 	@Test(enabled = true, testName = "Sanity Tests", description = "Rate app",
-			groups={"Regression iOS1"})
+			groups={"Regression iOS"})
 	public void settingsRateUs () throws InterruptedException, IOException, ParserConfigurationException, SAXException{
 		String currentTime = genMeth.currentTime();
 		genMeth.clickName(driver, genMeth, iosData.Settings_Name);
@@ -1319,7 +1319,7 @@ public class SanityIos {
 	}
 	
 	@Test(enabled = true, testName = "Sanity Tests", description = "More",
-			groups={"Regression iOS1"})
+			groups={"Regression iOS"})
 	public void settingsMore () throws InterruptedException, IOException, ParserConfigurationException, SAXException{
 		String currentTime = genMeth.currentTime();
 		//Help
@@ -1327,18 +1327,51 @@ public class SanityIos {
 		genMeth.scroll(driver, iosData.scrollDown);
 		genMeth.clickName(driver, genMeth, iosData.BTNmore_Name);
 		genMeth.clickName(driver,genMeth, iosData.BTNhelp_Name);
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		genMeth.takeScreenShotPositive(driver, genMeth, "Pogoplug_Help_Center" + currentTime);
 		genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[1]");
-		genMeth.isElementVisible(driver, By.name(iosData.BTNsignOut_Name));
-		genMeth.scrollUp(driver);
 		
 		//Terms Of Service
-		
+		genMeth.clickName(driver, genMeth, iosData.BTNmore_Name);
+		genMeth.clickName(driver, genMeth, iosData.TermsOfService_Name);
+		Thread.sleep(3000);
+		genMeth.takeScreenShotPositive(driver, genMeth, iosData.TermsOfService_Name + currentTime);
+		genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[1]");
 		
 		//Privacy Policy
+		genMeth.clickName(driver, genMeth, iosData.BTNmore_Name);
+		genMeth.clickName(driver, genMeth, iosData.LinkPrivacyPolicy_Name);
+		Thread.sleep(3000);
+		genMeth.takeScreenShotPositive(driver, genMeth, iosData.LinkPrivacyPolicy_Name + currentTime);
+		genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[1]");
+		genMeth.scrollUp(driver);
+		
 	}
 	
+	@Test(enabled = true, testName = "Sanity Tests", description = "More",
+			groups={"Regression iOS"})
+	public void settingsContactSupport () throws InterruptedException, IOException, ParserConfigurationException, SAXException{
+		String currentTime = genMeth.currentTime();
+		genMeth.clickName(driver, genMeth, iosData.Settings_Name);
+		genMeth.scroll(driver, iosData.scrollDown);
+		genMeth.clickName(driver, genMeth, iosData.BTNcontactSupport_Name);
+		genMeth.takeScreenShotPositive(driver, genMeth, iosData.BTNcontactSupport_Name + currentTime);
+		genMeth.clickName(driver, genMeth, iosData.BTNcancel_Name);
+		genMeth.clickName(driver, genMeth, iosData.BTNdeleteDraft_Name);
+		genMeth.isElementVisible(driver, By.name(iosData.BTNsignOut_Name));
+		genMeth.scrollUp(driver);
+	}
+	
+	@Test(enabled = true, testName = "Sanity Tests", description = "More",
+			groups={"Regression iOS1"})
+	public void settingsFBlike () throws InterruptedException, IOException, ParserConfigurationException, SAXException{
+		String currentTime = genMeth.currentTime();
+
+		genMeth.clickName(driver, genMeth, iosData.Settings_Name);
+		//Like FB
+		
+		//Unlike FB
+	}
 	
 	//Empty screen validation (with screenshots?)
 	
