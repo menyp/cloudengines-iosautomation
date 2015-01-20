@@ -8,18 +8,24 @@
           <include name="backupInBackground"/>
           <include name="badCredentials"/>
           <include name="createNewUser"/>
+          <include name="settingsMore"/>
           <include name="tearDown"/>
+          <include name="Albums"/>
           <include name="settingsBackupEnableDisable"/>
           <include name="testTour"/>
+          <include name="settingsContactSupport"/>
           <include name="settingsBackupEnableDisableDuringUpload"/>
           <include name="settingsSaveLoginSanity"/>
           <include name="addRemoveTeamFolders"/>
           <include name="search"/>
+          <include name="settingsShare"/>
           <include name="setupBeforeSuite"/>
           <include name="testCreatefolder"/>
           <include name="Favorites"/>
           <include name="settingsPasscodeSanity"/>
           <include name="foregroundBackgroundSwith"/>
+          <include name="settingsRateUs"/>
+          <include name="settingsClearHistory"/>
           <include name="uploadExistingPotos"/>
         </methods>
       </class> <!-- com.pp.ios.auto.SanityIos -->

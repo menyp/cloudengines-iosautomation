@@ -68,6 +68,10 @@ public class WebElementsIos {
 	String BTNmore_Name;
 	String BTNhelp_Name;
 	String BTNcontactSupport_Name;
+	String BTNClearBackupHistory_Name;
+	String BTNdoIt_Name;
+	
+
 	
 	
 // Text Fields
@@ -147,6 +151,13 @@ public class WebElementsIos {
 	String SharePogoplug_Name;
 	String ShareMailText_Name;
 	String PogoplugHelpCenter_Name;
+	String defaultDestination_Name;
+	String BTNchooseAnother_Name;
+	String unlimited_Name;
+	String clearHistoryDestination_Name;
+	String confirmOn_Name;
+
+   	
 	
 	
 //	general info	
@@ -247,10 +258,13 @@ public WebElementsIos (String langXml, String xmlPath ) throws Exception, Throwa
 	this.BTNmore_Name = XmlHandel.readIosXml("BTNmore_Name", langXml, xmlPath);
 	this.BTNhelp_Name = XmlHandel.readIosXml("BTNhelp_Name", langXml, xmlPath);
 	this.BTNcontactSupport_Name = XmlHandel.readIosXml("BTNcontactSupport_Name", langXml, xmlPath);
+	this.BTNClearBackupHistory_Name = XmlHandel.readIosXml("BTNClearBackupHistory_Name", langXml, xmlPath);
+	this.BTNdoIt_Name = XmlHandel.readIosXml("BTNdoIt_Name", langXml, xmlPath);
+	this.BTNchooseAnother_Name = XmlHandel.readIosXml("BTNchooseAnother_Name", langXml, xmlPath);
 
 	
-	
-	
+
+
 	this.TEXTFIELDemail_Id = XmlHandel.readIosXml("TEXTFIELDemail_Id", langXml, xmlPath);
 	this.TEXTFIELDpass_Id = XmlHandel.readIosXml("TEXTFIELDpass_Id", langXml, xmlPath);
 	this.TEXTFIELDcreateNewFolder_Xpth = XmlHandel.readIosXml("TEXTFIELDcreateNewFolder_Xpth", langXml, xmlPath);
@@ -335,6 +349,10 @@ public WebElementsIos (String langXml, String xmlPath ) throws Exception, Throwa
 	this.SharePogoplug_Name = XmlHandel.readIosXml("SharePogoplug_Name", langXml, xmlPath);
 	this.ShareMailText_Name = XmlHandel.readIosXml("ShareMailText_Name", langXml, xmlPath);
 	this.PogoplugHelpCenter_Name = XmlHandel.readIosXml("PogoplugHelpCenter_Name", langXml, xmlPath);
+	this.defaultDestination_Name = XmlHandel.readIosXml("defaultDestination_Name", langXml, xmlPath);
+	this.unlimited_Name = XmlHandel.readIosXml("unlimited_Name", langXml, xmlPath);
+	this.clearHistoryDestination_Name = XmlHandel.readIosXml("clearHistoryDestination_Name", langXml, xmlPath);
+	this.confirmOn_Name = XmlHandel.readIosXml("confirmOn_Name", langXml, xmlPath);
 
 
 	this.TOGGLEpasscodeLock_Xpth = XmlHandel.readIosXml("TOGGLEpasscodeLock_Xpth", langXml, xmlPath);

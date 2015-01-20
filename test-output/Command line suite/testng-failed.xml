@@ -13,8 +13,9 @@
         <methods>
           <include name="checkHomeScreen"/>
           <include name="setupBeforeSuite"/>
+          <include name="backupInBackground"/>
+          <include name="testCreatefolder"/>
           <include name="tearDown"/>
-          <include name="Favorites"/>
         </methods>
       </class> <!-- com.pp.ios.auto.SanityIos -->
     </classes>

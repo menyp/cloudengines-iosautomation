@@ -63,6 +63,10 @@
 			<BTNmore_Name>More...</BTNmore_Name>
 			<BTNhelp_Name>Help</BTNhelp_Name>
 			<BTNcontactSupport_Name>Contact Support</BTNcontactSupport_Name>
+			<BTNClearBackupHistory_Name>Clear Backup History</BTNClearBackupHistory_Name>
+			<BTNdoIt_Name>Do it</BTNdoIt_Name>	
+			<BTNchooseAnother_Name>Choose Another</BTNchooseAnother_Name>
+					
 			
 		</Button>
 		
@@ -151,6 +155,10 @@
 		   	<SharePogoplug_Name>Share Pogoplug</SharePogoplug_Name>
 		   	<ShareMailText_Name>Get your own unlimited storage</ShareMailText_Name>
 		   	<PogoplugHelpCenter_Name>Pogoplug Help Center</PogoplugHelpCenter_Name>
+		   	<defaultDestination_Name>Default Destination</defaultDestination_Name>
+		    <unlimited_Name>Unlimited</unlimited_Name>
+		    <clearHistoryDestination_Name>clear history destination</clearHistoryDestination_Name>
+		    <confirmOn_Name>confirm on</confirmOn_Name>
 		   	
 		   	
 		</Strings>
@@ -168,6 +176,10 @@
 		    <iconAddToFavorites_Name>favorite off</iconAddToFavorites_Name>
 		    <iconRemoveFromFavorites_Name>favorite on</iconRemoveFromFavorites_Name>
 		    <iconFeatured_Name>Featured</iconFeatured_Name>
+		    
+
+		    
+		    
 		    
 		</Icons>
 		

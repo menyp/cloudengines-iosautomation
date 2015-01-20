@@ -101,7 +101,7 @@
                     <div class="method-list-content passed suite-Suite">
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="com.pp.ios.auto.SanityIos" hash-for-method="settingsContactSupport">settingsContactSupport</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="com.pp.ios.auto.SanityIos" hash-for-method="settingsClearHistory">settingsClearHistory</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Suite -->
@@ -124,11 +124,11 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="settingsContactSupport">
-                  </a> <!-- settingsContactSupport -->
-                  <span class="method-name">settingsContactSupport</span>
+                  <a name="settingsClearHistory">
+                  </a> <!-- settingsClearHistory -->
+                  <span class="method-name">settingsClearHistory</span>
                   <em>
-(More)                  </em>
+(change default destination)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -146,8 +146,8 @@
   &lt;test name=&quot;Sanity Tests&quot;&gt;
     &lt;groups&gt;
       &lt;run&gt;
-        &lt;include name=&quot;Sanity iOS1&quot;/&gt;
-        &lt;include name=&quot;Regression iOS1&quot;/&gt;
+        &lt;include name=&quot;Sanity iOSnow&quot;/&gt;
+        &lt;include name=&quot;Regression iOS1111&quot;/&gt;
       &lt;/run&gt;
     &lt;/groups&gt;
     &lt;classes&gt;
@@ -176,10 +176,10 @@
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="test-group">
-              <span class="test-group-name">Regression iOS1</span>
+              <span class="test-group-name">Sanity iOSnow</span>
               <br/>
               <div class="method-in-group">
-                <span class="method-in-group-name">settingsContactSupport</span>
+                <span class="method-in-group-name">settingsClearHistory</span>
                 <br/>
               </div> <!-- method-in-group -->
             </div> <!-- test-group -->
@@ -201,14 +201,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'settingsContactSupport')
+data.setCell(0, 1, 'settingsClearHistory')
 data.setCell(0, 2, 'com.pp.ios.auto.SanityIos')
-data.setCell(0, 3, 35837);
+data.setCell(0, 3, 315005);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 35 seconds</span>
+              <span class="suite-total-time">Total running time: 5 minutes</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -223,27 +223,31 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">21 ignored methods</span>
+            <span class="header-content">23 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
               <span class="ignored-class-name">com.pp.ios.auto.SanityIos</span>
               <div class="ignored-methods-div">
+                <span class="ignored-method-name">defaultDestination</span>
+                <br/>
                 <span class="ignored-method-name">backupInBackground</span>
                 <br/>
                 <span class="ignored-method-name">badCredentials</span>
+                <br/>
+                <span class="ignored-method-name">settingslikeOnFB</span>
                 <br/>
                 <span class="ignored-method-name">createNewUser</span>
                 <br/>
                 <span class="ignored-method-name">settingsMore</span>
                 <br/>
+                <span class="ignored-method-name">Albums</span>
+                <br/>
                 <span class="ignored-method-name">testTour</span>
                 <br/>
                 <span class="ignored-method-name">settingsBackupEnableDisable</span>
                 <br/>
-                <span class="ignored-method-name">Albums</span>
-                <br/>
-                <span class="ignored-method-name">likeOnFacebook</span>
+                <span class="ignored-method-name">settingsContactSupport</span>
                 <br/>
                 <span class="ignored-method-name">settingsSaveLoginSanity</span>
                 <br/>
@@ -283,20 +287,20 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">com.pp.ios.auto.SanityIos</div> <!-- chronological-class-name -->
               <div class="configuration-suite before">
-                <span class="method-name">setupBeforeSuite(org.testng.TestRunner@7de0c6ae)</span>
+                <span class="method-name">setupBeforeSuite(org.testng.TestRunner@61d9efe0)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
               <div class="configuration-method before">
                 <span class="method-name">checkHomeScreen</span>
-                <span class="method-start">174256 ms</span>
+                <span class="method-start">149916 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">settingsContactSupport</span>
-                <span class="method-start">176540 ms</span>
+                <span class="method-name">settingsClearHistory</span>
+                <span class="method-start">152212 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-suite after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">212415 ms</span>
+                <span class="method-start">467295 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

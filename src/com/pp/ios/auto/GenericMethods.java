@@ -23,9 +23,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -110,18 +112,19 @@ public class GenericMethods {
 
 	public void signOutFromStartupIphone5(IOSDriver driver, WebElementsIos iosData) throws InterruptedException, IOException {
 		GenericMethods genMeth = new GenericMethods();
-		genMeth.clickName(driver,genMeth, iosData.Settings_Name);
-		genMeth.scroll(driver, iosData.scrollDown);
-		genMeth.scroll(driver, iosData.scrollDown);
-		genMeth.clickName(driver,genMeth, iosData.BTNsignOut_Name);
+		genMeth.clickName(genMeth, iosData.Settings_Name);
+		driver.scrollToExact(iosData.BTNsignOut_Name);
+//		genMeth.scroll(driver, iosData.scrollDown);
+//		genMeth.scroll(driver, iosData.scrollDown);
+		genMeth.clickName(genMeth, iosData.BTNsignOut_Name);
 	}
 	
 	public void loginIos(GenericMethods genMeth, WebElementsIos iosData, String user)throws InterruptedException, IOException,ParserConfigurationException, SAXException {
 
-		genMeth.clickName(driver,genMeth, iosData.BTNalreadyHaveAnAccount_name);
+		genMeth.clickName(genMeth, iosData.BTNalreadyHaveAnAccount_name);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDemail_Id, user);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDpass_Id, iosData.password);
-		genMeth.clickName(driver,genMeth, iosData.BTNsignin_Name);
+		genMeth.clickName(genMeth, iosData.BTNsignin_Name);
 
 		// check if the tour display (will be display only if it is first login)
 		boolean isFirstLogin = genMeth.checkIsElementVisibleNative(driver,By.name(iosData.NeverLoseAPhoto_Name));
@@ -146,12 +149,12 @@ public class GenericMethods {
 				genMeth.isElementVisible(driver,By.name(iosData.UpgradeTour_Name));
 
 				// Skip- [Need to test 3 options (X button, Go Unlimited button & Skip button)]
-				genMeth.clickName(driver,genMeth, iosData.BTNskip_Name);
+				genMeth.clickName(genMeth, iosData.BTNskip_Name);
 
 				// Verify that the backup tour text is displayed
 				genMeth.isElementVisible(driver,By.name(iosData.Backup_Name));
 				genMeth.isElementVisible(driver,By.name(iosData.BackupTourText_Name));
-				genMeth.clickName(driver,genMeth, iosData.BTNcontinue_Name);
+				genMeth.clickName(genMeth, iosData.BTNcontinue_Name);
 
 				genMeth.handleAccessPhotosContactsLocationNotifications(genMeth, iosData);
 
@@ -161,7 +164,7 @@ public class GenericMethods {
 			
 			else {
 				genMeth.isElementVisible(driver,By.name(iosData.Backup_Name));
-				genMeth.clickName(driver,genMeth, iosData.BTNcontinue_Name);
+				genMeth.clickName(genMeth, iosData.BTNcontinue_Name);
 				genMeth.handleAccessPhotosContactsLocationNotifications(genMeth, iosData);
 			}
 
@@ -182,7 +185,7 @@ public class GenericMethods {
 		capabilities.setCapability("udid", genMeth.getValueFromPropFile("udid"));
 		capabilities.setCapability(CapabilityType.VERSION,genMeth.getValueFromPropFile("CapabilityType.VERSION"));
 		//capabilities.setCapability(CapabilityType.PLATFORM,genMeth.getValueFromPropFile("CapabilityType.PLATFORM"));
-		capabilities.setCapability("platformName",genMeth.getValueFromPropFile("platformName"));
+		//capabilities.setCapability("platformName",genMeth.getValueFromPropFile("platformName"));
 		capabilities.setCapability("app",genMeth.getValueFromPropFile("pogoplugPath"));
 
 		try {
@@ -199,16 +202,47 @@ public class GenericMethods {
 		return driver;
 	}
 	
+	
+	public WebDriver setCapabilitiesSafari(GenericMethods genMeth)
+			throws IOException {
+		WebDriver driver1;
+		 DesiredCapabilities cap = new DesiredCapabilities();
+	     cap.setCapability("app", "safari");
+			cap.setCapability("device",genMeth.getValueFromPropFile("device"));
+			cap.setCapability("udid", genMeth.getValueFromPropFile("udid"));
+			cap.setCapability(CapabilityType.VERSION,genMeth.getValueFromPropFile("CapabilityType.VERSION"));
 
-	public IOSDriver cleanLoginIos(IOSDriver driver, GenericMethods genMeth, WebElementsIos iosData, String user) throws InterruptedException, IOException,ParserConfigurationException, SAXException {
+			cap.setCapability("deviceName",genMeth.getValueFromPropFile("deviceName"));
+			cap.setCapability("platformName",genMeth.getValueFromPropFile("platformName"));
+
+
+
+		
+		
+//		DesiredCapabilities capabilities = new DesiredCapabilities();
+//		capabilities.setCapability("deviceName",genMeth.getValueFromPropFile("deviceName"));
+//		capabilities.setCapability("udid", genMeth.getValueFromPropFile("udid"));
+//		capabilities.setCapability(CapabilityType.VERSION,genMeth.getValueFromPropFile("CapabilityType.VERSION"));
+
+	        driver1 = new RemoteWebDriver(new URL("http://localhost:4723/wd/hub"), cap);
+
+		return driver1;
+	   
+
+	}
+	
+
+    
+
+	public IOSDriver cleanLoginIos(GenericMethods genMeth, WebElementsIos iosData, String user) throws InterruptedException, IOException,ParserConfigurationException, SAXException {
 
 		// Login with an existing account
 	//	genMeth.handleAccessPhotosContactsLocationNotifications(genMeth, iosData);
 		
-		genMeth.clickName(driver,genMeth, iosData.BTNalreadyHaveAnAccount_name);
+		genMeth.clickName(genMeth, iosData.BTNalreadyHaveAnAccount_name);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDemail_Id, user);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDpass_Id, iosData.password);
-		genMeth.clickName(driver,genMeth, iosData.BTNsignin_Name);
+		genMeth.clickName(genMeth, iosData.BTNsignin_Name);
 		
 		genMeth.isElementVisible(driver,By.name(iosData.NeverLoseAPhoto_Name));
 
@@ -224,14 +258,14 @@ public class GenericMethods {
 			genMeth.isElementVisible(driver,By.name(iosData.UpgradeTour_Name));
 
 			// Skip- [Need to test 3 options (X button, Go Unlimited button & Skip button)]
-			genMeth.clickName(driver,genMeth, iosData.BTNskip_Name);
+			genMeth.clickName(genMeth, iosData.BTNskip_Name);
 
 			// Verify that the backup tour text is displayed
 			genMeth.isElementVisible(driver,By.name(iosData.Backup_Name));
 			genMeth.isElementVisible(driver,By.name(iosData.BackupTourText_Name));
-			genMeth.clickName(driver,genMeth, iosData.BTNcontinue_Name);
+			genMeth.clickName(genMeth, iosData.BTNcontinue_Name);
 
-			genMeth.handleAccessPhotosContactsLocationNotifications(genMeth, iosData);
+			//genMeth.handleAccessPhotosContactsLocationNotifications(genMeth, iosData);
 
 			// verify that the home screen is open with the LSM (left side menu)
 			genMeth.isElementVisible(driver,By.name(iosData.Settings_Name));
@@ -239,12 +273,12 @@ public class GenericMethods {
 
 		else {
 			genMeth.isElementVisible(driver,By.name(iosData.Backup_Name));
-			genMeth.clickName(driver,genMeth, iosData.BTNcontinue_Name);
+			genMeth.clickName(genMeth, iosData.BTNcontinue_Name);
 			genMeth.handleAccessPhotosContactsLocationNotifications(genMeth,  iosData);
 		}
 
 		// verify that the home screen is open with the LSM (left side menu)
-		genMeth.handleAccessPhotosContactsLocationNotifications(genMeth,  iosData);
+		//genMeth.handleAccessPhotosContactsLocationNotifications(genMeth,  iosData);
 		genMeth.isElementVisible(driver,By.name(iosData.Settings_Name));
 		// verify that the home screen is open with the LSM (left side menu)
 		genMeth.isElementVisible(driver,By.name(iosData.Settings_Name));
@@ -279,11 +313,11 @@ public class GenericMethods {
 		String randomName =  genMeth.randomString();
 		String currentDateFolder = genMeth.currentTime();
 		
-		genMeth.clickName(driver,genMeth, iosData.BTNsignUp_Name);
+		genMeth.clickName(genMeth, iosData.BTNsignUp_Name);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDnameOptional_Id, "meny:" + currentDateFolder);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDemail_Id, "meny@" + randomName + ".com");
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDpass_Id, iosData.password);
-		genMeth.clickName(driver,genMeth, iosData.BTNsignUpForFree_Name);
+		genMeth.clickName(genMeth, iosData.BTNsignUpForFree_Name);
 		
 		genMeth.isElementVisible(driver,By.name(iosData.NeverLoseAPhoto_Name));
 		driver.swipe(270, 265, 55, 265, 1000);
@@ -293,12 +327,12 @@ public class GenericMethods {
 		// Verify that the go unlimited tour text is displayed
 		genMeth.isElementVisible(driver,By.name(iosData.UnlimitedProtection_Name));
 		genMeth.isElementVisible(driver,By.name(iosData.UpgradeTour_Name));
-		genMeth.clickName(driver,genMeth, "UIAccessoryButtonX");
+		genMeth.clickName(genMeth, "UIAccessoryButtonX");
 
 		genMeth.isElementVisible(driver,By.name(iosData.Backup_Name));
 		
 		//Disable the backup from TOUR
-		genMeth.clickName(driver,genMeth, iosData.BTNcontinue_Name);
+		genMeth.clickName(genMeth, iosData.BTNcontinue_Name);
 		genMeth.handleAccessPhotosContactsLocationNotifications(genMeth,  iosData);
 		genMeth.isElementVisible(driver,By.name(iosData.Settings_Name));
 
@@ -607,7 +641,7 @@ public class GenericMethods {
 	}
 
 
-	public void clickName(IOSDriver driver,GenericMethods genMeth, String name)
+	public void clickName(GenericMethods genMeth, String name)
 			throws InterruptedException, IOException {
 
 		try {
@@ -626,6 +660,7 @@ public class GenericMethods {
 		}
 
 	}
+	
 	
 	public void tapName(IOSDriver driver,GenericMethods genMeth, String name)
 			throws InterruptedException, IOException {
@@ -1163,7 +1198,7 @@ public class GenericMethods {
 
 		if (isContactsAccessPopupDisplay == true) {
 
-			genMeth.clickName(driver,genMeth, iosData.BTNok_Name);
+			genMeth.clickName(genMeth, iosData.BTNok_Name);
 		}
 
 		// check if the "“Pogoplug” Would Like to Access Your Photos" popup is displayed
@@ -1172,7 +1207,7 @@ public class GenericMethods {
 
 		if (isPhotosAccessPopupDisplay == true) {
 
-			genMeth.clickName(driver,genMeth, iosData.BTNok_Name);
+			genMeth.clickName(genMeth, iosData.BTNok_Name);
 		}
 		
 		// check if the current location popup is displayed
@@ -1182,7 +1217,7 @@ public class GenericMethods {
 
 		if (isLocationPopupDisplay == true) {
 
-			genMeth.clickName(driver,genMeth, iosData.BTNok_Name);
+			genMeth.clickName(genMeth, iosData.BTNok_Name);
 
 		}
 		
@@ -1193,7 +1228,7 @@ public class GenericMethods {
 
 				if (isNotificationPopupDisplay == true) {
 
-					genMeth.clickName(driver,genMeth, iosData.BTNok_Name);
+					genMeth.clickName(genMeth, iosData.BTNok_Name);
 
 				}
 		
@@ -1210,20 +1245,26 @@ public class GenericMethods {
 		while (isListEmpty == false) {
 
 			// delete the first row
-			genMeth.clickName(driver, genMeth, iosData.BTNedit_Name);
+			genMeth.clickName( genMeth, iosData.BTNedit_Name);
 			genMeth.clickXpth(driver, genMeth,
 					"//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]");
-			genMeth.clickName(driver, genMeth, iosData.BTNdeleteOn_Name);
-			genMeth.clickName(driver, genMeth, iosData.BTNdelete_Name);
+			genMeth.clickName( genMeth, iosData.BTNdeleteOn_Name);
+			genMeth.clickName( genMeth, iosData.BTNdelete_Name);
 			isListEmpty = genMeth.checkIsElementVisibleNative(driver,
 					By.name(iosData.EmptyFolder_Name));
 			if (isListEmpty == false) {
 
-				genMeth.clickName(driver, genMeth, iosData.BTNdone_Name);
+				genMeth.clickName( genMeth, iosData.BTNdone_Name);
 
 			}
 
 		}
+	}
+	
+	public void refreshIphone5(){
+		
+		driver.swipe(150, 150, 150, 450, 500);
+
 	}
 	
 	
