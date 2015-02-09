@@ -1,5 +1,6 @@
 package com.pp.ios.auto;
 
+import io.appium.java_client.NetworkConnectionSetting;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.ios.IOSDriver;
 
@@ -46,55 +47,7 @@ import com.google.common.base.Function;
 public class GenericMethods {
 
 	IOSDriver driver;
-//
-//	public IOSDriver loginNativeAndroid(GenericMethods genMeth) throws ParserConfigurationException, SAXException, IOException,InterruptedException {
-//		
-//		androidElementData elData = new androidElementData();
-//		// Login with an existing account
-//		DesiredCapabilities capabilities = new DesiredCapabilities();
-//		capabilities.setCapability("appium-version", "1.2");
-//		capabilities.setCapability("platformName", "Android");
-//		capabilities.setCapability("platformVersion", "4.4");
-//		capabilities.setCapability("deviceName", "Nexus 5");
-//		capabilities.setCapability("app","/Users/qa/Desktop/Pogoplug-5.9.0.9-20140722_093521.apk");
-//		capabilities.setCapability("appPackage", "com.pogoplug.android");
-//		capabilities.setCapability("appWaitActivity","com.pogoplug.android.login.ui.IntroPage");
-//		capabilities.setCapability("appActivity","com.pogoplug.android.login.Splash");
-//
-//		try {
-//
-////			driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
-//			driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
-//			
-//		}
-//
-//		catch (Exception e) {
-//			driver.quit();
-//		}
-//
-//		genMeth.clickId(driver,  genMeth, elData.BTNalreadyHaveAnAccount_id);
-//		genMeth.sendId(driver, genMeth, elData.TEXTFIELDemail_id,"meny@cloudengines.com");
-//		genMeth.sendId(driver, genMeth, elData.TEXTFIELDpassword_id, "1");
-//		genMeth.clickId(driver, genMeth, elData.BTNlogin_id);
-//
-//		// Make sure that the intro display (that way the swipe will be done at the right time)
-//		By by = By.id("com.pogoplug.android:id/protect_computer");
-//		String text = "Never Lose a Photo";
-//		genMeth.isTextPresentNative(driver, text, by);
-//
-//		// Navigate through the intro
-//		driver.swipe(1031, 1150, 53, 1150, 500);
-//		genMeth.clickId(driver, genMeth, elData.BTNfinishTour_id);
-//		genMeth.clickId(driver, genMeth, elData.BTNcontinue_id);
-//
-//		// Make sure that the Login was successful By verifying that the "CATEGORIES" display in the *LSM (Left Side Menu)
-//		By byCat = By.xpath("//android.widget.ListView[1]/android.widget.TextView[1]");
-//		String cat = "CATEGORIES";
-//		genMeth.isTextPresentNative(driver, cat, byCat);
-//		return driver;
-//
-//	}
-//
+
 	
 	public void killAppIos(IOSDriver driver)throws InterruptedException, IOException {
 		//GenericMethods genMeth = new GenericMethods();
@@ -110,8 +63,8 @@ public class GenericMethods {
 	}
 	
 
-	public void signOutFromStartupIphone5(IOSDriver driver, WebElementsIos iosData) throws InterruptedException, IOException {
-		GenericMethods genMeth = new GenericMethods();
+	public void signOutFromStartupIphone5(GenericMethods genMeth, WebElementsIos iosData) throws InterruptedException, IOException {
+		
 		genMeth.clickName(genMeth, iosData.Settings_Name);
 		driver.scrollToExact(iosData.BTNsignOut_Name);
 //		genMeth.scroll(driver, iosData.scrollDown);
@@ -196,8 +149,8 @@ public class GenericMethods {
 
 		catch (MalformedURLException e) {
 
-			genMeth.takeScreenShot(driver, genMeth,"Faliled to open Appium driver");
-			org.testng.Assert.fail("WebElement"+ " Faliled to open Appium driver");
+			genMeth.takeScreenShot(driver, genMeth,"Faliled to open iOS driver");
+			org.testng.Assert.fail("WebElement"+ " Faliled to open iOS driver");
 		}
 		return driver;
 	}
@@ -214,10 +167,6 @@ public class GenericMethods {
 
 			cap.setCapability("deviceName",genMeth.getValueFromPropFile("deviceName"));
 			cap.setCapability("platformName",genMeth.getValueFromPropFile("platformName"));
-
-
-
-		
 		
 //		DesiredCapabilities capabilities = new DesiredCapabilities();
 //		capabilities.setCapability("deviceName",genMeth.getValueFromPropFile("deviceName"));
@@ -236,9 +185,7 @@ public class GenericMethods {
 
 	public IOSDriver cleanLoginIos(GenericMethods genMeth, WebElementsIos iosData, String user) throws InterruptedException, IOException,ParserConfigurationException, SAXException {
 
-		// Login with an existing account
-	//	genMeth.handleAccessPhotosContactsLocationNotifications(genMeth, iosData);
-		
+		// Login with an existing account		
 		genMeth.clickName(genMeth, iosData.BTNalreadyHaveAnAccount_name);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDemail_Id, user);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDpass_Id, iosData.password);
@@ -256,8 +203,6 @@ public class GenericMethods {
 			// Verify that the go unlimited tour text is displayed
 			genMeth.isElementVisible(driver,By.name(iosData.UnlimitedProtection_Name));
 			genMeth.isElementVisible(driver,By.name(iosData.UpgradeTour_Name));
-
-			// Skip- [Need to test 3 options (X button, Go Unlimited button & Skip button)]
 			genMeth.clickName(genMeth, iosData.BTNskip_Name);
 
 			// Verify that the backup tour text is displayed
@@ -674,7 +619,7 @@ public class GenericMethods {
 
 		catch (Exception e) {
 			
-			genMeth.takeScreenShot(driver, genMeth, name);
+			genMeth.takeScreenShot(driver, genMeth, name + " didn't display");
 			org.testng.Assert.fail(name + " didn't display");
 
 		}
@@ -961,7 +906,7 @@ public class GenericMethods {
 	public WebElement fluentwait(IOSDriver driver, final By byType) {
 		Wait<IOSDriver> wait = new FluentWait<IOSDriver>(driver)
 				.withTimeout(30, TimeUnit.SECONDS)
-				.pollingEvery(1, TimeUnit.SECONDS)
+				.pollingEvery(5, TimeUnit.SECONDS)
 				.ignoring(NoSuchElementException.class);
 
 		WebElement foo = wait.until(new Function<IOSDriver, WebElement>() {
@@ -1269,6 +1214,8 @@ public class GenericMethods {
 	
 	
 }
+
+
 
 
 /*

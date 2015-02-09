@@ -1,21 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Suite]" parallel="none">
-  <test name="Sanity Tests(failed)" parallel="none">
+<suite name="Failed suite [Command line suite]">
+  <test name="Command line test(failed)">
     <groups>
       <run>
-        <include name="Sanity iOSnow"/>
-        <include name="Regression iOS1111"/>
+        <include name="Sanity iOS"/>
+        <include name="Regression iOS"/>
       </run>
     </groups>
     <classes>
       <class name="com.pp.ios.auto.SanityIos">
         <methods>
-          <include name="setupBeforeSuite"/>
+          <include name="backupInBackground"/>
+          <include name="badCredentials"/>
+          <include name="settingsMore"/>
           <include name="tearDown"/>
-          <include name="settingsClearHistory"/>
+          <include name="settingsBackupEnableDisable"/>
+          <include name="testTour"/>
+          <include name="settingsContactSupport"/>
+          <include name="settingsBackupEnableDisableDuringUpload"/>
+          <include name="settingsSaveLoginSanity"/>
+          <include name="addRemoveTeamFolders"/>
+          <include name="search"/>
+          <include name="settingsShare"/>
+          <include name="checkHomeScreen"/>
+          <include name="setupBeforeSuite"/>
+          <include name="connectionLost"/>
+          <include name="Favorites"/>
+          <include name="settingsPasscodeSanity"/>
+          <include name="foregroundBackgroundSwith"/>
+          <include name="settingsRateUs"/>
         </methods>
       </class> <!-- com.pp.ios.auto.SanityIos -->
     </classes>
-  </test> <!-- Sanity Tests(failed) -->
-</suite> <!-- Failed suite [Suite] -->
+  </test> <!-- Command line test(failed) -->
+</suite> <!-- Failed suite [Command line suite] -->

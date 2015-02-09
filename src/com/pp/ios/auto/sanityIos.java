@@ -90,9 +90,9 @@ public class SanityIos {
 	}
 
 	@Test(enabled = true, description = "Test the Create folders",
-			groups = { "Sanity iOS" }) //dependsOnMethods={"testLogin"})
+			groups = { "Sanity iOS1" }) //dependsOnMethods={"testLogin"})
 																																																
-	public void testCreatefolder() throws Exception, Throwable {
+	public void createfolder() throws Exception, Throwable {
 
 		String currentDateFolder = genMeth.currentTime();
 
@@ -455,11 +455,11 @@ public class SanityIos {
 	}
 	
 	@Test(enabled = true, testName = "Sanity Tests", description = "Sign up- Create new user (Negetive positive test), Privacy Policy, TRUSTe",
-			groups = { "Sanity iOS" })
+			groups = { "Sanity iOS1" })
 	public void createNewUser() throws Exception, Throwable {
 
 		String currentDateFolder = genMeth.currentTime();
-		genMeth.signOutFromStartupIphone5( driver , iosData);
+		genMeth.signOutFromStartupIphone5( genMeth , iosData);
 
 		// Create a new user & Login
 		genMeth.signUp(genMeth, iosData);
@@ -500,7 +500,7 @@ public class SanityIos {
 
 		
 		String randomName = genMeth.randomString();
-		genMeth.signOutFromStartupIphone5(driver , iosData);
+		genMeth.signOutFromStartupIphone5(genMeth , iosData);
 
 		// Login with bad credentials
 		genMeth.clickName( genMeth, iosData.BTNalreadyHaveAnAccount_name);
@@ -835,7 +835,7 @@ public class SanityIos {
 		String randomName = genMeth.randomString();
 		String currentDateFolder = genMeth.currentTime();
 		
-		genMeth.signOutFromStartupIphone5(driver, iosData);
+		genMeth.signOutFromStartupIphone5(genMeth, iosData);
 		
 		genMeth.clickName( genMeth, iosData.BTNsignUp_Name);
 		genMeth.sendId(driver, genMeth, iosData.TEXTFIELDnameOptional_Id, "meny:" + currentDateFolder);
@@ -993,7 +993,7 @@ public class SanityIos {
 		// webElementsIos iosData = genMeth.iOSelementInit(langEng);
 
 		// Login with new account (*backup will initiate)
-		genMeth.signOutFromStartupIphone5(driver, iosData);
+		genMeth.signOutFromStartupIphone5(genMeth, iosData);
 
 		genMeth.signUp(genMeth, iosData);
 
@@ -1042,9 +1042,28 @@ public class SanityIos {
 			groups = { "Sanity iOS" })
 	public void Favorites() throws InterruptedException, IOException,
 			ParserConfigurationException, SAXException {
-		// open favorites & make sure that it is empty
+		
+		// open favorites & make sure that it is empty if not remove all favorites
 		genMeth.clickName( genMeth, iosData.BTNfavorites_Name);
-		genMeth.isElementVisible(driver, By.name(iosData.EmptyFavorites_Name));
+		boolean isEmpty = genMeth.checkIsElementVisibleNative(driver, By.name(iosData.EmptyFavorites_Name));
+		boolean firstTry= true;
+	
+		while (isEmpty  != true){
+
+			//delete first row
+			if (firstTry) {
+
+				genMeth.clickName(genMeth, iosData.BTNedit_Name);
+				firstTry= false;
+
+			}
+			
+			genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]");
+			genMeth.clickName( genMeth, iosData.BTNremoveFavorites_Name);
+			isEmpty = genMeth.checkIsElementVisibleNative(driver, By.name(iosData.EmptyFavorites_Name));
+			
+			
+		}
 
 		// positive empty favorites screenshot
 		genMeth.takeScreenShotPositive(driver, genMeth,
@@ -1074,7 +1093,10 @@ public class SanityIos {
 		// Make sure that it is displayed in favorites
 		genMeth.clickName( genMeth, iosData.BTNback_Name);
 		genMeth.clickName( genMeth, iosData.BTNleft_Name);
-		genMeth.clickName( genMeth, iosData.BTNfavorites_Name);
+		genMeth.scrollDown(driver);
+		driver.scrollToExact(iosData.BTNfavorites_Name);
+//		genMeth.clickName( genMeth, iosData.BTNfavorites_Name);
+		genMeth.tapName(driver, genMeth, iosData.BTNfavorites_Name);
 		genMeth.isElementVisible(driver, By.name(iosData.FavoritesMov_Name));
 		genMeth.isElementVisible(driver, By.name(iosData.FavoritesMp3_Name));
 		genMeth.isElementVisible(driver, By.name(iosData.FavoritesPng_Name));
@@ -1116,7 +1138,10 @@ public class SanityIos {
 		// Make sure that it is displayed in favorites
 		genMeth.clickName( genMeth, iosData.BTNback_Name);
 		genMeth.clickName( genMeth, iosData.BTNleft_Name);
-		genMeth.clickName( genMeth, iosData.BTNfavorites_Name);
+//		genMeth.clickName( genMeth, iosData.BTNfavorites_Name);
+//		driver.swipe(150, 100, 150, 300, 500);
+//		genMeth.tapName(driver, genMeth, iosData.BTNfavorites_Name);
+		driver.findElementByName(iosData.BTNfavorites_Name).click();
 		genMeth.isElementVisible(driver, By.name(iosData.FavoritesMov_Name));
 		genMeth.isElementVisible(driver, By.name(iosData.FavoritesMp3_Name));
 		genMeth.isElementVisible(driver, By.name(iosData.FavoritesPng_Name));
@@ -1177,7 +1202,7 @@ public class SanityIos {
 		genMeth.clickName( genMeth, iosData.BTNleft_Name);
 		
 		// login with the SHARED user & make sure that the team folder was added & can be open
-		genMeth.signOutFromStartupIphone5(driver, iosData);
+		genMeth.signOutFromStartupIphone5(genMeth, iosData);
 		genMeth.loginIos(genMeth, iosData, iosData.userAutomation2_Name);
 		genMeth.clickName( genMeth, iosData.BTNfileExplorer_Name);
 		genMeth.clickName( genMeth, iosData.BTNteamFolders_Name);
@@ -1201,7 +1226,7 @@ public class SanityIos {
 		genMeth.isElementVisible(driver, By.name(iosData.EmptyFolder_Name));
 		genMeth.clickName( genMeth, iosData.BTNfileExplorer_Name);
 		genMeth.clickName( genMeth, iosData.BTNleft_Name);
-		genMeth.signOutFromStartupIphone5(driver, iosData);
+		genMeth.signOutFromStartupIphone5(genMeth, iosData);
 		
 		// login with the SHARING user & make sure that the folder isn't shared anymore
 		genMeth.loginIos(genMeth, iosData, iosData.userUnlimited_name);
@@ -1230,14 +1255,14 @@ public class SanityIos {
 		genMeth.takeScreenShotPositive(driver, genMeth, "positive_addRemoveTeamFolders_teamFolderSharedUsersRemoveNumber");
 		genMeth.clickName( genMeth, iosData.BTNleft_Name);
 		genMeth.clickName( genMeth, iosData.Settings_Name);
-		genMeth.signOutFromStartupIphone5(driver, iosData);
+		genMeth.signOutFromStartupIphone5(genMeth, iosData);
 		
 		//Make sure that the folder isn't shared under the SHARED account
 		genMeth.loginIos(genMeth, iosData, iosData.userAutomation2_Name);
 		genMeth.clickName( genMeth, iosData.BTNfileExplorer_Name);
 		genMeth.isElementInvisible(driver, By.name(iosData.BTNteamFolders_Name));
 		genMeth.clickName( genMeth, iosData.BTNleft_Name);
-		genMeth.signOutFromStartupIphone5(driver, iosData);
+		genMeth.signOutFromStartupIphone5(genMeth, iosData);
 		genMeth.loginIos(genMeth, iosData, iosData.userUnlimited_name);
 		genMeth.clickName( genMeth, iosData.BTNleft_Name);
 		
@@ -1254,7 +1279,7 @@ public class SanityIos {
 	}
 	
 	@Test(enabled = false, testName = "Sanity Tests", description = "Create/Delete Albums",
-			groups={"Sanity iOS1"})
+			groups={"Sanity iOS"})
 	public void Albums() throws InterruptedException, IOException, ParserConfigurationException, SAXException{
 		String album = genMeth.currentDate();
 		//Make sure that there are no albums
@@ -1466,6 +1491,35 @@ public class SanityIos {
 		genMeth.clickName(genMeth, iosData.BTNdone_Name);
 		
 	}
+	
+	@Test( enabled = false, testName="file types", description = "open different type of files",
+			groups = {"Sanity iOS"})
+	public void fileTypes(){
+		
+		//Open supported file type in portrait & landscape
+		
+		//Open unsupported file type in portrait & landscape
+
+		
+		
+	}
+	
+	@Test(enabled = false, testName = "connection lost handling", description = "Checking how the app owrks while connection is lost & back again",
+	groups={ "Sanity iOS"} )
+	
+public void connectionLost() throws InterruptedException, IOException, ParserConfigurationException, SAXException{
+
+// check app while connection is lost & return during login
+		
+genMeth.signOutFromStartupIphone5(genMeth, iosData);
+
+
+
+// check app while connection is lost & back post refresh
+
+
+} 
+	
 	//Empty screen validation (with screenshots?)
 	
 			/*
@@ -1473,10 +1527,6 @@ public class SanityIos {
 			 * Photo Gallery (timeline, Videos, Albums)
 			 * Music player
 			 * Default destination
-			 * 
-			 * 
-			 *
-			 * 
 			 * 
 			 */
 		
