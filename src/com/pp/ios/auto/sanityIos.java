@@ -90,7 +90,7 @@ public class SanityIos {
 	}
 
 	@Test(enabled = true, description = "Test the Create folders",
-			groups = { "Sanity iOS1" }) //dependsOnMethods={"testLogin"})
+			groups = { "Sanity iOS" }) //dependsOnMethods={"testLogin"})
 																																																
 	public void createfolder() throws Exception, Throwable {
 
@@ -455,7 +455,7 @@ public class SanityIos {
 	}
 	
 	@Test(enabled = true, testName = "Sanity Tests", description = "Sign up- Create new user (Negetive positive test), Privacy Policy, TRUSTe",
-			groups = { "Sanity iOS1" })
+			groups = { "Sanity iOS" })
 	public void createNewUser() throws Exception, Throwable {
 
 		String currentDateFolder = genMeth.currentTime();
@@ -827,7 +827,7 @@ public class SanityIos {
 	}
 	
 	@Test(enabled = true, testName = "Sanity Tests", description = "Settings: Backup Enable/disable *with upload in the background",
-			groups = { "Sanity iOS" })// , dependsOnMethods={"successTest"})
+			groups = { "Sanity iOS1" })// , dependsOnMethods={"successTest"})
 	public void settingsBackupEnableDisableDuringUpload() throws Exception,Throwable {
 
 		// login with new account & enable/disable the backup from Tour/Settings/LSM/Photo Gallery
@@ -1426,9 +1426,7 @@ public class SanityIos {
 	@Test(enabled = false,  testName = "Sanity Tests", description = "flatview testing",
 			groups = {"Sanity iOS"})
 	public void FlatView (){
-		
-		
-		
+			
 		
 	}
 	

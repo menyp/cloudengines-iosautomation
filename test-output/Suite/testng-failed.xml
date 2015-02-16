@@ -5,14 +5,13 @@
     <groups>
       <run>
         <include name="Sanity iOS1"/>
-        <include name="Regression iOS1111"/>
+        <include name="Regression iOS1"/>
       </run>
     </groups>
     <classes>
       <class name="com.pp.ios.auto.SanityIos">
         <methods>
-          <include name="addRemoveTeamFolders"/>
-          <include name="checkHomeScreen"/>
+          <include name="settingsBackupEnableDisableDuringUpload"/>
           <include name="setupBeforeSuite"/>
           <include name="tearDown"/>
         </methods>
