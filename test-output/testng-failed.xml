@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite]" parallel="none">
+  <listeners>
+    <listener class-name="com.pp.ios.auto.TestListener"/>
+  </listeners>
   <test name="Sanity Tests(failed)" parallel="none">
     <groups>
       <run>
         <include name="Sanity iOS1"/>
-        <include name="Regression iOS1"/>
+        <include name="Regression iOS"/>
       </run>
     </groups>
     <classes>
       <class name="com.pp.ios.auto.SanityIos">
         <methods>
-          <include name="settingsBackupEnableDisableDuringUpload"/>
+          <include name="settingsShare"/>
           <include name="setupBeforeSuite"/>
+          <include name="settingsMore"/>
           <include name="tearDown"/>
+          <include name="settingsBackupEnableDisable"/>
+          <include name="settingsRateUs"/>
+          <include name="settingsContactSupport"/>
         </methods>
       </class> <!-- com.pp.ios.auto.SanityIos -->
     </classes>

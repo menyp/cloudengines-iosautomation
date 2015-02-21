@@ -5,16 +5,11 @@ import org.testng.annotations.Test;
 import io.appium.java_client.ios.IOSDriver;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.Set;
 
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
@@ -89,7 +84,7 @@ public class SanityIos {
 
 	}
 
-	@Test(enabled = true, description = "Test the Create folders",
+	@Test(enabled = true, retryAnalyzer = Retry.class, description = "Test the Create folders",
 			groups = { "Sanity iOS" }) //dependsOnMethods={"testLogin"})
 																																																
 	public void createfolder() throws Exception, Throwable {
@@ -129,6 +124,7 @@ public class SanityIos {
 
 		// Cancel the delete & make sure that the folder wasn't deleted
 		genMeth.clickName(genMeth, iosData.BTNedit_Name);
+		driver.scrollToExact(currentDateFolder);
 		genMeth.clickName(genMeth, currentDateFolder);
 		genMeth.clickName(genMeth, iosData.BTNdeleteOn_Name);
 		genMeth.clickName(genMeth, iosData.BTNcancel_Name);
@@ -147,7 +143,7 @@ public class SanityIos {
 
 	}
 
-	@Test(enabled = true, testName = "Sanity Tests", description = "Test the upload Existing photos or videos, delete the image",
+	@Test(enabled = true, retryAnalyzer = Retry.class, testName = "Sanity Tests", description = "Test the upload Existing photos or videos, delete the image",
 			groups = { "Regression iOS " })
 	public void uploadExistingPotos() throws Exception, Throwable {
 
@@ -280,7 +276,7 @@ public class SanityIos {
 	}
 
 	
-	@Test(enabled = true, testName = "Sanity Tests", description = "Test TOUR for New accounts and for upgrade accounts",
+	@Test(enabled = true, retryAnalyzer = Retry.class, testName = "Sanity Tests", description = "Test TOUR for New accounts and for upgrade accounts",
 			groups = { "Sanity iOS" })
 	public void testTour() throws Exception, Throwable {
 
@@ -454,7 +450,7 @@ public class SanityIos {
 		genMeth.isElementVisible(driver, By.name(iosData.Settings_Name));
 	}
 	
-	@Test(enabled = true, testName = "Sanity Tests", description = "Sign up- Create new user (Negetive positive test), Privacy Policy, TRUSTe",
+	@Test(enabled = true, retryAnalyzer = Retry.class, testName = "Sanity Tests", description = "Sign up- Create new user (Negetive positive test), Privacy Policy, TRUSTe",
 			groups = { "Sanity iOS" })
 	public void createNewUser() throws Exception, Throwable {
 
@@ -494,7 +490,7 @@ public class SanityIos {
 		genMeth.isElementVisible(driver, By.id(iosData.TrusteUrl_Name));
 	}
 	
-	@Test(enabled = true, testName = "Sanity Tests", description = "login with bad/missing credentials , forgot password (negative & positive)",
+	@Test(enabled = true, retryAnalyzer = Retry.class, testName = "Sanity Tests", description = "login with bad/missing credentials , forgot password (negative & positive)",
 			groups = { "Sanity iOS" })
 	public void badCredentials() throws Exception, Throwable {
 
@@ -529,7 +525,7 @@ public class SanityIos {
 
 	}
 	
-	@Test(enabled = true, testName = "Sanity Tests", description = "Search functionality & filter",
+	@Test(enabled = true, retryAnalyzer = Retry.class, testName = "Sanity Tests", description = "Search functionality & filter",
 			groups = { "Sanity iOS" })
 	public void search() throws Exception, Throwable {
 		
@@ -690,7 +686,7 @@ public class SanityIos {
 		genMeth.clickName( genMeth, iosData.BTNleft_Name);
 	}
 	
-	@Test(enabled = true, testName = "Sanity Tests", description = "Settings: Passcode",
+	@Test(enabled = true, retryAnalyzer = Retry.class, testName = "Sanity Tests", description = "Settings: Passcode",
 			groups = { "Sanity iOS" })
 	public void settingsPasscodeSanity() throws Exception, Throwable {
 
@@ -763,7 +759,7 @@ public class SanityIos {
 
 	}
 	
-	@Test(enabled = true, testName = "Sanity Tests", description = "Settings: Save Login",
+	@Test(enabled = true, retryAnalyzer = Retry.class, testName = "Sanity Tests", description = "Settings: Save Login",
 			groups = { "Sanity iOS" })
 	public void settingsSaveLoginSanity() throws Exception, Throwable {
 
@@ -781,7 +777,7 @@ public class SanityIos {
 
 	}
 
-	@Test(enabled = true, testName = "Sanity Tests", description = "Settings: Backup Enable/disable without upload in the background",
+	@Test(enabled = true, retryAnalyzer = Retry.class, testName = "Sanity Tests", description = "Settings: Backup Enable/disable without upload in the background",
 			groups = { "Regression iOS" })
 	public void settingsBackupEnableDisable() throws Exception, Throwable {
 
@@ -826,8 +822,8 @@ public class SanityIos {
 
 	}
 	
-	@Test(enabled = true, testName = "Sanity Tests", description = "Settings: Backup Enable/disable *with upload in the background",
-			groups = { "Sanity iOS1" })// , dependsOnMethods={"successTest"})
+	@Test(enabled = true, retryAnalyzer = Retry.class, testName = "Sanity Tests", description = "Settings: Backup Enable/disable *with upload in the background",
+			groups = { "Sanity iOS" })// , dependsOnMethods={"successTest"})
 	public void settingsBackupEnableDisableDuringUpload() throws Exception,Throwable {
 
 		// login with new account & enable/disable the backup from Tour/Settings/LSM/Photo Gallery
@@ -986,7 +982,7 @@ public class SanityIos {
 		
 	}
 
-	@Test(enabled = true, testName = "Sanity Tests", description = " Backup running in background -> make sure process keeps alive and completes its queue even in background AND if taking new shots they are automatically backed up",
+	@Test(enabled = true, retryAnalyzer = Retry.class, testName = "Sanity Tests", description = " Backup running in background -> make sure process keeps alive and completes its queue even in background AND if taking new shots they are automatically backed up",
 			groups = { "Sanity iOS" })
 	public void backupInBackground() throws Exception, Throwable {
 
@@ -1024,7 +1020,7 @@ public class SanityIos {
 
 	}
 
-	@Test(enabled = true, testName = "Sanity Tests", description = "Switching from Foreground to Background and vice versa use cases",
+	@Test(enabled = true, retryAnalyzer = Retry.class, testName = "Sanity Tests", description = "Switching from Foreground to Background and vice versa use cases",
 			groups = { "Sanity iOS" })
 	public void foregroundBackgroundSwith() throws Exception, Throwable {
 
@@ -1038,7 +1034,7 @@ public class SanityIos {
 
 	}
 
-	@Test(enabled = true, testName = "Sanity Tests", description = " Add remove files from favorites",
+	@Test(enabled = true, retryAnalyzer = Retry.class, testName = "Sanity Tests", description = " Add remove files from favorites",
 			groups = { "Sanity iOS" })
 	public void Favorites() throws InterruptedException, IOException,
 			ParserConfigurationException, SAXException {
@@ -1170,11 +1166,14 @@ public class SanityIos {
 
 	}
 
-	@Test(enabled = true, testName = "Sanity Tests", description = "Adding & removing team folders",
+	
+	@Test(enabled = true, retryAnalyzer = Retry.class, testName = "Sanity Tests", description = "Adding & removing team folders",
 			groups = { "Sanity iOS" })
 	public void addRemoveTeamFolders() throws Exception, Throwable {
 		
+
 		//webElementsIos iosData = genMeth.iOSelementInit(langEng);
+		
 
 		//Share user with team folder 
 		genMeth.clickName( genMeth, iosData.BTNfileExplorer_Name);
@@ -1310,7 +1309,7 @@ public class SanityIos {
 	}
 	
 
-	@Test(enabled = true, testName = "Sanity Tests", description = "Share app",
+	@Test(enabled = true, retryAnalyzer = Retry.class, testName = "Sanity Tests", description = "Share app",
 			groups={"Regression iOS"})
 	public void settingsShare () throws InterruptedException, IOException, ParserConfigurationException, SAXException{
 		String currentTime = genMeth.currentTime();
@@ -1325,7 +1324,7 @@ public class SanityIos {
 		genMeth.scrollUp(driver);
 	}
 
-	@Test(enabled = true, testName = "Sanity Tests", description = "Rate app",
+	@Test(enabled = true, retryAnalyzer = Retry.class, testName = "Sanity Tests", description = "Rate app",
 			groups={"Regression iOS"})
 	public void settingsRateUs () throws InterruptedException, IOException, ParserConfigurationException, SAXException{
 		String currentTime = genMeth.currentTime();
@@ -1336,7 +1335,7 @@ public class SanityIos {
 		genMeth.takeScreenShotPositive(driver, genMeth, "RateUs" + currentTime);		
 	}
 	
-	@Test(enabled = true, testName = "Sanity Tests", description = "More",
+	@Test(enabled = true, retryAnalyzer = Retry.class, testName = "Sanity Tests", description = "More",
 			groups={"Regression iOS"})
 	public void settingsMore () throws InterruptedException, IOException, ParserConfigurationException, SAXException{
 		String currentTime = genMeth.currentTime();
@@ -1366,7 +1365,7 @@ public class SanityIos {
 		
 	}
 	
-	@Test(enabled = true, testName = "Sanity Tests", description = "More",
+	@Test(enabled = true, retryAnalyzer = Retry.class, testName = "Sanity Tests", description = "More",
 			groups={"Regression iOS"})
 	public void settingsContactSupport () throws InterruptedException, IOException, ParserConfigurationException, SAXException{
 		String currentTime = genMeth.currentTime();
@@ -1531,6 +1530,15 @@ genMeth.signOutFromStartupIphone5(genMeth, iosData);
 			
 			//create restore snapshot
 	
+	@Test(enabled = false, retryAnalyzer = Retry.class, testName = "Sanity Tests", description = "Adding & removing team folders",
+			groups = { "Sanity iOS1" })
+	public void temp() throws Exception, Throwable {
+		Thread.sleep(9000);
+		genMeth.clickName( genMeth, iosData.BTNfileExplorer_Name);
+		Thread.sleep(1000);
+
+		
+	}
 
 	@AfterSuite(alwaysRun = true)
 	public void tearDown() throws Exception {

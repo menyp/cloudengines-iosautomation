@@ -4,16 +4,31 @@
   <test name="Command line test(failed)">
     <groups>
       <run>
-        <include name="Sanity iOS1"/>
-        <include name="Regression iOS1111"/>
+        <include name="Sanity iOS"/>
+        <include name="Regression iOS"/>
       </run>
     </groups>
     <classes>
       <class name="com.pp.ios.auto.SanityIos">
         <methods>
+          <include name="ClearHistoryAndChangeDefaultDestination"/>
           <include name="createfolder"/>
-          <include name="setupBeforeSuite"/>
+          <include name="settingsMore"/>
           <include name="tearDown"/>
+          <include name="settingsBackupEnableDisable"/>
+          <include name="testTour"/>
+          <include name="settingsContactSupport"/>
+          <include name="settingsBackupEnableDisableDuringUpload"/>
+          <include name="settingsSaveLoginSanity"/>
+          <include name="addRemoveTeamFolders"/>
+          <include name="search"/>
+          <include name="settingsShare"/>
+          <include name="checkHomeScreen"/>
+          <include name="setupBeforeSuite"/>
+          <include name="Favorites"/>
+          <include name="settingsPasscodeSanity"/>
+          <include name="foregroundBackgroundSwith"/>
+          <include name="settingsRateUs"/>
         </methods>
       </class> <!-- com.pp.ios.auto.SanityIos -->
     </classes>

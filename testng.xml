@@ -4,8 +4,8 @@
   <test name="Sanity Tests">
       <groups>
 		<run>
-		    <include name="Sanity iOS1"/>     
-		   	<include name="Regression iOS1"/>        
+		    <include name="Sanity iOS"/>     
+		   	<include name="Regression iOS"/>        
 		    
 		</run>
 	</groups>
@@ -14,5 +14,8 @@
           <class name="com.pp.ios.auto.SanityIos"/>
           
     </classes>
+    <listeners>
+       <listener class-name="com.pp.ios.auto.TestListener"/>
+  </listeners>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
