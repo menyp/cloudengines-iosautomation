@@ -1,8 +1,9 @@
 package com.pp.ios.auto;
 
-import io.appium.java_client.NetworkConnectionSetting;
-import io.appium.java_client.TouchAction;
-import io.appium.java_client.ios.IOSDriver;
+import org.apache.commons.io.FileUtils;
+
+import org.xml.sax.SAXException;
+import com.google.common.base.Function;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,10 +17,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
@@ -33,9 +32,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.xml.sax.SAXException;
 
-import com.google.common.base.Function;
+import io.appium.java_client.ios.IOSDriver;
+
+
 
 /**
  * 
@@ -80,7 +80,7 @@ public class GenericMethods {
 		genMeth.clickName(genMeth, iosData.BTNsignin_Name);
 
 		// check if the tour display (will be display only if it is first login)
-		boolean isFirstLogin = genMeth.checkIsElementVisibleNative(driver,By.name(iosData.NeverLoseAPhoto_Name));
+		boolean isFirstLogin = genMeth.checkIsElementVisible(driver,By.name(iosData.NeverLoseAPhoto_Name));
 		if (isFirstLogin == true) {
 			// Make sure that the tour Never lose a photo display properly with full text
 			genMeth.isElementVisible(driver,By.name(iosData.NeverLoseAPhoto_Name));
@@ -94,7 +94,7 @@ public class GenericMethods {
 			
 
 			// check if this is a Limited or Unlimited account
-			boolean isUnlimitedAccount = genMeth.checkIsElementVisibleNative(driver, By.name(iosData.UnlimitedProtection_Name));
+			boolean isUnlimitedAccount = genMeth.checkIsElementVisible(driver, By.name(iosData.UnlimitedProtection_Name));
 
 			if (isUnlimitedAccount == true) {
 				// Verify that the go unlimited tour text is displayed
@@ -198,7 +198,7 @@ public class GenericMethods {
 		driver.swipe(270, 265, 55, 265, 500);
 
 		// check if this is a Limited or Unlimited account
-		boolean isUnlimitedAccount = genMeth.checkIsElementVisibleNative(driver, By.name(iosData.UnlimitedProtection_Name));
+		boolean isUnlimitedAccount = genMeth.checkIsElementVisible(driver, By.name(iosData.UnlimitedProtection_Name));
 		if (isUnlimitedAccount == true) {
 			// Verify that the go unlimited tour text is displayed
 			genMeth.isElementVisible(driver,By.name(iosData.UnlimitedProtection_Name));
@@ -1038,7 +1038,7 @@ public class GenericMethods {
 
 	}
 
-	public boolean checkIsElementVisibleNative(IOSDriver driver, By by)
+	public boolean checkIsElementVisible(IOSDriver driver, By by)
 			throws ParserConfigurationException, SAXException, IOException {
 
 		boolean isWebElementVisible = false;
@@ -1186,7 +1186,7 @@ public class GenericMethods {
 	public void deletList(GenericMethods genMeth, WebElementsIos iosData) 
 			throws ParserConfigurationException, SAXException, IOException,
 			InterruptedException {
-		boolean isListEmpty = genMeth.checkIsElementVisibleNative(driver, By.name(iosData.EmptyFolder_Name));
+		boolean isListEmpty = genMeth.checkIsElementVisible(driver, By.name(iosData.EmptyFolder_Name));
 		while (isListEmpty == false) {
 
 			// delete the first row
@@ -1195,7 +1195,7 @@ public class GenericMethods {
 					"//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]");
 			genMeth.clickName( genMeth, iosData.BTNdeleteOn_Name);
 			genMeth.clickName( genMeth, iosData.BTNdelete_Name);
-			isListEmpty = genMeth.checkIsElementVisibleNative(driver,
+			isListEmpty = genMeth.checkIsElementVisible(driver,
 					By.name(iosData.EmptyFolder_Name));
 			if (isListEmpty == false) {
 

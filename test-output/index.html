@@ -23,7 +23,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -37,7 +37,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" class="navigator-link" panel-name="suite-Suite">
-              <span class="suite-name border-skipped">Suite</span>
+              <span class="suite-name border-failed">Suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -90,41 +90,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">5 methods,  5 skipped,  </span>
+                    <span class="method-stats">1 method, 1 failed,   </span>
                   </li>
                   <li>
-                    <span class="method-list-title skipped">Skipped methods</span>
-                    <span class="show-or-hide-methods skipped">
-                      <a href="#" panel-name="suite-Suite" class="hide-methods skipped suite-Suite"> (hide)</a> <!-- hide-methods skipped suite-Suite -->
-                      <a href="#" panel-name="suite-Suite" class="show-methods skipped suite-Suite"> (show)</a> <!-- show-methods skipped suite-Suite -->
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Suite" class="hide-methods failed suite-Suite"> (hide)</a> <!-- hide-methods failed suite-Suite -->
+                      <a href="#" panel-name="suite-Suite" class="show-methods failed suite-Suite"> (show)</a> <!-- show-methods failed suite-Suite -->
                     </span>
-                    <div class="method-list-content skipped suite-Suite">
+                    <div class="method-list-content failed suite-Suite">
                       <span>
-                        <img width="3%" src="skipped.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="com.pp.ios.auto.SanityIos" hash-for-method="settingsBackupEnableDisable">settingsBackupEnableDisable</a> <!-- method navigator-link -->
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="com.pp.ios.auto.SanityIos" hash-for-method="ClearHistoryAndChangeDefaultDestination">ClearHistoryAndChangeDefaultDestination</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                      <span>
-                        <img width="3%" src="skipped.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="com.pp.ios.auto.SanityIos" hash-for-method="settingsContactSupport">settingsContactSupport</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="skipped.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="com.pp.ios.auto.SanityIos" hash-for-method="settingsMore">settingsMore</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="skipped.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="com.pp.ios.auto.SanityIos" hash-for-method="settingsRateUs">settingsRateUs</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="skipped.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="com.pp.ios.auto.SanityIos" hash-for-method="settingsShare">settingsShare</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                    </div> <!-- method-list-content skipped suite-Suite -->
+                    </div> <!-- method-list-content failed suite-Suite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -136,63 +116,32 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Suite" class="panel Suite">
-          <div class="suite-Suite-class-skipped">
+          <div class="suite-Suite-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="skipped.png"/>
+              <img src="failed.png"/>
               <span class="class-name">com.pp.ios.auto.SanityIos</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="settingsBackupEnableDisable">
-                  </a> <!-- settingsBackupEnableDisable -->
-                  <span class="method-name">settingsBackupEnableDisable</span>
+                  <a name="ClearHistoryAndChangeDefaultDestination">
+                  </a> <!-- ClearHistoryAndChangeDefaultDestination -->
+                  <span class="method-name">ClearHistoryAndChangeDefaultDestination</span>
+                  <div class="stack-trace">java.lang.AssertionError: WebElement is not visible
+	at com.pp.ios.auto.GenericMethods.isElementVisible(GenericMethods.java:1035)
+	at com.pp.ios.auto.SanityIos.ClearHistoryAndChangeDefaultDestination(SanityIos.java:1460)
+... Removed 25 stack frames
+</div> <!-- stack-trace -->
                   <em>
-(Settings: Backup Enable/disable without upload in the background)                  </em>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="settingsContactSupport">
-                  </a> <!-- settingsContactSupport -->
-                  <span class="method-name">settingsContactSupport</span>
-                  <em>
-(More)                  </em>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="settingsMore">
-                  </a> <!-- settingsMore -->
-                  <span class="method-name">settingsMore</span>
-                  <em>
-(More)                  </em>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="settingsRateUs">
-                  </a> <!-- settingsRateUs -->
-                  <span class="method-name">settingsRateUs</span>
-                  <em>
-(Rate app)                  </em>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="settingsShare">
-                  </a> <!-- settingsShare -->
-                  <span class="method-name">settingsShare</span>
-                  <em>
-(Share app)                  </em>
+(change default destination)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite-class-skipped -->
+          </div> <!-- suite-Suite-class-failed -->
         </div> <!-- panel Suite -->
         <div panel-name="test-xml-Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">/Users/qa/cloudengines-iosautomation/testng.xml</span>
+            <span class="header-content">/Users/qa/cloudengines-iosautomation/src/resources/testng.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -206,7 +155,7 @@
     &lt;groups&gt;
       &lt;run&gt;
         &lt;include name=&quot;Sanity iOS1&quot;/&gt;
-        &lt;include name=&quot;Regression iOS&quot;/&gt;
+        &lt;include name=&quot;Regression iOS1&quot;/&gt;
       &lt;/run&gt;
     &lt;/groups&gt;
     &lt;classes&gt;
@@ -235,26 +184,10 @@
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="test-group">
-              <span class="test-group-name">Regression iOS</span>
+              <span class="test-group-name">Sanity iOS1</span>
               <br/>
               <div class="method-in-group">
-                <span class="method-in-group-name">settingsBackupEnableDisable</span>
-                <br/>
-              </div> <!-- method-in-group -->
-              <div class="method-in-group">
-                <span class="method-in-group-name">settingsContactSupport</span>
-                <br/>
-              </div> <!-- method-in-group -->
-              <div class="method-in-group">
-                <span class="method-in-group-name">settingsMore</span>
-                <br/>
-              </div> <!-- method-in-group -->
-              <div class="method-in-group">
-                <span class="method-in-group-name">settingsRateUs</span>
-                <br/>
-              </div> <!-- method-in-group -->
-              <div class="method-in-group">
-                <span class="method-in-group-name">settingsShare</span>
+                <span class="method-in-group-name">ClearHistoryAndChangeDefaultDestination</span>
                 <br/>
               </div> <!-- method-in-group -->
             </div> <!-- test-group -->
@@ -274,32 +207,16 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(5);
+data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'settingsBackupEnableDisable')
+data.setCell(0, 1, 'ClearHistoryAndChangeDefaultDestination')
 data.setCell(0, 2, 'com.pp.ios.auto.SanityIos')
-data.setCell(0, 3, 1);
-data.setCell(1, 0, 1)
-data.setCell(1, 1, 'settingsShare')
-data.setCell(1, 2, 'com.pp.ios.auto.SanityIos')
-data.setCell(1, 3, 1);
-data.setCell(2, 0, 2)
-data.setCell(2, 1, 'settingsMore')
-data.setCell(2, 2, 'com.pp.ios.auto.SanityIos')
-data.setCell(2, 3, 0);
-data.setCell(3, 0, 3)
-data.setCell(3, 1, 'settingsContactSupport')
-data.setCell(3, 2, 'com.pp.ios.auto.SanityIos')
-data.setCell(3, 3, 0);
-data.setCell(4, 0, 4)
-data.setCell(4, 1, 'settingsRateUs')
-data.setCell(4, 2, 'com.pp.ios.auto.SanityIos')
-data.setCell(4, 3, 0);
+data.setCell(0, 3, 96922);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 2 ms</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -314,7 +231,7 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">22 ignored methods</span>
+            <span class="header-content">26 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
@@ -324,25 +241,17 @@ return data;
                 <br/>
                 <span class="ignored-method-name">createfolder</span>
                 <br/>
-                <span class="ignored-method-name">ClearHistoryAndChangeDefaultDestination</span>
-                <br/>
-                <span class="ignored-method-name">temp</span>
-                <br/>
                 <span class="ignored-method-name">backupInBackground</span>
-                <br/>
-                <span class="ignored-method-name">badCredentials</span>
-                <br/>
-                <span class="ignored-method-name">settingslikeOnFB</span>
                 <br/>
                 <span class="ignored-method-name">createNewUser</span>
                 <br/>
+                <span class="ignored-method-name">settingsMore</span>
+                <br/>
                 <span class="ignored-method-name">Albums</span>
                 <br/>
-                <span class="ignored-method-name">testTour</span>
+                <span class="ignored-method-name">settingsBackupEnableDisable</span>
                 <br/>
-                <span class="ignored-method-name">settingsSaveLoginSanity</span>
-                <br/>
-                <span class="ignored-method-name">settingsBackupEnableDisableDuringUpload</span>
+                <span class="ignored-method-name">settingsContactSupport</span>
                 <br/>
                 <span class="ignored-method-name">addRemoveTeamFolders</span>
                 <br/>
@@ -354,15 +263,31 @@ return data;
                 <br/>
                 <span class="ignored-method-name">deleteFrom</span>
                 <br/>
+                <span class="ignored-method-name">settingsRateUs</span>
+                <br/>
+                <span class="ignored-method-name">FlatView</span>
+                <br/>
+                <span class="ignored-method-name">uploadExistingPotos</span>
+                <br/>
+                <span class="ignored-method-name">temp</span>
+                <br/>
+                <span class="ignored-method-name">badCredentials</span>
+                <br/>
+                <span class="ignored-method-name">settingslikeOnFB</span>
+                <br/>
+                <span class="ignored-method-name">testTour</span>
+                <br/>
+                <span class="ignored-method-name">settingsSaveLoginSanity</span>
+                <br/>
+                <span class="ignored-method-name">settingsBackupEnableDisableDuringUpload</span>
+                <br/>
+                <span class="ignored-method-name">settingsShare</span>
+                <br/>
                 <span class="ignored-method-name">settingsPasscodeSanity</span>
                 <br/>
                 <span class="ignored-method-name">Favorites</span>
                 <br/>
                 <span class="ignored-method-name">foregroundBackgroundSwith</span>
-                <br/>
-                <span class="ignored-method-name">FlatView</span>
-                <br/>
-                <span class="ignored-method-name">uploadExistingPotos</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
@@ -376,34 +301,22 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">com.pp.ios.auto.SanityIos</div> <!-- chronological-class-name -->
               <div class="configuration-suite before">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">setupBeforeSuite(org.testng.TestRunner@7383eae2)</span>
+                <span class="method-name">setupBeforeSuite(org.testng.TestRunner@740abb5)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
+              <div class="configuration-method before">
+                <span class="method-name">checkHomeScreen</span>
+                <span class="method-start">146131 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">settingsBackupEnableDisable</span>
-                <span class="method-start">39385 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">settingsContactSupport</span>
-                <span class="method-start">39390 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">settingsMore</span>
-                <span class="method-start">39392 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">settingsRateUs</span>
-                <span class="method-start">39397 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">settingsShare</span>
-                <span class="method-start">39400 ms</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">ClearHistoryAndChangeDefaultDestination</span>
+                <span class="method-start">148531 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-suite after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">39478 ms</span>
+                <span class="method-start">245492 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

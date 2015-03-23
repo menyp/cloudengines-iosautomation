@@ -8,19 +8,16 @@
     <groups>
       <run>
         <include name="Sanity iOS1"/>
-        <include name="Regression iOS"/>
+        <include name="Regression iOS1"/>
       </run>
     </groups>
     <classes>
       <class name="com.pp.ios.auto.SanityIos">
         <methods>
-          <include name="settingsShare"/>
+          <include name="ClearHistoryAndChangeDefaultDestination"/>
+          <include name="checkHomeScreen"/>
           <include name="setupBeforeSuite"/>
-          <include name="settingsMore"/>
           <include name="tearDown"/>
-          <include name="settingsBackupEnableDisable"/>
-          <include name="settingsRateUs"/>
-          <include name="settingsContactSupport"/>
         </methods>
       </class> <!-- com.pp.ios.auto.SanityIos -->
     </classes>

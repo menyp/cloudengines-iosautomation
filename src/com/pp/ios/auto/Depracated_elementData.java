@@ -6,7 +6,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
-public class elementData {
+public class Depracated_elementData {
 	GenericMethods genMeth = new GenericMethods();
 	
 	String BTNsigninWithEmail_id ;// genMeth.getValueFromPropFile("element.signinWithEmailBtn_id");
@@ -47,7 +47,7 @@ public class elementData {
 	String BTNrefresh_Xpth;
 	String BTNcancelInCreateNewPassClass;
 	
-	public elementData() throws ParserConfigurationException, SAXException, IOException{
+	public Depracated_elementData() throws ParserConfigurationException, SAXException, IOException{
 		this.BTNsigninWithEmail_id = XmlHandel.readXml("BTNsigninWithEmail_id");
 		this.BTNsigninFacebook_xpth = XmlHandel.readXml("BTNsigninFacebook_xpth");
 		this.TEXTFIELDemail_xpth = XmlHandel.readXml("TEXTFIELDemail_xpth");

@@ -1,20 +1,21 @@
 package com.pp.ios.auto;
 
-import org.testng.annotations.Test;
-
-import io.appium.java_client.ios.IOSDriver;
+import org.xml.sax.SAXException;
 
 import java.io.IOException;
-
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.ITestContext;
+
+import org.testng.annotations.Test;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-import org.xml.sax.SAXException;
+import org.testng.ITestContext;
+
+import io.appium.java_client.ios.IOSDriver;
+
 
 public class SanityIos {
 
@@ -30,22 +31,22 @@ public class SanityIos {
 
 	
 	@BeforeSuite(alwaysRun = true)
-	public void setupBeforeSuite(ITestContext context) throws Exception,Throwable {		
-		
+	public void setupBeforeSuite(ITestContext context) throws Exception, Throwable {
+
 		try {
 			driver.removeApp("com.cloudengines.pogoplug");
 			driver.quit();
 		} catch (Exception e) {
 			// swallow if fails
 		}
-		//Set the tests configuration
+		// Set the tests configuration
 		StartServerPath = genMeth.getValueFromPropFile("StartServerPath");
 		StopServerPath = genMeth.getValueFromPropFile("StopServerPath");
 		webElementXmlPath = genMeth.getValueFromPropFile("webElementXmlPath");
 		webElementXmlLang = genMeth.getValueFromPropFile("webElementXmlLang");
-		//platform = genMeth.getValueFromPropFile("platform");
-		
-		iosData= new WebElementsIos(webElementXmlLang, webElementXmlPath);
+		// platform = genMeth.getValueFromPropFile("platform");
+
+		iosData = new WebElementsIos(webElementXmlLang, webElementXmlPath);
 		driver = genMeth.setCapabilitiesIos(genMeth);
 
 		genMeth.cleanLoginIos(genMeth, iosData, iosData.userUnlimited_name);
@@ -64,7 +65,7 @@ public class SanityIos {
 		}
 
 		else {
-			boolean StartUpScreenDisplay = genMeth.checkIsElementVisibleNative( driver , By.name(iosData.Settings_Name));
+			boolean StartUpScreenDisplay = genMeth.checkIsElementVisible( driver, By.name(iosData.Settings_Name));
 
 			if (StartUpScreenDisplay != true) {
 
@@ -74,10 +75,11 @@ public class SanityIos {
 				} catch (Exception e) {
 					// swallow if fails
 				}
-				
+
 				driver = genMeth.setCapabilitiesIos(genMeth);
-				genMeth.cleanLoginIos(genMeth, iosData, iosData.userUnlimited_name);
-				
+				genMeth.cleanLoginIos(genMeth, iosData,
+						iosData.userUnlimited_name);
+
 			}
 
 		}
@@ -97,9 +99,6 @@ public class SanityIos {
 		
 		// Dismiss the create folder window
 		genMeth.clickName(genMeth, iosData.BTNcancel_Name);
-		
-		
-		
 
 		// make sure that the folder wasn't created
 
@@ -144,12 +143,13 @@ public class SanityIos {
 	}
 
 	@Test(enabled = true, retryAnalyzer = Retry.class, testName = "Sanity Tests", description = "Test the upload Existing photos or videos, delete the image",
-			groups = { "Regression iOS " })
+			groups = { "Regression iOS" })
 	public void uploadExistingPotos() throws Exception, Throwable {
 
 		// create a folder for the images
 		String currentDateFolder = genMeth.currentTime();
 		genMeth.clickName( genMeth, iosData.BTNfileExplorer_Name);
+		driver.scrollToExact("upload from existing test");
 		genMeth.clickName( genMeth, "upload from existing test");
 		
 		//Method that will clean all files in a list
@@ -168,8 +168,8 @@ public class SanityIos {
 		genMeth.isElementVisible(driver, By.name(iosData.PhotoAlbums_Name));
 
 		genMeth.clickName( genMeth, iosData.BTNcameraRoll_Name);
-		genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[4]");
-		genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[5]");
+		genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[1]");
+		genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[2]");
 		
 		genMeth.clickName( genMeth, iosData.BTNdone_Name);
 
@@ -180,11 +180,11 @@ public class SanityIos {
 		int count = 0;
 
 		while (count < 5) {
-			boolean isDisplay = genMeth.checkIsElementVisibleNative(driver,
+			boolean isDisplay = genMeth.checkIsElementVisible(driver,
 					By.name(iosData.BTNcameraOn_Name));
 			if (isDisplay == false) {
 				// check if the upload fail was prompt- if true resume upload
-				boolean uploadFails = genMeth.checkIsElementVisibleNative(
+				boolean uploadFails = genMeth.checkIsElementVisible(
 						driver, By.name(iosData.UploadError_Name));
 				if (uploadFails == true) {
 					genMeth.clickName( genMeth, iosData.BTNdismiss_Name);
@@ -230,16 +230,19 @@ public class SanityIos {
 		//Take Screenshot verifying that the image UI is fine
 		genMeth.takeScreenShotPositive(driver, genMeth, "positive_uploadExistingPotos_uploaded_IMG_0004");
 		
-		genMeth.isElementInvisible(driver, By.name(iosData.UploadExistingImage_Name));
-		genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]");
-		driver.findElementByName(iosData.BTNback_Name).click();
+//		genMeth.isElementInvisible(driver, By.name(iosData.UploadExistingImage_Name));
+//		genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]");
+//		driver.findElementByName(iosData.BTNback_Name).click();
+		driver.findElementByName(iosData.BTNdone_Name).click();
+
 
 		// Open the video & verify that the title displayed
 		genMeth.clickName( genMeth, iosData.UploadExistingVideo_Name);
 		genMeth.isElementVisible(driver, By.name(iosData.UploadExistingVideo_Name));
 		genMeth.takeScreenShotPositive(driver, genMeth, "positive_uploadExistingPotos_IMG_01188.MOV");
-		genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAImage[1]");
-		driver.findElementByName(iosData.BTNback_Name).click();
+		driver.findElementByName(iosData.BTNdone_Name).click();
+	//	genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAImage[1]");
+	//	driver.findElementByName(iosData.BTNback_Name).click();
 		
 		// Cancel the Delete image
 		genMeth.clickName( genMeth, iosData.BTNedit_Name);
@@ -271,6 +274,7 @@ public class SanityIos {
 		genMeth.isElementInvisible(driver, By.name(currentDateFolder ));
 		
 		// go to startup screen
+		genMeth.clickName( genMeth, iosData.BTNback_Name);
 		genMeth.clickName( genMeth, iosData.BTNleft_Name);
 
 	}
@@ -1041,7 +1045,7 @@ public class SanityIos {
 		
 		// open favorites & make sure that it is empty if not remove all favorites
 		genMeth.clickName( genMeth, iosData.BTNfavorites_Name);
-		boolean isEmpty = genMeth.checkIsElementVisibleNative(driver, By.name(iosData.EmptyFavorites_Name));
+		boolean isEmpty = genMeth.checkIsElementVisible(driver, By.name(iosData.EmptyFavorites_Name));
 		boolean firstTry= true;
 	
 		while (isEmpty  != true){
@@ -1056,7 +1060,7 @@ public class SanityIos {
 			
 			genMeth.clickXpth(driver, genMeth, "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]");
 			genMeth.clickName( genMeth, iosData.BTNremoveFavorites_Name);
-			isEmpty = genMeth.checkIsElementVisibleNative(driver, By.name(iosData.EmptyFavorites_Name));
+			isEmpty = genMeth.checkIsElementVisible(driver, By.name(iosData.EmptyFavorites_Name));
 			
 			
 		}
@@ -1180,7 +1184,7 @@ public class SanityIos {
 		genMeth.clickName( genMeth, iosData.BTNedit_Name);
 		genMeth.clickName( genMeth, iosData.FavoritesTitle_Name);
 		genMeth.clickName( genMeth, iosData.BTNshareOn_Name);
-		boolean isShared = genMeth.checkIsElementVisibleNative(driver, By.name(iosData.BTNremoveAllUsers_Name));
+		boolean isShared = genMeth.checkIsElementVisible(driver, By.name(iosData.BTNremoveAllUsers_Name));
 		if (isShared == true) {
 
 			genMeth.clickName( genMeth, iosData.BTNremoveAllUsers_Name);
@@ -1436,10 +1440,11 @@ public class SanityIos {
 	}
 	
 	@Test(enabled = true,  testName = "Sanity Tests", description = "change default destination",
-			groups = {"Sanity iOS"})
+			groups = {"Sanity iOS1"})
 	public void ClearHistoryAndChangeDefaultDestination () throws InterruptedException, IOException, ParserConfigurationException, SAXException{
 		
 		String currentTime = genMeth.currentTime();
+		
 		//Clear History
 		genMeth.clickName( genMeth, iosData.Settings_Name);
 		genMeth.clickName( genMeth, iosData.BTNon_Name);

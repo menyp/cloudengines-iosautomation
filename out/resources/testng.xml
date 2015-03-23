@@ -4,14 +4,14 @@
   <test name="Sanity Tests">
       <groups>
 		<run>
-		    <include name="Sanity iOS"/>     
-		   	<include name="Regression iOS"/>        
+		    <include name="Sanity iOS1"/>     
+		   	<include name="Regression iOS1"/>        
 		    
 		</run>
 	</groups>
     <classes>
         
-          <class name="com.pp.ios.auto.SanityIos"/>
+          <class name="com.pp.ios.auto.SanityIos"/>	
           
     </classes>
     <listeners>
