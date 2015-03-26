@@ -8,7 +8,7 @@
     <groups>
       <run>
         <include name="Sanity iOS1"/>
-        <include name="Regression iOS1"/>
+        <include name="Regression iOS11"/>
       </run>
     </groups>
     <classes>

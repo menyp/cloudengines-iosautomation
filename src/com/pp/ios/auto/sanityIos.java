@@ -1370,7 +1370,7 @@ public class SanityIos {
 	}
 	
 	@Test(enabled = true, retryAnalyzer = Retry.class, testName = "Sanity Tests", description = "More",
-			groups={"Regression iOS"})
+			groups={"Regression iOS1"})
 	public void settingsContactSupport () throws InterruptedException, IOException, ParserConfigurationException, SAXException{
 		String currentTime = genMeth.currentTime();
 		genMeth.clickName( genMeth, iosData.Settings_Name);
@@ -1440,7 +1440,7 @@ public class SanityIos {
 	}
 	
 	@Test(enabled = true,  testName = "Sanity Tests", description = "change default destination",
-			groups = {"Sanity iOS1"})
+			groups = {"Sanity iOS12"})
 	public void ClearHistoryAndChangeDefaultDestination () throws InterruptedException, IOException, ParserConfigurationException, SAXException{
 		
 		String currentTime = genMeth.currentTime();
